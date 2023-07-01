@@ -2,11 +2,20 @@ import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
   palette: {
-    primary: { main: "#F00" },
+    background: {
+      default: "#2F2E2F",
+    },
+    primary: {
+      main: "#30A2DE",
+    },
+    grey: {
+      500: "#808080", // Add your desired light gray color here
+    },
   },
+
   typography: {
     allVariants: {
-      fontFamily: "Roboto",
+      color: "white",
     },
     h1: {
       fontFamily: "Roboto",
