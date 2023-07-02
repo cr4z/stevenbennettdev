@@ -3,9 +3,13 @@ import { Box, Grid, Typography } from "@mui/material";
 import { ReactComponent as Pfp } from "../svgs/pfp.svg";
 import { utils } from "../utils/getGutterWidth";
 import { useBreakpointHelper } from "../hooks/useBreakpointHelper";
+import { BiLogoReact, BiLogoTypescript, BiLogoRedux, BiLogoGithub } from "react-icons/bi";
+import { TbBrandNextjs } from "react-icons/tb";
+import { SiAzuredevops, SiFigma } from "react-icons/si";
+import { VscAzureDevops } from "react-icons/vsc";
 
 function Home() {
-  const { currentScreenSize, isMobile } = useBreakpointHelper();
+  const { currentScreenSize, isMobile, isGreaterEqual: isGreaterThanEqualTo } = useBreakpointHelper();
 
   return (
     <Grid container sx={{ paddingX: utils.getGutterWidth(currentScreenSize), paddingTop: "4rem" }}>
@@ -22,7 +26,7 @@ function Home() {
             display: "flex",
             alignItems: "center",
             gap: "4rem",
-            flexDirection: isMobile ? "column" : "row",
+            flexDirection: isGreaterThanEqualTo("md") ? "row" : "column",
           }}
         >
           <Box>
@@ -33,7 +37,12 @@ function Home() {
             <Typography variant="h4" gutterBottom>
               Hi! I'm Steven Bennett
             </Typography>
-            <Typography variant="body1">Developer, architect, learner, team player</Typography>
+            <Typography
+              variant="body1"
+              sx={{ width: "100%", textAlign: isGreaterThanEqualTo("md") ? "left" : "center" }}
+            >
+              Developer, architect, learner, team player
+            </Typography>
           </Box>
         </Box>
 
@@ -48,15 +57,32 @@ function Home() {
         </Typography>
       </Grid>
 
-      <Grid item xs={12} md={4}>
+      <Grid
+        item
+        xs={12}
+        lg={4}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: "3rem",
+          marginTop: isGreaterThanEqualTo("lg") ? 0 : "6rem",
+        }}
+      >
         <Typography variant="h4" gutterBottom>
           My Skills
         </Typography>
-        <Box component="ul" sx={{ display: "flex" }}>
-          <li>React</li>
-          <li>TypeScript</li>
-          <li>HTML</li>
-          <li>CSS</li>
+        <Box component="ul" sx={{ display: "flex", gap: ".5rem" }}>
+          <Skill name="React" icon={<BiLogoReact />} />
+          <Skill name="TypeScript" icon={<BiLogoTypescript />} />
+          <Skill name="Redux" icon={<BiLogoRedux />} />
+          <Skill name="Next.js" icon={<TbBrandNextjs />} strokeWidth="1px" />
+        </Box>
+        <Typography variant="body1">Extra</Typography>
+        <Box component="ul" sx={{ display: "flex", gap: ".5rem" }}>
+          <Skill name="Github" smaller icon={<BiLogoGithub />} />
+          <Skill name="Figma" smaller icon={<SiFigma />} />
+          <Skill name="DevOps" smaller icon={<VscAzureDevops />} />
         </Box>
       </Grid>
 
@@ -69,6 +95,26 @@ function Home() {
         </Box>
       </Grid>
     </Grid>
+  );
+}
+
+function Skill(props: { name: string; icon: React.ReactNode; strokeWidth?: string; smaller?: boolean }) {
+  return (
+    <Box component="li" sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <Typography variant="body1">{props.name}</Typography>
+      <Box
+        sx={{
+          svg: {
+            width: props.smaller ? "2.5rem" : "3rem",
+            height: props.smaller ? "2.5rem" : "3rem",
+            color: "white",
+            ...(props.strokeWidth && { strokeWidth: props.strokeWidth }),
+          },
+        }}
+      >
+        {props.icon}
+      </Box>
+    </Box>
   );
 }
 
