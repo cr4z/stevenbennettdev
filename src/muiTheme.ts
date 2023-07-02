@@ -48,8 +48,8 @@ export const theme = createTheme({
     body1: {
       fontFamily: "Roboto",
       fontSize: "14px",
-      fontWeight: "500",
-      letterSpacing: "0.08px",
+      fontWeight: "200",
+      letterSpacing: "0.2px",
     },
     body2: {
       fontFamily: "Roboto",
