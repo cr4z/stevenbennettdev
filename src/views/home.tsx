@@ -28,9 +28,14 @@ function Home() {
               </Box>
 
               <Box>
-                <Typography variant="h4" gutterBottom>
-                  Hi! I'm Steven Bennett
-                </Typography>
+                <Box
+                  className="typewriter"
+                  sx={{ display: "flex", justifyContent: "flex-start", width: "100%" }}
+                >
+                  <Typography variant="h4" gutterBottom>
+                    Hi! I'm Steven Bennett
+                  </Typography>
+                </Box>
                 <Typography
                   variant="body1"
                   sx={{ width: "100%", textAlign: isGreaterThanEqualTo("md") ? "left" : "center" }}
@@ -101,22 +106,17 @@ function SkillItem(props: {
   strokeWidth?: string;
   smaller?: boolean;
 }) {
-  const { palette } = useTheme();
-
   return (
     <Box component="li">
-      <ButtonBase
+      <Box
+        className="noselect"
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           borderRadius: "6px",
-          ":hover": {
-            bgcolor: palette.grey[800],
-          },
           padding: ".5rem",
           minWidth: "74px",
-          cursor: "default",
         }}
       >
         <Typography mb=".5rem" variant="body1">
@@ -134,7 +134,7 @@ function SkillItem(props: {
         >
           {props.icon}
         </Box>
-      </ButtonBase>
+      </Box>
     </Box>
   );
 }
