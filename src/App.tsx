@@ -1,62 +1,48 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { Box, useTheme, Typography } from "@mui/material";
-import { useBreakpointHelper } from "./hooks/useBreakpointHelper";
+import { Box, Container, Typography, useTheme } from "@mui/material";
 import Home from "./views/home";
 import Portfolio from "./views/portfolio";
+import Navbar from "./views/navbar";
+import { useBreakpointHelper } from "./hooks/useBreakpointHelper";
 
 const App = () => {
   const { palette } = useTheme();
+  const { isMobile } = useBreakpointHelper();
 
   return (
     <BrowserRouter>
       <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <Box height={"6rem"}>
+        <Box
+          minHeight={isMobile ? "4rem" : "6rem"}
+          sx={{
+            borderBottom: `1px solid ${palette.grey[800]}`,
+          }}
+        >
           <Navbar />
         </Box>
         <Box sx={{ bgcolor: palette.background.default, height: "100%" }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<Portfolio />} />
+            <Route
+              path="*"
+              element={
+                <Container sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+                  <Typography sx={{ mt: "8rem", mb: "2rem", fontSize: "10rem" }} variant="h1">
+                    404
+                  </Typography>
+                  <Typography variant="h5" sx={{ textAlign: "center" }}>
+                    Hm, I couldn't find this page. If you believe this to be an error, please feel free to
+                    reach out through the <strong>Contact</strong> tab!
+                  </Typography>
+                </Container>
+              }
+            />
           </Routes>
         </Box>
       </Box>
     </BrowserRouter>
   );
 };
-
-function Navbar() {
-  const { currentScreenSize } = useBreakpointHelper();
-  const { palette } = useTheme();
-
-  function getNavbarPaddingX() {
-    switch (currentScreenSize) {
-      case "xl":
-        return "3rem";
-      case "lg":
-        return "3rem";
-      case "md":
-        return "3rem";
-      case "sm":
-        return "3rem";
-      case "xs":
-        return "3rem";
-    }
-  }
-
-  return (
-    <Box
-      sx={{
-        bgcolor: palette.background.default,
-        paddingX: getNavbarPaddingX(),
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        borderBottom: `1px solid ${palette.grey[500]}`,
-      }}
-    >
-      <Typography variant="h4">Steven Bennett</Typography>
-    </Box>
-  );
-}
 
 export default App;

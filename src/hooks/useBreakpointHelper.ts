@@ -16,11 +16,11 @@ export function useBreakpointHelper(): IBreakpointerHelper {
 
   const currentScreenSize = isXl ? "xl" : isLg ? "lg" : isMd ? "md" : isSm ? "sm" : "xs";
 
-  return { isMobile: isMobile, isGreaterEqual: isGreaterEqual, currentScreenSize: currentScreenSize };
+  return { isMobile: isMobile, isGreaterThanEqualTo: isGreaterEqual, currentScreenSize: currentScreenSize };
 }
 
 interface IBreakpointerHelper {
   isMobile: boolean;
-  isGreaterEqual: (breakpoint: number | Breakpoint) => boolean;
+  isGreaterThanEqualTo: (breakpoint: number | Breakpoint) => boolean;
   currentScreenSize: Breakpoint;
 }
