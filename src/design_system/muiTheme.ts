@@ -1,16 +1,37 @@
-import { createTheme } from "@mui/material/styles";
+import { PaletteOptions, createTheme } from "@mui/material/styles";
+
+const USE_BLUE_PRIMARY: PaletteOptions = {
+  primary: {
+    light: "#5BC6FF",
+    main: "#30A2DE",
+    dark: "#11425C",
+  },
+  background: {
+    default: "#2F2E2F",
+  },
+};
+
+const USE_RED_PRIMARY: PaletteOptions = {
+  primary: {
+    light: "red",
+    main: "#e61134",
+    dark: "#5B2626",
+  },
+  background: {
+    default: "#2F2E2F",
+  },
+};
 
 export const theme = createTheme({
   palette: {
-    background: {
-      default: "#2F2E2F",
-    },
-    primary: {
-      main: "#30A2DE",
-    },
+    ...USE_BLUE_PRIMARY,
+
     grey: {
       500: "#808080", // Add your desired light gray color here
+      600: "#747474",
+      700: "#404040", // Add your desired light gray color here
     },
+    text: { primary: "#FFF" },
   },
 
   typography: {

@@ -3,7 +3,7 @@ import { Box, Container, Typography, useTheme } from "@mui/material";
 import Home from "./views/home";
 import Portfolio from "./views/portfolio";
 import Navbar from "./views/navbar";
-import { useBreakpointHelper } from "./hooks/useBreakpointHelper";
+import { useBreakpointHelper } from "./design_system/hooks/useBreakpointHelper";
 
 const App = () => {
   const { palette } = useTheme();

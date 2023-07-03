@@ -1,9 +1,12 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { useBreakpointHelper } from "../hooks/useBreakpointHelper";
+import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
+import { useLocation, useNavigate } from "react-router";
 
 function Navbar() {
   const { currentScreenSize, isMobile } = useBreakpointHelper();
   const { palette } = useTheme();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   function getNavbarPaddingX() {
     switch (currentScreenSize) {
@@ -34,17 +37,28 @@ function Navbar() {
         </Typography>
       )}
       <Box sx={{ display: "flex", minWidth: "265px", justifyContent: "space-between" }}>
-        <Tab label="Home" selected />
-        <Tab label="Portfolio" />
+        <Tab label="Home" selected={location.pathname === "/"} onClick={() => navigate("/")} />
+        <Tab
+          label="Portfolio"
+          selected={location.pathname === "/portfolio"}
+          onClick={() => navigate("/portfolio")}
+        />
         <Tab label="Contact" isContact />
       </Box>
     </Box>
   );
 }
 
-function Tab(props: { label: string; selected?: boolean; isContact?: boolean }) {
+function Tab(props: { label: string; selected?: boolean; isContact?: boolean; onClick?: () => void }) {
+  const { palette } = useTheme();
+
   return (
     <Box
+      onClick={() => {
+        if (props.onClick) {
+          props.onClick();
+        }
+      }}
       className="noselect"
       sx={{
         width: "81px",
@@ -59,12 +73,12 @@ function Tab(props: { label: string; selected?: boolean; isContact?: boolean }) 
         color: "white",
 
         ...(props.selected && {
-          bgcolor: "#11425C",
-          color: "#5BC6FF",
+          bgcolor: palette.primary.dark,
+          color: palette.primary.light,
         }),
 
         ...(props.isContact && {
-          bgcolor: "#30A2DE",
+          bgcolor: palette.primary.main,
         }),
       }}
     >

@@ -39,10 +39,12 @@ ul {
 }
 
 ::selection {
-  background: red; /* WebKit/Blink Browsers */
+  /* background: #e61134; /* WebKit/Blink Browsers */
+  background: #30a2de; /* Gecko Browsers */
 }
 ::-moz-selection {
-  background: red; /* Gecko Browsers */
+  /* background: #e61134; /* Gecko Browsers */
+  background: #30a2de; /* Gecko Browsers */
 }
 
 .typewriter h4 {

@@ -1,14 +1,12 @@
 import { Box, ButtonBase, Container, Grid, Typography, useTheme } from "@mui/material";
 // @ts-ignore
 import { ReactComponent as Pfp } from "../svgs/pfp.svg";
-import { useBreakpointHelper } from "../hooks/useBreakpointHelper";
-import { BiLogoReact, BiLogoTypescript, BiLogoRedux, BiLogoGithub } from "react-icons/bi";
-import { TbBrandNextjs, TbBrandCSharp } from "react-icons/tb";
-import { SiFigma } from "react-icons/si";
-import { VscAzureDevops } from "react-icons/vsc";
+import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
+import { ICONS, IconRenderer } from "../design_system/icons";
 
 function Home() {
   const { isMobile, isGreaterThanEqualTo } = useBreakpointHelper();
+  const { palette } = useTheme();
 
   return (
     <Container maxWidth="xl">
@@ -33,7 +31,13 @@ function Home() {
                   sx={{ display: "flex", justifyContent: "flex-start", width: "100%" }}
                 >
                   <Typography variant="h4" gutterBottom>
-                    Hi! I'm Steven Bennett
+                    Hi! I'm{" "}
+                    <Box
+                      component="span"
+                      sx={{ bgcolor: palette.primary.main, border: `1px ${palette.primary.main} solid` }}
+                    >
+                      Steven Bennett
+                    </Box>
                   </Typography>
                 </Box>
                 <Typography
@@ -73,17 +77,19 @@ function Home() {
             My Skills
           </Typography>
           <Box component="ul" sx={{ display: "flex", gap: ".5rem" }}>
-            <SkillItem name="React" icon={<BiLogoReact />} />
-            <SkillItem name="TypeScript" icon={<BiLogoTypescript />} />
-            <SkillItem name="Redux" icon={<BiLogoRedux />} />
-            <SkillItem name="Next.js" icon={<TbBrandNextjs />} strokeWidth="1px" />
-            <SkillItem name=".NET" icon={<TbBrandCSharp />} />
+            <SkillItem name="React" icon={<ICONS.React />} />
+            <SkillItem name="TypeScript" icon={<ICONS.Typescript />} />
+            <SkillItem name="Redux" icon={<ICONS.Redux />} />
+            <SkillItem name="Next.js" icon={<ICONS.Nextjs />} strokeWidth="1px" />
           </Box>
-          <Typography variant="body1">Extra</Typography>
+          <Typography variant="body1" className="noselect">
+            Extra
+          </Typography>
           <Box component="ul" sx={{ display: "flex", gap: ".5rem" }}>
-            <SkillItem name="Github" smaller icon={<BiLogoGithub />} />
-            <SkillItem name="Figma" smaller icon={<SiFigma />} />
-            <SkillItem name="DevOps" smaller icon={<VscAzureDevops />} />
+            <SkillItem smaller name="Github" icon={<ICONS.Github />} />
+            <SkillItem smaller name="Figma" icon={<ICONS.Figma />} />
+            <SkillItem smaller name="DevOps" icon={<ICONS.DevOps />} />
+            {/* <SkillItem name=".NET" icon={<TbBrandCSharp />} /> */}
           </Box>
         </Grid>
 
@@ -100,12 +106,9 @@ function Home() {
   );
 }
 
-function SkillItem(props: {
-  name: string;
-  icon: React.ReactNode;
-  strokeWidth?: string;
-  smaller?: boolean;
-}) {
+function SkillItem(props: { name: string; icon: JSX.Element; strokeWidth?: string; smaller?: boolean }) {
+  const { palette } = useTheme();
+
   return (
     <Box component="li">
       <Box
@@ -122,18 +125,12 @@ function SkillItem(props: {
         <Typography mb=".5rem" variant="body1">
           {props.name}
         </Typography>
-        <Box
-          sx={{
-            svg: {
-              width: props.smaller ? "2.5rem" : "3rem",
-              height: props.smaller ? "2.5rem" : "3rem",
-              color: "white",
-              ...(props.strokeWidth && { strokeWidth: props.strokeWidth }),
-            },
-          }}
-        >
-          {props.icon}
-        </Box>
+        <IconRenderer
+          strokeWidth={props.strokeWidth}
+          widthHeight={props.smaller ? "2.5rem" : "3rem"}
+          color={palette.text.primary}
+          i={props.icon}
+        />
       </Box>
     </Box>
   );
