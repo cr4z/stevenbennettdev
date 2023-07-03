@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { useLocation, useNavigate } from "react-router";
 
@@ -53,7 +53,7 @@ function Tab(props: { label: string; selected?: boolean; isContact?: boolean; on
   const { palette } = useTheme();
 
   return (
-    <Box
+    <ButtonBase
       onClick={() => {
         if (props.onClick) {
           props.onClick();
@@ -83,7 +83,7 @@ function Tab(props: { label: string; selected?: boolean; isContact?: boolean; on
       }}
     >
       {props.label}
-    </Box>
+    </ButtonBase>
   );
 }
 
