@@ -27,8 +27,8 @@ function Menu(props: {
         sx={{
           ".MuiList-root": { padding: 0 },
           ".MuiPaper-root": {
-            backdropFilter: "blur(16px)",
-            bgcolor: "rgb(164, 164, 164, .18)",
+            backdropFilter: "blur(40px)",
+            bgcolor: "rgb(50, 50, 50, .3)",
             mt: ".5rem",
             borderRadius: "8px",
             border: "1px solid " + palette.grey[500],

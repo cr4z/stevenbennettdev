@@ -50,7 +50,7 @@ export const theme = createTheme({
       color: "white",
     },
     h1: {
-      fontFamily: "Roboto",
+      fontFamily: "Roboto-Condensed",
       fontSize: "96px",
     },
     h2: {
