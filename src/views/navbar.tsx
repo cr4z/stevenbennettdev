@@ -6,6 +6,7 @@ import useMenu from "../design_system/hooks/useMenu";
 import ContactMenu from "./contact";
 // @ts-ignore
 import { ReactComponent as SBLogo } from "../svgs/logo.svg";
+import Button from "../design_system/button";
 
 function Navbar() {
   const { currentScreenSize, isMobile, isGreaterThanEqualTo } = useBreakpointHelper();
@@ -49,7 +50,9 @@ function Navbar() {
           justifyContent: "space-between",
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center", height: "100%", gap: ".5rem", paddingTop: "5px" }}>
+        <Box
+          sx={{ display: "flex", alignItems: "center", height: "100%", gap: ".5rem", paddingTop: "5px" }}
+        >
           <Box sx={{ cursor: "pointer", padding: ".5rem" }} onClick={() => navigate("/")}>
             <SBLogo />
           </Box>
@@ -62,56 +65,22 @@ function Navbar() {
         </Box>
 
         <Box sx={{ display: "flex", minWidth: "265px", justifyContent: "space-between" }}>
-          <Tab label="Home" selected={location.pathname === "/"} onClick={() => navigate("/")} />
-          <Tab
+          <Button
+            label="Home"
+            variant={location.pathname === "/" ? "selected" : "unselected"}
+            onClick={() => navigate("/")}
+          />
+          <Button
             label="Portfolio"
-            selected={location.pathname === "/portfolio"}
+            variant={location.pathname === "/portfolio" ? "selected" : "unselected"}
             onClick={() => navigate("/portfolio")}
           />
           <div ref={contactBtnRef}>
-            <Tab label="Contact" isContact onClick={() => setShowContactMenu(true)} />
+            <Button label="Contact" variant="contained" onClick={() => setShowContactMenu(true)} />
           </div>
         </Box>
       </Box>
     </>
-  );
-}
-
-function Tab(props: { label: string; selected?: boolean; isContact?: boolean; onClick?: () => void }) {
-  const { palette } = useTheme();
-
-  return (
-    <ButtonBase
-      onClick={() => {
-        if (props.onClick) {
-          props.onClick();
-        }
-      }}
-      className="noselect"
-      sx={{
-        width: "81px",
-        height: "35px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 999,
-        fontFamily: "Inter",
-        fontWeight: "bold",
-        fontSize: "12px",
-        color: "white",
-
-        ...(props.selected && {
-          bgcolor: palette.primary.dark,
-          color: palette.primary.light,
-        }),
-
-        ...(props.isContact && {
-          bgcolor: palette.primary.main,
-        }),
-      }}
-    >
-      {props.label}
-    </ButtonBase>
   );
 }
 

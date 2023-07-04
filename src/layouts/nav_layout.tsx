@@ -14,7 +14,7 @@ function NavLayout(props: { children: React.ReactNode }) {
       >
         <Navbar />
       </Box>
-      <Box sx={{ bgcolor: palette.background.default, maxHeight: "100%", overflowY: "scroll" }}>
+      <Box sx={{ bgcolor: palette.background.default, maxHeight: "100%", overflowY: "auto" }}>
         {props.children}
       </Box>
     </Box>
