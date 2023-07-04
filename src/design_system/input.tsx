@@ -1,15 +1,17 @@
-import { Box, TextField, useTheme } from "@mui/material";
+import { Box, SxProps, TextField, useTheme } from "@mui/material";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IconRenderer } from "./icons";
 
 type IconVariaton = "none" | "search";
 
-function Input(props: { useIcon?: IconVariaton }) {
+function Input(props: { useIcon?: IconVariaton; sx?: SxProps }) {
   const iconVariation: IconVariaton = props.useIcon ?? "none";
   const { palette } = useTheme();
 
   return (
-    <Box sx={{ display: "flex", position: "relative", justifyContent: "flex-end", width: "100%" }}>
+    <Box
+      sx={{ display: "flex", position: "relative", justifyContent: "flex-end", width: "100%", ...props.sx }}
+    >
       <TextField
         fullWidth
         size="small"

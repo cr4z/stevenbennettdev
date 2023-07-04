@@ -1,13 +1,13 @@
 import { Box, SxProps } from "@mui/material";
 import { BiLogoReact, BiLogoTypescript, BiLogoRedux, BiLogoGithub } from "react-icons/bi";
+import { FaReact } from "react-icons/fa";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiFigma } from "react-icons/si";
 import { VscAzureDevops } from "react-icons/vsc";
-import { BsTelephoneInbound } from "react-icons/bs";
-import { AiOutlineMail, AiOutlineLinkedin, AiOutlinePhone } from "react-icons/ai";
+import { AiOutlineMail, AiOutlineLinkedin, AiOutlinePhone, AiFillTag } from "react-icons/ai";
 
 export const ICONS = {
-  React: BiLogoReact,
+  React: FaReact,
   Typescript: BiLogoTypescript,
   Redux: BiLogoRedux,
   GitHub: BiLogoGithub,
@@ -17,6 +17,7 @@ export const ICONS = {
   Phone: AiOutlinePhone,
   Email: AiOutlineMail,
   LinkedIn: AiOutlineLinkedin,
+  PriceTag: AiFillTag,
 };
 
 interface IconRendererProps {

@@ -1,9 +1,11 @@
-import { ButtonBase, useTheme } from "@mui/material";
+import { ButtonBase, useTheme, SxProps } from "@mui/material";
+import React from "react";
 
 function Button(props: {
-  label: string;
-  variant?: "unselected" | "selected" | "contained";
+  variant?: "unselected" | "selected" | "contained" | "call to action";
   onClick?: () => void;
+  children?: React.ReactNode;
+  sx?: SxProps;
 }) {
   const { palette } = useTheme();
   const variant = props.variant ?? "contained";
@@ -28,17 +30,25 @@ function Button(props: {
         fontSize: "12px",
         color: "white",
 
+        // Handle variations
         ...(variant === "selected" && {
           bgcolor: palette.primary.dark,
           color: palette.primary.light,
         }),
 
-        ...(variant === "contained" && {
+        ...(variant === "call to action" && {
           bgcolor: palette.primary.main,
         }),
+
+        ...(variant === "contained" && {
+          bgcolor: palette.grey[500],
+        }),
+
+        // Add SX overrides
+        ...props.sx,
       }}
     >
-      {props.label}
+      {props.children}
     </ButtonBase>
   );
 }

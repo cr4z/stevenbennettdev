@@ -38,9 +38,10 @@ export const theme = createTheme({
     ...USE_TEAL_PRIMARY,
 
     grey: {
-      500: "#808080", // Add your desired light gray color here
+      400: "#969696",
+      500: "#808080",
       600: "#747474",
-      700: "#404040", // Add your desired light gray color here
+      700: "#404040",
     },
     text: { primary: "#FFF" },
   },
@@ -94,6 +95,10 @@ export const theme = createTheme({
       fontWeight: "500",
       textTransform: "capitalize",
       letterSpacing: "0.08px",
+    },
+    subtitle1: {
+      fontFamily: "Inter",
+      fontSize: "14px",
     },
   },
 });

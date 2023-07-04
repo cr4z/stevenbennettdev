@@ -66,17 +66,21 @@ function Navbar() {
 
         <Box sx={{ display: "flex", minWidth: "265px", justifyContent: "space-between" }}>
           <Button
-            label="Home"
             variant={location.pathname === "/" ? "selected" : "unselected"}
             onClick={() => navigate("/")}
-          />
+          >
+            Home
+          </Button>
           <Button
-            label="Portfolio"
             variant={location.pathname === "/portfolio" ? "selected" : "unselected"}
             onClick={() => navigate("/portfolio")}
-          />
+          >
+            Portfolio
+          </Button>
           <div ref={contactBtnRef}>
-            <Button label="Contact" variant="contained" onClick={() => setShowContactMenu(true)} />
+            <Button variant="call to action" onClick={() => setShowContactMenu(true)}>
+              Contact
+            </Button>
           </div>
         </Box>
       </Box>
