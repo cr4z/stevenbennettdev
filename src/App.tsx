@@ -20,7 +20,7 @@ const App = () => {
         >
           <Navbar />
         </Box>
-        <Box sx={{ bgcolor: palette.background.default, height: "100%" }}>
+        <Box sx={{ bgcolor: palette.background.default, maxHeight: "100%", overflowY: "scroll" }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<Portfolio />} />

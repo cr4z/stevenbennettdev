@@ -10,7 +10,7 @@ function Home() {
 
   return (
     <Container maxWidth="xl">
-      <Grid container sx={{ paddingTop: "4rem", display: "flex" }}>
+      <Grid container sx={{ paddingTop: "4rem", paddingBottom: "20rem", display: "flex" }}>
         <Grid item xs={12} lg={8} sx={{ display: "flex", justifyContent: "center" }}>
           <Box sx={{ maxWidth: "900px" }}>
             <Box
