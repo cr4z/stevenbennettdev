@@ -1,17 +1,22 @@
+import { Box } from "@mui/material";
 import { BiLogoReact, BiLogoTypescript, BiLogoRedux, BiLogoGithub } from "react-icons/bi";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiFigma } from "react-icons/si";
 import { VscAzureDevops } from "react-icons/vsc";
-import { Box } from "@mui/material";
+import { BsTelephoneInbound } from "react-icons/bs";
+import { AiOutlineMail, AiOutlineLinkedin, AiOutlinePhone } from "react-icons/ai";
 
 export const ICONS = {
   React: BiLogoReact,
   Typescript: BiLogoTypescript,
   Redux: BiLogoRedux,
-  Github: BiLogoGithub,
+  GitHub: BiLogoGithub,
   Nextjs: TbBrandNextjs,
   Figma: SiFigma,
   DevOps: VscAzureDevops,
+  Phone: AiOutlinePhone,
+  Email: AiOutlineMail,
+  LinkedIn: AiOutlineLinkedin,
 };
 
 interface IconRendererProps {

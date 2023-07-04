@@ -86,7 +86,7 @@ function Home() {
             Extra
           </Typography>
           <Box component="ul" sx={{ display: "flex", gap: ".5rem" }}>
-            <SkillItem smaller name="Github" icon={<ICONS.Github />} />
+            <SkillItem smaller name="Github" icon={<ICONS.GitHub />} />
             <SkillItem smaller name="Figma" icon={<ICONS.Figma />} />
             <SkillItem smaller name="DevOps" icon={<ICONS.DevOps />} />
             {/* <SkillItem name=".NET" icon={<TbBrandCSharp />} /> */}
