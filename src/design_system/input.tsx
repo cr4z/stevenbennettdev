@@ -9,8 +9,9 @@ function Input(props: { useIcon?: IconVariaton }) {
   const { palette } = useTheme();
 
   return (
-    <Box sx={{ display: "flex", position: "relative", justifyContent: "flex-end" }}>
+    <Box sx={{ display: "flex", position: "relative", justifyContent: "flex-end", width: "100%" }}>
       <TextField
+        fullWidth
         size="small"
         placeholder="Search projects..."
         sx={{
