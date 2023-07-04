@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Typography, useTheme } from "@mui/material";
 // @ts-ignore
-import { ReactComponent as Pfp } from "../svgs/pfp.svg";
+import { ReactComponent as Headshot } from "../svgs/headshot.svg";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { ICONS, IconRenderer } from "../design_system/icons";
 
@@ -22,7 +22,7 @@ function Home() {
               }}
             >
               <Box>
-                <Pfp />
+                <Headshot />
               </Box>
 
               <Box>
@@ -30,7 +30,7 @@ function Home() {
                   className="typewriter"
                   sx={{ display: "flex", justifyContent: "flex-start", width: "100%" }}
                 >
-                  <Typography variant="h4" gutterBottom>
+                  <Typography className="noselect" variant="h4" gutterBottom>
                     Hi! I'm{" "}
                     <Box
                       component="span"

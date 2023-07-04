@@ -1,5 +1,4 @@
-import { Menu as MUIMenu, SxProps } from "@mui/material";
-import { useBreakpointHelper } from "./hooks/useBreakpointHelper";
+import { Menu as MUIMenu, SxProps, useTheme } from "@mui/material";
 
 function Menu(props: {
   show: boolean;
@@ -8,7 +7,7 @@ function Menu(props: {
   children: React.ReactNode;
   menuStyleOverride?: SxProps;
 }) {
-  const { isMobile } = useBreakpointHelper();
+  const { palette } = useTheme();
 
   return (
     <>
@@ -32,6 +31,7 @@ function Menu(props: {
             bgcolor: "rgb(164, 164, 164, .18)",
             mt: ".5rem",
             borderRadius: "8px",
+            border: "1px solid " + palette.grey[500],
           },
           ...props.menuStyleOverride,
         }}

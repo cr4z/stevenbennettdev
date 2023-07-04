@@ -10,7 +10,7 @@
 body {
   margin: 0;
   font-family: "Roboto";
-background-color: #2F2E2F;
+  background-color: #2f2e2f;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -41,16 +41,16 @@ ul {
 
 ::selection {
   /* background: #e61134; /* WebKit/Blink Browsers */
-  background: #30a2de; /* Gecko Browsers */
+  background: #00cc9c; /* Gecko Browsers */
 }
 ::-moz-selection {
   /* background: #e61134; /* Gecko Browsers */
-  background: #30a2de; /* Gecko Browsers */
+  background: #00cc9c; /* Gecko Browsers */
 }
 
 .typewriter h4 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 3px solid white; /* The typwriter cursor */
+  border-right: 3px solid #00cc9c; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   animation: typing 1s steps(40, end), blink-caret 0.75s step-end infinite;
 }
@@ -86,12 +86,12 @@ ul {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #30a2de;
+  background-color: #00cc9c;
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #30a2de;
+  background-color: #00cc9c;
 }

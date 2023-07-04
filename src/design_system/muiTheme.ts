@@ -22,9 +22,20 @@ const USE_RED_PRIMARY: PaletteOptions = {
   },
 };
 
+const USE_TEAL_PRIMARY: PaletteOptions = {
+  primary: {
+    light: "#03f8c5",
+    main: "#00cc9c",
+    dark: "#024d4f",
+  },
+  background: {
+    default: "#2F2E2F",
+  },
+};
+
 export const theme = createTheme({
   palette: {
-    ...USE_BLUE_PRIMARY,
+    ...USE_TEAL_PRIMARY,
 
     grey: {
       500: "#808080", // Add your desired light gray color here
