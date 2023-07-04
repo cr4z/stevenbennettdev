@@ -10,6 +10,7 @@
 body {
   margin: 0;
   font-family: "Roboto";
+background-color: #2F2E2F;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -1,4 +1,4 @@
-import { Box, Menu as MUIMenu } from "@mui/material";
+import { Menu as MUIMenu, SxProps } from "@mui/material";
 import { useBreakpointHelper } from "./hooks/useBreakpointHelper";
 
 function Menu(props: {
@@ -6,6 +6,7 @@ function Menu(props: {
   refCurrent: HTMLDivElement | null;
   onClose: () => void;
   children: React.ReactNode;
+  menuStyleOverride?: SxProps;
 }) {
   const { isMobile } = useBreakpointHelper();
 
@@ -31,8 +32,8 @@ function Menu(props: {
             bgcolor: "rgb(164, 164, 164, .18)",
             mt: ".5rem",
             borderRadius: "8px",
-            marginLeft: isMobile ? "40px" : 0,
           },
+          ...props.menuStyleOverride,
         }}
       >
         {props.children}

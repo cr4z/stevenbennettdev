@@ -10,8 +10,9 @@ function Navbar() {
   const { palette } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
+  const { ref: contactBtnRef, show: showContactMenu, setShow: setShowContactMenu } = useMenu();
 
-  function getNavbarPaddingX() {
+  function getNavbarGutters() {
     switch (currentScreenSize) {
       case "xl":
       case "lg":
@@ -23,54 +24,59 @@ function Navbar() {
     }
   }
 
-  const { ref: contactBtnRef, show: showContactMenu, setShow: setShowContactMenu } = useMenu();
+  const ContactMenu = (
+    <Menu
+      refCurrent={contactBtnRef.current}
+      show={showContactMenu}
+      onClose={() => setShowContactMenu(false)}
+      menuStyleOverride={{
+        marginLeft: isMobile ? "40px" : 0,
+      }}
+    >
+      <Box
+        sx={{ width: "20rem", padding: "1.5rem", display: "flex", flexDirection: "column", gap: ".5rem" }}
+      >
+        <Typography className="noselect" variant="h5">
+          Contact
+        </Typography>
+        <Typography mt={1} mb={2} variant="body1">
+          Let's make things happen!
+        </Typography>
+        <ContactOption
+          rotate
+          text="Phone: 830-220-1682"
+          icon={<ICONS.Phone />}
+          onClick={() => (window.location.href = `tel:830-220-1682`)}
+        />
+        <ContactOption
+          text="Email"
+          icon={<ICONS.Email />}
+          onClick={() => (window.location.href = `mailto:stevencr7zz@gmail.com`)}
+        />
+        <ContactOption
+          text="LinkedIn"
+          icon={<ICONS.LinkedIn />}
+          onClick={() => window.open("https://www.linkedin.com/in/sc-bennett/", "_blank")}
+        />
+        <ContactOption
+          text="GitHub"
+          icon={<ICONS.GitHub />}
+          onClick={() => window.open("https://github.com/cr4z", "_blank")}
+        />
+      </Box>
+    </Menu>
+  );
 
   return (
     <>
       {/* MENUS */}
-      <Menu
-        refCurrent={contactBtnRef.current}
-        show={showContactMenu}
-        onClose={() => setShowContactMenu(false)}
-      >
-        <Box
-          sx={{ width: "20rem", padding: "1.5rem", display: "flex", flexDirection: "column", gap: ".5rem" }}
-        >
-          <Typography className="noselect" variant="h5">
-            Contact
-          </Typography>
-          <Typography mt={1} mb={2} variant="body1">
-            Let's make things happen!
-          </Typography>
-          <ContactOption
-            rotate
-            text="Phone: 830-220-1682"
-            icon={<ICONS.Phone />}
-            onClick={() => (window.location.href = `tel:830-220-1682`)}
-          />
-          <ContactOption
-            text="Email"
-            icon={<ICONS.Email />}
-            onClick={() => (window.location.href = `mailto:stevencr7zz@gmail.com`)}
-          />
-          <ContactOption
-            text="LinkedIn"
-            icon={<ICONS.LinkedIn />}
-            onClick={() => window.open("https://www.linkedin.com/in/sc-bennett/", "_blank")}
-          />
-          <ContactOption
-            text="GitHub"
-            icon={<ICONS.GitHub />}
-            onClick={() => window.open("https://github.com/cr4z", "_blank")}
-          />
-        </Box>
-      </Menu>
+      {ContactMenu}
 
       {/* DOM */}
       <Box
         sx={{
           bgcolor: palette.background.default,
-          paddingX: getNavbarPaddingX(),
+          paddingX: getNavbarGutters(),
           height: "100%",
           display: "flex",
           alignItems: "center",

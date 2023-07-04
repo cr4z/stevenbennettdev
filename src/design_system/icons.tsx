@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, SxProps } from "@mui/material";
 import { BiLogoReact, BiLogoTypescript, BiLogoRedux, BiLogoGithub } from "react-icons/bi";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiFigma } from "react-icons/si";
@@ -28,6 +28,7 @@ interface IconRendererProps {
   up?: boolean;
   down?: boolean;
   strokeWidth?: string;
+  sx?: SxProps;
 }
 export function IconRenderer(props: IconRendererProps) {
   const size = props.widthHeight;
@@ -50,6 +51,7 @@ export function IconRenderer(props: IconRendererProps) {
         },
         maxWidth: size + "!important",
         maxHeight: size + "!important",
+        ...props.sx,
       }}
     >
       {props.i}

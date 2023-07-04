@@ -13,19 +13,10 @@ function Portfolio() {
       }}
     >
       <Typography variant="h4">My Portfolio</Typography>
-      <Typography variant="h4">My Portfolio</Typography>
-      <Typography variant="h4">My Portfolio</Typography>
-      <Typography variant="h4">My Portfolio</Typography>
-      <Typography variant="h4">My Portfolio</Typography>
-      <Typography variant="h4">My Portfolio</Typography>
-      <Typography variant="h4">My Portfolio</Typography>
-      <Typography variant="h4">My Portfolio</Typography>
-      <Typography variant="h4">My Portfolio</Typography>
-
       <Typography variant="body1">A collection of work projects, tutorials, and more</Typography>
       <Typography variant="body1">{"<Carousel />"}</Typography>
 
-      <Input />
+      <Input useIcon="search" />
     </Box>
   );
 }
