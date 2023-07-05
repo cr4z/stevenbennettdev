@@ -36,7 +36,7 @@ const USE_TEAL_PRIMARY: PaletteOptions = {
 export const theme = createTheme({
   palette: {
     ...USE_TEAL_PRIMARY,
-
+    mode: "dark",
     grey: {
       400: "#969696",
       500: "#808080",

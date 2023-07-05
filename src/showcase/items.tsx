@@ -1,5 +1,7 @@
 import { ICONS } from "../design_system/icons";
-import { FloresHomeRepair } from "./items/floreshomerepair";
+import CustomFormLibrary from "./items/custom_form_library";
+import FiltersDemo from "./items/filters_demo/filters_demo";
+import FloresHomeRepair from "./items/floreshomerepair";
 import StevenBennettDev from "./items/stevenbennettdev";
 
 export enum ShowcaseIDs {
@@ -24,6 +26,7 @@ export type Showcase = {
   component?: React.ReactNode;
   id?: string;
   github?: string;
+  description?: string;
 };
 
 export const SHOWCASES: Showcase[] = [
@@ -33,7 +36,7 @@ export const SHOWCASES: Showcase[] = [
     tags: ["React", "react-hook-form", "yup", "Fortitude"],
     id: ShowcaseIDs.CustomFormLibrary,
     github: "",
-    component: <></>,
+    component: <CustomFormLibrary />,
   },
   {
     title: "Beautiful Sidebar",
@@ -124,12 +127,14 @@ export const SHOWCASES: Showcase[] = [
     component: <></>,
   },
   {
-    title: "Filtering with a Custom Searchbar",
+    title: "Common Algorithm: Multiple Filters",
+    description:
+      "This was actually the first GitHub project I used to mentor a fellow developer, so it's near and dear to me!",
     icon: <ICONS.React />,
-    tags: ["Custom Algorithm"],
+    tags: ["React", "Custom Algorithm"],
     id: ShowcaseIDs.FilteringAlgorithm,
     github: "",
-    component: <></>,
+    component: <FiltersDemo />,
   },
   {
     title: "stevenbennett.dev",

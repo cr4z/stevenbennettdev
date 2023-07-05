@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 // @ts-ignore
 import Screenshot from "../../img/floreshomerepair.png";
 
-export function FloresHomeRepair() {
+function FloresHomeRepair() {
   return (
     <a href={"https://floreshomerepair.com"} target="_blank" rel="noopener noreferrer">
       <Box sx={{ position: "relative", width: "100%", height: "100%", overflow: "hidden" }}>
@@ -36,3 +36,5 @@ export function FloresHomeRepair() {
     </a>
   );
 }
+
+export default FloresHomeRepair;
