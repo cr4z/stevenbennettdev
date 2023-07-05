@@ -69,12 +69,12 @@ function Home() {
                     sx={{ display: "flex", justifyContent: "flex-start", width: "100%" }}
                   >
                     <Typography className="noselect" variant="h4" gutterBottom>
-                      Hey! So a little{" "}
+                      Hey! Care to hear a little{" "}
                       <Box
                         component="span"
                         sx={{ bgcolor: palette.primary.main, border: `1px ${palette.primary.main} solid` }}
                       >
-                        about me:
+                        about me?
                       </Box>
                     </Typography>
                   </Box>
@@ -82,14 +82,21 @@ function Home() {
               </Box>
 
               <Typography sx={{ marginTop: "3rem" }} variant="body1">
-                Besides being an avid lover of the outdoors, I am a passionate learner and developer that
-                takes purpose in acquiring new knowledge and skills. Simulataneously I thrive on
-                opportunities to share that knowledge with my team and company where possible. I take a
-                proactive & solutions-oriented approach to development by contributing to code,
-                architectural decisions and the potential for innovative new processes at every chance in
-                order to push the boundaries of what is perceived possible. I embrace challenge, and see
-                each one as an opportunity for new <strong>knowledge</strong>, <strong>innovation</strong>,
-                and <strong>collaboration</strong>.
+                Besides being an avid lover of the outdoors, I am a career developer who has been
+                engineering software since I was 6 years old, beginning with what people refer to nowadays
+                as a "toy language" Scratch. My love for software creation grew beyond Scratch quickly,
+                turning into .NET development with the Unity game engine and web development with HTML, and
+                soon, React.
+                <p>
+                  But enough backstory, let's talk professionally! I am a passionate learner and
+                  developer that takes purpose in acquiring new knowledge and skills. Simulataneously I
+                  thrive on opportunities to share that knowledge with my team and company where possible. I
+                  take a proactive & solutions-oriented approach to development by contributing to code,
+                  architectural decisions and the potential for innovative new processes at every chance in
+                  order to push the boundaries of what is perceived possible. I embrace challenge, and see
+                  each one as an opportunity for new <strong>knowledge</strong>, <strong>innovation</strong>
+                  , and <strong>collaboration</strong>.
+                </p>
               </Typography>
             </Box>
           </Grid>
