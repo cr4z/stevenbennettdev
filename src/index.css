@@ -81,21 +81,21 @@ ul {
 }
 
 /* custom scrollbar */
-/* ::-webkit-scrollbar {
+.green-scrollbar::-webkit-scrollbar {
   width: 20px;
 }
 
-::-webkit-scrollbar-track {
+.green-scrollbar::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb {
+.green-scrollbar::-webkit-scrollbar-thumb {
   background-color: #00cc9c;
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.green-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #00cc9c;
-} */
+}

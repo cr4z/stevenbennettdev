@@ -27,7 +27,7 @@ export function SearchControls() {
 
 export function SearchResultsView() {
   return (
-    <Box sx={{ overflowY: "auto", height: "100%", width: "100%" }}>
+    <Box className="green-scrollbar" sx={{ overflowY: "auto", height: "100%", width: "100%" }}>
       {SHOWCASES.map((portfolioItem, i) => (
         <ShowcaseDetailsInteractive key={i} {...portfolioItem} />
       ))}
