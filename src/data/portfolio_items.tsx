@@ -28,9 +28,9 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     tags: ["React", "Scalable Architecture", "Web Design"],
   },
   {
-    title: "dougzonepodcast.com",
-    icon: <ICONS.React />,
-    tags: ["React", "Web Design", "vite", "react-router", "Online Website"],
+    title: "floreshomerepair.com",
+    icon: <ICONS.Nextjs />,
+    tags: ["Next.js", "Web Design", "Online Website"],
     component: <FloresHomeRepair />,
     id: PortfolioItemIDs.dougzonepodcast,
   },
@@ -45,9 +45,9 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     tags: ["React", "Web Design"],
   },
   {
-    title: "floreshomerepair.com",
-    icon: <ICONS.Nextjs />,
-    tags: ["Next.js", "Web Design", "Online Website"],
+    title: "dougzonepodcast.com",
+    icon: <ICONS.React />,
+    tags: ["React", "Web Design", "vite", "react-router", "Online Website"],
   },
   { title: "React useMemo Demo", icon: <ICONS.React />, tags: ["React Fundamentals"] },
   {

@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import PortfolioItemSearch from "./portfolio_item_search";
+import SearchOptions from "./search_options";
 
 function Portfolio() {
   return (
@@ -16,7 +16,7 @@ function Portfolio() {
       >
         <Typography variant="h4">My Portfolio</Typography>
         <Typography variant="body1">A collection of work projects, tutorials, and more</Typography>
-        <PortfolioItemSearch />
+        <SearchOptions />
       </Box>
     </Container>
   );

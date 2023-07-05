@@ -1,9 +1,8 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { Container, Typography } from "@mui/material";
 import Home from "./views/home";
 import Portfolio from "./views/portfolio";
 import NavLayout from "./layouts/nav_layout";
-import PortfolioItem from "./views/portfolio_item";
+import PortfolioItem from "./views/search_full_result";
 import Page404 from "./views/404";
 
 function App() {

@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
 import { PORTFOLIO_ITEMS } from "../data/portfolio_items";
 import { useEffect, useState } from "react";
+import SearchOptions from "./search_options";
 
 function PortfolioItem() {
   const location = useLocation();
@@ -18,11 +19,7 @@ function PortfolioItem() {
   const userHasAccessedDeadPage = requestedPortfolioItem === undefined && id != "";
   if (userHasAccessedDeadPage) navigate("/404");
 
-  return <PortfolioLayout>{requestedPortfolioItem?.component}</PortfolioLayout>;
-}
-
-function PortfolioLayout(props: { children: React.ReactNode }) {
-  return <Box>{props.children}</Box>;
+  return requestedPortfolioItem?.component;
 }
 
 export default PortfolioItem;

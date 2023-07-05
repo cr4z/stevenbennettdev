@@ -5,12 +5,12 @@ import { PORTFOLIO_ITEMS, PortfolioItem } from "../data/portfolio_items";
 import { useNavigate } from "react-router";
 import Button from "../design_system/button";
 
-function PortfolioItemSearch() {
+function SearchOptions() {
   const { palette } = useTheme();
 
   return (
-    <>
-      <Box sx={{ width: "100%", display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <Box sx={{ width: "100%", maxHeight: "100%" }}>
+      <Box sx={{ height: "10.5rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
         <Input useIcon="search" />
         <Button onClick={() => {}} variant="contained" sx={{ gap: "6px", mt: ".5rem" }}>
           <IconRenderer widthHeight="1rem" i={<ICONS.PriceTag />} />
@@ -20,13 +20,14 @@ function PortfolioItemSearch() {
           Filtering by no tags currently
         </Typography>
         <Divider sx={{ bgcolor: palette.grey[600] }} />
-        <Box sx={{ maxHeight: "21.3rem", overflowY: "auto" }}>
-          {PORTFOLIO_ITEMS.map((portfolioItem) => (
-            <PortfolioItemButton {...portfolioItem} />
-          ))}
-        </Box>
       </Box>
-    </>
+
+      <Box sx={{ maxHeight: true ? "100%" : "21.3rem", overflowY: "auto" }}>
+        {PORTFOLIO_ITEMS.map((portfolioItem) => (
+          <PortfolioItemButton {...portfolioItem} />
+        ))}
+      </Box>
+    </Box>
   );
 }
 
@@ -54,8 +55,8 @@ function PortfolioItemButton(props: PortfolioItem) {
         sx={{
           bgcolor: palette.grey[500],
           borderRadius: 999,
-          width: "2.5rem",
-          height: "2.5rem",
+          minWidth: "2.5rem",
+          minHeight: "2.5rem",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -73,4 +74,4 @@ function PortfolioItemButton(props: PortfolioItem) {
   );
 }
 
-export default PortfolioItemSearch;
+export default SearchOptions;
