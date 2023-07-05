@@ -5,40 +5,42 @@ import { PORTFOLIO_ITEMS, PortfolioItem } from "../data/portfolio_items";
 import { useNavigate } from "react-router";
 import Button from "../design_system/button";
 
-function SearchOptions() {
+export function SearchControls() {
   const { palette } = useTheme();
 
   return (
-    <Box sx={{ width: "100%", maxHeight: "100%" }}>
-      <Box sx={{ height: "10.5rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <Input useIcon="search" />
+    <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem", width: "100%" }}>
+      <Input useIcon="search" />
+      <Box>
         <Button onClick={() => {}} variant="contained" sx={{ gap: "6px", mt: ".5rem" }}>
           <IconRenderer widthHeight="1rem" i={<ICONS.PriceTag />} />
           Tags
         </Button>
-        <Typography className="noselect" variant="subtitle1" color={palette.grey[400]}>
-          Filtering by no tags currently
-        </Typography>
-        <Divider sx={{ bgcolor: palette.grey[600] }} />
       </Box>
-
-      <Box sx={{ maxHeight: true ? "100%" : "21.3rem", overflowY: "auto" }}>
-        {PORTFOLIO_ITEMS.map((portfolioItem) => (
-          <PortfolioItemButton {...portfolioItem} />
-        ))}
-      </Box>
+      <Typography className="noselect" variant="subtitle1" color={palette.grey[400]}>
+        Filtering by no tags currently
+      </Typography>
     </Box>
   );
 }
 
-function PortfolioItemButton(props: PortfolioItem) {
+export function SearchResultsView() {
+  return (
+    <Box sx={{ overflowY: "auto", height: "100%", width: "100%" }}>
+      {PORTFOLIO_ITEMS.map((portfolioItem) => (
+        <PortfolioItemButton {...portfolioItem} />
+      ))}
+    </Box>
+  );
+}
+
+export function PortfolioItemButton(props: PortfolioItem) {
   const { palette } = useTheme();
   const navigate = useNavigate();
 
   return (
     <ButtonBase
       sx={{
-        padding: "1rem",
         display: "flex",
         gap: "1rem",
         alignItems: "center",
@@ -50,6 +52,26 @@ function PortfolioItemButton(props: PortfolioItem) {
         textAlign: "start",
       }}
       onClick={() => navigate("/portfolio/" + props.id)}
+    >
+      <PortfolioItemDetails {...props} />
+    </ButtonBase>
+  );
+}
+
+export function PortfolioItemDetails(props: PortfolioItem) {
+  const { palette } = useTheme();
+
+  return (
+    <Box
+      sx={{
+        padding: "1rem",
+        display: "flex",
+        gap: "1rem",
+        alignItems: "center",
+        borderRadius: "4px",
+        justifyContent: "flex-start",
+        textAlign: "start",
+      }}
     >
       <Box
         sx={{
@@ -70,8 +92,6 @@ function PortfolioItemButton(props: PortfolioItem) {
           {props.tags.join(", ")}
         </Typography>
       </Box>
-    </ButtonBase>
+    </Box>
   );
 }
-
-export default SearchOptions;

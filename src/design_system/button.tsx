@@ -19,7 +19,8 @@ function Button(props: {
       }}
       className="noselect"
       sx={{
-        width: "81px",
+        minWidth: "81px",
+        paddingX: "1rem",
         height: "35px",
         display: "flex",
         justifyContent: "center",
