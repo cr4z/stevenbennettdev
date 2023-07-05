@@ -87,16 +87,16 @@ function Home() {
                 as a "toy language" Scratch. My love for software creation grew beyond Scratch quickly,
                 turning into .NET development with the Unity game engine and web development with HTML, and
                 soon, React.
-                <p>
-                  But enough backstory, let's talk professionally! I am a passionate learner and developer
-                  that takes purpose in acquiring new knowledge and skills. Simulataneously I thrive on
-                  opportunities to share that knowledge with my team and company where possible. I take a
-                  proactive & solutions-oriented approach to development by contributing to code,
-                  architectural decisions and the potential for innovative new processes at every chance in
-                  order to push the boundaries of what is perceived possible. I embrace challenge, and see
-                  each one as an opportunity for new <strong>knowledge</strong>, <strong>innovation</strong>
-                  , and <strong>collaboration</strong>.
-                </p>
+              </Typography>
+              <Typography sx={{ marginTop: "1rem" }} variant="body1">
+                But enough backstory, let's talk professionally! I am a passionate learner and developer
+                that takes purpose in acquiring new knowledge and skills. Simulataneously I thrive on
+                opportunities to share that knowledge with my team and company where possible. I take a
+                proactive & solutions-oriented approach to development by contributing to code,
+                architectural decisions and the potential for innovative new processes at every chance in
+                order to push the boundaries of what is perceived possible. I embrace challenge, and see
+                each one as an opportunity for new <strong>knowledge</strong>, <strong>innovation</strong>,
+                and <strong>collaboration</strong>.
               </Typography>
             </Box>
           </Grid>

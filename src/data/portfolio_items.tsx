@@ -1,13 +1,11 @@
-import { Box, Typography } from "@mui/material";
 import { ICONS } from "../design_system/icons";
-// @ts-ignore
-import asdf from "../img/floreshomerepair.png";
+import { FloresHomeRepair } from "./floreshomerepair";
 
-export enum PortfolioItemIDs {
+export enum ShowcaseIDs {
   dougzonepodcast = "0",
 }
 
-export type PortfolioItem = {
+export type Showcase = {
   title: string;
   icon: JSX.Element;
   tags: string[];
@@ -15,7 +13,7 @@ export type PortfolioItem = {
   id?: string;
 };
 
-export const PORTFOLIO_ITEMS: PortfolioItem[] = [
+export const SHOWCASES: Showcase[] = [
   { title: "Custom Form Library", icon: <ICONS.React />, tags: ["React", "react-hook-form", "yup"] },
   {
     title: "Full Stack Calendar Demo Application",
@@ -32,7 +30,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     icon: <ICONS.Nextjs />,
     tags: ["Next.js", "Web Design", "Online Website"],
     component: <FloresHomeRepair />,
-    id: PortfolioItemIDs.dougzonepodcast,
+    id: ShowcaseIDs.dougzonepodcast,
   },
   {
     title: "Pure HTML Challenge: Financial Dashboard",
@@ -68,36 +66,3 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   },
   { title: "Filtering with a Custom Searchbar", icon: <ICONS.React />, tags: ["React Fundamentals"] },
 ];
-
-function FloresHomeRepair() {
-  return (
-    <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
-      <Box
-        sx={{
-          maxWidth: "100%",
-          minHeight: "100%",
-          objectFit: "cover",
-          filter: "brightness(50%) blur(2px)",
-        }}
-        component="img"
-        src={asdf}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          top: 0,
-          left: 0,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography className="noselect" variant="h3">
-          Click to view website
-        </Typography>
-      </Box>
-    </Box>
-  );
-}

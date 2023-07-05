@@ -1,6 +1,6 @@
 import { Box, useTheme } from "@mui/material";
 import Navbar from "../views/navbar";
-import { PORTFOLIO_ITEMS } from "../data/portfolio_items";
+import { SHOWCASES } from "../data/portfolio_items";
 import { useLocation, useNavigate } from "react-router";
 import { PortfolioItemDetails, SearchControls, SearchResultsView } from "../views/search_controls";
 import { useState, useEffect } from "react";
@@ -20,7 +20,7 @@ function SearchLayout(props: { children: React.ReactNode }) {
   }, []);
 
   // Re-route to 404 if this page is dead
-  const requestedPortfolioItem = PORTFOLIO_ITEMS.find((item) => item.id === id);
+  const requestedPortfolioItem = SHOWCASES.find((item) => item.id === id);
   const userHasAccessedDeadPage = requestedPortfolioItem === undefined && id != "";
   if (userHasAccessedDeadPage) navigate("/404");
 
@@ -54,7 +54,7 @@ function SearchLayout(props: { children: React.ReactNode }) {
         <Box
           sx={{
             height: "100%",
-            width: SIDEBAR_WIDTH,
+            minWidth: SIDEBAR_WIDTH,
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",

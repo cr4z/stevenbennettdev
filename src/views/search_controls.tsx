@@ -1,9 +1,10 @@
 import { Box, ButtonBase, Divider, Typography, useTheme } from "@mui/material";
 import { ICONS, IconRenderer } from "../design_system/icons";
 import Input from "../design_system/input";
-import { PORTFOLIO_ITEMS, PortfolioItem } from "../data/portfolio_items";
+import { SHOWCASES, Showcase } from "../data/portfolio_items";
 import { useNavigate } from "react-router";
 import Button from "../design_system/button";
+import { validateShowcaseID as validateShowcaseID } from "../logic/handleNavigatePortfolio";
 
 export function SearchControls() {
   const { palette } = useTheme();
@@ -27,14 +28,14 @@ export function SearchControls() {
 export function SearchResultsView() {
   return (
     <Box sx={{ overflowY: "auto", height: "100%", width: "100%" }}>
-      {PORTFOLIO_ITEMS.map((portfolioItem) => (
-        <PortfolioItemButton {...portfolioItem} />
+      {SHOWCASES.map((portfolioItem, i) => (
+        <PortfolioItemButton key={i} {...portfolioItem} />
       ))}
     </Box>
   );
 }
 
-export function PortfolioItemButton(props: PortfolioItem) {
+export function PortfolioItemButton(props: Showcase) {
   const { palette } = useTheme();
   const navigate = useNavigate();
 
@@ -51,14 +52,17 @@ export function PortfolioItemButton(props: PortfolioItem) {
         justifyContent: "flex-start",
         textAlign: "start",
       }}
-      onClick={() => navigate("/portfolio/" + props.id)}
+      onClick={() => {
+        const path = validateShowcaseID(props.id);
+        navigate(path);
+      }}
     >
       <PortfolioItemDetails {...props} />
     </ButtonBase>
   );
 }
 
-export function PortfolioItemDetails(props: PortfolioItem) {
+export function PortfolioItemDetails(props: Showcase) {
   const { palette } = useTheme();
 
   return (
