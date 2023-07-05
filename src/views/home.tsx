@@ -68,7 +68,7 @@ function Home() {
                     className="typewriter"
                     sx={{ display: "flex", justifyContent: "flex-start", width: "100%" }}
                   >
-                    <Typography className="noselect" variant="h4" gutterBottom>
+                    <Typography className="noselect" variant={isMobile ? "h5" : "h4"} gutterBottom>
                       Hey! Care to hear a little{" "}
                       <Box
                         component="span"
@@ -82,12 +82,12 @@ function Home() {
               </Box>
 
               <Typography sx={{ marginTop: "3rem" }} variant="body1">
-                Besides being an avid lover of the outdoors, I am a career developer who has been
-                engineering software since I was 9 years old, beginning with what people refer to nowadays
-                as a "toy language", Scratch. My love for software creation grew beyond Scratch quickly,
-                turning into .NET development with the Unity game engine and soon web development with HTML,
-                JavaScript and CSS before ultimately meeting what is now my favorite web framework: React
-                with TypeScript.
+                Besides being an avid lover of the outdoors, I am a career developer who has began software
+                engineering at 9 years old, beginning with what people refer to nowadays as a "toy
+                language", Scratch. My love for software creation grew beyond Scratch quickly, turning into
+                .NET development with the Unity game engine and soon web development with HTML, JavaScript
+                and CSS before ultimately meeting what is now my favorite web framework: React with
+                TypeScript.
               </Typography>
               <Typography sx={{ marginTop: "1rem" }} variant="body1">
                 But enough backstory, let's talk professionally! I am a passionate learner and developer

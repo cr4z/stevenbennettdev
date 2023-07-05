@@ -13,7 +13,7 @@ export function SearchControls() {
     <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem", width: "100%" }}>
       <Input useIcon="search" />
       <Box>
-        <Button onClick={() => {}} variant="contained" sx={{ gap: "6px", mt: ".5rem" }}>
+        <Button variant="contained" sx={{ gap: "6px", mt: ".5rem" }}>
           <IconRenderer widthHeight="1rem" i={<ICONS.PriceTag />} />
           Tags
         </Button>
