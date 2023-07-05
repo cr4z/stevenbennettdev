@@ -1,6 +1,6 @@
 import { ICONS } from "../design_system/icons";
 import CustomFormLibrary from "./items/custom_form_library";
-import FiltersDemo from "./items/filters_demo/filters_demo";
+import FiltersDemo from "./items/filters_demo/main";
 import FloresHomeRepair from "./items/floreshomerepair";
 import StevenBennettDev from "./items/stevenbennettdev";
 
