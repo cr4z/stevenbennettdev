@@ -45,7 +45,18 @@ export const theme = createTheme({
     },
     text: { primary: "#FFF" },
   },
-
+  components: {
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          backdropFilter: "blur(40px)",
+          bgcolor: "rgb(50, 50, 50, .3)",
+          borderRadius: "8px",
+          border: "1px solid " + "#808080",
+        },
+      },
+    },
+  },
   typography: {
     allVariants: {
       color: "white",

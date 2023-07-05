@@ -1,10 +1,9 @@
-import { Box, ButtonBase, Divider, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { ICONS, IconRenderer } from "../design_system/icons";
 import Input from "../design_system/input";
-import { SHOWCASES, Showcase } from "../showcase/items";
-import { useNavigate } from "react-router";
+import { SHOWCASES } from "../showcase/items";
 import Button from "../design_system/button";
-import { validateShowcaseID as validateShowcaseID } from "../logic/handleNavigatePortfolio";
+import { ShowcaseDetailsInteractive } from "./showcase_item";
 
 export function SearchControls() {
   const { palette } = useTheme();
@@ -31,72 +30,6 @@ export function SearchResultsView() {
       {SHOWCASES.map((portfolioItem, i) => (
         <ShowcaseDetailsInteractive key={i} {...portfolioItem} />
       ))}
-    </Box>
-  );
-}
-
-export function ShowcaseDetailsInteractive(props: Showcase) {
-  const { palette } = useTheme();
-  const navigate = useNavigate();
-
-  return (
-    <ButtonBase
-      sx={{
-        display: "flex",
-        gap: "1rem",
-        alignItems: "center",
-        ":hover": { bgcolor: palette.grey[800] },
-        borderRadius: "4px",
-        cursor: "pointer",
-        width: "100%",
-        justifyContent: "flex-start",
-        textAlign: "start",
-      }}
-      onClick={() => {
-        const path = validateShowcaseID(props.id);
-        navigate(path);
-      }}
-    >
-      <ShowcaseDetails {...props} />
-    </ButtonBase>
-  );
-}
-
-export function ShowcaseDetails(props: Showcase) {
-  const { palette } = useTheme();
-
-  return (
-    <Box
-      className="noselect"
-      sx={{
-        padding: "1rem",
-        display: "flex",
-        gap: "1rem",
-        alignItems: "center",
-        borderRadius: "4px",
-        justifyContent: "flex-start",
-        textAlign: "start",
-      }}
-    >
-      <Box
-        sx={{
-          bgcolor: palette.grey[500],
-          borderRadius: 999,
-          minWidth: "2.5rem",
-          minHeight: "2.5rem",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <IconRenderer color={palette.text.primary} widthHeight="1.6rem" i={props.icon} />
-      </Box>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: ".7rem" }}>
-        <Typography variant="body1">{props.title}</Typography>
-        <Typography variant="body1" color={palette.grey[400]}>
-          {props.tags.join(", ")}
-        </Typography>
-      </Box>
     </Box>
   );
 }

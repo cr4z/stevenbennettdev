@@ -1,10 +1,11 @@
-import { Box, useTheme, useThemeProps } from "@mui/material";
+import { Box, Tooltip, Typography, useTheme } from "@mui/material";
 import Navbar from "../views/navbar";
 import { SHOWCASES } from "../showcase/items";
 import { useLocation } from "react-router";
-import { ShowcaseDetails, SearchControls, SearchResultsView } from "../views/search_controls";
+import { SearchControls, SearchResultsView } from "../views/search_controls";
 import Button from "../design_system/button";
 import { ICONS, IconRenderer } from "../design_system/icons";
+import { ShowcaseDetails, ShowcaseDetailsInteractive } from "../views/showcase_item";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();
