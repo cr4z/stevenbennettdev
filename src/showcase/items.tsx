@@ -133,7 +133,7 @@ export const SHOWCASES: Showcase[] = [
     icon: <ICONS.React />,
     tags: ["React", "Custom Algorithm"],
     id: ShowcaseIDs.FilteringAlgorithm,
-    github: "",
+    github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
     component: <FiltersDemo />,
   },
   {
