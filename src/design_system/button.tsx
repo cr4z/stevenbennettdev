@@ -6,22 +6,23 @@ function Button(props: {
   onClick?: () => void;
   children?: React.ReactNode;
   sx?: SxProps;
+  larger?: boolean;
+  href?: string;
 }) {
   const { palette } = useTheme();
   const variant = props.variant ?? "contained";
 
-  return (
+  const button = (
     <ButtonBase
       onClick={() => {
         if (props.onClick) {
           props.onClick();
         }
       }}
-      className="noselect"
       sx={{
         minWidth: "81px",
         paddingX: "1rem",
-        height: "35px",
+        height: props.larger ? "45px" : "35px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -51,6 +52,19 @@ function Button(props: {
     >
       {props.children}
     </ButtonBase>
+  );
+
+  return props.href ? (
+    <a
+      href={props.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ textDecoration: "none", borderRadius: 999 }}
+    >
+      {button}
+    </a>
+  ) : (
+    button
   );
 }
 

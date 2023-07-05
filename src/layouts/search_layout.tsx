@@ -1,8 +1,8 @@
 import { Box, useTheme } from "@mui/material";
 import Navbar from "../views/navbar";
-import { SHOWCASES } from "../data/portfolio_items";
+import { SHOWCASES } from "../showcase/items";
 import { useLocation, useNavigate } from "react-router";
-import { PortfolioItemDetails, SearchControls, SearchResultsView } from "../views/search_controls";
+import { ShowcaseDetails, SearchControls, SearchResultsView } from "../views/search_controls";
 import { useState, useEffect } from "react";
 import Button from "../design_system/button";
 
@@ -46,7 +46,7 @@ function SearchLayout(props: { children: React.ReactNode }) {
         }}
       >
         <Box sx={{ width: SIDEBAR_WIDTH }}>
-          {requestedPortfolioItem && <PortfolioItemDetails {...requestedPortfolioItem} />}
+          {requestedPortfolioItem && <ShowcaseDetails {...requestedPortfolioItem} />}
         </Box>
         <Button variant="call to action">View Code on GitHub</Button>
       </Box>

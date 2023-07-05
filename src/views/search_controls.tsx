@@ -1,7 +1,7 @@
 import { Box, ButtonBase, Divider, Typography, useTheme } from "@mui/material";
 import { ICONS, IconRenderer } from "../design_system/icons";
 import Input from "../design_system/input";
-import { SHOWCASES, Showcase } from "../data/portfolio_items";
+import { SHOWCASES, Showcase } from "../showcase/items";
 import { useNavigate } from "react-router";
 import Button from "../design_system/button";
 import { validateShowcaseID as validateShowcaseID } from "../logic/handleNavigatePortfolio";
@@ -29,13 +29,13 @@ export function SearchResultsView() {
   return (
     <Box sx={{ overflowY: "auto", height: "100%", width: "100%" }}>
       {SHOWCASES.map((portfolioItem, i) => (
-        <PortfolioItemButton key={i} {...portfolioItem} />
+        <ShowcaseDetailsInteractive key={i} {...portfolioItem} />
       ))}
     </Box>
   );
 }
 
-export function PortfolioItemButton(props: Showcase) {
+export function ShowcaseDetailsInteractive(props: Showcase) {
   const { palette } = useTheme();
   const navigate = useNavigate();
 
@@ -57,16 +57,17 @@ export function PortfolioItemButton(props: Showcase) {
         navigate(path);
       }}
     >
-      <PortfolioItemDetails {...props} />
+      <ShowcaseDetails {...props} />
     </ButtonBase>
   );
 }
 
-export function PortfolioItemDetails(props: Showcase) {
+export function ShowcaseDetails(props: Showcase) {
   const { palette } = useTheme();
 
   return (
     <Box
+      className="noselect"
       sx={{
         padding: "1rem",
         display: "flex",

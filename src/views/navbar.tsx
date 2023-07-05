@@ -72,7 +72,7 @@ function Navbar() {
             Home
           </Button>
           <Button
-            variant={location.pathname === "/portfolio" ? "selected" : "unselected"}
+            variant={location.pathname.includes("/portfolio") ? "selected" : "unselected"}
             onClick={() => navigate("/portfolio")}
           >
             Portfolio

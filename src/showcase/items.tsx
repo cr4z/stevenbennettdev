@@ -2,7 +2,7 @@ import { ICONS } from "../design_system/icons";
 import { FloresHomeRepair } from "./floreshomerepair";
 
 export enum ShowcaseIDs {
-  dougzonepodcast = "0",
+  FloresHomeRepair = "0",
 }
 
 export type Showcase = {
@@ -11,26 +11,32 @@ export type Showcase = {
   tags: string[];
   component?: React.ReactNode;
   id?: string;
+  github?: string;
 };
 
 export const SHOWCASES: Showcase[] = [
-  { title: "Custom Form Library", icon: <ICONS.React />, tags: ["React", "react-hook-form", "yup"] },
+  {
+    title: "Custom Form Library",
+    icon: <ICONS.React />,
+    tags: ["React", "react-hook-form", "yup", "Fortitude"],
+  },
+  {
+    title: "Beautiful Sidebar",
+    icon: <ICONS.React />,
+    tags: ["React", "Scalable Architecture", "Web Design", "Fortitude"],
+  },
   {
     title: "Full Stack Calendar Demo Application",
     icon: <ICONS.React />,
     tags: ["React", "Redux", "redux-toolkit", "FullCalendar", "API", "Database"],
   },
   {
-    title: "Beautiful Sidebar",
-    icon: <ICONS.React />,
-    tags: ["React", "Scalable Architecture", "Web Design"],
-  },
-  {
     title: "floreshomerepair.com",
     icon: <ICONS.Nextjs />,
     tags: ["Next.js", "Web Design", "Online Website"],
+    id: ShowcaseIDs.FloresHomeRepair,
+    github: "https://github.com/cr4z/flores-home-repair",
     component: <FloresHomeRepair />,
-    id: ShowcaseIDs.dougzonepodcast,
   },
   {
     title: "Pure HTML Challenge: Financial Dashboard",

@@ -1,9 +1,10 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, useTheme, useThemeProps } from "@mui/material";
 import Navbar from "../views/navbar";
-import { SHOWCASES } from "../data/portfolio_items";
+import { SHOWCASES } from "../showcase/items";
 import { useLocation } from "react-router";
-import { PortfolioItemDetails, SearchControls, SearchResultsView } from "../views/search_controls";
+import { ShowcaseDetails, SearchControls, SearchResultsView } from "../views/search_controls";
 import Button from "../design_system/button";
+import { ICONS, IconRenderer } from "../design_system/icons";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();
@@ -33,9 +34,17 @@ function ShowcaseLayout() {
           }}
         >
           <Box sx={{ minWidth: SIDEBAR_WIDTH, maxWidth: SIDEBAR_WIDTH }}>
-            {showcase && <PortfolioItemDetails {...showcase} />}
+            {showcase && <ShowcaseDetails {...showcase} />}
           </Box>
-          <Button variant="call to action">View Code on GitHub</Button>
+          <Button
+            sx={{ paddingLeft: ".5rem", paddingRight: "1rem", gap: ".5rem" }}
+            larger
+            variant="call to action"
+            href={showcase?.github}
+          >
+            <IconRenderer widthHeight="2rem" i={<ICONS.GitHub />} />
+            View Code on GitHub
+          </Button>
         </Box>
         <Box sx={{ display: "flex", height: "100%", overflow: "hidden" }}>
           <Box

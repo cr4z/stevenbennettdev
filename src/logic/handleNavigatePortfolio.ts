@@ -1,4 +1,4 @@
-import { SHOWCASES } from "../data/portfolio_items";
+import { SHOWCASES } from "../showcase/items";
 
 export function validateShowcaseID(requestedID: string | undefined) {
   // Validate that the user is accessing an existing page
