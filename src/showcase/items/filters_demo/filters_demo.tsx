@@ -1,32 +1,33 @@
-import { Box, Typography, Input, Select, Button, Checkbox, MenuItem } from "@mui/material";
+import { Box, Typography, Input, Select, Checkbox, MenuItem } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Campus, Grade, numberToGradeOrEmpty } from "./types_and_helpers";
+import Button from "../../../design_system/button";
 
 interface IStudent {
   name: string;
   grade: Grade;
   campus: Campus;
-  medicaidOnly: boolean;
+  specialEducation: boolean;
 }
 
 const databaseStudents: IStudent[] = [
   {
-    name: "Iron Maiden",
-    grade: 4,
+    name: "Steven Bennett",
+    grade: 9,
     campus: Campus["Familiar Campus"],
-    medicaidOnly: false,
+    specialEducation: false,
   },
   {
-    name: "Grateful Dead",
+    name: "Beven Stennett",
     grade: 9,
     campus: Campus["Impressive Campus"],
-    medicaidOnly: true,
+    specialEducation: true,
   },
   {
-    name: "Avenged Sevenfold",
+    name: "Steb von Bennett",
     grade: 1,
-    campus: Campus["Optimal Campus"],
-    medicaidOnly: false,
+    campus: Campus["Impressive Campus"],
+    specialEducation: false,
   },
 ];
 
@@ -34,7 +35,13 @@ function FiltersDemo() {
   // state: filters
   const [grade, setGrade] = useState<Grade | "">("");
   const [campus, setCampus] = useState<Campus | null>(null);
-  const [medicaidOnly, setMedicaidOnly] = useState<boolean>(false);
+  const [spedStatus, setSpedStatus] = useState<boolean>(false);
+
+  function clearFilters() {
+    setGrade("");
+    setCampus(null);
+    setSpedStatus(false);
+  }
 
   // state: students
   const [students, setStudents] = useState<IStudent[]>([]);
@@ -57,42 +64,51 @@ function FiltersDemo() {
     if (campus !== null) {
       studs = studs.filter((s: IStudent) => s.campus === campus);
     }
-    if (medicaidOnly) {
-      studs = studs.filter((s: IStudent) => s.medicaidOnly);
+    if (spedStatus) {
+      studs = studs.filter((s: IStudent) => s.specialEducation);
     }
 
     setFilteredStudents(studs);
-  }, [students, grade, campus, medicaidOnly]);
+  }, [students, grade, campus, spedStatus]);
 
   return (
     <Box sx={{ padding: "3rem" }}>
       <Typography color="primary" variant="h6">
         Filter #1: Input
       </Typography>
-      <Input value={grade} onChange={(e) => setGrade(numberToGradeOrEmpty(+e.target.value))} />
+      <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <Typography variant="body2">Filter by grade:</Typography>
+        <Input value={grade} onChange={(e) => setGrade(numberToGradeOrEmpty(+e.target.value))} />
+      </Box>
 
       <Typography mt="2rem" color="primary" variant="h6">
         Filter #2: Boolean
       </Typography>
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Checkbox onClick={() => setMedicaidOnly(!medicaidOnly)} />
-        <Typography variant="body2">Medicaid Only?</Typography>
+        <Checkbox checked={spedStatus} onClick={() => setSpedStatus(!spedStatus)} />
+        <Typography variant="body2">SpEd Status true/false?</Typography>
       </Box>
 
       <Typography mt="2rem" gutterBottom color="primary" variant="h6">
         Filter #3: Item from array
       </Typography>
       <Box sx={{ display: "flex", width: "30rem", alignItems: "center", gap: "1rem" }}>
-        <Select fullWidth>
-          <MenuItem onClick={() => setCampus(Campus["Optimal Campus"])}>Optimal Campus</MenuItem>
-          <MenuItem onClick={() => setCampus(Campus["Familiar Campus"])}>Familiar Campus</MenuItem>
-          <MenuItem onClick={() => setCampus(Campus["Impressive Campus"])}>Impressive Campus</MenuItem>
+        <Select fullWidth value={campus} onChange={(c) => setCampus(c.target.value as Campus)}>
+          <MenuItem value={Campus["Familiar Campus"]}>Familiar Campus</MenuItem>
+          <MenuItem value={Campus["Impressive Campus"]}>Impressive Campus</MenuItem>
         </Select>
         <Typography sx={{ width: "20rem" }} variant="body1">
           Selection: Item #{campus?.toString()}
         </Typography>
       </Box>
-      <Typography variant="h4">My Caseload</Typography>
+
+      <Button sx={{ my: "2rem" }} variant="cta" onClick={() => clearFilters()}>
+        Clear Filters
+      </Button>
+
+      <Typography gutterBottom variant="h4">
+        Results:
+      </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {filteredStudents.map((s: IStudent, i) => (
           <StudentCard key={i} student={s} />
@@ -109,7 +125,7 @@ function StudentCard(props: { student: IStudent }) {
       <Typography>{student.name}</Typography>
       <Typography>{Campus[student.campus]}</Typography>
       <Typography>Grade: {student.grade}</Typography>
-      <Typography>{student.medicaidOnly ? "Is medicaid only" : ""}</Typography>
+      <Typography>{student.specialEducation ? "SpEdStatus = true" : ""}</Typography>
     </Box>
   );
 }

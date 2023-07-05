@@ -78,7 +78,7 @@ function Navbar() {
             Portfolio
           </Button>
           <div ref={contactBtnRef}>
-            <Button variant="call to action" onClick={() => setShowContactMenu(true)}>
+            <Button variant="cta" onClick={() => setShowContactMenu(true)}>
               Contact
             </Button>
           </div>

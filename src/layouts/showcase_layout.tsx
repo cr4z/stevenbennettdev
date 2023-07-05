@@ -40,7 +40,7 @@ function ShowcaseLayout() {
           <Button
             sx={{ paddingLeft: ".5rem", paddingRight: "1rem", gap: ".5rem" }}
             larger
-            variant="call to action"
+            variant="cta"
             href={showcase?.github}
           >
             <IconRenderer widthHeight="2rem" i={<ICONS.GitHub />} />

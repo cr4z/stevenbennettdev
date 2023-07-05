@@ -2,7 +2,7 @@ import { ButtonBase, useTheme, SxProps } from "@mui/material";
 import React from "react";
 
 function Button(props: {
-  variant?: "unselected" | "selected" | "contained" | "call to action";
+  variant?: "unselected" | "selected" | "contained" | "cta";
   onClick?: () => void;
   children?: React.ReactNode;
   sx?: SxProps;
@@ -38,7 +38,7 @@ function Button(props: {
           color: palette.primary.light,
         }),
 
-        ...(variant === "call to action" && {
+        ...(variant === "cta" && {
           bgcolor: palette.primary.main,
         }),
 
