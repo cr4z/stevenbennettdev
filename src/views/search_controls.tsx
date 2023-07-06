@@ -5,7 +5,7 @@ import { SHOWCASES } from "../showcase/items";
 import Button from "../design_system/button";
 import { ShowcaseDetailsInteractive } from "./showcase_item";
 
-export function SearchControls() {
+export function SearchControls(props: { reduce?: boolean }) {
   const { palette } = useTheme();
 
   return (

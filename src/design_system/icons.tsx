@@ -5,6 +5,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { SiFigma } from "react-icons/si";
 import { VscAzureDevops } from "react-icons/vsc";
 import { AiOutlineMail, AiOutlineLinkedin, AiOutlinePhone, AiFillTag, AiFillHtml5 } from "react-icons/ai";
+import { FaCaretRight } from "react-icons/fa";
 
 export const ICONS = {
   React: FaReact,
@@ -19,6 +20,7 @@ export const ICONS = {
   LinkedIn: AiOutlineLinkedin,
   PriceTag: AiFillTag,
   HTML: AiFillHtml5,
+  Caret: FaCaretRight,
 };
 
 interface IconRendererProps {

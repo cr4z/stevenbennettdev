@@ -90,12 +90,12 @@ ul {
 }
 
 .green-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #00cc9c;
+  background-color: white; /*#00cc9c*/
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
 
 .green-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #00cc9c;
+  background-color: white; /*#00cc9c*/
 }
