@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 function StevenBennettDev() {
   return (
-    <Box sx={{ padding: "3rem" }}>
+    <Box sx={{ padding: "3rem", minWidth: "24rem" }}>
       <Typography className="noselect" variant="h4">
         Welcome to the VIP section!
       </Typography>

@@ -1,13 +1,11 @@
-import { Box, ButtonBase, useTheme, useThemeProps } from "@mui/material";
+import { Box, ButtonBase, Typography, useTheme, useThemeProps } from "@mui/material";
 import Navbar from "../views/navbar";
 import { SHOWCASES } from "../showcase/items";
 import { useLocation } from "react-router";
 import { SearchControls, SearchResultsView } from "../views/search_controls";
 import Button from "../design_system/button";
 import { ICONS, IconRenderer } from "../design_system/icons";
-import { ShowcaseDetails } from "../views/showcase_item";
 import { useState } from "react";
-import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();
@@ -17,10 +15,8 @@ function ShowcaseLayout() {
   const SIDEBAR_EXPANDED = "25rem";
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
-  const { isMobile } = useBreakpointHelper();
-
   return (
-    Boolean(showcase?.component) && (
+    Boolean(showcase) && (
       <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
         <Box
           sx={{
@@ -33,26 +29,54 @@ function ShowcaseLayout() {
 
         <Box
           sx={{
-            height: "6rem",
             borderBottom: `1px solid ${palette.grey[800]}`,
             display: "flex",
             alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          {showcase && (
-            <Box sx={{ width: isMobile ? "16rem" : SIDEBAR_EXPANDED }}>
-              <ShowcaseDetails {...showcase} />
-            </Box>
-          )}
-          <Button
-            sx={{ paddingLeft: ".5rem", paddingRight: "1rem", gap: ".5rem" }}
-            larger
-            variant="cta"
-            href={showcase?.github}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: ".7rem",
+              padding: "1rem",
+            }}
           >
-            <IconRenderer widthHeight="2rem" i={<ICONS.GitHub />} />
-            View Code on GitHub
-          </Button>
+            <Box sx={{ display: "flex", gap: ".5rem" }}>
+              <Typography variant="h5" sx={{ color: palette.grey[400] }}>
+                Viewing Project:
+              </Typography>
+              <Typography variant="h5">{showcase?.title}</Typography>
+            </Box>
+
+            <Box sx={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+              <Box
+                sx={{
+                  bgcolor: palette.grey[500],
+                  borderRadius: 999,
+                  minWidth: "2.5rem",
+                  maxWidth: "2.5rem",
+                  maxHeight: "2.5rem",
+                  minHeight: "2.5rem",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <IconRenderer color={palette.text.primary} widthHeight="1.6rem" i={showcase!.icon} />
+              </Box>
+              <Button
+                sx={{ paddingLeft: ".5rem", paddingRight: "1rem", gap: ".5rem" }}
+                larger
+                variant="cta"
+                href={showcase?.github}
+              >
+                <IconRenderer widthHeight="2rem" i={<ICONS.GitHub />} />
+                View Code on GitHub
+              </Button>
+            </Box>
+          </Box>
         </Box>
         <Box sx={{ display: "flex", height: "100%", overflow: "hidden" }}>
           {/* SIDEBAR */}
