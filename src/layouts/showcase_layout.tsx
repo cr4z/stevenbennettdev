@@ -7,6 +7,7 @@ import Button from "../design_system/button";
 import { ICONS, IconRenderer } from "../design_system/icons";
 import { ShowcaseDetails } from "../views/showcase_item";
 import { useState } from "react";
+import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();
@@ -15,6 +16,8 @@ function ShowcaseLayout() {
   const showcase = SHOWCASES.find((i) => i.id === location.pathname.split("/")[2]);
   const SIDEBAR_EXPANDED = "25rem";
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
+
+  const { isMobile } = useBreakpointHelper();
 
   return (
     Boolean(showcase?.component) && (
@@ -36,9 +39,11 @@ function ShowcaseLayout() {
             alignItems: "center",
           }}
         >
-          <Box sx={{ minWidth: SIDEBAR_EXPANDED, maxWidth: SIDEBAR_EXPANDED }}>
-            {showcase && <ShowcaseDetails {...showcase} />}
-          </Box>
+          {showcase && (
+            <Box sx={{ width: isMobile ? "16rem" : SIDEBAR_EXPANDED }}>
+              <ShowcaseDetails {...showcase} />
+            </Box>
+          )}
           <Button
             sx={{ paddingLeft: ".5rem", paddingRight: "1rem", gap: ".5rem" }}
             larger
@@ -53,14 +58,16 @@ function ShowcaseLayout() {
           {/* SIDEBAR */}
           <Box
             sx={{
-              transition: "margin .4s ease",
-              marginLeft: sidebarOpen ? 0 : "-21.8rem",
               height: "100%",
               minWidth: SIDEBAR_EXPANDED,
               maxWidth: SIDEBAR_EXPANDED,
               display: "flex",
               flexDirection: "column",
               borderRight: `1px solid ${palette.grey[800]}`,
+
+              transition: "all .4s ease",
+              marginLeft: sidebarOpen ? 0 : "-25rem",
+              paddingRight: sidebarOpen ? 0 : "3rem",
             }}
           >
             <Box
@@ -78,6 +85,9 @@ function ShowcaseLayout() {
               <Box sx={{ mt: "3px" }}>
                 <ButtonBase
                   sx={{
+                    transition: "all .4s ease",
+                    right: sidebarOpen ? 0 : "-3rem",
+
                     minWidth: "2rem",
                     minHeight: "2rem",
                     maxWidth: "2rem",
@@ -105,15 +115,7 @@ function ShowcaseLayout() {
               </Box>
             </Box>
 
-            <Box
-              sx={{
-                transition: "padding .4s ease",
-                paddingLeft: sidebarOpen ? 0 : "-20rem",
-                paddingRight: "4rem"
-              }}
-            >
-              <SearchResultsView />
-            </Box>
+            <SearchResultsView />
           </Box>
 
           <Box
