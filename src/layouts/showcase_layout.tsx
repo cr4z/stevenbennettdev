@@ -66,6 +66,10 @@ function ShowcaseLayout() {
               >
                 <IconRenderer color={palette.text.primary} widthHeight="1.6rem" i={showcase!.icon} />
               </Box>
+              <Button sx={{ paddingLeft: ".5rem", paddingRight: "1rem", gap: ".5rem" }} larger>
+                <IconRenderer color={palette.text.primary} widthHeight="2rem" i={<ICONS.Info />} />
+                View Project Details
+              </Button>
               <Button
                 sx={{ paddingLeft: ".5rem", paddingRight: "1rem", gap: ".5rem" }}
                 larger
