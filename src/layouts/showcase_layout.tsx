@@ -5,7 +5,7 @@ import { useLocation } from "react-router";
 import { SearchControls, SearchResultsView } from "../views/search_controls";
 import Button from "../design_system/button";
 import { ICONS, IconRenderer } from "../design_system/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 function ShowcaseLayout() {
@@ -16,6 +16,10 @@ function ShowcaseLayout() {
   const showcase = SHOWCASES.find((i) => i.id === location.pathname.split("/")[2]);
   const SIDEBAR_EXPANDED = "25rem";
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (isMobile) setSidebarOpen(false);
+  }, []);
 
   return (
     Boolean(showcase) && (
