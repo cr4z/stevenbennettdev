@@ -165,6 +165,7 @@ function ShowcaseLayout() {
               bgcolor: palette.background.default,
               height: "100%",
               overflowY: "auto",
+              width: "100%",
             }}
           >
             {showcase?.component}
