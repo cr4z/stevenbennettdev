@@ -26,15 +26,15 @@ function XNGFormDatePicker<T extends FieldValues>(props: IXNGFormDatePicker<T>) 
       } // forces to default to current date
       render={({ field: { value, onChange } }) => (
         <DatePicker
-          onChange={(e: Dayjs | null  ) => {
-            onChange(e)
+          onChange={(e: Dayjs | null) => {
+            onChange(e as PathValue<T, Path<T>>);
             if (props.onAfterChange) {
               props.onAfterChange(e);
             }
           }}
           disabled={props.disabled}
-          value={props.watch ? props.watch(props.name) : (value ? value : null)}
-          renderInput={(params) => (
+          value={props.watch ? props.watch(props.name) : value ? value : null}
+          renderInput={(params: any) => (
             <TextField value={value} fullWidth size="small" {...params} label={props.label} />
           )}
         />

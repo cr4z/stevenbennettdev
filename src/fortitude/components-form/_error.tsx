@@ -1,5 +1,5 @@
-import usePalette from "../../hooks/usePalette";
 import Box from "../components-dev/BoxExtended";
+import usePalette from "../hooks/usePalette";
 import { getSizing } from "../sizing";
 import { Typography } from "@mui/material";
 
