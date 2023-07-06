@@ -28,7 +28,11 @@ function FloresHomeRepair() {
             alignItems: "center",
           }}
         >
-          <Typography className="noselect" variant="h3">
+          <Typography
+            className="noselect"
+            variant="h3"
+            sx={{ minWidth: "28rem", display: "flex", justifyContent: "center" }}
+          >
             Click to view website
           </Typography>
         </Box>

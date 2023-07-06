@@ -4,7 +4,7 @@ import { Showcase } from "../showcase/items";
 import { useNavigate } from "react-router";
 import { validateShowcaseID as validateShowcaseID } from "../logic/handleNavigatePortfolio";
 
-export function ShowcaseDetailsInteractive(props: Showcase) {
+export function ShowcaseDetailsInteractive(props: { onAfterSelect?: () => void; showcase: Showcase }) {
   const { palette } = useTheme();
   const navigate = useNavigate();
 
@@ -22,11 +22,12 @@ export function ShowcaseDetailsInteractive(props: Showcase) {
         textAlign: "start",
       }}
       onClick={() => {
-        const path = validateShowcaseID(props.id);
+        const path = validateShowcaseID(props.showcase.id);
+        if (props.onAfterSelect) props.onAfterSelect();
         navigate(path);
       }}
     >
-      <ShowcaseDetails {...props} />
+      <ShowcaseDetails {...props.showcase} />
     </ButtonBase>
   );
 }

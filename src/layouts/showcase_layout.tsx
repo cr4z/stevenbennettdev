@@ -6,9 +6,11 @@ import { SearchControls, SearchResultsView } from "../views/search_controls";
 import Button from "../design_system/button";
 import { ICONS, IconRenderer } from "../design_system/icons";
 import { useState } from "react";
+import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();
+  const { isMobile } = useBreakpointHelper();
   const location = useLocation();
 
   const showcase = SHOWCASES.find((i) => i.id === location.pathname.split("/")[2]);
@@ -43,11 +45,13 @@ function ShowcaseLayout() {
               padding: "1rem",
             }}
           >
-            <Box sx={{ display: "flex", gap: ".5rem" }}>
-              <Typography variant="h5" sx={{ color: palette.grey[400] }}>
-                Viewing Project:
+            <Box className="noselect">
+              <Typography display="inline" variant="h5" sx={{ color: palette.grey[400] }}>
+                Viewing Project:{" "}
               </Typography>
-              <Typography variant="h5">{showcase?.title}</Typography>
+              <Typography display="inline" variant="h5">
+                {showcase?.title}
+              </Typography>
             </Box>
 
             <Box sx={{ display: "flex", gap: "1rem", alignItems: "center" }}>
@@ -143,7 +147,13 @@ function ShowcaseLayout() {
               </Box>
             </Box>
 
-            <SearchResultsView />
+            <SearchResultsView
+              onAfterSelect={() => {
+                if (isMobile) {
+                  setSidebarOpen(false);
+                }
+              }}
+            />
           </Box>
 
           <Box

@@ -5,7 +5,7 @@ import { SHOWCASES } from "../showcase/items";
 import Button from "../design_system/button";
 import { ShowcaseDetailsInteractive } from "./showcase_item";
 
-export function SearchControls(props: { reduce?: boolean }) {
+export function SearchControls() {
   const { palette } = useTheme();
 
   return (
@@ -24,11 +24,19 @@ export function SearchControls(props: { reduce?: boolean }) {
   );
 }
 
-export function SearchResultsView() {
+export function SearchResultsView(props: { onAfterSelect?: () => void }) {
   return (
     <Box className="green-scrollbar" sx={{ overflowY: "auto", height: "100%", width: "100%" }}>
-      {SHOWCASES.map((portfolioItem, i) => (
-        <ShowcaseDetailsInteractive key={i} {...portfolioItem} />
+      {SHOWCASES.map((showcase, i) => (
+        <ShowcaseDetailsInteractive
+          key={i}
+          showcase={showcase}
+          onAfterSelect={() => {
+            if (props.onAfterSelect) {
+              props.onAfterSelect();
+            }
+          }}
+        />
       ))}
     </Box>
   );
