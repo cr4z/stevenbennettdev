@@ -97,8 +97,10 @@ export const theme = createTheme({
     },
     body2: {
       fontFamily: "Roboto",
-      fontSize: "12px",
-      fontWeight: "500",
+      fontSize: "14px",
+      fontWeight: "300",
+      letterSpacing: "0.2px",
+      color: "#969696",
     },
     button: {
       fontFamily: "Inter",

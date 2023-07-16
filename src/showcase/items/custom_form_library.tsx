@@ -3,11 +3,15 @@ import Box from "../../fortitude/components-dev/BoxExtended";
 import { XNGFormInput } from "../../fortitude/components-form/textfield";
 import XNGFormDatePicker from "../../fortitude/components-form/datepicker";
 import { XNGFormSelect } from "../../fortitude/components-form/select";
-import Button from "../../design_system/button";
 import { useXNGFormWithValidation } from "../../fortitude/hooks/useForm";
 import * as yup from "yup";
 import dayjs from "dayjs";
-import XNGLocalizationProvider from "../../fortitude/localization_provider";
+import XNGButton from "../../fortitude/low-level/button";
+import XNGEnvironmentProvider from "../../fortitude/environment_provider";
+import { ModalDialog } from "../../components/modal_dialog";
+import { useState } from "react";
+import ReactJson from "react-json-view";
+import { ViewCodeOnGithubButton } from "../../views/portfolio_id";
 
 export interface SchoolCampus {
   id: string;
@@ -21,7 +25,7 @@ export interface CustomFormValues {
   dateOfBirth: Date;
   jobTitle: string;
   npi: string;
-  stateMedicaidNumber: string;
+  stateInUS: string;
   primaryCampus: SchoolCampus;
 }
 export const validation = yup.object().shape({
@@ -33,7 +37,7 @@ export const validation = yup.object().shape({
   primaryCampus: yup.object<SchoolCampus>().typeError("Please select your primary campus"),
 });
 
-function CustomFormLibrary() {
+function CustomFormLibrary(props: { link: string }) {
   const {
     register,
     control,
@@ -43,102 +47,138 @@ function CustomFormLibrary() {
     handleSubmit,
   } = useXNGFormWithValidation<CustomFormValues>({ validationSchema: validation });
 
+  const [json, setJson] = useState<object | null>(null);
+
   function onSubmit(data: CustomFormValues) {
-    console.log(data);
+    setJson(data);
+  }
+
+  function ValidSubmitModal() {
+    return (
+      <ModalDialog open={json !== null} onClose={() => setJson(null)} title="Information is valid!">
+        <Typography>
+          Once the user clicks "Submit", a handler will return a JSON object mapped to the field values
+          they've predefined. In this instance, here is the returned JSON:
+        </Typography>
+
+        <Box sx={{ my: "1rem" }}>
+          <ReactJson enableClipboard={false} src={json!} theme="monokai" />
+        </Box>
+
+        <Typography>
+          This system is type-safe and ready to go! Feel free to take a look at the code-behind to see just
+          how straightforward the markup of this form is. I've made sure to keep things as minimal as
+          possible in terms of code requirements!
+        </Typography>
+
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: "1rem" }}>
+          <ViewCodeOnGithubButton link={props.link} />
+        </Box>
+      </ModalDialog>
+    );
   }
 
   return (
-    <XNGLocalizationProvider>
-      <Container maxWidth="md" sx={{ paddingY: "4rem" }}>
-        <Box sx={{ minWidth: "30rem" }}>
-          <Typography variant="overline">Step 1 of 3</Typography>
+    <>
+      {/* Modals */}
+      <ValidSubmitModal />
 
-          <Typography variant="h4">Fill out About You Information</Typography>
+      {/* DOM Hierarchy */}
+      <XNGEnvironmentProvider>
+        <Container maxWidth="md" sx={{ paddingY: "4rem" }}>
+          <Box sx={{ minWidth: "30rem" }}>
+            <Typography variant="overline">Step 1 of 3</Typography>
 
-          <Typography sx={{ marginTop: "2rem", textAlign: "justify" }} variant="body1">
-            Below is information that will inform your profile and permissions. Please ensure it is filled
-            out and correct.
-          </Typography>
+            <Typography variant="h4">Fill out About You Information</Typography>
 
-          <Box sx={{ paddingTop: "3rem", paddingBottom: "2rem" }}>
-            <Typography variant="h5">About You</Typography>
+            <Typography sx={{ marginTop: "2rem", textAlign: "justify" }} variant="body1">
+              Below is information that will inform your profile and permissions. Please ensure it is filled
+              out and correct.
+            </Typography>
+
+            <Box sx={{ paddingTop: "3rem", paddingBottom: "2rem" }}>
+              <Typography variant="h5">About You</Typography>
+            </Box>
+
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+              <XNGFormInput
+                name="firstName"
+                label="First Name"
+                control={control}
+                register={register}
+                useError={{ message: errors.firstName?.message }}
+              />
+              <XNGFormInput
+                name="lastName"
+                label="Last Name"
+                control={control}
+                register={register}
+                useError={{ message: errors.lastName?.message }}
+              />
+              <XNGFormInput
+                name="email"
+                label="Email Address"
+                control={control}
+                register={register}
+                useError={{ message: errors.email?.message }}
+              />
+              <XNGFormDatePicker
+                defaultValue={dayjs().toDate()}
+                name="dateOfBirth"
+                label="Date of Birth"
+                control={control}
+                useError={{ message: errors.dateOfBirth?.message }}
+              />
+              <XNGFormInput
+                name="jobTitle"
+                label="Job Title"
+                control={control}
+                register={register}
+                useError={{ message: errors.jobTitle?.message }}
+              />
+              <XNGFormInput
+                name="npi"
+                label="NPI"
+                placeholder="Optional..."
+                control={control}
+                register={register}
+                useError={{ message: errors.npi?.message }}
+              />
+              <XNGFormInput
+                name="stateInUS"
+                label="State"
+                placeholder="Optional..."
+                control={control}
+                register={register}
+                useError={{ message: errors.stateInUS?.message }}
+              />
+              <XNGFormSelect<CustomFormValues, SchoolCampus>
+                getOptionLabel={(campus: SchoolCampus) => campus.name!}
+                setValue={setValue}
+                watch={watch}
+                control={control}
+                label="Primary Campus"
+                name="primaryCampus"
+                items={[
+                  { id: "123", name: "Colt" },
+                  { id: "234", name: "Mustang" },
+                ]}
+                useError={{ message: errors.primaryCampus?.message }}
+              />
+
+              <XNGButton
+                onClick={() => {
+                  handleSubmit(onSubmit)();
+                }}
+                size="large"
+              >
+                Submit
+              </XNGButton>
+            </Box>
           </Box>
-
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            <XNGFormInput
-              name="firstName"
-              label="First Name"
-              control={control}
-              register={register}
-              useError={{ message: errors.firstName?.message }}
-            />
-            <XNGFormInput
-              name="lastName"
-              label="Last Name"
-              control={control}
-              register={register}
-              useError={{ message: errors.lastName?.message }}
-            />
-            <XNGFormInput
-              name="email"
-              label="Email Address"
-              control={control}
-              register={register}
-              useError={{ message: errors.email?.message }}
-            />
-            <XNGFormDatePicker
-              defaultValue={dayjs().toDate()}
-              name="dateOfBirth"
-              label="Date of Birth"
-              control={control}
-              useError={{ message: errors.dateOfBirth?.message }}
-            />
-            <XNGFormInput
-              name="jobTitle"
-              label="Job Title"
-              control={control}
-              register={register}
-              useError={{ message: errors.jobTitle?.message }}
-            />
-            <XNGFormInput
-              name="npi"
-              label="NPI"
-              placeholder="Optional..."
-              control={control}
-              register={register}
-              useError={{ message: errors.npi?.message }}
-            />
-            <XNGFormInput
-              name="stateMedicaidNumber"
-              label="State Medicaid Number"
-              placeholder="Optional..."
-              control={control}
-              register={register}
-              useError={{ message: errors.stateMedicaidNumber?.message }}
-            />
-            <XNGFormSelect<CustomFormValues, SchoolCampus>
-              getOptionLabel={(campus: SchoolCampus) => campus.name!}
-              setValue={setValue}
-              watch={watch}
-              control={control}
-              label="Primary Campus"
-              name="primaryCampus"
-              items={[
-                { id: "123", name: "Colt" },
-                { id: "234", name: "Mustang" },
-              ]}
-              useError={{ message: errors.primaryCampus?.message }}
-            />
-
-            <Button
-              onClick={() => {
-                handleSubmit(onSubmit)();
-              }}
-            />
-          </Box>
-        </Box>
-      </Container>
-    </XNGLocalizationProvider>
+        </Container>
+      </XNGEnvironmentProvider>
+    </>
   );
 }
 

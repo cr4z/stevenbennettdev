@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-export const THEME = createTheme({
+export const fortitudeTheme = createTheme({
   breakpoints: {
     values: {
       xl: 1361,
@@ -17,23 +17,23 @@ export const THEME = createTheme({
   },
   typography: {
     h1: {
-      fontFamily: "Lexend",
+      fontFamily: "Roboto",
       fontSize: "96px",
     },
     h2: {
-      fontFamily: "Lexend",
+      fontFamily: "Roboto",
       fontSize: "64px",
     },
     h3: {
-      fontFamily: "Lexend",
+      fontFamily: "Roboto",
       fontSize: "48px",
     },
     h4: {
-      fontFamily: "Lexend",
+      fontFamily: "Roboto",
       fontSize: "36px",
     },
     h5: {
-      fontFamily: "Lexend",
+      fontFamily: "Roboto",
       fontSize: "24px",
     },
     h6: {

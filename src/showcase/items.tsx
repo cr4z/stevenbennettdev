@@ -4,6 +4,7 @@ import CustomFormLibrary from "./items/custom_form_library";
 import FiltersDemo from "./items/filters_demo/main";
 import FloresHomeRepair from "./items/floreshomerepair";
 import StevenBennettDev from "./items/stevenbennettdev";
+import dayjs, { Dayjs } from "dayjs";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "0",
@@ -24,11 +25,15 @@ export type Showcase = {
   title: string;
   icon: JSX.Element;
   tags: string[];
-  component?: React.ReactNode;
-  id?: string;
-  github?: string;
+  component: React.ReactNode;
+  id: string;
+  github: string;
   description?: string | JSX.Element;
+  dateCreated?: Dayjs;
 };
+
+const GITHUB_CustomFormLibrary =
+  "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/custom_form_library.tsx";
 
 export const SHOWCASES: Showcase[] = [
   {
@@ -45,8 +50,8 @@ export const SHOWCASES: Showcase[] = [
     icon: <ICONS.React />,
     tags: ["React", "react-hook-form", "yup", "Fortitude"],
     id: ShowcaseIDs.CustomFormLibrary,
-    github: "",
-    component: <CustomFormLibrary />,
+    github: GITHUB_CustomFormLibrary,
+    component: <CustomFormLibrary link={GITHUB_CustomFormLibrary} />,
   },
   {
     title: "Beautiful Sidebar",
@@ -71,6 +76,7 @@ export const SHOWCASES: Showcase[] = [
     id: ShowcaseIDs.FloresHomeRepair,
     github: "https://github.com/cr4z/flores-home-repair",
     component: <FloresHomeRepair />,
+    dateCreated: dayjs(new Date(2022, 3, 24)),
   },
   {
     title: "Pure HTML Challenge: Financial Dashboard",
@@ -139,7 +145,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Common Algorithm: Multiple Filters",
     description:
-      "This is actually the first GitHub project I ever created to help teach a fellow developer this concept, so it's near and dear to me!",
+      "This is actually the first GitHub project I ever created to help teach someone a concept, so it's near and dear to me!",
     icon: <ICONS.React />,
     tags: ["React", "Custom Algorithm"],
     id: ShowcaseIDs.FilteringAlgorithm,

@@ -3,7 +3,7 @@ import Home from "./views/home";
 import Portfolio from "./views/portfolio";
 import Page404 from "./views/404";
 import NavLayout from "./layouts/nav_layout";
-import ShowcaseLayout from "./layouts/showcase_layout";
+import ShowcaseLayout from "./views/portfolio_id";
 
 function App() {
   return (

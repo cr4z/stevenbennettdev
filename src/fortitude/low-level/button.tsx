@@ -1,7 +1,7 @@
 import { Button, SxProps, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import usePalette from "../../hooks/usePalette";
 import { XNGButtonSize, getButtonHeight } from "./button_types";
+import usePalette from "../hooks/usePalette";
 
 type XNGButtonType = "outline" | "filled";
 
@@ -19,7 +19,7 @@ function XNGButton(props: IXNGButton) {
   const VARIANT: XNGButtonType = props.variant ? props.variant : "filled";
   const HEIGHT = props.size ? getButtonHeight(props.size) : getButtonHeight("default");
   const palette = usePalette();
-  const STYLE = props.sx ? props.sx : {} as SxProps;
+  const STYLE = props.sx ? props.sx : ({} as SxProps);
 
   const BTN = (
     <Button

@@ -1,4 +1,4 @@
-import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { useLocation, useNavigate } from "react-router";
 import Menu from "../design_system/menu";
@@ -9,7 +9,7 @@ import { ReactComponent as SBLogo } from "../svgs/logo.svg";
 import Button from "../design_system/button";
 
 function Navbar() {
-  const { currentScreenSize, isMobile, isGreaterThanEqualTo } = useBreakpointHelper();
+  const { currentScreenSize, isGreaterThanEqualTo } = useBreakpointHelper();
   const { palette } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,7 +20,6 @@ function Navbar() {
       case "xl":
       case "lg":
       case "md":
-        return "3rem";
       case "sm":
       case "xs":
         return "2rem";

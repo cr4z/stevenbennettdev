@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import { SearchControls, SearchResultsView } from "./search_controls";
+import { SearchControls, SearchResultsView } from "../components/search_controls";
 
 function Portfolio() {
   return (
