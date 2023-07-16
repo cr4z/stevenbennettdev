@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { ICONS } from "../design_system/icons";
 import CustomFormLibrary from "./items/custom_form_library";
 import FiltersDemo from "./items/filters_demo/main";
@@ -26,12 +27,21 @@ export type Showcase = {
   component?: React.ReactNode;
   id?: string;
   github?: string;
-  description?: string;
+  description?: string | JSX.Element;
 };
 
 export const SHOWCASES: Showcase[] = [
   {
     title: "Custom Form Library",
+    description: (
+      <Typography>
+        This is an entirely custom form library that is only one cog of a larger design system I built
+        called Fortitude. I created this system for a team of 4 developers, and it allows for
+        straightforward & simple creation of forms in a way that <strong>scales</strong>. It's intuitive;
+        intentionally designed to be used without having to refer to documentation by leveraging
+        intellisense. Click the GitHub button to see it in action!
+      </Typography>
+    ),
     icon: <ICONS.React />,
     tags: ["React", "react-hook-form", "yup", "Fortitude"],
     id: ShowcaseIDs.CustomFormLibrary,
@@ -129,7 +139,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Common Algorithm: Multiple Filters",
     description:
-      "This was actually the first GitHub project I used to mentor a fellow developer, so it's near and dear to me!",
+      "This is actually the first GitHub project I ever created to help teach a fellow developer this concept, so it's near and dear to me!",
     icon: <ICONS.React />,
     tags: ["React", "Custom Algorithm"],
     id: ShowcaseIDs.FilteringAlgorithm,

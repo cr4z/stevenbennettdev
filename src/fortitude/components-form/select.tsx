@@ -27,7 +27,6 @@ export function XNGFormSelect<T extends FieldValues, V>(props: IXNGFormSelect<T,
     setAnchorEl(null);
   };
 
-  // ------------ NEW SYSTEM 7/3/23 ------------
   // Everything is controlled by one data point, the "mainValue" field.
   // "mainValue" controls both the RHF value and the UI value
   // "mainValue" controls RHF through a useEffect change listener, while the UI label is always derived
@@ -67,10 +66,7 @@ export function XNGFormSelect<T extends FieldValues, V>(props: IXNGFormSelect<T,
               defaultValue={getDefaultUIValue()}
               value={getUIValue()}
             >
-              {/* This is NOT for display, it's here to provide values to the MUI TextField since they don't provide an intuitive way to do so like an attribute. Sorry for the lack of clarity here. */}
-              {/* These ARE the values used for the closed-select's input display, however. */}
               {props.items.map((item, i) => {
-                // assign value as indexer
                 return (
                   <MenuItem key={i} value={props.getOptionLabel(item)}>
                     {props.getOptionLabel(item)}

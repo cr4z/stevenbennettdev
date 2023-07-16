@@ -50,7 +50,7 @@ function CustomFormLibrary() {
   return (
     <XNGLocalizationProvider>
       <Container maxWidth="md" sx={{ paddingY: "4rem" }}>
-        <Box sx={{minWidth: "30rem"}}>
+        <Box sx={{ minWidth: "30rem" }}>
           <Typography variant="overline">Step 1 of 3</Typography>
 
           <Typography variant="h4">Fill out About You Information</Typography>
