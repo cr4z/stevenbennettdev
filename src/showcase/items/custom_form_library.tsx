@@ -152,18 +152,24 @@ function CustomFormLibrary(props: { link: string }) {
                 register={register}
                 useError={{ message: errors.stateInUS?.message }}
               />
+              {/* To anyone checking out the code, this is one of my proudest additions. Let's dive in? */}
               <XNGFormSelect<CustomFormValues, SchoolCampus>
-                getOptionLabel={(campus: SchoolCampus) => campus.name!}
+                // These are values that intellisense indicates as required in order to power the
+                // react-hook-forms implementation under the hood. It's as simple as passing the values in!
                 setValue={setValue}
                 watch={watch}
                 control={control}
-                label="Primary Campus"
                 name="primaryCampus"
+                // These two control the frontend's display (useError is optional)
+                label="Primary Campus"
+                useError={{ message: errors.primaryCampus?.message }}
+                // We derive the label of the menu option from its campus type
+                getOptionLabel={(campus: SchoolCampus) => campus.name!}
+                // Populate campus types
                 items={[
                   { id: "123", name: "Colt" },
                   { id: "234", name: "Mustang" },
                 ]}
-                useError={{ message: errors.primaryCampus?.message }}
               />
 
               <XNGButton

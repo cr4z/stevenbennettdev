@@ -5,7 +5,6 @@ import FiltersDemo from "./items/filters_demo/main";
 import FloresHomeRepair from "./items/floreshomerepair";
 import StevenBennettDev from "./items/stevenbennettdev";
 import dayjs, { Dayjs } from "dayjs";
-import BeautifulSidebar from "./items/beautiful_sidebar";
 import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 
 export enum ShowcaseIDs {
@@ -31,6 +30,7 @@ export type Showcase = {
   id: string;
   github: string;
   description?: string | JSX.Element;
+  descriptionPlainText?: string;
   dateCreated?: Dayjs;
 };
 
@@ -49,6 +49,8 @@ export const SHOWCASES: Showcase[] = [
         intellisense. Click the GitHub button to see it in action!
       </Typography>
     ),
+    descriptionPlainText:
+      "This is an entirely custom form library that is only one cog of a larger design system I built        called Fortitude. I created this system for a team of 4 developers, and it allows for        straightforward & simple creation of forms in a way that <strong>scales</strong>. It's intuitive;        intentionally designed to be used without having to refer to documentation by leveraging        intellisense. Click the GitHub button to see it in action!      </Typography>",
     icon: <ICONS.React />,
     tags: ["React", "react-hook-form", "yup", "Fortitude"],
     id: ShowcaseIDs.CustomFormLibrary,
@@ -78,6 +80,8 @@ export const SHOWCASES: Showcase[] = [
     id: ShowcaseIDs.FloresHomeRepair,
     github: "https://github.com/cr4z/flores-home-repair",
     component: <FloresHomeRepair />,
+    description:
+      "This was my first freelance project I had ever done professionally, built with Next.js. I've sinced gotten a little bit better at image optimization, but to this day it remains one of my finest achievements in SEO optimization! When typing 'flores home repair' into Google, floreshomerepair.com should be at the very top. Even variations such as 'Flores House Renovation' should work. It's also visible outside of the United States; as far as France!",
     dateCreated: dayjs(new Date(2022, 3, 24)),
   },
   {
@@ -91,9 +95,9 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Sequential Fade-In Effect Across Multiple Divs",
     icon: <ICONS.React />,
-    tags: ["React", "Web Design"],
+    tags: ["React", "Web Design", "useMemo"],
     id: ShowcaseIDs.SequentialFadeIn,
-    github: "",
+    github: "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
     component: <Showcase_SequentialFadeIn />,
   },
   // {
@@ -104,14 +108,14 @@ export const SHOWCASES: Showcase[] = [
   //   github: "",
   //   component: <></>,
   // },
-  {
-    title: "React useMemo Demo",
-    icon: <ICONS.React />,
-    tags: ["React Fundamentals"],
-    id: ShowcaseIDs.ReactUseMemoDemo,
-    github: "",
-    component: <></>,
-  },
+  // {
+  //   title: "React useMemo Demo",
+  //   icon: <ICONS.React />,
+  //   tags: ["React Fundamentals"],
+  //   id: ShowcaseIDs.ReactUseMemoDemo,
+  //   github: "",
+  //   component: <></>,
+  // },
   {
     title: "Elegant & Safe: Modifying deeply-nested state in React",
     icon: <ICONS.React />,

@@ -23,6 +23,7 @@ function ShowcaseLayout() {
   // states
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
   const [projectDetailsOpen, setProjectDetailsOpen] = useState<boolean>(false);
+  const [queryValue, setQueryValue] = useState<string>("");
 
   // useEffects
   useEffect(() => {
@@ -57,8 +58,9 @@ function ShowcaseLayout() {
             )}
             <Typography variant="body2">Tagged:</Typography>
             <Box sx={{ display: "flex", gap: ".4rem" }}>
-              {showcase?.tags.map((tag) => (
+              {showcase?.tags.map((tag, i) => (
                 <Typography
+                  key={i}
                   display="inline"
                   sx={{ padding: ".3rem .5rem", bgcolor: palette.grey[500], borderRadius: "6px" }}
                 >
@@ -143,7 +145,12 @@ function ShowcaseLayout() {
                   display: "flex",
                 }}
               >
-                <SearchControls />
+                <SearchControls
+                  queryValue={queryValue}
+                  onChange={(e) => {
+                    setQueryValue(e.target.value);
+                  }}
+                />
                 <Box sx={{ mt: "3px" }}>
                   <ButtonBase
                     sx={{
@@ -178,6 +185,7 @@ function ShowcaseLayout() {
               </Box>
 
               <SearchResultsView
+                queryValue={queryValue}
                 onAfterSelect={() => {
                   if (isMobile) {
                     setSidebarOpen(false);

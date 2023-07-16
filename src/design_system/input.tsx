@@ -9,6 +9,7 @@ function Input(props: {
   sx?: SxProps;
   placeholder?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
+  value?: any;
 }) {
   const iconVariation: IconVariaton = props.useIcon ?? "none";
   const { palette } = useTheme();
@@ -18,6 +19,7 @@ function Input(props: {
       sx={{ display: "flex", position: "relative", justifyContent: "flex-end", width: "100%", ...props.sx }}
     >
       <TextField
+        value={props.value}
         onChange={props.onChange}
         fullWidth
         size="small"

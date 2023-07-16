@@ -6,24 +6,40 @@ import FadeIn from "../../fortitude/components-dev/FadeIn";
 import { ModalDialog } from "../../components/modal_dialog";
 
 function Showcase_SequentialFadeIn() {
-  // States
+  // -- States --
   const [amountCards, setAmountCards] = useState<number>(0);
   const [resetSwitch, setResetSwitch] = useState<boolean>(false);
   const [errorText, setErrorText] = useState<string>("");
   const [keyPrefix, setKeyPrefix] = useState<string>("");
+
+  // -- UseEffects --
+  // Unique Key Generator (in order to make a full refresh)
   useEffect(() => {
     setKeyPrefix(Date.now().toString());
   }, [resetSwitch]);
+  // Initial values
+  useEffect(() => {
+    setAmountCards(15);
+    setResetSwitch(true);
+  }, []);
 
-  // Memoized Cards
+  // -- Generate Cards every reset --
   const Cards = useMemo(() => {
     const c: JSX.Element[] = [];
     for (let i = 0; i < amountCards; i++) {
       c.push(<Card key={`${keyPrefix}-${i}`} i={i} />);
     }
-
     return c;
   }, [resetSwitch]);
+
+  // Regenerate Button Click Handler
+  function handleRegenerateClick() {
+    if (amountCards < 50 && amountCards > 0) {
+      setResetSwitch(!resetSwitch);
+    } else {
+      setErrorText("Value must be between 1-49");
+    }
+  }
 
   return (
     <>
@@ -42,24 +58,25 @@ function Showcase_SequentialFadeIn() {
         <Box my="2rem">
           <Typography>Want to play around with the effect? Set the amount of cards here:</Typography>
           <br />
-          <Box sx={{ display: "flex", gap: "1rem" }}>
-            <Input
-              onChange={(e) => setAmountCards(+e.target.value)}
-              placeholder="Amount of cards..."
-              sx={{ width: "20rem" }}
-            />
-            <Button
-              onClick={() => {
-                if (amountCards < 90 && amountCards > 0) {
-                  setResetSwitch(!resetSwitch);
-                } else {
-                  setErrorText("Value is either too great or invalid, please re-enter");
-                }
-              }}
-            >
-              Reset Cards
-            </Button>
-          </Box>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleRegenerateClick();
+            }}
+          >
+            <Box sx={{ display: "flex", gap: "1rem" }}>
+              <Input
+                value={amountCards}
+                onChange={(e) => {
+                  const input = +e.target.value;
+                  setAmountCards(Number.isNaN(input) ? 0 : input);
+                }}
+                placeholder="Amount of cards..."
+                sx={{ width: "20rem" }}
+              />
+              <Button onClick={handleRegenerateClick}>Regenerate!</Button>
+            </Box>
+          </form>
         </Box>
 
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>{Cards}</Box>
