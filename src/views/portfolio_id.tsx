@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { BackButton } from "../components/button_back";
 import { ModalDialog } from "../components/modal_dialog";
+import { ViewCodeOnGithubButton } from "../components/github_button";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();
@@ -214,26 +215,6 @@ function ViewingProject(props: { title: string }) {
         {props.title}
       </Typography>
     </Box>
-  );
-}
-
-export function ViewCodeOnGithubButton(props: { link: string }) {
-  return (
-    <Button
-      sx={{
-        paddingLeft: ".5rem",
-        paddingRight: "1rem",
-        gap: ".5rem",
-        minWidth: "12rem",
-        maxWidth: "12rem",
-      }}
-      larger
-      variant="cta"
-      href={props.link}
-    >
-      <IconRenderer widthHeight="2rem" i={<ICONS.GitHub />} />
-      View Code on GitHub
-    </Button>
   );
 }
 

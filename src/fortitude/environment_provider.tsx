@@ -7,7 +7,7 @@ function XNGEnvironmentProvider(props: { children: React.ReactNode }) {
   return (
     <XNGLocalizationProvider>
       <ThemeProvider theme={fortitudeTheme}>
-        <Box sx={{ bgcolor: "white", minWidth: "min-content" }}>{props.children}</Box>
+        <Box sx={{ bgcolor: "white", minWidth: "min-content", minHeight: "100%" }}>{props.children}</Box>
       </ThemeProvider>
     </XNGLocalizationProvider>
   );

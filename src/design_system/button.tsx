@@ -1,5 +1,6 @@
 import { ButtonBase, useTheme, SxProps } from "@mui/material";
 import React from "react";
+import { shadeColor } from "../utils/shadeColor";
 
 function Button(props: {
   variant?: "unselected" | "selected" | "contained" | "cta";
@@ -40,10 +41,12 @@ function Button(props: {
 
         ...(variant === "cta" && {
           bgcolor: palette.primary.main,
+          ":hover": { bgcolor: shadeColor(palette.primary.main, 8) },
         }),
 
         ...(variant === "contained" && {
           bgcolor: palette.grey[500],
+          ":hover": { bgcolor: palette.grey[400] },
         }),
 
         // Add SX overrides

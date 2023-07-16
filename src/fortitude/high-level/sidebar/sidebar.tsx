@@ -6,8 +6,6 @@ import {
   ButtonSidebarItemProps as ButtonSidebarItemProps,
   DropdownSidebarItemProps as DropdownSidebarItemProps,
 } from "../../types/sidebar_content";
-import { useXNGDispatch, useXNGSelector } from "../../../context/store";
-import { setSidebarOpen, sidebarOpen } from "../../../context/slices/sidebarSlice";
 import SquareIconButton from "./icon_button_square";
 import { SIZE, useSidebarPalette } from "./_";
 import ButtonSidebarItem from "./sidebar_item_button";
@@ -22,13 +20,9 @@ function XNGSidebar(props: IXNGSidebar) {
   // HOOKS
   const palette = useSidebarPalette();
   const location = useLocation();
-  const dispatch = useXNGDispatch();
 
   // CONSTANTS
   const EXPANDED_WIDTH = getSizing(36);
-
-  // REDUX STATE
-  const isSidebarOpen = useXNGSelector(sidebarOpen);
 
   // TYPE CHECKERS
   function sbiIsDropdown(sbi: SidebarItemAnyProps) {
@@ -37,6 +31,7 @@ function XNGSidebar(props: IXNGSidebar) {
 
   // STATES
   const [open, setOpen] = useState<number | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   // CALLBACKS
   function onSidebarClose() {
@@ -51,13 +46,12 @@ function XNGSidebar(props: IXNGSidebar) {
         width: isSidebarOpen ? EXPANDED_WIDTH : getSizing(7),
         bgcolor: palette.bgcolor,
         height: "100%",
-        padding: getSizing(1),
         overflow: "hidden",
         transition: "width .2s ease",
       }}
     >
       <Box width={EXPANDED_WIDTH}>
-        <MainHamburger onSidebarClose={() => onSidebarClose()} />
+        <MainHamburger open={isSidebarOpen} onSidebarClose={() => onSidebarClose()} />
 
         {props.sidebarContent.map((sbi: SidebarItemAnyProps, i: number) => {
           if (sbiIsDropdown(sbi)) {
@@ -69,7 +63,7 @@ function XNGSidebar(props: IXNGSidebar) {
                 onSetOpen={() => {
                   if (!isSidebarOpen) {
                     setOpen(i);
-                    dispatch(setSidebarOpen(true));
+                    setIsSidebarOpen(true);
                     return;
                   }
                   if (i === open) {
@@ -87,6 +81,7 @@ function XNGSidebar(props: IXNGSidebar) {
               displayAsSelected={location.pathname === sbi.route}
               item={sbi as ButtonSidebarItemProps}
               key={i}
+              open={isSidebarOpen}
             />
           );
         })}
@@ -95,20 +90,13 @@ function XNGSidebar(props: IXNGSidebar) {
   );
 }
 
-function MainHamburger(props: { onSidebarClose: () => void }) {
-  const dispatch = useXNGDispatch();
-  const isSidebarOpen = useXNGSelector(sidebarOpen);
+function MainHamburger(props: { onSidebarClose: () => void; open: boolean }) {
   const palette = useSidebarPalette();
 
   return (
     <SquareIconButton
       onClick={() => {
-        if (isSidebarOpen) {
-          props.onSidebarClose();
-          dispatch(setSidebarOpen(false));
-        } else {
-          dispatch(setSidebarOpen(true));
-        }
+        props.onSidebarClose();
       }}
       sx={{ marginBottom: getSizing(3) }}
     >

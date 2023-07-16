@@ -11,7 +11,7 @@ import XNGEnvironmentProvider from "../../fortitude/environment_provider";
 import { ModalDialog } from "../../components/modal_dialog";
 import { useState } from "react";
 import ReactJson from "react-json-view";
-import { ViewCodeOnGithubButton } from "../../views/portfolio_id";
+import { ViewCodeOnGithubButton } from "../../components/github_button";
 
 export interface SchoolCampus {
   id: string;
@@ -67,8 +67,8 @@ function CustomFormLibrary(props: { link: string }) {
 
         <Typography>
           This system is type-safe and ready to go! Feel free to take a look at the code-behind to see just
-          how straightforward the markup of this form is. I've made sure to keep things as minimal as
-          possible in terms of code requirements!
+          how straightforward and readable the markup of this React form system is. I've made sure to keep
+          things as minimal as possible in terms of code requirements!
         </Typography>
 
         <Box sx={{ display: "flex", justifyContent: "flex-end", mt: "1rem" }}>

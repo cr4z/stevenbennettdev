@@ -1,13 +1,11 @@
-import usePalette from "../../hooks/usePalette";
 import Box from "../components-dev/BoxExtended";
+import usePalette from "../hooks/usePalette";
 import { XNGICONS, XNGIconRenderer, getSxRecolorChildXNGIcons } from "../icons";
-import { SxProps } from "@mui/material";
 
 type DropdownIndicatorSize = "sm" | "md";
 
 function DropdownIndicator(props: { open: boolean; color?: string; size?: DropdownIndicatorSize }) {
   const palette = usePalette();
-  const size = props.size ?? "md";
 
   return (
     <Box

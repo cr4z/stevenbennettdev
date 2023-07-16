@@ -5,6 +5,8 @@ import FiltersDemo from "./items/filters_demo/main";
 import FloresHomeRepair from "./items/floreshomerepair";
 import StevenBennettDev from "./items/stevenbennettdev";
 import dayjs, { Dayjs } from "dayjs";
+import BeautifulSidebar from "./items/beautiful_sidebar";
+import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "0",
@@ -53,14 +55,14 @@ export const SHOWCASES: Showcase[] = [
     github: GITHUB_CustomFormLibrary,
     component: <CustomFormLibrary link={GITHUB_CustomFormLibrary} />,
   },
-  {
-    title: "Beautiful Sidebar",
-    icon: <ICONS.React />,
-    tags: ["React", "Scalable Architecture", "Web Design", "Fortitude"],
-    id: ShowcaseIDs.BeautifulSidebar,
-    github: "",
-    component: <></>,
-  },
+  // {
+  //   title: "Beautiful Sidebar",
+  //   icon: <ICONS.React />,
+  //   tags: ["React", "Scalable Architecture", "Web Design", "Fortitude"],
+  //   id: ShowcaseIDs.BeautifulSidebar,
+  //   github: "",
+  //   component: <BeautifulSidebar />,
+  // },
   // {
   //   title: "Full Stack Calendar Demo Application",
   //   icon: <ICONS.React />,
@@ -92,7 +94,7 @@ export const SHOWCASES: Showcase[] = [
     tags: ["React", "Web Design"],
     id: ShowcaseIDs.SequentialFadeIn,
     github: "",
-    component: <></>,
+    component: <Showcase_SequentialFadeIn />,
   },
   // {
   //   title: "dougzonepodcast.com",

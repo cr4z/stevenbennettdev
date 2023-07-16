@@ -3,14 +3,11 @@ import { SIZE, useSidebarPalette } from "./_";
 import { useRef } from "react";
 import { Typography } from "@mui/material";
 import { XNGIconRenderer, getSxRecolorChildXNGIcons } from "../../icons";
-import usePalette from "../../../hooks/usePalette";
 import { getSizing } from "../../sizing";
 import Box from "../../components-dev/BoxExtended";
 import DropdownIndicator from "../../low-level/dropdown_indicator";
 import VerticalTabs from "../../low-level/tabs_vertical";
 import SquareIconButton from "./icon_button_square";
-import { useXNGSelector } from "../../../context/store";
-import { sidebarOpen } from "../../../context/slices/sidebarSlice";
 
 function DropdownSidebarItem(props: {
   item: DropdownSidebarItemProps;
@@ -27,12 +24,9 @@ function DropdownSidebarItem(props: {
     return myRef.current?.clientHeight;
   }
 
-  // REDUX
-  const isSidebarOpen = useXNGSelector(sidebarOpen);
-
   // GET COLOR
   function getItemIconColor(): string {
-    if (isSidebarOpen && props.displayAsSelected) {
+    if (props.isOpen && props.displayAsSelected) {
       return palette.selected;
     }
     if (props.isOpen) {

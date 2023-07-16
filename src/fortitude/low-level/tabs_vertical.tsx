@@ -1,11 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import usePalette from "../../hooks/usePalette";
 import { XNGStandardTab } from "../types/xngStandardTab";
 import { Link } from "react-router-dom";
 import { getSizing } from "../sizing";
 import { BORDER_RADIUSES } from "../borderRadiuses";
-import { useEffect } from "react";
 import { XNGICONS, XNGIconRenderer } from "../icons";
+import usePalette from "../hooks/usePalette";
 
 type RowSize = "compact" | "standard";
 

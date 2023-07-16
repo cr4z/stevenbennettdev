@@ -1,4 +1,4 @@
-import usePalette from "../../../hooks/usePalette";
+import usePalette from "../../hooks/usePalette";
 
 export const SIZE = "sm";
 

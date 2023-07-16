@@ -4,7 +4,12 @@ import { IconRenderer } from "./icons";
 
 type IconVariaton = "none" | "search";
 
-function Input(props: { useIcon?: IconVariaton; sx?: SxProps }) {
+function Input(props: {
+  useIcon?: IconVariaton;
+  sx?: SxProps;
+  placeholder?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
+}) {
   const iconVariation: IconVariaton = props.useIcon ?? "none";
   const { palette } = useTheme();
 
@@ -13,9 +18,10 @@ function Input(props: { useIcon?: IconVariaton; sx?: SxProps }) {
       sx={{ display: "flex", position: "relative", justifyContent: "flex-end", width: "100%", ...props.sx }}
     >
       <TextField
+        onChange={props.onChange}
         fullWidth
         size="small"
-        placeholder="Search projects..."
+        placeholder={props.placeholder}
         sx={{
           bgcolor: palette.grey[700],
           // fix border radius
