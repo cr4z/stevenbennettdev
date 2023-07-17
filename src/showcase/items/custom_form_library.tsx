@@ -6,7 +6,6 @@ import { XNGFormSelect } from "../../fortitude/components-form/select";
 import { useXNGFormWithValidation } from "../../fortitude/hooks/useForm";
 import * as yup from "yup";
 import dayjs from "dayjs";
-import XNGButton from "../../fortitude/low-level/button";
 import XNGEnvironmentProvider from "../../fortitude/environment_provider";
 import { ModalDialog } from "../../components/modal_dialog";
 import { useState } from "react";
@@ -46,14 +45,9 @@ function CustomFormLibrary(props: { link: string }) {
     watch,
     setValue,
     formState: { errors },
-    handleSubmit,
   } = useXNGFormWithValidation<CustomFormValues>({ validationSchema: validation });
 
   const [json, setJson] = useState<object | null>(null);
-
-  function onSubmit(data: CustomFormValues) {
-    setJson(data);
-  }
 
   function ValidSubmitModal() {
     return (
