@@ -1,6 +1,5 @@
-import { DefaultComponentProps } from "@mui/types";
 import Box from "./BoxExtended";
-import { BoxTypeMap, Menu, SxProps } from "@mui/material";
+import { Menu, SxProps } from "@mui/material";
 
 type XNGMenuAnchorBoxProps = {
   onClickSetAnchorEl: (v: HTMLElement) => void;

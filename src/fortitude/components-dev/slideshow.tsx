@@ -1,4 +1,4 @@
-import { placeholderForFutureLogErrorText } from "../../temp/errorText";
+import { placeholderForFutureErrorLogText } from "../placeholder";
 import { XNGSlide } from "../types/slide";
 
 export interface IXNGSlideshow {
@@ -7,7 +7,7 @@ export interface IXNGSlideshow {
 }
 export function XNGSlideshow(props: IXNGSlideshow) {
   const slide = props.slides.find((s) => s.id === props.view);
-  if (slide === undefined) throw new Error(placeholderForFutureLogErrorText);
+  if (slide === undefined) throw new Error(placeholderForFutureErrorLogText);
 
   return slide.content;
 }

@@ -1,26 +1,26 @@
 import { PaletteOptions, createTheme } from "@mui/material/styles";
 
-const USE_BLUE_PRIMARY: PaletteOptions = {
-  primary: {
-    light: "#5BC6FF",
-    main: "#30A2DE",
-    dark: "#11425C",
-  },
-  background: {
-    default: "#2F2E2F",
-  },
-};
+// const USE_BLUE_PRIMARY: PaletteOptions = {
+//   primary: {
+//     light: "#5BC6FF",
+//     main: "#30A2DE",
+//     dark: "#11425C",
+//   },
+//   background: {
+//     default: "#2F2E2F",
+//   },
+// };
 
-const USE_RED_PRIMARY: PaletteOptions = {
-  primary: {
-    light: "red",
-    main: "#e61134",
-    dark: "#5B2626",
-  },
-  background: {
-    default: "#2F2E2F",
-  },
-};
+// const USE_RED_PRIMARY: PaletteOptions = {
+//   primary: {
+//     light: "red",
+//     main: "#e61134",
+//     dark: "#5B2626",
+//   },
+//   background: {
+//     default: "#2F2E2F",
+//   },
+// };
 
 const USE_TEAL_PRIMARY: PaletteOptions = {
   primary: {

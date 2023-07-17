@@ -1,6 +1,5 @@
-import { BoxTypeMap, SxProps, useMediaQuery } from "@mui/material";
+import { SxProps, useMediaQuery } from "@mui/material";
 import Box from "./BoxExtended";
-import { DefaultComponentProps } from "@mui/material/OverridableComponent";
 
 type MediaQueryBoxProps = {
   showIf: string;

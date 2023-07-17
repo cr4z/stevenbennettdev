@@ -1,4 +1,4 @@
-import { Box, ButtonBase, Dialog, Typography, useTheme, useThemeProps } from "@mui/material";
+import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
 import Navbar from "./navbar";
 import { SHOWCASES } from "../showcase/items";
 import { useLocation, useNavigate } from "react-router";

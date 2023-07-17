@@ -26,7 +26,7 @@ export function XNGClockInput<T extends FieldValues>(props: IXNGClock<T>) {
           label={props.label}
           value={props.watch(props.name)}
           onChange={(e: Date | null) => {
-            onChange(e);
+            onChange(e as PathValue<T, Path<T>>);
             if (props.onAfterChange) {
               props.onAfterChange(e);
             }

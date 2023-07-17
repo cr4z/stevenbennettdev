@@ -1,4 +1,4 @@
-import { Box, ButtonBase, Tooltip, Typography, useTheme } from "@mui/material";
+import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
 import { IconRenderer } from "../design_system/icons";
 import { Showcase } from "../showcase/items";
 import { useNavigate } from "react-router";
