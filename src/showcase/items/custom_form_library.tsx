@@ -10,8 +10,9 @@ import XNGButton from "../../fortitude/low-level/button";
 import XNGEnvironmentProvider from "../../fortitude/environment_provider";
 import { ModalDialog } from "../../components/modal_dialog";
 import { useState } from "react";
-import ReactJson from "react-json-view";
 import { ViewCodeOnGithubButton } from "../../components/github_button";
+import JSONPretty from "react-json-pretty";
+import "react-json-pretty/themes/acai.css";
 
 export interface SchoolCampus {
   id: string;
@@ -62,7 +63,10 @@ function CustomFormLibrary(props: { link: string }) {
         </Typography>
 
         <Box sx={{ my: "1rem" }}>
-          <ReactJson enableClipboard={false} src={json!} theme="monokai" />
+          <Box sx={{ fontFamily: "monospace" }}>
+            {/* <JSONTree data={json} theme="tomorrow" /> */}
+            <JSONPretty data={json} />
+          </Box>
         </Box>
 
         <Typography>
