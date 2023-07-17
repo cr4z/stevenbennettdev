@@ -45,9 +45,14 @@ function CustomFormLibrary(props: { link: string }) {
     watch,
     setValue,
     formState: { errors },
+    handleSubmit,
   } = useXNGFormWithValidation<CustomFormValues>({ validationSchema: validation });
 
   const [json, setJson] = useState<object | null>(null);
+
+  function onSubmit(data: CustomFormValues) {
+    setJson(data);
+  }
 
   function ValidSubmitModal() {
     return (
@@ -171,7 +176,14 @@ function CustomFormLibrary(props: { link: string }) {
                 ]}
               />
 
-              <Button variant="cta">Submit</Button>
+              <Button
+                onClick={() => {
+                  handleSubmit(onSubmit)();
+                }}
+                variant="cta"
+              >
+                Submit
+              </Button>
             </Box>
           </Box>
         </Container>
