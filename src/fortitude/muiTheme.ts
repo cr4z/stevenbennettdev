@@ -12,7 +12,8 @@ export const fortitudeTheme = createTheme({
   },
   palette: {
     primary: {
-      main: "#206A7E",
+      // main: "#206A7E",
+      main: "#00cc9c",
     },
   },
   typography: {

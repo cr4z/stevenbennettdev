@@ -13,6 +13,7 @@ import { useState } from "react";
 import { ViewCodeOnGithubButton } from "../../components/github_button";
 import JSONPretty from "react-json-pretty";
 import "react-json-pretty/themes/acai.css";
+import Button from "../../design_system/button";
 
 export interface SchoolCampus {
   id: string;
@@ -176,14 +177,7 @@ function CustomFormLibrary(props: { link: string }) {
                 ]}
               />
 
-              <XNGButton
-                onClick={() => {
-                  handleSubmit(onSubmit)();
-                }}
-                size="large"
-              >
-                Submit
-              </XNGButton>
+              <Button variant="cta">Submit</Button>
             </Box>
           </Box>
         </Container>
