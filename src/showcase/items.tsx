@@ -20,6 +20,7 @@ export enum ShowcaseIDs {
   ChangingHeightBasedOnContent = "9",
   IconographySystem = "10",
   FilteringAlgorithm = "11",
+  TodoShredder = "12",
 }
 
 export type Showcase = {
@@ -161,9 +162,27 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "stevenbennett.dev",
     icon: <ICONS.React />,
-    tags: ["React", "Web Design"],
+    tags: ["React", "Web Design", "WCAG AAA Compliance"],
     component: <StevenBennettDev />,
     id: ShowcaseIDs.StevenBennettDev,
     github: "https://github.com/cr4z/stevenbennettdev",
+  },
+  {
+    title: "todoshredder.com",
+    icon: <ICONS.React />,
+    tags: [
+      "React",
+      "Clean Code",
+      "API",
+      "Firestore",
+      "Database",
+      "React",
+      "SSO Authentication",
+      "High-Speed Optimization",
+      "Live Website",
+    ],
+    component: <></>,
+    id: ShowcaseIDs.TodoShredder,
+    github: "",
   },
 ];
