@@ -17,6 +17,9 @@ export const fortitudeTheme = createTheme({
     },
   },
   typography: {
+    allVariants: {
+      color: "#333",
+    },
     h1: {
       fontFamily: "Roboto",
       fontSize: "96px",

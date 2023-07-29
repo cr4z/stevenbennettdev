@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
 import Navbar from "./navbar";
 import { SHOWCASES } from "../showcase/items";
@@ -28,7 +30,7 @@ function ShowcaseLayout() {
   // useEffects
   useEffect(() => {
     if (isMobile) setSidebarOpen(false);
-  }, []);
+  }, [isMobile]);
 
   return (
     Boolean(showcase) && (
@@ -130,7 +132,7 @@ function ShowcaseLayout() {
                 borderRight: `1px solid ${palette.grey[800]}`,
 
                 transition: "all .4s ease",
-                marginLeft: sidebarOpen ? 0 : "-25rem",
+                marginLeft: sidebarOpen ? 0 : "-21.9rem",
                 paddingRight: sidebarOpen ? 0 : "3rem",
               }}
             >

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Box, Typography, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { useLocation, useNavigate } from "react-router";
@@ -7,6 +8,7 @@ import ContactMenu from "./contact";
 // @ts-ignore
 import { ReactComponent as SBLogo } from "../svgs/logo.svg";
 import Button from "../design_system/button";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const { currentScreenSize, isGreaterThanEqualTo } = useBreakpointHelper();
@@ -50,17 +52,21 @@ function Navbar() {
         }}
       >
         <Box
-          sx={{ display: "flex", alignItems: "center", height: "100%", gap: ".5rem", paddingTop: "5px" }}
+          sx={{
+            a: { textDecoration: "none" },
+          }}
         >
-          <Box sx={{ cursor: "pointer", padding: ".5rem" }} onClick={() => navigate("/")}>
-            <SBLogo />
-          </Box>
+          <Link to="/" style={{ display: "flex", alignItems: "center", paddingTop: "5px" }}>
+            <Box sx={{ cursor: "pointer", padding: ".5rem" }}>
+              <SBLogo />
+            </Box>
 
-          {isGreaterThanEqualTo(650) && (
-            <Typography className="noselect" variant="h4">
-              Steven Bennett
-            </Typography>
-          )}
+            {isGreaterThanEqualTo(650) && (
+              <Typography className="noselect" variant="h4" sx={{ paddingX: ".5rem" }}>
+                Steven Bennett
+              </Typography>
+            )}
+          </Link>
         </Box>
 
         <Box sx={{ display: "flex", minWidth: "265px", justifyContent: "space-between" }}>

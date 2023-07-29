@@ -1,13 +1,14 @@
-import { Box, styled } from "@mui/material";
+import { Box, styled, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string }) {
   const { currentScreenSize } = useBreakpointHelper();
+  const { palette } = useTheme();
 
   function getHeaderHeight() {
     switch (currentScreenSize) {
       case "xs":
-        return "15rem";
+        return "14rem";
       case "sm":
         return "20rem";
       case "md":
@@ -15,22 +16,22 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
       case "lg":
         return "25rem";
       case "xl":
-        return "25rem";
+        return "35rem";
     }
   }
 
   function getHeaderYOffset() {
     switch (currentScreenSize) {
       case "xs":
-        return "0rem";
+        return "-68vh";
       case "sm":
-        return "0rem";
+        return "-8vh";
       case "md":
-        return "-13rem";
+        return "-13vh";
       case "lg":
-        return "-25rem";
+        return "-25vh";
       case "xl":
-        return "-35rem";
+        return "-35vh";
     }
   }
 
@@ -54,11 +55,19 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
             top: 0,
             left: 0,
             position: "absolute",
+            filter: "hue-rotate(10deg)",
           }}
         />
         <Box
-          sx={{ bgcolor: "#00cc9c50", height: "inherit", width: "inherit", top: 0, left: 0, position: "absolute" }}
-        ></Box>
+          sx={{
+            bgcolor: "#00cc9c30",
+            height: "inherit",
+            width: "inherit",
+            top: 0,
+            left: 0,
+            position: "absolute",
+          }}
+        />
       </Box>
     );
   }
@@ -72,7 +81,7 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
       </ParallaxBackground>
       <ParallaxBase>
         <Box sx={{ position: "absolute", width: "100%", mt: getHeaderHeight() }}>
-          <Box sx={{ bgcolor: "#111", mt: "-4px" }}>{props.children}</Box>
+          <Box sx={{ bgcolor: palette.background.default, mt: "-4px" }}>{props.children}</Box>
         </Box>
       </ParallaxBase>
     </ParallaxContainer>
@@ -96,7 +105,7 @@ const ParallaxBase = styled("div")({
 
 const ParallaxBackground = styled("div")({
   position: "absolute",
-  transform: "translateZ(-1px) translateX(-25%) translateY(-20%)",
+  transform: "translateZ(-1px) translateX(-25%) translateY(-22%)",
   width: "205%",
 });
 

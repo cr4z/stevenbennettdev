@@ -29,7 +29,7 @@ const USE_TEAL_PRIMARY: PaletteOptions = {
     dark: "#024d4f",
   },
   background: {
-    default: "#2F2E2F",
+    default: "#2F2F2F",
   },
 };
 
