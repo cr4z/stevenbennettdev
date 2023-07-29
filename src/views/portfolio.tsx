@@ -1,6 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import { SearchControls, SearchResultsView } from "../components/search_controls";
 import { useState } from "react";
+import Slideshow from "../components/slideshow";
 
 function Portfolio() {
   const [queryValue, setQueryValue] = useState<string>("");
@@ -20,6 +21,9 @@ function Portfolio() {
       >
         <Typography variant="h4">My Portfolio</Typography>
         <Typography variant="body1">A collection of work projects, tutorials, and more</Typography>
+
+        <Slideshow />
+
         <SearchControls queryValue={queryValue} onChange={(e) => setQueryValue(e.target.value)} />
         <SearchResultsView queryValue={queryValue} />
       </Box>

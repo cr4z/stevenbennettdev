@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // ts-ignores for svg imports are valid
-import { Box, Container, Grid, Typography, useTheme } from "@mui/material";
+import { Box, ButtonBase, Container, Grid, Typography, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { ICONS, IconRenderer } from "../design_system/icons";
 // @ts-ignore
@@ -8,12 +9,12 @@ import MyLifestyleShot from "../img/lifestyle_green.jpg";
 // @ts-ignore
 import Headshot from "../img/onemore.png";
 import ParallaxHeaderLayout from "../layouts/parallax_layout";
+import { useNavigate } from "react-router";
 
 function Home2() {
   const { isMobile, isGreaterThanEqualTo } = useBreakpointHelper();
   const { palette } = useTheme();
-
-  const LIFESTYLE_IMAGE_HEIGHT = "23rem";
+  const navigate = useNavigate();
 
   return (
     <ParallaxHeaderLayout src={MyLifestyleShot}>
@@ -91,18 +92,22 @@ function Home2() {
               My Skills
             </Typography>
             <Box component="ul" sx={{ display: "flex", gap: ".5rem" }}>
-              <SkillItem name="React" icon={<ICONS.React />} />
-              <SkillItem name="TypeScript" icon={<ICONS.Typescript />} />
-              <SkillItem name="Redux" icon={<ICONS.Redux />} />
-              <SkillItem name="Next.js" icon={<ICONS.Nextjs />} strokeWidth="1px" />
+              <SkillItem onClick={() => navigate("/portfolio/2")} name="React" icon={<ICONS.React />} />
+              <SkillItem
+                onClick={() => navigate("/portfolio/11")}
+                name="TypeScript"
+                icon={<ICONS.Typescript />}
+              />
+              <SkillItem disabled name="Redux" icon={<ICONS.Redux />} />
+              <SkillItem onClick={() => {}} name="Next.js" icon={<ICONS.Nextjs />} strokeWidth="1px" />
             </Box>
             <Typography variant="body1" className="noselect">
               Extra
             </Typography>
             <Box component="ul" sx={{ display: "flex", gap: ".5rem" }}>
-              <SkillItem smaller name="Github" icon={<ICONS.GitHub />} />
-              <SkillItem smaller name="Figma" icon={<ICONS.Figma />} />
-              <SkillItem smaller name="DevOps" icon={<ICONS.DevOps />} />
+              <SkillItem onClick={() => {}} smaller name="Github" icon={<ICONS.GitHub />} />
+              <SkillItem disabled smaller name="Figma" icon={<ICONS.Figma />} />
+              <SkillItem disabled smaller name="DevOps" icon={<ICONS.DevOps />} />
               {/* <SkillItem name=".NET" icon={<TbBrandCSharp />} /> */}
             </Box>
           </Grid>
@@ -121,32 +126,45 @@ function Home2() {
   );
 }
 
-function SkillItem(props: { name: string; icon: JSX.Element; strokeWidth?: string; smaller?: boolean }) {
+function SkillItem(props: {
+  name: string;
+  icon: JSX.Element;
+  strokeWidth?: string;
+  smaller?: boolean;
+  onClick?: () => void;
+  disabled?: boolean;
+}) {
   const { palette } = useTheme();
 
   return (
     <Box component="li">
-      <Box
-        className="noselect"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          borderRadius: "6px",
-          padding: ".5rem",
-          minWidth: "74px",
-        }}
+      <ButtonBase
+        disabled={props.disabled}
+        onClick={() => props.onClick?.call(null)}
+        sx={{ ":hover": { bgcolor: palette.grey[800], borderRadius: "4px", cursor: "pointer" } }}
       >
-        <Typography mb=".5rem" variant="body1">
-          {props.name}
-        </Typography>
-        <IconRenderer
-          strokeWidth={props.strokeWidth}
-          widthHeight={props.smaller ? "2.5rem" : "3rem"}
-          color={palette.text.primary}
-          i={props.icon}
-        />
-      </Box>
+        <Box
+          className="noselect"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            borderRadius: "6px",
+            padding: ".5rem",
+            minWidth: "74px",
+          }}
+        >
+          <Typography mb=".5rem" variant="body1">
+            {props.name}
+          </Typography>
+          <IconRenderer
+            strokeWidth={props.strokeWidth}
+            widthHeight={props.smaller ? "2.5rem" : "3rem"}
+            color={palette.text.primary}
+            i={props.icon}
+          />
+        </Box>
+      </ButtonBase>
     </Box>
   );
 }
