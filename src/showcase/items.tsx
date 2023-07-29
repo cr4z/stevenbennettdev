@@ -6,6 +6,7 @@ import FloresHomeRepair from "./items/floreshomerepair";
 import StevenBennettDev from "./items/stevenbennettdev";
 import dayjs, { Dayjs } from "dayjs";
 import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
+import TodoShredder from "./items/todoshredder";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "0",
@@ -181,7 +182,7 @@ export const SHOWCASES: Showcase[] = [
       "High-Speed Optimization",
       "Live Website",
     ],
-    component: <></>,
+    component: <TodoShredder />,
     id: ShowcaseIDs.TodoShredder,
     github: "",
   },

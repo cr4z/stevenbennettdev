@@ -6,49 +6,17 @@ import { ReactComponent as Headshot } from "../svgs/headshot.svg";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { ICONS, IconRenderer } from "../design_system/icons";
 // @ts-ignore
-import asdf from "../img/lifestyle.jpeg";
+import MyLifestyleShot from "../img/lifestyle.jpg";
+import ParallaxHeaderLayout from "../layouts/parallax_layout";
 
-function Home() {
+function Home2() {
   const { isMobile, isGreaterThanEqualTo } = useBreakpointHelper();
   const { palette } = useTheme();
 
   const LIFESTYLE_IMAGE_HEIGHT = "23rem";
 
   return (
-    <>
-      <Box
-        sx={{
-          position: "relative",
-          minHeight: LIFESTYLE_IMAGE_HEIGHT,
-          maxHeight: LIFESTYLE_IMAGE_HEIGHT,
-          overflow: "hidden",
-          backgroundAttachment: "fixed",
-          backgroundPosition: "50% 100%",
-          backgroundImage: `url(${asdf})`,
-          backgroundSize: "cover",
-        }}
-      >
-        <Box
-          sx={{
-            width: "100%",
-            height: "100%",
-            bgcolor: "rgba(0, 204, 156, 0.6)",
-            position: "absolute",
-            top: 0,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          className="noselect"
-        >
-          <Typography sx={{ ...(!isGreaterThanEqualTo("md") && { fontSize: "60px" }) }} variant="h1">
-            Steven Bennett
-          </Typography>
-          <Typography variant="h5">Developer, architect, learner, team player</Typography>
-        </Box>
-      </Box>
-
+    <ParallaxHeaderLayout src={MyLifestyleShot}>
       <Container maxWidth="xl">
         <Grid container sx={{ paddingTop: "4rem", paddingBottom: "10rem", display: "flex" }}>
           <Grid item xs={12} xl={8} sx={{ display: "flex", justifyContent: "center" }}>
@@ -145,7 +113,7 @@ function Home() {
           </Grid>
         </Grid>
       </Container>
-    </>
+    </ParallaxHeaderLayout>
   );
 }
 
@@ -179,4 +147,4 @@ function SkillItem(props: { name: string; icon: JSX.Element; strokeWidth?: strin
   );
 }
 
-export default Home;
+export default Home2;
