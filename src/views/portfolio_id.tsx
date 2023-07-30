@@ -21,7 +21,6 @@ function ShowcaseLayout() {
 
   const showcase = SHOWCASES.find((i) => i.id === location.pathname.split("/")[2]);
   const SIDEBAR_EXPANDED = isMobile ? "100vw" : "25rem";
-  const SIDEBAR_CLOSED = "1rem";
 
   // states
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
