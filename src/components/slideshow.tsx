@@ -21,13 +21,13 @@ export default function Slideshow() {
       src: qwer,
       title: "TodoShredder",
       description: "View my live database implementing single sign-on functionality!",
-      href: "https://www.todoshredder.com/",
+      href: "/portfolio/12",
     },
     {
       src: Qwer,
       title: "Flores Home Repair",
       description: "View work I did for a client using Next.js on floreshomerepair.com!",
-      href: "https://floreshomerepair.com/",
+      href: "/portfolio/0",
     },
     {
       src: Asdf,
