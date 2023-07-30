@@ -1,16 +1,12 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import { ICONS, IconRenderer } from "../design_system/icons";
+import { Box } from "@mui/material";
 import Input from "../design_system/input";
 import { SHOWCASES, Showcase } from "../showcase/items";
-import Button from "../design_system/button";
 import { ShowcaseDetailsInteractive } from "./showcase_item";
 
 export function SearchControls(props: {
   queryValue: string;
   onChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
 }) {
-  const { palette } = useTheme();
-
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem", width: "100%" }}>
       <Input
