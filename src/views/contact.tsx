@@ -12,7 +12,7 @@ function ContactMenu() {
       </Typography>
       <ContactOption
         rotate
-        text="830-220-1682"
+        text="(830) 220-1682"
         icon={<ICONS.Phone />}
         onClick={() => (window.location.href = `tel:830-220-1682`)}
       />

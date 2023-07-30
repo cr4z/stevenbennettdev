@@ -1,8 +1,8 @@
-import { Box, styled, useTheme } from "@mui/material";
+import { Box, Typography, styled, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string }) {
-  const { currentScreenSize } = useBreakpointHelper();
+  const { currentScreenSize, isGreaterThanEqualTo } = useBreakpointHelper();
   const { palette } = useTheme();
 
   function getHeaderHeight() {
@@ -56,6 +56,7 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
             left: 0,
             position: "absolute",
             filter: "hue-rotate(10deg)",
+            transform: "rotate(1.4deg)",
           }}
         />
         <Box
@@ -68,6 +69,21 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
             position: "absolute",
           }}
         />
+        <Box
+          className="noselect"
+          sx={{
+            height: "inherit",
+            width: "inherit",
+            top: "calc(-45rem + 20vw *3.3)",
+            left: "50%",
+            position: "absolute",
+          }}
+        >
+          <Typography variant="h1" sx={{ fontSize: "13rem" }}>
+            Steven Bennett
+          </Typography>
+          <Typography variant="h2">Developer, architect, learner, team player</Typography>
+        </Box>
       </Box>
     );
   }
