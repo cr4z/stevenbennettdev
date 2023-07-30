@@ -19,7 +19,7 @@ export function SearchControls(props: {
         value={props.queryValue}
         onChange={props.onChange}
       />
-      <Box>
+      {/* <Box>
         <Button variant="contained" sx={{ gap: "6px", mt: ".5rem" }}>
           <IconRenderer widthHeight="1rem" i={<ICONS.PriceTag />} />
           Tags
@@ -27,7 +27,7 @@ export function SearchControls(props: {
       </Box>
       <Typography className="noselect" variant="subtitle1" color={palette.grey[400]}>
         Filtering by no tags currently
-      </Typography>
+      </Typography> */}
     </Box>
   );
 }

@@ -1,35 +1,56 @@
-// Import Swiper React components
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
+import { Navigation, Pagination, EffectCoverflow, Thumbs, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Box, Typography, useTheme } from "@mui/material";
+// @ts-ignore
+import Asdf from "../img/forms.png";
+// @ts-ignore
+import Qwer from "../img/fhr2.png";
+// @ts-ignore
+import qwer from "../img/todoshredder_mini.png";
 
-// import required modules
-import { EffectCoverflow, Pagination } from "swiper/modules";
-import { Box } from "@mui/material";
-
-type Slide = { src: string };
+type Slide = { src: string; title: string; description: string; href: string };
 
 export default function Slideshow() {
   const SLIDES: Slide[] = [
-    { src: "https://swiperjs.com/demos/images/nature-2.jpg" },
-    { src: "https://swiperjs.com/demos/images/nature-3.jpg" },
-    { src: "https://swiperjs.com/demos/images/nature-4.jpg" },
-    { src: "https://swiperjs.com/demos/images/nature-5.jpg" },
-    { src: "https://swiperjs.com/demos/images/nature-6.jpg" },
+    {
+      src: qwer,
+      title: "TodoShredder",
+      description: "View my live database implementing single sign-on functionality!",
+      href: "https://www.todoshredder.com/",
+    },
+    {
+      src: Qwer,
+      title: "Flores Home Repair",
+      description: "View work I did for a client using Next.js on floreshomerepair.com!",
+      href: "https://floreshomerepair.com/",
+    },
+    {
+      src: Asdf,
+      title: "Form Component Collection",
+      description: "View a collection of form components I've built for a team!",
+      href: "/portfolio/11",
+    },
   ];
+
+  const { palette } = useTheme();
 
   return (
     <Box
       sx={{
         ".swiper-slide": {
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          width: "300px",
-          height: "300px",
+          maxWidth: "300px",
+          height: "400px",
         },
+        "*": { color: "white" },
+        ".swiper-pagination-bullet-active": {
+          bgcolor: palette.primary.main,
+        },
+        minWidth: "100%",
       }}
     >
       <Swiper
@@ -44,12 +65,46 @@ export default function Slideshow() {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination]}
+        modules={[EffectCoverflow, Pagination, Navigation, A11y, Thumbs]}
+        navigation
+        pagination={{ clickable: true }}
+        style={{ height: "500px", minWidth: "100%" }}
       >
         {SLIDES.map((s, i) => (
-          <SwiperSlide>
-            <Box key={i} component="img" src={s.src} sx={{ width: "100%", height: "100%" }} />
+          <SwiperSlide key={i}>
+            <a href={s.href} target="_blank" style={{ textDecoration: "none" }}>
+              <Box
+                sx={{
+                  width: "100%",
+                  minHeight: "100%",
+                  backgroundImage: `url(${s.src})`,
+                  backgroundSize: "cover",
+                  // add black effect
+                  "::after": {
+                    position: "absolute",
+                    content: '""',
+                    left: 0,
+                    top: 0,
+                    height: "100%",
+                    width: "100%",
+                    background: "linear-gradient(transparent, #111)",
+                  },
+                  // move text below
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  // go behind text
+                  zIndex: 1,
+                }}
+              >
+                <Box sx={{ zIndex: 2, padding: "1rem" }}>
+                  <Typography gutterBottom variant="h5">
+                    {s.title}
+                  </Typography>
+                  <Typography variant="body1">{s.description}</Typography>
+                </Box>
+              </Box>
+            </a>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -7,6 +7,7 @@ import StevenBennettDev from "./items/stevenbennettdev";
 import dayjs, { Dayjs } from "dayjs";
 import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
+import DougZonePodcast from "./items/dougzonepodcast";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "0",
@@ -22,6 +23,7 @@ export enum ShowcaseIDs {
   IconographySystem = "10",
   FilteringAlgorithm = "11",
   TodoShredder = "12",
+  DougZonePodcast = "13",
 }
 
 export type Showcase = {
@@ -44,11 +46,11 @@ export const SHOWCASES: Showcase[] = [
     title: "Custom Form Library",
     description: (
       <Typography>
-        This is an entirely custom form library that is only one cog of a larger design system I built
-        called Fortitude. I created this system for a team of 4 developers, and it allows for
-        straightforward & simple creation of forms in a way that <strong>scales</strong>. It's intuitive;
-        intentionally designed to be used without having to refer to documentation by leveraging
-        intellisense. Click the GitHub button to see it in action!
+        This is an entirely custom form library that is only one cog of a larger design system I built called
+        Fortitude. I created this system for a team of 4 developers, and it allows for straightforward &
+        simple creation of forms in a way that <strong>scales</strong>. It's intuitive; intentionally designed
+        to be used without having to refer to documentation by leveraging intellisense. Click the GitHub
+        button to see it in action!
       </Typography>
     ),
     descriptionPlainText:
@@ -86,14 +88,14 @@ export const SHOWCASES: Showcase[] = [
       "This was my first freelance project I had ever done professionally, built with Next.js. I've sinced gotten a little bit better at image optimization, but to this day it remains one of my finest achievements in SEO optimization! When typing 'flores home repair' into Google, floreshomerepair.com should be at the very top. Even variations such as 'Flores House Renovation' should work. It's also visible outside of the United States; as far as France!",
     dateCreated: dayjs(new Date(2022, 3, 24)),
   },
-  {
-    title: "Pure HTML Challenge: Financial Dashboard",
-    icon: <ICONS.HTML />,
-    tags: ["Web Design", "chart.js", "HTML, JavaScript and CSS"],
-    id: ShowcaseIDs.FinancialDashboard,
-    github: "",
-    component: <></>,
-  },
+  // {
+  //   title: "Pure HTML Challenge: Financial Dashboard",
+  //   icon: <ICONS.HTML />,
+  //   tags: ["Web Design", "chart.js", "HTML, JavaScript and CSS"],
+  //   id: ShowcaseIDs.FinancialDashboard,
+  //   github: "",
+  //   component: <></>,
+  // },
   {
     title: "Sequential Fade-In Effect Across Multiple Divs",
     icon: <ICONS.React />,
@@ -102,14 +104,15 @@ export const SHOWCASES: Showcase[] = [
     github: "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
     component: <Showcase_SequentialFadeIn />,
   },
-  // {
-  //   title: "dougzonepodcast.com",
-  //   icon: <ICONS.React />,
-  //   tags: ["React", "Web Design", "vite", "react-router", "Online Website"],
-  //   id: "",
-  //   github: "",
-  //   component: <></>,
-  // },
+
+  {
+    title: "dougzonepodcast.com",
+    icon: <ICONS.React />,
+    tags: ["React", "Web Design", "vite", "react-router", "Online Website"],
+    id: ShowcaseIDs.DougZonePodcast,
+    github: "https://github.com/cr4z/dzp-vite",
+    component: <DougZonePodcast />,
+  },
   // {
   //   title: "React useMemo Demo",
   //   icon: <ICONS.React />,
@@ -118,38 +121,38 @@ export const SHOWCASES: Showcase[] = [
   //   github: "",
   //   component: <></>,
   // },
-  {
-    title: "Elegant & Safe: Modifying deeply-nested state in React",
-    icon: <ICONS.React />,
-    tags: ["React", "Custom Algorithm"],
-    id: ShowcaseIDs.EditSessionAlgorithm,
-    github: "",
-    component: <></>,
-  },
-  {
-    title: "Custom Hooks in React",
-    icon: <ICONS.React />,
-    tags: ["React Fundamentals"],
-    id: ShowcaseIDs.CustomHooksInReact,
-    github: "",
-    component: <></>,
-  },
-  {
-    title: "Popover Menu: Seamlessly Changing Height Based on Content",
-    icon: <ICONS.React />,
-    tags: ["React", "Web Design"],
-    id: ShowcaseIDs.ChangingHeightBasedOnContent,
-    github: "",
-    component: <></>,
-  },
-  {
-    title: "Design System: Iconography",
-    icon: <ICONS.React />,
-    tags: ["React", "Scalable Architecture"],
-    id: ShowcaseIDs.IconographySystem,
-    github: "",
-    component: <></>,
-  },
+  // {
+  //   title: "Elegant & Safe: Modifying deeply-nested state in React",
+  //   icon: <ICONS.React />,
+  //   tags: ["React", "Custom Algorithm"],
+  //   id: ShowcaseIDs.EditSessionAlgorithm,
+  //   github: "",
+  //   component: <></>,
+  // },
+  // {
+  //   title: "Custom Hooks in React",
+  //   icon: <ICONS.React />,
+  //   tags: ["React Fundamentals"],
+  //   id: ShowcaseIDs.CustomHooksInReact,
+  //   github: "",
+  //   component: <></>,
+  // },
+  // {
+  //   title: "Popover Menu: Seamlessly Changing Height Based on Content",
+  //   icon: <ICONS.React />,
+  //   tags: ["React", "Web Design"],
+  //   id: ShowcaseIDs.ChangingHeightBasedOnContent,
+  //   github: "",
+  //   component: <></>,
+  // },
+  // {
+  //   title: "Design System: Iconography",
+  //   icon: <ICONS.React />,
+  //   tags: ["React", "Scalable Architecture"],
+  //   id: ShowcaseIDs.IconographySystem,
+  //   github: "",
+  //   component: <></>,
+  // },
   {
     title: "Common Algorithm: Multiple Filters",
     description:

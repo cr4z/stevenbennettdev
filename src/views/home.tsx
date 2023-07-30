@@ -99,13 +99,23 @@ function Home2() {
                 icon={<ICONS.Typescript />}
               />
               <SkillItem disabled name="Redux" icon={<ICONS.Redux />} />
-              <SkillItem onClick={() => {}} name="Next.js" icon={<ICONS.Nextjs />} strokeWidth="1px" />
+              <SkillItem
+                onClick={() => navigate("/portfolio/0")}
+                name="Next.js"
+                icon={<ICONS.Nextjs />}
+                strokeWidth="1px"
+              />
             </Box>
             <Typography variant="body1" className="noselect">
               Extra
             </Typography>
             <Box component="ul" sx={{ display: "flex", gap: ".5rem" }}>
-              <SkillItem onClick={() => {}} smaller name="Github" icon={<ICONS.GitHub />} />
+              <SkillItem
+                onClick={() => window.open("https://github.com/cr4z")}
+                smaller
+                name="Github"
+                icon={<ICONS.GitHub />}
+              />
               <SkillItem disabled smaller name="Figma" icon={<ICONS.Figma />} />
               <SkillItem disabled smaller name="DevOps" icon={<ICONS.DevOps />} />
               {/* <SkillItem name=".NET" icon={<TbBrandCSharp />} /> */}

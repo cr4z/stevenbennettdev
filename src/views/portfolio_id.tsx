@@ -59,7 +59,7 @@ function ShowcaseLayout() {
               </>
             )}
             <Typography variant="body2">Tagged:</Typography>
-            <Box sx={{ display: "flex", gap: ".4rem" }}>
+            <Box sx={{ display: "flex", gap: ".4rem", flexWrap: "wrap" }}>
               {showcase?.tags.map((tag, i) => (
                 <Typography
                   key={i}
