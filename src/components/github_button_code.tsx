@@ -1,7 +1,7 @@
 import Button from "../design_system/button";
 import { ICONS, IconRenderer } from "../design_system/icons";
 
-export function ViewGithubDirectlyButton() {
+export function ViewCodeOnGithubButton(props: { link: string }) {
   return (
     <Button
       sx={{
@@ -13,10 +13,10 @@ export function ViewGithubDirectlyButton() {
       }}
       larger
       variant="cta"
-      href={"https://github.com/cr4z"}
+      href={props.link}
     >
       <IconRenderer widthHeight="2rem" i={<ICONS.GitHub />} />
-      View GitHub Directly
+      View Code on GitHub
     </Button>
   );
 }

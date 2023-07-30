@@ -12,22 +12,22 @@ function ContactMenu() {
       </Typography>
       <ContactOption
         rotate
-        text="Phone: 830-220-1682"
+        text="830-220-1682"
         icon={<ICONS.Phone />}
         onClick={() => (window.location.href = `tel:830-220-1682`)}
       />
       <ContactOption
-        text="Email"
+        text="steven@stevenbennett.dev"
         icon={<ICONS.Email />}
         onClick={() => (window.location.href = `mailto:stevencr7zz@gmail.com`)}
       />
       <ContactOption
-        text="LinkedIn"
+        text="Steven Bennett on LinkedIn"
         icon={<ICONS.LinkedIn />}
         onClick={() => window.open("https://www.linkedin.com/in/sc-bennett/", "_blank")}
       />
       <ContactOption
-        text="GitHub"
+        text="cr4z on GitHub"
         icon={<ICONS.GitHub />}
         onClick={() => window.open("https://github.com/cr4z", "_blank")}
       />

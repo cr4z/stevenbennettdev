@@ -9,10 +9,10 @@ import dayjs from "dayjs";
 import XNGEnvironmentProvider from "../../fortitude/environment_provider";
 import { ModalDialog } from "../../components/modal_dialog";
 import { useState } from "react";
-import { ViewCodeOnGithubButton } from "../../components/github_button";
 import JSONPretty from "react-json-pretty";
 import "react-json-pretty/themes/acai.css";
 import Button from "../../design_system/button";
+import { ViewCodeOnGithubButton } from "../../components/github_button_code";
 
 export interface SchoolCampus {
   id: string;

@@ -2,6 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import { SearchControls, SearchResultsView } from "../components/search_controls";
 import { useState } from "react";
 import Slideshow from "../components/slideshow";
+import { ViewGithubDirectlyButton } from "../components/github_button";
 
 function Portfolio() {
   const [queryValue, setQueryValue] = useState<string>("");
@@ -23,6 +24,10 @@ function Portfolio() {
         <Typography mb="2rem" variant="body1">
           A collection of work projects, tutorials, and more
         </Typography>
+
+        <Box mb="1rem">
+          <ViewGithubDirectlyButton />
+        </Box>
 
         <Slideshow />
 

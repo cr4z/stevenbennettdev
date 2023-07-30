@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { BackButton } from "../components/button_back";
 import { ModalDialog } from "../components/modal_dialog";
-import { ViewCodeOnGithubButton } from "../components/github_button";
+import { ViewCodeOnGithubButton } from "../components/github_button_code";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();

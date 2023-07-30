@@ -29,9 +29,9 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
       case "md":
         return "-13vh";
       case "lg":
-        return "-25vh";
+        return "-40vh";
       case "xl":
-        return "-35vh";
+        return "-50vh";
     }
   }
 
