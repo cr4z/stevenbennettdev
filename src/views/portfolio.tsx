@@ -8,7 +8,7 @@ function Portfolio() {
   const [queryValue, setQueryValue] = useState<string>("");
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" sx={{overflow: "hidden"}}>
       <Box
         sx={{
           display: "flex",

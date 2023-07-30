@@ -20,7 +20,8 @@ function ShowcaseLayout() {
   const navigate = useNavigate();
 
   const showcase = SHOWCASES.find((i) => i.id === location.pathname.split("/")[2]);
-  const SIDEBAR_EXPANDED = "25rem";
+  const SIDEBAR_EXPANDED = isMobile ? "100vw" : "25rem";
+  const SIDEBAR_CLOSED = "1rem";
 
   // states
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
@@ -94,7 +95,7 @@ function ShowcaseLayout() {
               display: "flex",
             }}
           >
-            <BackButton onClick={() => navigate("/portfolio")} />
+            {!isMobile && <BackButton onClick={() => navigate("/portfolio")} />}
             <Box>
               <Box
                 sx={{
@@ -132,7 +133,7 @@ function ShowcaseLayout() {
                 borderRight: `1px solid ${palette.grey[800]}`,
 
                 transition: "all .4s ease",
-                marginLeft: sidebarOpen ? 0 : "-21.9rem",
+                marginLeft: sidebarOpen ? 0 : isMobile ? "-90vw" : "-21.9rem",
                 paddingRight: sidebarOpen ? 0 : "3rem",
               }}
             >

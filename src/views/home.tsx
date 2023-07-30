@@ -5,11 +5,13 @@ import { Box, ButtonBase, Container, Grid, Typography, useTheme } from "@mui/mat
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { ICONS, IconRenderer } from "../design_system/icons";
 // @ts-ignore
-import MyLifestyleShot from "../img/lifestyle_green.jpg";
+import MyLifestyleShot from "../img/lifestyle_rotated.jpg";
 // @ts-ignore
 import Headshot from "../img/onemore.png";
 import ParallaxHeaderLayout from "../layouts/parallax_layout";
 import { useNavigate } from "react-router";
+import { ViewGithubDirectlyButton } from "../components/github_button";
+import Button from "../design_system/button";
 
 function Home2() {
   const { isMobile, isGreaterThanEqualTo } = useBreakpointHelper();
@@ -131,6 +133,26 @@ function Home2() {
             </Box>
           </Grid>
         </Grid>
+
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            paddingBottom: "10rem",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Typography mb="2rem" variant="h6">
+            Ready to explore?
+          </Typography>
+          <Box sx={{ display: "flex", gap: "2rem" }}>
+            <ViewGithubDirectlyButton grey />
+            <Button larger onClick={() => navigate("/portfolio")}>
+              View Portfolio
+            </Button>
+          </Box>
+        </Box>
       </Container>
     </ParallaxHeaderLayout>
   );

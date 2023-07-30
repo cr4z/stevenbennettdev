@@ -2,44 +2,16 @@ import { Box, Typography, styled, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string }) {
-  const { currentScreenSize, isGreaterThanEqualTo } = useBreakpointHelper();
   const { palette } = useTheme();
-
-  function getHeaderHeight() {
-    switch (currentScreenSize) {
-      case "xs":
-        return "14rem";
-      case "sm":
-        return "20rem";
-      case "md":
-        return "25rem";
-      case "lg":
-        return "25rem";
-      case "xl":
-        return "35rem";
-    }
-  }
-
-  function getHeaderYOffset() {
-    switch (currentScreenSize) {
-      case "xs":
-        return "-68vh";
-      case "sm":
-        return "-8vh";
-      case "md":
-        return "-13vh";
-      case "lg":
-        return "-40vh";
-      case "xl":
-        return "-50vh";
-    }
-  }
+  const { getHeaderHeight, getNameOffsetY, getNameOffsetX, getHeaderYOffset, getNameSize } =
+    useResponsiveStyles();
+  const { isGreaterThanEqualTo, isMobile } = useBreakpointHelper();
 
   function ParallaxHeaderImage() {
     return (
       <Box
         sx={{
-          height: "130rem",
+          height: "160rem",
           width: "100%",
           position: "relative",
         }}
@@ -56,7 +28,6 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
             left: 0,
             position: "absolute",
             filter: "hue-rotate(10deg)",
-            transform: "rotate(1.4deg)",
           }}
         />
         <Box
@@ -74,15 +45,23 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
           sx={{
             height: "inherit",
             width: "inherit",
-            top: "calc(-45rem + 20vw *3.3)",
-            left: "50%",
+            ...(isGreaterThanEqualTo("lg")
+              ? { top: `calc(${getNameOffsetY()} + 20vw * 3.2)`, left: getNameOffsetX() }
+              : {
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  left: "-1rem",
+                  top: isGreaterThanEqualTo("md") ? "-46rem" : isMobile ? "-58rem" : "-50rem",
+                }),
             position: "absolute",
           }}
         >
-          <Typography variant="h1" sx={{ fontSize: "13rem" }}>
+          <Typography variant="h1" sx={{ fontSize: getNameSize() }}>
             Steven Bennett
           </Typography>
-          <Typography variant="h2">Developer, architect, learner, team player</Typography>
+          <Typography variant={isMobile ? "h3" : "h2"} sx={{textAlign: "center"}}>Developer, architect, learner, team player</Typography>
         </Box>
       </Box>
     );
@@ -124,5 +103,100 @@ const ParallaxBackground = styled("div")({
   transform: "translateZ(-1px) translateX(-25%) translateY(-22%)",
   width: "205%",
 });
+
+interface ResponsiveStyles {
+  getHeaderHeight: () => string;
+  getHeaderYOffset: () => string;
+  getNameOffsetY: () => string;
+  getNameSize: () => string;
+  getNameOffsetX: () => string;
+}
+
+function useResponsiveStyles(): ResponsiveStyles {
+  const { currentScreenSize } = useBreakpointHelper();
+
+  function getHeaderHeight() {
+    switch (currentScreenSize) {
+      case "xs":
+        return "13rem";
+      case "sm":
+        return "20rem";
+      case "md":
+        return "25rem";
+      case "lg":
+        return "25rem";
+      case "xl":
+        return "35rem";
+    }
+  }
+
+  function getHeaderYOffset() {
+    switch (currentScreenSize) {
+      case "xs":
+        return "5rem";
+      case "sm":
+        return "8rem";
+      case "md":
+        return "-6vh";
+      case "lg":
+        return "-30vh";
+      case "xl":
+        return "-40vh";
+    }
+  }
+
+  function getNameOffsetY() {
+    switch (currentScreenSize) {
+      case "xs":
+        return "-31vh";
+      case "sm":
+        return "-29vh";
+      case "md":
+        return "-36vh";
+      case "lg":
+        return "-54vh";
+      case "xl":
+        return "-70vh";
+    }
+  }
+
+  function getNameOffsetX() {
+    switch (currentScreenSize) {
+      case "xs":
+        return "40%";
+      case "sm":
+        return "20%";
+      case "md":
+        return "40%";
+      case "lg":
+        return "50%";
+      case "xl":
+        return "50%";
+    }
+  }
+
+  function getNameSize() {
+    switch (currentScreenSize) {
+      case "xs":
+        return "7rem";
+      case "sm":
+        return "10rem";
+      case "md":
+        return "10rem";
+      case "lg":
+        return "10rem";
+      case "xl":
+        return "13rem";
+    }
+  }
+
+  return {
+    getHeaderHeight: getHeaderHeight,
+    getHeaderYOffset: getHeaderYOffset,
+    getNameOffsetY: getNameOffsetY,
+    getNameSize: getNameSize,
+    getNameOffsetX: getNameOffsetX,
+  };
+}
 
 export default ParallaxHeaderLayout;
