@@ -1,6 +1,9 @@
 import { Box, Typography } from "@mui/material";
+import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
-export default function ClicKToViewWebsite(props: { src: string, href: string }) {
+export default function ClicKToViewWebsite(props: { src: string; href: string }) {
+  const { isMobile } = useBreakpointHelper();
+
   return (
     <a href={props.href} target="_blank" rel="noopener noreferrer">
       <Box sx={{ position: "relative", width: "100%", height: "100%", overflow: "hidden" }}>
@@ -28,7 +31,7 @@ export default function ClicKToViewWebsite(props: { src: string, href: string })
         >
           <Typography
             className="noselect"
-            variant="h3"
+            variant={isMobile ? "h4" : "h3"}
             sx={{ minWidth: "28rem", display: "flex", justifyContent: "center" }}
           >
             Click to view website

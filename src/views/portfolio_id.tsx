@@ -132,7 +132,7 @@ function ShowcaseLayout() {
                 borderRight: `1px solid ${palette.grey[800]}`,
 
                 transition: "all .4s ease",
-                marginLeft: sidebarOpen ? 0 : isMobile ? "-90vw" : "-21.9rem",
+                marginLeft: sidebarOpen ? 0 : isMobile ? "calc(-100vw + 3.1rem)" : "-21.9rem",
                 paddingRight: sidebarOpen ? 0 : "3rem",
               }}
             >
