@@ -16,10 +16,18 @@ export function useBreakpointHelper(): IBreakpointerHelper {
 
   const currentScreenSize = isXl ? "xl" : isLg ? "lg" : isMd ? "md" : isSm ? "sm" : "xs";
 
-  return { isMobile: isMobile, isGreaterThanEqualTo: isGreaterEqual, currentScreenSize: currentScreenSize };
+  const isUnder400 = useMediaQuery("(max-width:400px)");
+
+  return {
+    isUnder400: isUnder400,
+    isMobile: isMobile,
+    isGreaterThanEqualTo: isGreaterEqual,
+    currentScreenSize: currentScreenSize,
+  };
 }
 
 interface IBreakpointerHelper {
+  isUnder400: boolean;
   isMobile: boolean;
   isGreaterThanEqualTo: (breakpoint: number | Breakpoint) => boolean;
   currentScreenSize: Breakpoint;

@@ -6,7 +6,7 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
   const { palette } = useTheme();
   const { getHeaderHeight, getNameOffsetY, getNameOffsetX, getHeaderYOffset, getNameSize } =
     useResponsiveStyles();
-  const { isGreaterThanEqualTo, isMobile } = useBreakpointHelper();
+  const { isGreaterThanEqualTo, isMobile, isUnder400 } = useBreakpointHelper();
 
   function ParallaxHeaderImage() {
     return (
@@ -53,8 +53,15 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
                   justifyContent: "center",
                   alignItems: "center",
                   flexDirection: "column",
-                  left: "-1rem",
-                  top: isGreaterThanEqualTo("md") ? "-46rem" : isMobile ? "-58rem" : "-50rem",
+                  top:
+                    // Todo: As a last minute addition this isn't on par with my standards, I will refactor for readability later.
+                    isGreaterThanEqualTo("md")
+                      ? "-46rem"
+                      : isMobile
+                      ? isUnder400
+                        ? "-52rem"
+                        : "-58rem"
+                      : "-50rem",
                 }),
             position: "absolute",
           }}
@@ -119,8 +126,7 @@ interface ResponsiveStyles {
 }
 
 function useResponsiveStyles(): ResponsiveStyles {
-  const { currentScreenSize } = useBreakpointHelper();
-  const isResiPhone = useMediaQuery("(max-width:400px)");
+  const { currentScreenSize, isUnder400 } = useBreakpointHelper();
 
   function getHeaderHeight() {
     switch (currentScreenSize) {
@@ -140,7 +146,7 @@ function useResponsiveStyles(): ResponsiveStyles {
   function getHeaderYOffset() {
     switch (currentScreenSize) {
       case "xs":
-        return isResiPhone ? "16rem" : "9rem";
+        return isUnder400 ? "16rem" : "9rem";
       case "sm":
         return "8rem";
       case "md":
