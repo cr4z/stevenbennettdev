@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Box, Typography, styled, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography, styled, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string }) {
