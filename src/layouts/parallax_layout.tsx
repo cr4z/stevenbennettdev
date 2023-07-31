@@ -1,4 +1,5 @@
-import { Box, Typography, styled, useTheme } from "@mui/material";
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { Box, Typography, styled, useMediaQuery, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string }) {
@@ -6,6 +7,7 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
   const { getHeaderHeight, getNameOffsetY, getNameOffsetX, getHeaderYOffset, getNameSize } =
     useResponsiveStyles();
   const { isGreaterThanEqualTo, isMobile } = useBreakpointHelper();
+  const thm = useTheme();
 
   function ParallaxHeaderImage() {
     return (
@@ -119,6 +121,7 @@ interface ResponsiveStyles {
 
 function useResponsiveStyles(): ResponsiveStyles {
   const { currentScreenSize } = useBreakpointHelper();
+  const isResiPhone = useMediaQuery("(max-width:400px)");
 
   function getHeaderHeight() {
     switch (currentScreenSize) {
@@ -138,7 +141,7 @@ function useResponsiveStyles(): ResponsiveStyles {
   function getHeaderYOffset() {
     switch (currentScreenSize) {
       case "xs":
-        return "9rem";
+        return isResiPhone ? "16rem" : "9rem";
       case "sm":
         return "8rem";
       case "md":
