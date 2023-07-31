@@ -138,7 +138,7 @@ function useResponsiveStyles(): ResponsiveStyles {
   function getHeaderYOffset() {
     switch (currentScreenSize) {
       case "xs":
-        return "5rem";
+        return "9rem";
       case "sm":
         return "8rem";
       case "md":
