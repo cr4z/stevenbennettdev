@@ -7,7 +7,6 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
   const { getHeaderHeight, getNameOffsetY, getNameOffsetX, getHeaderYOffset, getNameSize } =
     useResponsiveStyles();
   const { isGreaterThanEqualTo, isMobile } = useBreakpointHelper();
-  const thm = useTheme();
 
   function ParallaxHeaderImage() {
     return (
