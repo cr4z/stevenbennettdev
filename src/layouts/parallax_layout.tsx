@@ -61,7 +61,12 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
           <Typography variant="h1" sx={{ fontSize: getNameSize() }}>
             Steven Bennett
           </Typography>
-          <Typography variant={isMobile ? "h3" : "h2"} sx={{textAlign: "center"}}>Developer, architect, learner, team player</Typography>
+          <Typography
+            variant={isMobile ? "h4" : "h2"}
+            sx={{ textAlign: "center", width: "60rem", ...(isMobile ? { fontSize: "3rem" } : {}) }}
+          >
+            Developer, architect, learner, team player
+          </Typography>
         </Box>
       </Box>
     );
