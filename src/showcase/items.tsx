@@ -46,11 +46,13 @@ export const SHOWCASES: Showcase[] = [
     title: "Custom Form Library",
     description: (
       <Typography>
-        This is an entirely custom form library that is only one cog of a larger design system I built called
-        Fortitude. I created this system for a team of 4 developers, and it allows for straightforward &
-        simple creation of forms in a way that <strong>scales</strong>. It's intuitive; intentionally designed
-        to be used without having to refer to documentation by leveraging intellisense. Click the GitHub
-        button to see it in action!
+        This is an entirely custom form library that is only one cog of a larger
+        design system I built called Fortitude. I created this system for a team
+        of 4 developers, and it allows for straightforward & simple creation of
+        forms in a way that <strong>scales</strong>. It's intuitive;
+        intentionally designed to be used without having to refer to
+        documentation by leveraging intellisense. Click the GitHub button to see
+        it in action!
       </Typography>
     ),
     descriptionPlainText:
@@ -80,7 +82,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "floreshomerepair.com",
     icon: <ICONS.Nextjs />,
-    tags: ["Next.js", "Web Design", "Online Website", "SEO"],
+    tags: ["Next.js", "Web Design", "Online Website", "SEO", "Mobile-First"],
     id: ShowcaseIDs.FloresHomeRepair,
     github: "https://github.com/cr4z/flores-home-repair",
     component: <FloresHomeRepair />,
@@ -101,7 +103,8 @@ export const SHOWCASES: Showcase[] = [
     icon: <ICONS.React />,
     tags: ["React", "Web Design", "useMemo"],
     id: ShowcaseIDs.SequentialFadeIn,
-    github: "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
+    github:
+      "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
     component: <Showcase_SequentialFadeIn />,
   },
 
@@ -160,13 +163,14 @@ export const SHOWCASES: Showcase[] = [
     icon: <ICONS.React />,
     tags: ["React", "Custom Algorithm"],
     id: ShowcaseIDs.FilteringAlgorithm,
-    github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
+    github:
+      "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
     component: <FiltersDemo />,
   },
   {
     title: "stevenbennett.dev",
     icon: <ICONS.React />,
-    tags: ["React", "Web Design", "WCAG AAA Compliance"],
+    tags: ["React", "Web Design", "Mobile-First"],
     component: <StevenBennettDev />,
     id: ShowcaseIDs.StevenBennettDev,
     github: "https://github.com/cr4z/stevenbennettdev",
@@ -184,6 +188,8 @@ export const SHOWCASES: Showcase[] = [
       "SSO Authentication",
       "High-Speed Optimization",
       "Live Website",
+      "WCAG AAA Compliance",
+      "Mobile-First",
     ],
     component: <TodoShredder />,
     id: ShowcaseIDs.TodoShredder,

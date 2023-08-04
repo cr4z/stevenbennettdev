@@ -76,7 +76,7 @@ function CustomFormLibrary(props: { link: string }) {
         </Typography>
 
         <Box sx={{ display: "flex", justifyContent: "flex-end", mt: "1rem" }}>
-          <ViewCodeOnGithubButton link={props.link} />
+          <ViewCodeOnGithubButton href={props.link} />
         </Box>
       </ModalDialog>
     );

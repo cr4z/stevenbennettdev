@@ -16,7 +16,7 @@ export function ViewGithubDirectlyButton(props: { grey?: boolean }) {
       href={"https://github.com/cr4z"}
     >
       <IconRenderer widthHeight="2rem" i={<ICONS.GitHub />} />
-      View GitHub Directly
+      View My GitHub Directly
     </Button>
   );
 }

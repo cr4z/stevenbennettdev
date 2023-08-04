@@ -72,7 +72,7 @@ function ShowcaseLayout() {
             </Box>
 
             <Box mt="1rem" sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <ViewCodeOnGithubButton link={showcase?.github!} />
+              <ViewCodeOnGithubButton href={showcase?.github!} />
             </Box>
           </Box>
         </ModalDialog>
@@ -115,7 +115,7 @@ function ShowcaseLayout() {
                     <IconRenderer color={palette.text.primary} widthHeight="2rem" i={<ICONS.Info />} />
                     View Project Details
                   </Button>
-                  <ViewCodeOnGithubButton link={showcase?.github!} />
+                  <ViewCodeOnGithubButton href={showcase?.github!} />
                 </Box>
               </Box>
             </Box>

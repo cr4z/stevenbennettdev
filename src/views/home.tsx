@@ -7,7 +7,7 @@ import { ICONS, IconRenderer } from "../design_system/icons";
 // @ts-ignore
 import MyLifestyleShot from "../img/lifestyle_rotated.jpg";
 // @ts-ignore
-import Headshot from "../img/onemore.png";
+import Headshot from "../img/headshot_natural.png";
 import ParallaxHeaderLayout from "../layouts/parallax_layout";
 import { useNavigate } from "react-router";
 import { ViewGithubDirectlyButton } from "../components/github_button";

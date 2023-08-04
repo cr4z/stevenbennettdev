@@ -1,7 +1,7 @@
 import Button from "../design_system/button";
 import { ICONS, IconRenderer } from "../design_system/icons";
 
-export function ViewCodeOnGithubButton(props: { link: string }) {
+export function ViewCodeOnGithubButton(props: { href: string }) {
   return (
     <Button
       sx={{
@@ -13,7 +13,7 @@ export function ViewCodeOnGithubButton(props: { link: string }) {
       }}
       larger
       variant="cta"
-      href={props.link}
+      href={props.href}
     >
       <IconRenderer widthHeight="2rem" i={<ICONS.GitHub />} />
       View Code on GitHub
