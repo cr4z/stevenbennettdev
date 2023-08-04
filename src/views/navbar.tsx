@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { useLocation, useNavigate } from "react-router";
 import Menu from "../design_system/menu";
@@ -15,16 +15,22 @@ function Navbar() {
   const { palette } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
-  const { ref: contactBtnRef, show: showContactMenu, setShow: setShowContactMenu } = useMenu();
+  const {
+    ref: contactBtnRef,
+    show: showContactMenu,
+    setShow: setShowContactMenu,
+  } = useMenu();
 
-  function getNavbarGutters() {
+  function getNavbarGutters(): number {
+    if (!isGreaterThanEqualTo(500)) return 1;
     switch (currentScreenSize) {
       case "xl":
       case "lg":
       case "md":
-      case "sm":
+        return 2;
+        case "sm":
       case "xs":
-        return "2rem";
+        return 1.5;
     }
   }
 
@@ -43,7 +49,9 @@ function Navbar() {
       <Box
         sx={{
           bgcolor: palette.background.default,
-          paddingX: getNavbarGutters(),
+          // TODO: Fix this. I'm not sure when/what happened, but there is always left-padding of exactly 1rem now. Viable stopgap is to subtract 1rem before setting padding
+          paddingLeft: getNavbarGutters() - 1 + "rem",
+          paddingRight: getNavbarGutters() + "rem",
           // Height isn't controlled here, it's controlled by layout
           height: "100%",
           display: "flex",
@@ -56,20 +64,33 @@ function Navbar() {
             a: { textDecoration: "none" },
           }}
         >
-          <Link to="/" style={{ display: "flex", alignItems: "center", paddingTop: "5px" }}>
+          <Link
+            to="/"
+            style={{ display: "flex", alignItems: "center", paddingTop: "5px" }}
+          >
             <Box sx={{ cursor: "pointer", padding: ".5rem" }}>
               <SBLogo />
             </Box>
 
             {isGreaterThanEqualTo(650) && (
-              <Typography className="noselect" variant="h4" sx={{ paddingX: ".5rem" }}>
+              <Typography
+                className="noselect"
+                variant="h4"
+                sx={{ paddingX: ".5rem" }}
+              >
                 Steven Bennett
               </Typography>
             )}
           </Link>
         </Box>
 
-        <Box sx={{ display: "flex", minWidth: "265px", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            display: "flex",
+            minWidth: "265px",
+            justifyContent: "space-between",
+          }}
+        >
           <Button
             variant={location.pathname === "/" ? "selected" : "unselected"}
             onClick={() => navigate("/")}
@@ -77,10 +98,27 @@ function Navbar() {
             Home
           </Button>
           <Button
-            variant={location.pathname.includes("/portfolio") ? "selected" : "unselected"}
+            variant={
+              location.pathname.includes("/portfolio")
+                ? "selected"
+                : "unselected"
+            }
             onClick={() => navigate("/portfolio")}
           >
             Portfolio
+          </Button>
+          <Button
+            variant="unselected"
+            onClick={() =>
+              window
+                .open(
+                  "https://docs.google.com/document/d/1NrQ0TLz_1hpkAS-9DffDTQvYMeb7JyZU6OonJSnjOY0/edit?usp=sharing",
+                  "_blank"
+                )
+                ?.focus()
+            }
+          >
+            Resume
           </Button>
           <div ref={contactBtnRef}>
             <Button variant="cta" onClick={() => setShowContactMenu(true)}>
