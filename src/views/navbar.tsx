@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { useLocation, useNavigate } from "react-router";
 import Menu from "../design_system/menu";
@@ -28,7 +28,7 @@ function Navbar() {
       case "lg":
       case "md":
         return 2;
-        case "sm":
+      case "sm":
       case "xs":
         return 1.5;
     }
