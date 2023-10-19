@@ -34,6 +34,8 @@ function Navbar() {
     }
   }
 
+  const navbarButtonSX = { fontWeight: "bold" };
+
   return (
     <>
       {/* MENUS */}
@@ -89,13 +91,22 @@ function Navbar() {
             display: "flex",
             minWidth: "265px",
             justifyContent: "space-between",
+            gap: ".4rem"
           }}
         >
           <Button
             variant={location.pathname === "/" ? "selected" : "unselected"}
             onClick={() => navigate("/")}
+            sx={navbarButtonSX}
           >
             Home
+          </Button>
+          <Button
+            variant={location.pathname === "/blog" ? "selected" : "unselected"}
+            onClick={() => navigate("/blog")}
+            sx={navbarButtonSX}
+          >
+            Blog
           </Button>
           <Button
             variant={
@@ -104,10 +115,11 @@ function Navbar() {
                 : "unselected"
             }
             onClick={() => navigate("/portfolio")}
+            sx={navbarButtonSX}
           >
             Portfolio
           </Button>
-          <Button
+          {/* <Button
             variant="unselected"
             onClick={() =>
               window
@@ -117,9 +129,10 @@ function Navbar() {
                 )
                 ?.focus()
             }
+            sx={navbarButtonSX}
           >
             Resume
-          </Button>
+          </Button> */}
           <div ref={contactBtnRef}>
             <Button variant="cta" onClick={() => setShowContactMenu(true)}>
               Contact

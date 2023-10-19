@@ -12,7 +12,7 @@ import { useState } from "react";
 import JSONPretty from "react-json-pretty";
 import "react-json-pretty/themes/acai.css";
 import Button from "../../design_system/button";
-import { ViewCodeOnGithubButton } from "../../components/github_button_code";
+import { ViewCodeOnGithubButton } from "../../components/github_button";
 
 export interface SchoolCampus {
   id: string;

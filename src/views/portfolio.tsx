@@ -2,7 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import { SearchControls, SearchResultsView } from "../components/search_controls";
 import { useState } from "react";
 import Slideshow from "../components/slideshow";
-import { ViewGithubDirectlyButton } from "../components/github_button";
+import { ViewCodeOnGithubButton } from "../components/github_button";
 
 function Portfolio() {
   const [queryValue, setQueryValue] = useState<string>("");
@@ -26,7 +26,7 @@ function Portfolio() {
         </Typography>
 
         <Box mb="1rem">
-          <ViewGithubDirectlyButton />
+          <ViewCodeOnGithubButton />
         </Box>
 
         <Slideshow />

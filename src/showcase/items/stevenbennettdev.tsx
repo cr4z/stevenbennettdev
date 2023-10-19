@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { ViewCodeOnGithubButton } from "../../components/github_button_code";
+import { ViewCodeOnGithubButton } from "../../components/github_button";
 
 function StevenBennettDev() {
   return (
@@ -18,7 +18,7 @@ function StevenBennettDev() {
       <Typography variant="body1">
         Want to see the code that powers this website? Click the link below!
       </Typography>
-      <ViewCodeOnGithubButton href="https://github.com/cr4z/stevenbennettdev/tree/main" />
+      <ViewCodeOnGithubButton />
       <Typography variant="body1">
         I have poured my heart and soul into creating a captivating user
         experience with this website. Among my proudest features are:

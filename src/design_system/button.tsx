@@ -21,7 +21,7 @@ function Button(props: {
         }
       }}
       sx={{
-        minWidth: "81px",
+        minWidth: "71px",
         paddingX: "1rem",
         height: props.larger ? "45px" : "35px",
         display: "flex",
@@ -29,7 +29,7 @@ function Button(props: {
         alignItems: "center",
         borderRadius: 999,
         fontFamily: "Inter",
-        fontWeight: "bold",
+        fontWeight: props.variant === "cta" ? "bold" : "400",
         fontSize: "12px",
         color: "white",
 
