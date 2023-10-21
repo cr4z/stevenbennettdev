@@ -4,9 +4,16 @@ import { FaReact } from "react-icons/fa";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiFigma } from "react-icons/si";
 import { VscAzureDevops } from "react-icons/vsc";
-import { AiOutlineMail, AiOutlineLinkedin, AiOutlinePhone, AiFillTag, AiFillHtml5 } from "react-icons/ai";
+import {
+  AiOutlineMail,
+  AiOutlineLinkedin,
+  AiOutlinePhone,
+  AiFillTag,
+  AiFillHtml5,
+} from "react-icons/ai";
 import { FaCaretRight } from "react-icons/fa";
 import { RiInformationLine } from "react-icons/ri";
+import CaretUp from "../svgs/caret.svg";
 
 export const ICONS = {
   React: FaReact,
@@ -63,4 +70,8 @@ export function IconRenderer(props: IconRendererProps) {
       {props.i}
     </Box>
   );
+}
+
+export function SBDCaret(props: { point: "up" | "right" | "down" | "left" }) {
+  return <Box component="img" sx={{ width: "1rem" }} src={CaretUp}></Box>;
 }
