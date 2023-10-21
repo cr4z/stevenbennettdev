@@ -31,6 +31,9 @@ const USE_TEAL_PRIMARY: PaletteOptions = {
   background: {
     default: "#2F2F2F",
   },
+  secondary: {
+    main: "#06A3C6",
+  },
 };
 
 export const theme = createTheme({
