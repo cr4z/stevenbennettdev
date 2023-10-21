@@ -1,8 +1,8 @@
 import { Box, Container, Typography } from "@mui/material";
-import { SearchControls, SearchResultsView } from "../components/search_controls";
+import { SearchControls, SearchResultsView } from "../../components/search_controls";
 import { useState } from "react";
-import Slideshow from "../components/slideshow";
-import { ViewCodeOnGithubButton } from "../components/github_button";
+import Slideshow from "../../components/slideshow";
+import { ViewCodeOnGithubButton } from "../../components/github_button";
 
 function Portfolio() {
   const [queryValue, setQueryValue] = useState<string>("");

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Box, Typography, useTheme } from "@mui/material";
-import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
+import { useBreakpointHelper } from "../../design_system/hooks/useBreakpointHelper";
 import { useLocation, useNavigate } from "react-router";
-import Menu from "../design_system/menu";
-import useMenu from "../design_system/hooks/useMenu";
-import ContactMenu from "./contact";
+import Menu from "../../design_system/menu";
+import useMenu from "../../design_system/hooks/useMenu";
+import ContactMenu from "../contact";
 // @ts-ignore
-import { ReactComponent as SBLogo } from "../svgs/logo.svg";
-import Button from "../design_system/button";
+import { ReactComponent as SBLogo } from "../../svgs/logo.svg";
+import Button from "../../design_system/button";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -78,7 +78,7 @@ function Navbar() {
               <Typography
                 className="noselect"
                 variant="h4"
-                sx={{ paddingX: ".5rem" }}
+                sx={{ paddingX: ".5rem", fontFamily: "Roboto" }}
               >
                 Steven Bennett
               </Typography>
@@ -91,7 +91,7 @@ function Navbar() {
             display: "flex",
             minWidth: "265px",
             justifyContent: "space-between",
-            gap: ".4rem"
+            gap: ".4rem",
           }}
         >
           <Button

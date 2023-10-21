@@ -1,42 +1,7 @@
-import { PaletteOptions, createTheme } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
+import { USE_TEAL_PRIMARY } from "./_colors";
 
-// const USE_BLUE_PRIMARY: PaletteOptions = {
-//   primary: {
-//     light: "#5BC6FF",
-//     main: "#30A2DE",
-//     dark: "#11425C",
-//   },
-//   background: {
-//     default: "#2F2E2F",
-//   },
-// };
-
-// const USE_RED_PRIMARY: PaletteOptions = {
-//   primary: {
-//     light: "red",
-//     main: "#e61134",
-//     dark: "#5B2626",
-//   },
-//   background: {
-//     default: "#2F2E2F",
-//   },
-// };
-
-const USE_TEAL_PRIMARY: PaletteOptions = {
-  primary: {
-    light: "#03f8c5",
-    main: "#00cc9c",
-    dark: "#024d4f",
-  },
-  background: {
-    default: "#2F2F2F",
-  },
-  secondary: {
-    main: "#06A3C6",
-  },
-};
-
-export const theme = createTheme({
+export const blogTheme = createTheme({
   palette: {
     ...USE_TEAL_PRIMARY,
     mode: "dark",
@@ -69,22 +34,22 @@ export const theme = createTheme({
       fontSize: "96px",
     },
     h2: {
-      fontFamily: "Roboto",
+      fontFamily: "Lato",
       fontSize: "64px",
     },
     h3: {
-      fontFamily: "Roboto",
+      fontFamily: "Lato",
       fontSize: "48px",
       fontWeight: 200,
       letterSpacing: 1.5,
     },
     h4: {
-      fontFamily: "Roboto",
+      fontFamily: "Lato",
       fontSize: "36px",
       fontWeight: 200,
     },
     h5: {
-      fontFamily: "Roboto",
+      fontFamily: "Lato",
       fontSize: "24px",
       fontWeight: 200,
     },
@@ -113,8 +78,8 @@ export const theme = createTheme({
       letterSpacing: "0.08px",
     },
     subtitle1: {
-      fontFamily: "Inter",
-      fontSize: "14px",
+      fontFamily: "Roboto",
+      fontSize: "16px",
     },
   },
 });

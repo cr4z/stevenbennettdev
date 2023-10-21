@@ -1,5 +1,5 @@
 import { Box, useTheme } from "@mui/material";
-import Navbar from "../views/navbar";
+import Navbar from "../components/base/navbar";
 
 function NavLayout(props: { children: React.ReactNode }) {
   const { palette } = useTheme();

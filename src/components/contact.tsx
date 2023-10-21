@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { ContactButtonEmail, ContactButtonGitHub, ContactButtonLinkedIn, ContactButtonPhone } from "../components/contact_options";
+import { ContactButtonEmail, ContactButtonGitHub, ContactButtonLinkedIn, ContactButtonPhone } from "./contact_options";
 
 function ContactMenu() {
   return (
