@@ -1,4 +1,4 @@
-import { ButtonBase, useTheme, SxProps } from "@mui/material";
+import { ButtonBase, useTheme, SxProps, Box } from "@mui/material";
 import React from "react";
 import { shadeColor } from "../utils/shadeColor";
 
@@ -9,6 +9,7 @@ function Button(props: {
   sx?: SxProps;
   larger?: boolean;
   href?: string;
+  useIcon?: React.ReactNode;
 }) {
   const { palette } = useTheme();
   const variant = props.variant ?? "contained";
@@ -53,6 +54,20 @@ function Button(props: {
         ...props.sx,
       }}
     >
+      {props.useIcon && (
+        <Box
+          sx={{
+            ml: "-3px",
+            mr: "6px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            svg: { minWidth: "1.3rem", minHeight: "1.3rem" },
+          }}
+        >
+          {props.useIcon}
+        </Box>
+      )}
       {props.children}
     </ButtonBase>
   );

@@ -4,7 +4,10 @@ import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
 import Navbar from "./navbar";
 import { SHOWCASES } from "../showcase/items";
 import { useLocation, useNavigate } from "react-router";
-import { SearchControls, SearchResultsView } from "../components/search_controls";
+import {
+  SearchControls,
+  SearchResultsView,
+} from "../components/search_controls";
 import Button from "../design_system/button";
 import { ICONS, IconRenderer } from "../design_system/icons";
 import { useEffect, useState } from "react";
@@ -19,8 +22,10 @@ function ShowcaseLayout() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const showcase = SHOWCASES.find((i) => i.id === location.pathname.split("/")[2]);
-  const SIDEBAR_EXPANDED = isMobile ? "100vw" : "25rem";
+  const showcase = SHOWCASES.find(
+    (i) => i.id === location.pathname.split("/")[2]
+  );
+  const isSidebarExpanded = isMobile ? "100vw" : "25rem";
 
   // states
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
@@ -36,9 +41,18 @@ function ShowcaseLayout() {
     Boolean(showcase) && (
       <>
         {/* Modals */}
-        <ModalDialog onClose={() => setProjectDetailsOpen(false)} open={projectDetailsOpen}>
+        <ModalDialog
+          onClose={() => setProjectDetailsOpen(false)}
+          open={projectDetailsOpen}
+        >
           <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-            <Box sx={{ display: "flex", justifyContent: "space-around", mb: "1rem" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-around",
+                mb: "1rem",
+              }}
+            >
               <ViewingProject title={showcase?.title!} />
             </Box>
             {showcase?.description && (
@@ -64,7 +78,11 @@ function ShowcaseLayout() {
                 <Typography
                   key={i}
                   display="inline"
-                  sx={{ padding: ".3rem .5rem", bgcolor: palette.grey[500], borderRadius: "6px" }}
+                  sx={{
+                    padding: ".3rem .5rem",
+                    bgcolor: palette.grey[500],
+                    borderRadius: "6px",
+                  }}
                 >
                   {tag}
                 </Typography>
@@ -106,13 +124,23 @@ function ShowcaseLayout() {
               >
                 <ViewingProject title={showcase?.title!} />
 
-                <Box sx={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+                <Box
+                  sx={{ display: "flex", gap: "1rem", alignItems: "center" }}
+                >
                   <Button
                     onClick={() => setProjectDetailsOpen(true)}
-                    sx={{ paddingLeft: ".5rem", paddingRight: "1rem", gap: ".5rem" }}
+                    sx={{
+                      paddingLeft: ".5rem",
+                      paddingRight: "1rem",
+                      gap: ".5rem",
+                    }}
                     larger
                   >
-                    <IconRenderer color={palette.text.primary} widthHeight="2rem" i={<ICONS.Info />} />
+                    <IconRenderer
+                      color={palette.text.primary}
+                      widthHeight="2rem"
+                      i={<ICONS.Info />}
+                    />
                     View Project Details
                   </Button>
                   <ViewCodeOnGithubButton href={showcase?.github!} />
@@ -125,14 +153,18 @@ function ShowcaseLayout() {
             <Box
               sx={{
                 height: "100%",
-                minWidth: SIDEBAR_EXPANDED,
-                maxWidth: SIDEBAR_EXPANDED,
+                minWidth: isSidebarExpanded,
+                maxWidth: isSidebarExpanded,
                 display: "flex",
                 flexDirection: "column",
                 borderRight: `1px solid ${palette.grey[800]}`,
 
                 transition: "all .4s ease",
-                marginLeft: sidebarOpen ? 0 : isMobile ? "calc(-100vw + 3.1rem)" : "-21.9rem",
+                marginLeft: sidebarOpen
+                  ? 0
+                  : isMobile
+                  ? "calc(-100vw + 3.1rem)"
+                  : "-21.9rem",
                 paddingRight: sidebarOpen ? 0 : "3rem",
               }}
             >
@@ -218,7 +250,12 @@ function ViewingProject(props: { title: string }) {
 
   return (
     <Box>
-      <Typography className="noselect" display="inline" variant="h5" sx={{ color: palette.grey[400] }}>
+      <Typography
+        className="noselect"
+        display="inline"
+        variant="h5"
+        sx={{ color: palette.grey[400] }}
+      >
         Viewing Project:{" "}
       </Typography>
       <Typography display="inline" variant="h5">

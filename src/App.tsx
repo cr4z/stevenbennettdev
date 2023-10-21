@@ -3,11 +3,12 @@ import Portfolio from "./views/portfolio";
 import Page404 from "./views/404";
 import NavLayout from "./layouts/nav_layout";
 import ShowcaseLayout from "./views/portfolio_id";
-import Home2 from "./views/home";
+import Home from "./views/home/home";
 import { CssBaseline } from "@mui/material";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import Blog from "./views/blog";
+import Blog from "./views/blog/blog";
+import BlogByID from "./views/blog/blog_id";
 
 firebase.initializeApp({
   apiKey: import.meta.env.VITE_VERCEL_MY_FIREBASE_APIKEY,
@@ -40,7 +41,7 @@ function App() {
           path="/"
           element={
             <NavLayout>
-              <Home2 />
+              <Home />
             </NavLayout>
           }
         />
@@ -57,6 +58,14 @@ function App() {
           element={
             <NavLayout>
               <Blog />
+            </NavLayout>
+          }
+        />
+         <Route
+          path="/blog/:blogID"
+          element={
+            <NavLayout>
+              <BlogByID />
             </NavLayout>
           }
         />

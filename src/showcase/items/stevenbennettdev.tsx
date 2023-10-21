@@ -22,7 +22,7 @@ function StevenBennettDev() {
       <Typography variant="body1">
         I have poured my heart and soul into creating a captivating user
         experience with this website. Among my proudest features are:
-        <Box component="ul" sx={{ listStyleType: "circle", ml: "2rem" }}>
+        <ul>
           <li>
             The sidebar, which is actually 100% mobile-friendly ensuring that
             mobile users are still empowered with a seamless user experience!
@@ -39,7 +39,7 @@ function StevenBennettDev() {
             The search components; which boast a clever separation of between
             SearchControls and SearchResultsView to enhance reusability!
           </li>
-        </Box>
+        </ul>
       </Typography>
     </Box>
   );

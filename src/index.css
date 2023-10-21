@@ -33,10 +33,14 @@ html {
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ul {
-  list-style: none;
   margin: 0;
   padding: 0;
+  padding: 0.5rem 2rem;
 }
 
 .noselect {
@@ -50,11 +54,11 @@ ul {
 
 ::selection {
   /* background: #e61134; /* WebKit/Blink Browsers */
-  background: #00cc9c; /* Gecko Browsers */
+  background: #06a3c6; /* Gecko Browsers */
 }
 ::-moz-selection {
   /* background: #e61134; /* Gecko Browsers */
-  background: #00cc9c; /* Gecko Browsers */
+  background: #06a3c6; /* Gecko Browsers */
 }
 
 .typewriter h4 {
@@ -103,4 +107,8 @@ ul {
 
 .green-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: white; /*#00cc9c*/
+}
+
+h6 {
+  padding: 1rem 0;
 }
