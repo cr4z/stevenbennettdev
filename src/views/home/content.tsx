@@ -6,7 +6,7 @@ import { Box, Typography, useTheme } from "@mui/material";
 
 export function IntroductoryText() {
   return (
-    <Typography sx={{ px: "4rem", pb: "4rem" }}>
+    <Typography sx={{ px: "2rem", pb: "4rem" }}>
       Hey there! I'm Steven Bennett, a front-end developer and team leader with
       a passion for delivering high-impact projects on time and above
       expectations. With expertise in React and its various design philosophies,
@@ -89,30 +89,17 @@ export function HomeContent() {
   );
 }
 
-export function HomeHeader() {
+export function HomeDesktopHeader() {
   return (
-    <Box sx={{ display: "flex", minHeight: "15rem", alignItems: "center" }}>
+    <Box
+      sx={{
+        display: "flex",
+        minHeight: "15rem",
+        alignItems: "center",
+      }}
+    >
       <HeadshotWithMessage width="10rem" />
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          gap: "2rem",
-          pt: "2rem",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{ width: "25rem", textAlign: "center", fontFamily: "Lato" }}
-        >
-          Building Tomorrow's Web, One Line at a Time
-        </Typography>
-
-        <Button useIcon={<BsFileEarmarkPerson />}>View Resume</Button>
-      </Box>
+      <TitleAndResume />
     </Box>
   );
 }
@@ -121,7 +108,7 @@ export function HeadshotWithMessage(props: { width: string }) {
   const { width } = props;
 
   return (
-    <Box sx={{ position: "relative", width: { width } }}>
+    <Box sx={{ position: "relative", width: { width }, mx: "2rem" }}>
       <Headshot width={width} />
       <Box sx={{ position: "absolute", bottom: "-15%", right: "-58%" }}>
         <OpenToWorkMessage />
@@ -146,6 +133,59 @@ function Headshot(props: { width: string }) {
           position: "relative",
         }}
       />
+    </Box>
+  );
+}
+
+export function HomeMobileHeader() {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        minHeight: "15rem",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: "3rem",
+        mb: "4rem"
+      }}
+    >
+      <HeadshotWithMessage width="10rem" />
+      <TitleAndResume />
+    </Box>
+  );
+}
+
+function TitleAndResume() {
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: "2rem",
+        pt: "2rem",
+      }}
+    >
+      <Typography
+        variant="h4"
+        sx={{ width: "25rem", textAlign: "center", fontFamily: "Lato" }}
+      >
+        Building Tomorrow's Web, One Line at a Time
+      </Typography>
+
+      <Button
+        useIcon={<BsFileEarmarkPerson />}
+        onClick={() =>
+          window.open(
+            "https://docs.google.com/document/d/1NrQ0TLz_1hpkAS-9DffDTQvYMeb7JyZU6OonJSnjOY0/edit?usp=sharing",
+            "_blank"
+          )
+        }
+      >
+        View Resume
+      </Button>
     </Box>
   );
 }

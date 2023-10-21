@@ -1,44 +1,59 @@
 import { Box, Container } from "@mui/material";
 import MyLifestyleShot from "../../img/lifestyle_rotated.jpg";
 import ParallaxHeaderLayout from "../../layouts/parallax_layout";
-import { HomeContent, HomeHeader, IntroductoryText } from "./content";
 import {
-  ContactButtonEmail,
-  ContactButtonGitHub,
-  ContactButtonLinkedIn,
-  ContactButtonPhone,
-} from "../../components/contact_options";
+  HomeContent,
+  HomeDesktopHeader,
+  HomeMobileHeader,
+  IntroductoryText,
+} from "./content";
+import { FooterLayout } from "../../layouts/footer";
+import { ScrollToTopButton } from "../../components/button_scroll_to_top";
+import { useRef } from "react";
+import { useBreakpointHelper } from "../../design_system/hooks/useBreakpointHelper";
 
 function Home() {
-  return (
-    <ParallaxHeaderLayout src={MyLifestyleShot}>
-      <Container maxWidth="md" sx={{ minHeight: "60rem", pt: "4rem" }}>
-        <HomeHeader />
-        <Box my="3rem">
-          <IntroductoryText />
-          <HomeContent />
-        </Box>
-      </Container>
-      <Footer />
-    </ParallaxHeaderLayout>
-  );
-}
+  const parallaxContainerRef = useRef<HTMLDivElement>(null);
 
-function Footer() {
+  function scrollToTop() {
+    parallaxContainerRef.current?.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  const bph = useBreakpointHelper();
+
   return (
-    <Box
-      sx={{
-        width: "100%",
-        borderTop: "1px solid #555",
-        display: "flex",
-        minHeight: "14rem",
-      }}
+    <ParallaxHeaderLayout
+      parallaxContainerRef={parallaxContainerRef}
+      src={MyLifestyleShot}
     >
-      <ContactButtonPhone />
-      <ContactButtonEmail />
-      <ContactButtonLinkedIn />
-      <ContactButtonGitHub />
-    </Box>
+      <FooterLayout>
+        <Container
+          maxWidth="md"
+          sx={{ minHeight: "60rem", pt: "5rem", pb: "6rem" }}
+        >
+          {bph.isGreaterThanEqualTo("md") ? (
+            <HomeDesktopHeader />
+          ) : (
+            <HomeMobileHeader />
+          )}
+
+          <Box my="3rem">
+            <IntroductoryText />
+            <HomeContent />
+          </Box>
+
+          <Box
+            pt="3rem"
+            sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
+            <ScrollToTopButton onClick={() => scrollToTop()} />
+          </Box>
+        </Container>
+      </FooterLayout>
+    </ParallaxHeaderLayout>
   );
 }
 
