@@ -4,9 +4,9 @@ import {
   ContactButtonGitHub,
   ContactButtonLinkedIn,
   ContactButtonPhone,
-} from "./contact_options";
-import SBLogo from "../svgs/logo.svg";
-import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
+} from "../contact_options";
+import SBLogo from "../../svgs/logo.svg";
+import { useBreakpointHelper } from "../../design_system/hooks/useBreakpointHelper";
 
 const leftRightSX: SxProps = {
   height: "100%",

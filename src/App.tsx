@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import Portfolio from "./views/portfolio";
+import Portfolio from "./views/portfolio/portfolio";
 import Page404 from "./views/404";
 import NavLayout from "./layouts/nav_layout";
-import ShowcaseLayout from "./views/portfolio_id";
+import ShowcaseLayout from "./views/portfolio/portfolio_id";
 import Home from "./views/home/home";
 import { CssBaseline } from "@mui/material";
 import firebase from "firebase/compat/app";

@@ -98,6 +98,7 @@ function ParallaxHeaderLayout(props: {
                 textAlign: "center",
                 width: "60rem",
                 ...(isMobile ? { fontSize: "3rem" } : {}),
+                fontFamily: "Roboto"
               }}
             >
               Developer, architect, learner, team player
@@ -186,7 +187,7 @@ function useResponsiveStyles(): ResponsiveStyles {
       case "lg":
         return "-28vh";
       case "xl":
-        return "-40vh";
+        return "-36vh";
     }
   }
 

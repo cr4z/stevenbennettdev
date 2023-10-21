@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
-import Navbar from "./navbar";
-import { SHOWCASES } from "../showcase/items";
+import Navbar from "../../components/base/navbar";
+import { SHOWCASES } from "../../showcase/items";
 import { useLocation, useNavigate } from "react-router";
 import {
   SearchControls,
   SearchResultsView,
-} from "../components/search_controls";
-import Button from "../design_system/button";
-import { ICONS, IconRenderer } from "../design_system/icons";
+} from "../../components/search_controls";
+import Button from "../../design_system/button";
+import { ICONS, IconRenderer } from "../../design_system/icons";
 import { useEffect, useState } from "react";
-import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
-import { BackButton } from "../components/button_back";
-import { ModalDialog } from "../components/modal_dialog";
-import { ViewCodeOnGithubButton } from "../components/github_button";
+import { useBreakpointHelper } from "../../design_system/hooks/useBreakpointHelper";
+import { BackButton } from "../../components/button_back";
+import { ModalDialog } from "../../components/modal_dialog";
+import { ViewCodeOnGithubButton } from "../../components/github_button";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();
