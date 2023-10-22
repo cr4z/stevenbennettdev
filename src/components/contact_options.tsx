@@ -1,4 +1,4 @@
-import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
+import { ButtonBase, Typography, useTheme } from "@mui/material";
 import { ICONS, IconRenderer } from "../design_system/icons";
 
 export function ContactButtonPhone() {

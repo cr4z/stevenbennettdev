@@ -73,5 +73,27 @@ export function IconRenderer(props: IconRendererProps) {
 }
 
 export function SBDCaret(props: { point: "up" | "right" | "down" | "left" }) {
-  return <Box component="img" sx={{ width: "1rem" }} src={CaretUp}></Box>;
+  const point = props.point ?? "up";
+  const deg = getDeg();
+
+  return (
+    <Box
+      sx={{ transform: `rotate(${deg})`, width: "1rem" }}
+      component="img"
+      src={CaretUp}
+    />
+  );
+
+  function getDeg() {
+    switch (point) {
+      case "up":
+        return "0deg";
+      case "right":
+        return "90deg";
+      case "down":
+        return "180deg";
+      case "left":
+        return "270deg";
+    }
+  }
 }
