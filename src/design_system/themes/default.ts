@@ -34,11 +34,11 @@ export const theme = createTheme({
       fontSize: "96px",
     },
     h2: {
-      fontFamily: "Lato",
+      fontFamily: "Roboto",
       fontSize: "64px",
     },
     h3: {
-      fontFamily: "Lato",
+      fontFamily: "Roboto",
       fontSize: "48px",
       fontWeight: 200,
       letterSpacing: 1.5,

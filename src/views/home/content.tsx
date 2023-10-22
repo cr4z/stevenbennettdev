@@ -108,7 +108,7 @@ export function HeadshotWithMessage(props: { width: string }) {
   const { width } = props;
 
   return (
-    <Box sx={{ position: "relative", width: { width }, mx: "2rem" }}>
+    <Box sx={{ position: "relative", width: { width }, mx: "3.3rem" }}>
       <Headshot width={width} />
       <Box sx={{ position: "absolute", bottom: "-15%", right: "-58%" }}>
         <OpenToWorkMessage />
@@ -146,7 +146,7 @@ export function HomeMobileHeader() {
         alignItems: "center",
         flexDirection: "column",
         gap: "3rem",
-        mb: "4rem"
+        mb: "4rem",
       }}
     >
       <HeadshotWithMessage width="10rem" />
