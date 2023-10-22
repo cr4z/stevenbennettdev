@@ -2,6 +2,7 @@ import {
   Box,
   ButtonBase,
   Container,
+  Skeleton,
   ThemeProvider,
   Typography,
   useTheme,
@@ -12,7 +13,6 @@ import { BlogPost } from "../../api/models/blog";
 import { useBreakpointHelper } from "../../design_system/hooks/useBreakpointHelper";
 import { FancyDivider } from "../../components/divider_fancy";
 import useBlogs from "../../api/hooks/use_blogs";
-import { LoadingScreen } from "../../components/loading_screen";
 import { BlogTextDateAndCategory } from "./components/text_date_category";
 import { FooterLayout } from "../../layouts/footer";
 
@@ -22,30 +22,33 @@ export default function BlogFeed() {
 
   return (
     <ThemeProvider theme={blogTheme}>
-      {!blogs ? (
-        <LoadingScreen feedback="Loading blogs" />
-      ) : (
-        <FooterLayout pt="8rem">
-          <Container maxWidth="md">
-            {isMobile ? <MobileHeader /> : <DesktopHeader />}
+      <FooterLayout pt="8rem">
+        <Container maxWidth="md">
+          {isMobile ? <MobileHeader /> : <DesktopHeader />}
 
-            <IntroductoryText />
+          <IntroductoryText />
 
-            <Box
-              sx={{
-                gap: "2rem",
-                display: "flex",
-                flexDirection: "column",
-                mb: "8rem",
-              }}
-            >
-              {blogs.map((blog, i) => {
+          <Box
+            sx={{
+              gap: "2rem",
+              display: "flex",
+              flexDirection: "column",
+              mb: "8rem",
+            }}
+          >
+            {!blogs ? (
+              <>
+                <BlogSnippetSkeleton />
+                <BlogSnippetSkeleton />
+              </>
+            ) : (
+              blogs.map((blog, i) => {
                 return <BlogSnippet key={i} viewData={blog} />;
-              })}
-            </Box>
-          </Container>
-        </FooterLayout>
-      )}
+              })
+            )}
+          </Box>
+        </Container>
+      </FooterLayout>
     </ThemeProvider>
   );
 }
@@ -87,10 +90,16 @@ function MobileHeader() {
 function BlogSnippet(props: { viewData: BlogPost }) {
   const navigate = useNavigate();
   const blog = props.viewData;
+  const { palette } = useTheme();
 
   return (
     <ButtonBase
-      sx={{ textAlign: "start", borderRadius: ".5rem", p: ".5rem 1rem" }}
+      sx={{
+        textAlign: "start",
+        borderRadius: ".5rem",
+        p: "1rem 1rem",
+        ":hover": { bgcolor: palette.grey[800] },
+      }}
       onClick={() => navigate("/blogs/" + blog.id)}
     >
       <Box>
@@ -102,6 +111,10 @@ function BlogSnippet(props: { viewData: BlogPost }) {
       </Box>
     </ButtonBase>
   );
+}
+
+function BlogSnippetSkeleton() {
+  return <Skeleton sx={{ height: "17rem", transform: "unset" }} />;
 }
 
 function IntroductoryText() {
