@@ -7,8 +7,8 @@ import Home from "./views/home/home";
 import { CssBaseline } from "@mui/material";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import Blog from "./views/blog/blog";
-import BlogByID from "./views/blog/blog_id";
+import BlogFeed from "./views/blog/blogs";
+import BlogByID from "./views/blog/blogs_id";
 
 firebase.initializeApp({
   apiKey: import.meta.env.VITE_VERCEL_MY_FIREBASE_APIKEY,
@@ -54,15 +54,15 @@ function App() {
           }
         />
         <Route
-          path="/blog"
+          path="/blogs"
           element={
             <NavLayout>
-              <Blog />
+              <BlogFeed />
             </NavLayout>
           }
         />
-         <Route
-          path="/blog/:blogID"
+        <Route
+          path="/blogs/:blogID"
           element={
             <NavLayout>
               <BlogByID />

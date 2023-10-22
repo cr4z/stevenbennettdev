@@ -102,8 +102,8 @@ function Navbar() {
             Home
           </Button>
           <Button
-            variant={location.pathname === "/blog" ? "selected" : "unselected"}
-            onClick={() => navigate("/blog")}
+            variant={location.pathname === "/blogs" ? "selected" : "unselected"}
+            onClick={() => navigate("/blogs")}
             sx={navbarButtonSX}
           >
             Blog
