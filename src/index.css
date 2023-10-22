@@ -55,10 +55,17 @@ ul {
 ::selection {
   /* background: #e61134; /* WebKit/Blink Browsers */
   background: #06a3c6; /* Gecko Browsers */
+  color: "white!important";
 }
 ::-moz-selection {
   /* background: #e61134; /* Gecko Browsers */
   background: #06a3c6; /* Gecko Browsers */
+  color: "white!important";
+}
+::-webkit-selection {
+  /* background: #e61134; /* Gecko Browsers */
+  background: #06a3c6; /* Gecko Browsers */
+  color: "white!important";
 }
 
 .typewriter h4 {
