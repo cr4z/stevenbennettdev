@@ -1,9 +1,17 @@
-# Welcome to stevenbennett.dev
+# Steven Bennett's Portfolio & Blog Website
+Welcome to the GitHub repository of my digital card, interactive portfolio, and blog. It's designed to showcase my journey within the rapidly evolving tech landscape and my intellectual curiosities.
 
-I have poured my heart and soul into creating a captivating user experience with this website. Among my proudest features are:
-* The sidebar, which is actually 100% mobile-friendly ensuring that mobile users are still empowered with a seamless user experience!
-* The parallax scroll effect on the header, which adds a touch of elegance that scales perfectly across all screen sizes.
-* A small yet powerful component-based design system built on top of MUI.
-* The search components; which boast a clever separation of between SearchControls and SearchResultsView to enhance reusability!
+![website-screenshot](https://github.com/cr4z/stevenbennettdev/assets/64384340/66173f1e-0c85-4342-a1e8-e188049302b1)
 
-But I have more plans for this website than only what's seen now, such as adding more projects to showcase more of my ability, and I will even be integrating a fully custom-built blog system as a chance to learn more about database architecture, and to discuss the things in development I constantly get to learn about with all those interested! Stay tuned for updates.
+## 🎯 Purpose
+* **Digital Card**: A snapshot of who I am, my skills, and what I bring to the tech world.
+* **Interactive Portfolio**: A showcase of my best works, projects, and achievements.
+* **Blog**: A canvas for my thoughts, findings, and ongoing discoveries in tech.
+## 🛠 Tech Stack
+* **Front-end**: React with TypeScript, MaterialUI
+* **Database**: Firebase Firestore
+* **Deployment**: Vercel
+* **Other tools**: Git, GitHub, Vercel
+
+## 📞 Connect
+For more details or queries, feel free to connect with me through [my contact tab](https://www.stevenbennett.dev/)!
