@@ -86,7 +86,7 @@ function CenterpieceLogo() {
       }}
     >
       <Box component="img" src={SBLogo} sx={{ width: "3rem" }} />
-      <Typography className="noselect" variant="h4" sx={{ paddingX: ".5rem" }}>
+      <Typography className="noselect" variant="h4" sx={{ paddingX: ".5rem", fontFamily: "Roboto" }}>
         Steven Bennett
       </Typography>
     </Box>

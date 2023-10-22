@@ -57,7 +57,7 @@ function ParallaxHeaderLayout(props: {
             width: "inherit",
             ...(isGreaterThanEqualTo("lg")
               ? {
-                  top: `calc(${getNameOffsetY()} + 20vw * 3.2)`,
+                  top: `calc(${getNameOffsetY()} + (20vw * 3.2) + (34vh - 18rem))`,
                   left: getNameOffsetX(),
                 }
               : {

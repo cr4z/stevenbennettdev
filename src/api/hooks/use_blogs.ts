@@ -3,7 +3,7 @@ import { firestore } from "../../App";
 import { BlogPost } from "../models/blog";
 
 export default function useBlogs() {
-  const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [blogs, setBlogs] = useState<BlogPost[] | null>(null);
 
   useEffect(() => {
     async function fetchAndSetBlogs() {

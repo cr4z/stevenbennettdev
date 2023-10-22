@@ -10,7 +10,7 @@ export function FancyDivider(props: { bgcolor: any }) {
           alignItems: "center",
           position: "absolute",
           width: "100%",
-          top: "-1rem"
+          top: "-1rem",
         }}
       >
         <Box
@@ -25,7 +25,7 @@ export function FancyDivider(props: { bgcolor: any }) {
           sx={{
             zIndex: -2,
             borderRadius: "100%",
-            boxShadow: "rgb(0, 0, 0, .4) 0px 20px 15px 5px",
+            boxShadow: "rgb(255, 255, 255, .2) 0px 20px 15px 5px",
             height: "5px",
             width: "95%",
             mt: "-6%",

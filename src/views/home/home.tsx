@@ -29,11 +29,8 @@ function Home() {
       parallaxContainerRef={parallaxContainerRef}
       src={MyLifestyleShot}
     >
-      <FooterLayout>
-        <Container
-          maxWidth="md"
-          sx={{ minHeight: "60rem", pt: "5rem", pb: "6rem" }}
-        >
+      <FooterLayout pt="5rem" pb="6rem">
+        <Container maxWidth="md" sx={{ minHeight: "60rem" }}>
           {bph.isGreaterThanEqualTo("md") ? (
             <HomeDesktopHeader />
           ) : (

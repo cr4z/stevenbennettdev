@@ -1,7 +1,6 @@
 import {
   Box,
   ButtonBase,
-  CircularProgress,
   Container,
   ThemeProvider,
   Typography,
@@ -9,12 +8,13 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router";
 import { blogTheme } from "../../design_system/themes/blog";
-import dayjs from "dayjs";
 import { BlogPost } from "../../api/models/blog";
 import { useBreakpointHelper } from "../../design_system/hooks/useBreakpointHelper";
 import { FancyDivider } from "../../components/divider_fancy";
 import useBlogs from "../../api/hooks/use_blogs";
 import { LoadingScreen } from "../../components/loading_screen";
+import { BlogTextDateAndCategory } from "./components/text_date_category";
+import { FooterLayout } from "../../layouts/footer";
 
 export default function BlogFeed() {
   const blogs = useBlogs();
@@ -25,24 +25,26 @@ export default function BlogFeed() {
       {!blogs ? (
         <LoadingScreen feedback="Loading blogs" />
       ) : (
-        <Container maxWidth="md" sx={{ pt: "8rem" }}>
-          {isMobile ? <MobileHeader /> : <DesktopHeader />}
+        <FooterLayout pt="8rem">
+          <Container maxWidth="md">
+            {isMobile ? <MobileHeader /> : <DesktopHeader />}
 
-          <IntroductoryText />
+            <IntroductoryText />
 
-          <Box
-            sx={{
-              gap: "2rem",
-              display: "flex",
-              flexDirection: "column",
-              mb: "8rem",
-            }}
-          >
-            {blogs.map((blog, i) => {
-              return <BlogSnippet key={i} viewData={blog} />;
-            })}
-          </Box>
-        </Container>
+            <Box
+              sx={{
+                gap: "2rem",
+                display: "flex",
+                flexDirection: "column",
+                mb: "8rem",
+              }}
+            >
+              {blogs.map((blog, i) => {
+                return <BlogSnippet key={i} viewData={blog} />;
+              })}
+            </Box>
+          </Container>
+        </FooterLayout>
       )}
     </ThemeProvider>
   );
@@ -53,7 +55,7 @@ function DesktopHeader() {
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <Box sx={{ width: "100%", bgcolor: "#FFF", height: "1px" }} />
       <Typography variant="h4" sx={{ whiteSpace: "nowrap", mx: "2rem" }}>
-        Practical Perpsectives
+        Practical Perspectives
       </Typography>
       <Box sx={{ width: "100%", bgcolor: "#FFF", height: "1px" }} />
     </Box>
@@ -73,7 +75,7 @@ function MobileHeader() {
     >
       <Box sx={{ maxWidth: "min-content" }}>
         <Typography variant="h4" sx={{ whiteSpace: "nowrap" }}>
-          Practical Perpsectives
+          Practical Perspectives
         </Typography>
 
         <FancyDivider bgcolor={palette.background.default} />
@@ -84,24 +86,19 @@ function MobileHeader() {
 
 function BlogSnippet(props: { viewData: BlogPost }) {
   const navigate = useNavigate();
-  const b = props.viewData;
+  const blog = props.viewData;
 
   return (
     <ButtonBase
       sx={{ textAlign: "start", borderRadius: ".5rem", p: ".5rem 1rem" }}
-      onClick={() => navigate("/blogs/" + b.id)}
+      onClick={() => navigate("/blogs/" + blog.id)}
     >
       <Box>
-        <Typography display="inline" variant="body2">
-          {dayjs(b.date.toDate()).format("MMMM YYYY")}{" "}
-        </Typography>
-        <Typography display="inline">
-          • <b>{b.category}</b>
-        </Typography>
+        <BlogTextDateAndCategory blog={blog} />
         <Typography mt="1rem" variant="h5">
-          {b.title}
+          {blog.title}
         </Typography>
-        <Typography variant="subtitle2">{b.summary}</Typography>
+        <Typography variant="subtitle2">{blog.summary}</Typography>
       </Box>
     </ButtonBase>
   );
