@@ -2,10 +2,19 @@
 import { Box, Typography, styled, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
-function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string }) {
+function ParallaxHeaderLayout(props: {
+  children: React.ReactNode;
+  src: string;
+  parallaxContainerRef: React.RefObject<HTMLDivElement>;
+}) {
   const { palette } = useTheme();
-  const { getHeaderHeight, getNameOffsetY, getNameOffsetX, getHeaderYOffset, getNameSize } =
-    useResponsiveStyles();
+  const {
+    getHeaderHeight,
+    getNameOffsetY,
+    getNameOffsetX,
+    getHeaderYOffset,
+    getNameSize,
+  } = useResponsiveStyles();
   const { isGreaterThanEqualTo, isMobile, isUnder400 } = useBreakpointHelper();
 
   function ParallaxHeaderImage() {
@@ -47,49 +56,73 @@ function ParallaxHeaderLayout(props: { children: React.ReactNode; src: string })
             height: "inherit",
             width: "inherit",
             ...(isGreaterThanEqualTo("lg")
-              ? { top: `calc(${getNameOffsetY()} + 20vw * 3.2)`, left: getNameOffsetX() }
+              ? {
+                  top: `calc(${getNameOffsetY()} + (20vw * 3.2) + (34vh - 18rem))`,
+                  left: getNameOffsetX(),
+                }
               : {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   flexDirection: "column",
                   top:
-                    // Todo: As a last minute addition this isn't on par with my standards, I will refactor for readability later.
+                    // Todo: As a last minute addition, this isn't readable as I would hope. I will refactor later.
                     isGreaterThanEqualTo("md")
                       ? "-46rem"
                       : isMobile
                       ? isUnder400
                         ? "-52rem"
                         : "-58rem"
-                      : "-50rem",
+                      : "-54rem",
                 }),
             position: "absolute",
           }}
         >
-          <Typography variant="h1" sx={{ fontSize: getNameSize() }}>
-            Steven Bennett
-          </Typography>
-          <Typography
-            variant={isMobile ? "h4" : "h2"}
-            sx={{ textAlign: "center", width: "60rem", ...(isMobile ? { fontSize: "3rem" } : {}) }}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              bgcolor: isGreaterThanEqualTo("lg") ? "unset" : "#3334",
+              width: "max-content",
+              padding: "1rem 4rem",
+              borderRadius: "2rem"
+            }}
           >
-            Developer, architect, learner, team player
-          </Typography>
+            <Typography variant="h1" sx={{ fontSize: getNameSize() }}>
+              Steven Bennett
+            </Typography>
+            <Typography
+              variant={isMobile ? "h4" : "h2"}
+              sx={{
+                textAlign: "center",
+                width: "60rem",
+                ...(isMobile ? { fontSize: "3rem" } : {}),
+                fontFamily: "Roboto"
+              }}
+            >
+              Developer, architect, learner, team player
+            </Typography>
+          </Box>
         </Box>
       </Box>
     );
   }
 
   return (
-    <ParallaxContainer>
+    <ParallaxContainer ref={props.parallaxContainerRef}>
       <ParallaxBackground>
         <Box sx={{ width: "100%", display: "flex" }}>
           <ParallaxHeaderImage />
         </Box>
       </ParallaxBackground>
       <ParallaxBase>
-        <Box sx={{ position: "absolute", width: "100%", mt: getHeaderHeight() }}>
-          <Box sx={{ bgcolor: palette.background.default, mt: "-4px" }}>{props.children}</Box>
+        <Box
+          sx={{ position: "absolute", width: "100%", mt: getHeaderHeight() }}
+        >
+          <Box sx={{ bgcolor: palette.background.default, mt: "-4px" }}>
+            {props.children}
+          </Box>
         </Box>
       </ParallaxBase>
     </ParallaxContainer>
@@ -133,7 +166,7 @@ function useResponsiveStyles(): ResponsiveStyles {
       case "xs":
         return "13rem";
       case "sm":
-        return "20rem";
+        return "16rem";
       case "md":
         return "25rem";
       case "lg":
@@ -148,13 +181,13 @@ function useResponsiveStyles(): ResponsiveStyles {
       case "xs":
         return isUnder400 ? "16rem" : "9rem";
       case "sm":
-        return "8rem";
+        return "2rem";
       case "md":
         return "-6vh";
       case "lg":
-        return "-30vh";
+        return "-28vh";
       case "xl":
-        return "-40vh";
+        return "-36vh";
     }
   }
 
@@ -163,11 +196,11 @@ function useResponsiveStyles(): ResponsiveStyles {
       case "xs":
         return "-31vh";
       case "sm":
-        return "-29vh";
+        return "-20vh";
       case "md":
         return "-36vh";
       case "lg":
-        return "-54vh";
+        return "-55vh";
       case "xl":
         return "-70vh";
     }

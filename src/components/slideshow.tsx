@@ -1,38 +1,47 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, EffectCoverflow, Thumbs, A11y } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  EffectCoverflow,
+  Thumbs,
+  A11y,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Box, Typography, useTheme } from "@mui/material";
 // @ts-ignore
-import Asdf from "../img/forms.png";
+import ImgTodoshredder from "../img/forms.png";
 // @ts-ignore
-import Qwer from "../img/fhr2.png";
+import ImgFHR from "../img/fhr2.png";
 // @ts-ignore
-import qwer from "../img/todoshredder_mini.png";
+import ImgFormComponentCollection from "../img/todoshredder_mini.png";
 
 type Slide = { src: string; title: string; description: string; href: string };
 
 export default function Slideshow() {
   const SLIDES: Slide[] = [
     {
-      src: qwer,
+      src: ImgFormComponentCollection,
       title: "TodoShredder",
-      description: "View my live database implementing single sign-on functionality!",
+      description:
+        "View my live database implementing single sign-on functionality!",
       href: "/portfolio/12",
     },
     {
-      src: Qwer,
+      src: ImgFHR,
       title: "Flores Home Repair",
-      description: "View work I did for a client using Next.js on floreshomerepair.com!",
+      description:
+        "View work I did for a client using Next.js on floreshomerepair.com!",
       href: "/portfolio/0",
     },
     {
-      src: Asdf,
+      src: ImgTodoshredder,
       title: "Form Component Collection",
-      description: "View a collection of form components I've built for a team!",
+      description:
+        "View a collection of form components I've built for a team!",
       href: "/portfolio/11",
     },
   ];
@@ -72,7 +81,7 @@ export default function Slideshow() {
       >
         {SLIDES.map((s, i) => (
           <SwiperSlide key={i}>
-            <a href={s.href} target="_blank" style={{ textDecoration: "none" }}>
+            <a href={s.href} style={{ textDecoration: "none" }}>
               <Box
                 sx={{
                   width: "100%",

@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { ViewCodeOnGithubButton } from "../../components/github_button_code";
+import { ViewCodeOnGithubButton } from "../../components/github_button";
 
 function StevenBennettDev() {
   return (
@@ -18,11 +18,11 @@ function StevenBennettDev() {
       <Typography variant="body1">
         Want to see the code that powers this website? Click the link below!
       </Typography>
-      <ViewCodeOnGithubButton href="https://github.com/cr4z/stevenbennettdev/tree/main" />
+      <ViewCodeOnGithubButton />
       <Typography variant="body1">
         I have poured my heart and soul into creating a captivating user
         experience with this website. Among my proudest features are:
-        <Box component="ul" sx={{ listStyleType: "circle", ml: "2rem" }}>
+        <ul>
           <li>
             The sidebar, which is actually 100% mobile-friendly ensuring that
             mobile users are still empowered with a seamless user experience!
@@ -39,7 +39,7 @@ function StevenBennettDev() {
             The search components; which boast a clever separation of between
             SearchControls and SearchResultsView to enhance reusability!
           </li>
-        </Box>
+        </ul>
       </Typography>
     </Box>
   );
