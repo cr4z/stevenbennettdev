@@ -81,5 +81,11 @@ export const blogTheme = createTheme({
       fontFamily: "Roboto",
       fontSize: "16px",
     },
+    subtitle2: {
+      fontFamily: "Roboto",
+      fontSize: "16px",
+      fontWeight: 200,
+      color: "#DDD",
+    },
   },
 });

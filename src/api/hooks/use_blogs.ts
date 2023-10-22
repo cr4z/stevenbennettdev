@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 import { firestore } from "../../App";
-
-export interface BlogPost {
-  id: string;
-  title: string;
-  summary: string;
-  date: Date;
-  category: string;
-  content: string;
-}
+import { BlogPost } from "../models/blog";
 
 export default function useBlogs() {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
