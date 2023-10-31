@@ -80,6 +80,7 @@ export const theme = createTheme({
     subtitle1: {
       fontFamily: "Roboto",
       fontSize: "16px",
+      lineHeight: "1.6rem"
     },
   },
 });

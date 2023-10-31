@@ -3,15 +3,24 @@ import { OpenToWorkMessage } from "../../components/msg_open_to_work";
 import Button from "../../design_system/button";
 import { BsFileEarmarkPerson } from "react-icons/bs";
 import { Box, Typography, useTheme } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export function IntroductoryText() {
   return (
-    <Typography sx={{ px: "2rem", pb: "4rem" }}>
-      Hey there! I'm Steven Bennett, a front-end developer and team leader with
-      a passion for delivering high-impact projects on time and above
-      expectations. With expertise in React and its various design philosophies,
-      I've had the privilege of steering critical projects that have not only
-      met business objectives but also created meaningful user experiences.
+    <Typography
+      variant="subtitle1"
+      sx={{ px: "2rem", pb: "5rem", pt: "2rem", textAlign: "center" }}
+    >
+      Hey there! I'm Steven Bennett, a seasoned front-end developer with
+      experience leading teams and building websites that scale and handle
+      high-traffic. I'm well-versed in React, object-oriented programming and
+      countless associated design philosophies. I've been in charge of projects
+      that have drawn large audiences and have exceeded business objectives. As
+      a passionate developer, I take pride in staying updated on new tech
+      developments and building solutions that are reliable and visually
+      appealing. I'm excited to bring my skill set to a team that values
+      innovation and quality. To view my dedication in action, I invite you to
+      view my interactive portfolio <Link to="/portfolio">here</Link>!
     </Typography>
   );
 }

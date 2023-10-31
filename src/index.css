@@ -145,3 +145,8 @@ h6 {
     content: "";
   }
 }
+
+a {
+  color: #2cc5e7;
+  text-decoration: none;
+}
