@@ -7,7 +7,7 @@ import {
   createTheme,
   useTheme,
 } from "@mui/material";
-import { EditableTitle } from "./components/editable_title";
+import { EditableTitle } from "./editables/editable_title";
 //@ts-ignore
 import { ReactComponent as ClockSVG } from "./svg/ClockSVG.svg";
 import { Event } from "./types/event";
@@ -28,9 +28,6 @@ const notatorTheme = createTheme({
         },
       },
     },
-  },
-  typography: {
-    h5: { fontFamily: "Lato" },
   },
 });
 
@@ -55,7 +52,7 @@ function NotatorSimulation() {
         padding: "16px",
       }}
     >
-      <Paper sx={{ height: "6rem", width: "100%" }}>
+      <Paper sx={{ height: "6rem", width: "100%", padding: ".5rem 1rem" }}>
         <EditableTitle />
         <Box sx={{ display: "flex" }}>
           <EditableTime startTime={event.startTime} endTime={event.endTime} />
@@ -71,7 +68,14 @@ function EditableTime(props: { startTime: Dayjs; endTime: Dayjs }) {
   const color = "#000A";
 
   return (
-    <ButtonBase sx={{ path: { fill: color }, bgcolor: "#0002", borderRadius: 99, padding: "2px 6px" }}>
+    <ButtonBase
+      sx={{
+        path: { fill: color },
+        bgcolor: "#0002",
+        borderRadius: 99,
+        padding: "2px 6px",
+      }}
+    >
       <ClockSVG />
       <Typography sx={{ color }} variant="body2">
         {props.startTime.format("H:mm - ") + props.endTime.format("H:mm")}
