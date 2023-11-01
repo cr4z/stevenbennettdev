@@ -8,7 +8,7 @@ import dayjs, { Dayjs } from "dayjs";
 import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
-import NotatorSimulationContextWrapper from "./items/notator_simulation";
+import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "0",
