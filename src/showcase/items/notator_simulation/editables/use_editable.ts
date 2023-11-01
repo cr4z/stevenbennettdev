@@ -3,18 +3,18 @@ import { SxProps } from "@mui/material";
 export function useEditableVisibilityStyling(props: {
   inputHasBeenFocused: boolean;
 }): EditableLabelStyling {
-  const { inputHasBeenFocused: inputHasBeenFocusedOn } = props;
+  const { inputHasBeenFocused } = props;
   const outlineSX: SxProps = {
     outline: "1px solid #0002",
     borderRadius: "4px",
   };
   const inputID = "InputID";
   const typographyID = "TypographyID";
-  const styles = {
-    ["#" + inputID]: inputHasBeenFocusedOn
+  const containerStyle = {
+    ["#" + inputID]: inputHasBeenFocused
       ? { display: "block", ...outlineSX }
       : { display: "none" },
-    ["#" + typographyID]: inputHasBeenFocusedOn
+    ["#" + typographyID]: inputHasBeenFocused
       ? { display: "none" }
       : { display: "block" },
     ":hover": {
@@ -26,7 +26,7 @@ export function useEditableVisibilityStyling(props: {
     },
   };
 
-  return { inputID, typographyID, containerStyle: styles };
+  return { inputID, typographyID, containerStyle };
 }
 
 interface EditableLabelStyling {
