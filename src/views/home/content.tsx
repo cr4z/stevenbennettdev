@@ -31,10 +31,10 @@ export function HomeContent() {
       <Typography variant="h6">What I Bring to the Table</Typography>
       <ul>
         <li>
-          <b>Leadership & Collaboration</b>: I’ve successfully lead a team of
-          four developers, mentoring peers, facilitating cross-departmental
-          communication, and aligning team goals with strategic company
-          objectives.
+          <b>Leadership & Collaboration</b>: I have successfully led a team of
+          four developers while proactively mentoring peers, facilitating
+          cross-departmental communication, and aligning team goals with
+          strategic company objectives on a daily basis.
         </li>
         <li>
           <b>Technical Excellence</b>: As the lead developer of a large project,
@@ -67,7 +67,7 @@ export function HomeContent() {
           faced with unexpected challenges or changes in direction.
         </li>
       </ul>
-      <Typography variant="h6">Technologies I Love</Typography>
+      <Typography variant="h6">Technical Proficiencies</Typography>
       <ul>
         <li>React with TypeScript</li>
         <li>Next.js</li>
@@ -75,8 +75,7 @@ export function HomeContent() {
         <li>MaterialUI</li>
         <li>Figma & Graphic Design</li>
         <li>Git</li>
-        <li>GitHub & Azure</li>
-        <li>DevOps</li>
+        <li>GitHub & Azure DevOps</li>
         <li>C# & LINQ</li>
         <li>OpenAI GPT-4</li>
       </ul>
