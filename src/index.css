@@ -52,20 +52,17 @@ ul {
   user-select: none;
 }
 
-::selection {
+*::selection {
   /* background: #e61134; /* WebKit/Blink Browsers */
-  background: #7ccadb; /* Gecko Browsers */
-  color: "#000!important";
+  background: #3a6974; /* Gecko Browsers */
 }
-::-moz-selection {
+*::-moz-selection {
   /* background: #e61134; /* Gecko Browsers */
   background: #06a3c6; /* Gecko Browsers */
-  color: "#000!important";
 }
-::-webkit-selection {
+*::-webkit-selection {
   /* background: #e61134; /* Gecko Browsers */
   background: #06a3c6; /* Gecko Browsers */
-  color: "#000!important";
 }
 
 .typewriter h4 {

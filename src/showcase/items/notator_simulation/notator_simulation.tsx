@@ -50,6 +50,10 @@ function NotatorSimulation() {
         width: "100%",
         height: "100%",
         padding: "16px",
+        "*::selection": {
+          bgcolor: "#1889a3!important",
+          color: "white",
+        },
       }}
     >
       <Paper sx={{ height: "6rem", width: "100%", padding: ".5rem 1rem" }}>
