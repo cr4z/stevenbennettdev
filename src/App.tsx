@@ -9,6 +9,8 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import BlogFeed from "./views/blog/blogs";
 import BlogByID from "./views/blog/blogs_id";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 firebase.initializeApp({
   apiKey: import.meta.env.VITE_VERCEL_MY_FIREBASE_APIKEY,
@@ -24,7 +26,7 @@ export const firestore = firebase.firestore();
 
 function App() {
   return (
-    <>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <CssBaseline />
       <Routes>
         <Route path="/portfolio/*" element={<ShowcaseLayout />} />
@@ -70,7 +72,7 @@ function App() {
           }
         />
       </Routes>
-    </>
+    </LocalizationProvider>
   );
 }
 
