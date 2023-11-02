@@ -1,17 +1,14 @@
 import {
   Box,
-  ButtonBase,
   Paper,
   ThemeProvider,
-  Typography,
   createTheme,
   useTheme,
 } from "@mui/material";
 import { EditableTitle } from "./editables/editable_title";
-//@ts-ignore
-import { ReactComponent as ClockSVG } from "./svg/ClockSVG.svg";
 import { Event } from "./types/event";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
+import { EditableTime } from "./editables/editable_time";
 
 const notatorTheme = createTheme({
   palette: {
@@ -43,6 +40,9 @@ function NotatorSimulation() {
   const { palette } = useTheme();
   const event: Event = { startTime: dayjs(), endTime: dayjs() };
 
+  // alright, in order to add new times to event, we need to make event into state. meaning we need to port the notator tools.
+  // alllll the heavylifting is coming together.
+
   return (
     <Box
       sx={{
@@ -54,36 +54,21 @@ function NotatorSimulation() {
           bgcolor: "#1889a3!important",
           color: "white",
         },
+        position: "relative",
       }}
     >
       <Paper sx={{ height: "6rem", width: "100%", padding: ".5rem 1rem" }}>
         <EditableTitle />
         <Box sx={{ display: "flex" }}>
-          <EditableTime startTime={event.startTime} endTime={event.endTime} />
+          <EditableTime
+            startTime={event.startTime}
+            endTime={event.endTime}
+            onTimesChange={() => {}}
+          />
           {/* <EditableLocation /> */}
         </Box>
         {/* <EditableDescription /> */}
       </Paper>
     </Box>
-  );
-}
-
-function EditableTime(props: { startTime: Dayjs; endTime: Dayjs }) {
-  const color = "#000A";
-
-  return (
-    <ButtonBase
-      sx={{
-        path: { fill: color },
-        bgcolor: "#0002",
-        borderRadius: 99,
-        padding: "2px 6px",
-      }}
-    >
-      <ClockSVG />
-      <Typography sx={{ color }} variant="body2">
-        {props.startTime.format("H:mm - ") + props.endTime.format("H:mm")}
-      </Typography>
-    </ButtonBase>
   );
 }

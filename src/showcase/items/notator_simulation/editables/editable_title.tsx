@@ -1,7 +1,12 @@
-import { InputBase, SxProps, Typography } from "@mui/material";
+import {
+  InputBase,
+  SxProps,
+  Typography,
+  TypographyVariant,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
-import { useEditableVisibilityStyling } from "./use_editable";
+import { useEditableControlledVisbilityStyling as useControlledVisbilityStyling } from "./use_editable";
 
 export function EditableTitle() {
   const [text, setText] = useState<string>("Click to edit me!");
@@ -13,8 +18,13 @@ export function EditableTitle() {
    * typography variant's pre-defined size and the desired fontSize. This can be mitigated by adjusting the typography
    * variant accordingly.
    */
-  const exactTextStyle: SxProps = {
+  const fontSize = {
     fontSize: "1.2rem",
+    variant: "h2" as TypographyVariant,
+  };
+
+  const exactTextStyle: SxProps = {
+    fontSize: fontSize.fontSize,
     height: "100%",
     width: "100%",
     display: "flex",
@@ -25,7 +35,10 @@ export function EditableTitle() {
 
   const paddingX = ".5rem";
 
-  const visibilitySx = useEditableVisibilityStyling({ inputHasBeenFocused });
+  const visibilitySx = useControlledVisbilityStyling({
+    inputHasBeenFocused,
+    uid: "title",
+  });
 
   return (
     <Box
@@ -57,7 +70,7 @@ export function EditableTitle() {
       />
       <Box id={visibilitySx.typographyID}>
         <Typography
-          variant="h2"
+          variant={fontSize.variant}
           sx={{
             ...exactTextStyle,
             position: "absolute",
