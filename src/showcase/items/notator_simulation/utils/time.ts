@@ -29,4 +29,12 @@ function createTimeOptions(minuteIncrement: number): string[] {
 }
 
 const minuteIncrement = 15;
+
 export const timeOptions = createTimeOptions(minuteIncrement);
+
+export const isValidTime = (time: string) => {
+  const regex = /^(1[0-2]|0?[1-9]):[0-5][0-9] (AM|PM)$/;
+  return regex.test(time);
+};
+
+export default { options: timeOptions, isValidTime };

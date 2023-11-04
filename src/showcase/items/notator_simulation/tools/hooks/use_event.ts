@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { API_EVENTS } from "../../data/api";
-import { NotatorEvent } from "../../types/event";
+import { NotatorEvent } from "../../data/types/event";
 
 export function useEvent(props: {
   dependencies: { softRefreshSwitch: boolean };

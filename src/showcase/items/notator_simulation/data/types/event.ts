@@ -1,6 +1,8 @@
 import { Dayjs } from "dayjs";
 
 export interface NotatorEvent {
-  startTime: Dayjs;
-  endTime: Dayjs;
+  eventTimes: {
+    startTime: Dayjs;
+    endTime: Dayjs;
+  };
 }

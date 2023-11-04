@@ -6,8 +6,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { EditableTitle } from "./editables/editable_title";
-import { NotatorEvent } from "./types/event";
-import dayjs from "dayjs";
 import { EditableTime } from "./editables/editable_time";
 import { useNotatorTools } from "./tools/hooks/use_notator_tools";
 import { NotatorToolsProvider } from "./tools/provider";
@@ -43,11 +41,11 @@ export default function NotatorSimulationContextWrapper() {
 function NotatorSimulation() {
   const { palette } = useTheme();
 
-  const notatorTools = useNotatorTools();
+  const { draftEvent } = useNotatorTools();
 
   return (
     <>
-      {notatorTools.draftEvent && (
+      {draftEvent && (
         <Box
           sx={{
             bgcolor: palette.background.default,
@@ -64,11 +62,7 @@ function NotatorSimulation() {
           <Paper sx={{ height: "6rem", width: "100%", padding: ".5rem 1rem" }}>
             <EditableTitle />
             <Box sx={{ display: "flex" }}>
-              <EditableTime
-                startTime={notatorTools.draftEvent.startTime}
-                endTime={notatorTools.draftEvent.endTime}
-                onTimesChange={() => {}}
-              />
+              <EditableTime />
               {/* <EditableLocation /> */}
             </Box>
             {/* <EditableDescription /> */}

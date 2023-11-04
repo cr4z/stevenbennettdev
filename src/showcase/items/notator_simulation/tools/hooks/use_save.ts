@@ -1,6 +1,6 @@
 import { API_EVENTS } from "../../data/api";
 import { selectStateInUS, useSelector } from "../../data/redux";
-import { NotatorEvent } from "../../types/event";
+import { NotatorEvent } from "../../data/types/event";
 
 export function useSaveEvent(props: {
   setIsSaveSpinnerActive: (v: boolean) => void;

@@ -1,4 +1,4 @@
-import { NotatorEvent } from "../types/event";
+import { NotatorEvent } from "./types/event";
 import { MOCK_NOTATOR_EVENT } from "./mocks/notator_event";
 
 export const API_EVENTS = {

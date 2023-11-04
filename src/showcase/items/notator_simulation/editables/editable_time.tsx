@@ -1,46 +1,65 @@
 import { Box, Button, ButtonBase, Typography } from "@mui/material";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 //@ts-ignore
 import { ReactComponent as ClockSVG } from "../svg/ClockSVG.svg";
 import { useRef, useState } from "react";
 import { NotatorSimulationModal } from "../components/modal";
 import { TimeAutocomplete } from "../components/time_picker";
+import { useNotatorTools } from "../tools/hooks/use_notator_tools";
 
-export function EditableTime(props: {
-  startTime: Dayjs;
-  endTime: Dayjs;
-  onTimesChange: (v: StartAndEndTimes) => void;
-}) {
-  const color = "#000A";
+const COLOR = "#000A";
 
+export function EditableTime() {
   const [open, setOpen] = useState<boolean>(false);
+
+  const { draftEvent, editDraft } = useNotatorTools();
+
+  function onApplyTimes(v: StartAndEndTimes) {
+    console.log({
+      a: v.startTime.format("YYYY-MM-DD HH:mm:ss"),
+      b: v.endTime.format("YYYY-MM-DD HH:mm:ss"),
+    });
+
+    editDraft("eventTimes", v);
+  }
+
+  const defaultValues: StartAndEndTimes = {
+    startTime: draftEvent!.eventTimes.startTime,
+    endTime: draftEvent!.eventTimes.endTime,
+  };
 
   return (
     <>
-      <StartEndTimeEditorModal
-        open={open}
-        onClose={() => setOpen(false)}
-        onApplyTimes={(v) => props.onTimesChange(v)}
-      />
-      <ButtonBase
-        onClick={() => setOpen(true)}
-        sx={{
-          path: { fill: color },
-          borderRadius: 99,
-          padding: "2px 6px",
-          display: "flex",
-          alignItems: "center",
-          gap: ".4rem",
-          ":hover": {
-            bgcolor: "#0001",
-          },
-        }}
-      >
-        <ClockSVG />
-        <Typography sx={{ color }} variant="body2">
-          {props.startTime.format("H:mm a - ") + props.endTime.format("H:mm a")}
-        </Typography>
-      </ButtonBase>
+      {draftEvent && (
+        <>
+          <StartEndTimeEditorModal
+            defaultValues={defaultValues}
+            open={open}
+            onClose={() => setOpen(false)}
+            onApplyTimes={(v) => onApplyTimes(v)}
+          />
+          <ButtonBase
+            onClick={() => setOpen(true)}
+            sx={{
+              path: { fill: COLOR },
+              borderRadius: 99,
+              padding: "2px 6px",
+              display: "flex",
+              alignItems: "center",
+              gap: ".4rem",
+              ":hover": {
+                bgcolor: "#0001",
+              },
+            }}
+          >
+            <ClockSVG />
+            <Typography sx={{ color: COLOR }} variant="body2">
+              {draftEvent.eventTimes.startTime.format("h:mm a - ") +
+                draftEvent.eventTimes.endTime.format("h:mm a")}
+            </Typography>
+          </ButtonBase>
+        </>
+      )}
     </>
   );
 }
@@ -49,60 +68,72 @@ function StartEndTimeEditorModal(props: {
   open: boolean;
   onClose: () => void;
   onApplyTimes: (v: StartAndEndTimes) => void;
+  defaultValues: StartAndEndTimes;
 }) {
-  const [startTime, setStartTime] = useState<Dayjs>(dayjs());
-  const [endTime, setEndTime] = useState<Dayjs>(dayjs());
-
   const startTimeInputRef = useRef<HTMLInputElement>(null);
 
+  const [stagedStart, setStagedStart] = useState<Dayjs>(
+    props.defaultValues.startTime
+  );
+  const [stagedEnd, setStagedEnd] = useState<Dayjs>(
+    props.defaultValues.endTime
+  );
+
   return (
-    <NotatorSimulationModal
-      open={props.open}
-      onClose={() => props.onClose()}
-      onTransitionEnd={() => {
-        if (props.open) {
-          startTimeInputRef.current?.focus();
-        }
-      }}
-    >
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          props.onApplyTimes({ startTime, endTime });
-          props.onClose();
+    <>
+      <NotatorSimulationModal
+        open={props.open}
+        onClose={() => props.onClose()}
+        onTransitionEnd={() => {
+          if (props.open) {
+            startTimeInputRef.current?.focus();
+          }
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "1rem",
-            gap: "1rem",
-            width: "15rem",
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            props.onApplyTimes({
+              startTime: stagedStart,
+              endTime: stagedEnd,
+            });
+            props.onClose();
           }}
         >
-          <TimeAutocomplete
-            label="Start Time"
-            value={startTime}
-            onChange={(v: Dayjs) => setStartTime(v)}
-            ref={startTimeInputRef}
-          />
-          <TimeAutocomplete
-            label="End Time"
-            value={endTime}
-            onChange={(v: Dayjs) => setEndTime(v)}
-          />
-        </Box>
-        <Box sx={{ padding: "1rem", display: "flex", gap: "1rem" }}>
-          <Button fullWidth onClick={() => props.onClose()} type="button">
-            Cancel
-          </Button>
-          <Button type="submit" fullWidth variant="contained">
-            Apply
-          </Button>
-        </Box>
-      </form>
-    </NotatorSimulationModal>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "1rem",
+              gap: "1rem",
+              width: "15rem",
+            }}
+          >
+            <TimeAutocomplete
+              label="Start Time"
+              value={props.defaultValues.startTime}
+              onChange={(v: Dayjs) => setStagedStart(v)}
+              ref={startTimeInputRef}
+              defaultValue={props.defaultValues.startTime}
+            />
+            <TimeAutocomplete
+              label="End Time"
+              value={props.defaultValues.endTime}
+              onChange={(v: Dayjs) => setStagedEnd(v)}
+              defaultValue={props.defaultValues.endTime}
+            />
+          </Box>
+          <Box sx={{ padding: "1rem", display: "flex", gap: "1rem" }}>
+            <Button fullWidth onClick={() => props.onClose()} type="button">
+              Cancel
+            </Button>
+            <Button type="submit" fullWidth variant="contained">
+              Apply
+            </Button>
+          </Box>
+        </form>
+      </NotatorSimulationModal>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NotatorEvent } from "../../types/event";
+import { NotatorEvent } from "../../data/types/event";
 
 type UseDraftResponse = {
   draftEvent: NotatorEvent | null;

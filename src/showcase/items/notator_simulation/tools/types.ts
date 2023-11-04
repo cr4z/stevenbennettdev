@@ -1,4 +1,4 @@
-import { NotatorEvent } from "../types/event";
+import { NotatorEvent } from "../data/types/event";
 
 export interface NotatorToolsProviderProps {
   draftEvent: NotatorEvent | null;
