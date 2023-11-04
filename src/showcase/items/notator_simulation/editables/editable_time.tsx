@@ -2,9 +2,9 @@ import { Box, Button, ButtonBase, Typography } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
 //@ts-ignore
 import { ReactComponent as ClockSVG } from "../svg/ClockSVG.svg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NotatorSimulationModal } from "../components/modal";
-import TimeAutocomplete from "../components/time_picker";
+import { TimeAutocomplete } from "../components/time_picker";
 
 export function EditableTime(props: {
   startTime: Dayjs;
@@ -53,43 +53,55 @@ function StartEndTimeEditorModal(props: {
   const [startTime, setStartTime] = useState<Dayjs>(dayjs());
   const [endTime, setEndTime] = useState<Dayjs>(dayjs());
 
+  const startTimeInputRef = useRef<HTMLInputElement>(null);
+
   return (
-    <NotatorSimulationModal open={props.open} onClose={() => props.onClose()}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          padding: "1rem",
-          gap: "1rem",
-          width: "15rem",
+    <NotatorSimulationModal
+      open={props.open}
+      onClose={() => props.onClose()}
+      onTransitionEnd={() => {
+        if (props.open) {
+          startTimeInputRef.current?.focus();
+        }
+      }}
+    >
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          props.onApplyTimes({ startTime, endTime });
+          props.onClose();
         }}
       >
-        <TimeAutocomplete
-          label="Start Time"
-          value={startTime}
-          onChange={(v) => setStartTime(v)}
-        />
-        <TimeAutocomplete
-          label="End Time"
-          value={endTime}
-          onChange={(v) => setEndTime(v)}
-        />
-      </Box>
-      <Box sx={{ padding: "1rem", display: "flex", gap: "1rem" }}>
-        <Button fullWidth onClick={() => props.onClose()}>
-          Cancel
-        </Button>
-        <Button
-          fullWidth
-          variant="contained"
-          onClick={() => {
-            props.onApplyTimes({ startTime, endTime });
-            props.onClose();
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            padding: "1rem",
+            gap: "1rem",
+            width: "15rem",
           }}
         >
-          Apply
-        </Button>
-      </Box>
+          <TimeAutocomplete
+            label="Start Time"
+            value={startTime}
+            onChange={(v: Dayjs) => setStartTime(v)}
+            ref={startTimeInputRef}
+          />
+          <TimeAutocomplete
+            label="End Time"
+            value={endTime}
+            onChange={(v: Dayjs) => setEndTime(v)}
+          />
+        </Box>
+        <Box sx={{ padding: "1rem", display: "flex", gap: "1rem" }}>
+          <Button fullWidth onClick={() => props.onClose()} type="button">
+            Cancel
+          </Button>
+          <Button type="submit" fullWidth variant="contained">
+            Apply
+          </Button>
+        </Box>
+      </form>
     </NotatorSimulationModal>
   );
 }

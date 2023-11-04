@@ -4,6 +4,7 @@ export function NotatorSimulationModal(props: {
   open: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  onTransitionEnd?: () => void;
 }) {
   return (
     <Box
@@ -24,6 +25,14 @@ export function NotatorSimulationModal(props: {
         opacity: props.open ? 1 : 0, // Use opacity for fade-in and fade-out
         visibility: props.open ? "visible" : "hidden", // Use visibility to actually hide the element
         transition: "opacity 0.1s ease, visibility 0.1s ease", // Add transition to opacity and visibility
+      }}
+      onTransitionEnd={(e) => {
+        if (e.propertyName === "opacity") {
+          if (props.open && props.onTransitionEnd) {
+            // Call the onTransitionEnd callback only when the modal is opened
+            props.onTransitionEnd();
+          }
+        }
       }}
     >
       <Box
