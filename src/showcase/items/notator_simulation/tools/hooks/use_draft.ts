@@ -2,17 +2,26 @@ import { useEffect, useState } from "react";
 import { NotatorEvent } from "../../types/event";
 
 type UseDraftResponse = {
-  draftEvent: NotatorEvent;
+  draftEvent: NotatorEvent | null;
   editDraft: (
     propertyPath: string,
     updatedValue: any,
     cb?: () => void
   ) => NotatorEvent;
 };
-export function useDraft(): UseDraftResponse {
-  const [draftEvent, setDraftEvent] = useState<NotatorEvent>(
-    {} as NotatorEvent
-  );
+
+export function useDraft(props: {
+  dependencies: { event: NotatorEvent | null };
+}): UseDraftResponse {
+  const { event } = props.dependencies;
+
+  const [draftEvent, setDraftEvent] = useState<NotatorEvent | null>(null);
+
+  useEffect(() => {
+    if (!event) return;
+
+    setDraftEvent(event);
+  }, [event]);
 
   const setDraftEventChangeCallback = useCallbackOnUpdate(draftEvent);
 
@@ -51,6 +60,8 @@ export function useDraft(): UseDraftResponse {
 
   return { draftEvent, editDraft };
 }
+
+// -------- PRIVATE HOOKS --------
 
 function useCallbackOnUpdate(dependency: any) {
   const [cb, setCallback] = useState<() => void | undefined>();

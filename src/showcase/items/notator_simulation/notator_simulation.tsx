@@ -43,37 +43,38 @@ export default function NotatorSimulationContextWrapper() {
 function NotatorSimulation() {
   const { palette } = useTheme();
 
-  const event: NotatorEvent = { startTime: dayjs(), endTime: dayjs() };
-
   const notatorTools = useNotatorTools();
-  console.log("Nice! :)");
 
   return (
-    <Box
-      sx={{
-        bgcolor: palette.background.default,
-        width: "100%",
-        height: "100%",
-        padding: "16px",
-        "*::selection": {
-          bgcolor: "#1889a3!important",
-          color: "white",
-        },
-        position: "relative",
-      }}
-    >
-      <Paper sx={{ height: "6rem", width: "100%", padding: ".5rem 1rem" }}>
-        <EditableTitle />
-        <Box sx={{ display: "flex" }}>
-          <EditableTime
-            startTime={event.startTime}
-            endTime={event.endTime}
-            onTimesChange={() => {}}
-          />
-          {/* <EditableLocation /> */}
+    <>
+      {notatorTools.draftEvent && (
+        <Box
+          sx={{
+            bgcolor: palette.background.default,
+            width: "100%",
+            height: "100%",
+            padding: "16px",
+            "*::selection": {
+              bgcolor: "#1889a3!important",
+              color: "white",
+            },
+            position: "relative",
+          }}
+        >
+          <Paper sx={{ height: "6rem", width: "100%", padding: ".5rem 1rem" }}>
+            <EditableTitle />
+            <Box sx={{ display: "flex" }}>
+              <EditableTime
+                startTime={notatorTools.draftEvent.startTime}
+                endTime={notatorTools.draftEvent.endTime}
+                onTimesChange={() => {}}
+              />
+              {/* <EditableLocation /> */}
+            </Box>
+            {/* <EditableDescription /> */}
+          </Paper>
         </Box>
-        {/* <EditableDescription /> */}
-      </Paper>
-    </Box>
+      )}
+    </>
   );
 }

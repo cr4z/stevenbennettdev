@@ -2,7 +2,7 @@ import { Box, Button, ButtonBase, Typography } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
 //@ts-ignore
 import { ReactComponent as ClockSVG } from "../svg/ClockSVG.svg";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { NotatorSimulationModal } from "../components/modal";
 import { TimeAutocomplete } from "../components/time_picker";
 

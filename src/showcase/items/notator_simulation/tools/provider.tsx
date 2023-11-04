@@ -15,11 +15,13 @@ export function NotatorToolsProvider(props: { children: React.ReactNode }) {
   // ----- Notator-Wide Complex Modules -----
 
   const { softRefreshSwitch, toggleSoftRefresh } = useSoftRefresh();
-  const { draftEvent, editDraft } = useDraft();
+
   const event = useEvent({
     dependencies: { softRefreshSwitch },
     setIsSaveSpinnerActive,
   });
+  const { draftEvent, editDraft } = useDraft({ dependencies: { event } });
+
   const saveEvent = useSaveEvent({
     setIsSaveSpinnerActive,
     toggleSoftRefresh,

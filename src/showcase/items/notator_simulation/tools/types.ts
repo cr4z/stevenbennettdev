@@ -1,7 +1,7 @@
 import { NotatorEvent } from "../types/event";
 
 export interface NotatorToolsProviderProps {
-  draftEvent: NotatorEvent;
+  draftEvent: NotatorEvent | null;
   editDraft: EditEventFunctionType;
   event: NotatorEvent | null;
   selectedSegmentIndex: number;
