@@ -80,13 +80,17 @@ function StartEndTimeEditorModal(props: {
   );
 
   useEffect(() => {
-    setStagedStart(props.defaultValues.startTime);
-    setStagedEnd(props.defaultValues.endTime);
+    if (props.open) {
+      setStagedStart(props.defaultValues.startTime);
+      setStagedEnd(props.defaultValues.endTime);
+    }
+    console.log("HEYOOOOOOOOOOOOO");
   }, [props.open]);
 
   return (
     <>
       <NotatorSimulationModal
+        key={`NotatorSimulationModal-${props.open}`}
         open={props.open}
         onClose={() => props.onClose()}
         onTransitionEnd={() => {
@@ -119,13 +123,11 @@ function StartEndTimeEditorModal(props: {
               value={stagedStart}
               onChange={(v: Dayjs) => setStagedStart(v)}
               ref={startTimeInputRef}
-              defaultValue={dayjs(props.defaultValues.startTime)}
             />
             <TimeAutocomplete
               label="End Time"
               value={stagedEnd}
               onChange={(v: Dayjs) => setStagedEnd(v)}
-              defaultValue={dayjs(props.defaultValues.endTime)}
             />
           </Box>
           <Box sx={{ padding: "1rem", display: "flex", gap: "1rem" }}>

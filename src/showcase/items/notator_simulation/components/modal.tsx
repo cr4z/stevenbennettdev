@@ -8,6 +8,7 @@ export function NotatorSimulationModal(props: {
 }) {
   return (
     <Box
+      key={`notator-simulation-modal-${props.open}`}
       onClick={() => {
         props.onClose();
       }}
