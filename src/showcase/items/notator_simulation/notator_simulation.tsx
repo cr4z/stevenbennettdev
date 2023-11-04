@@ -6,9 +6,11 @@ import {
   useTheme,
 } from "@mui/material";
 import { EditableTitle } from "./editables/editable_title";
-import { Event } from "./types/event";
+import { NotatorEvent } from "./types/event";
 import dayjs from "dayjs";
 import { EditableTime } from "./editables/editable_time";
+import { useNotatorTools } from "./tools/hooks/use_notator_tools";
+import { NotatorToolsProvider } from "./tools/provider";
 
 const notatorTheme = createTheme({
   palette: {
@@ -31,17 +33,20 @@ const notatorTheme = createTheme({
 export default function NotatorSimulationContextWrapper() {
   return (
     <ThemeProvider theme={notatorTheme}>
-      <NotatorSimulation />
+      <NotatorToolsProvider>
+        <NotatorSimulation />
+      </NotatorToolsProvider>
     </ThemeProvider>
   );
 }
 
 function NotatorSimulation() {
   const { palette } = useTheme();
-  const event: Event = { startTime: dayjs(), endTime: dayjs() };
 
-  // alright, in order to add new times to event, we need to make event into state. meaning we need to port the notator tools.
-  // alllll the heavylifting is coming together.
+  const event: NotatorEvent = { startTime: dayjs(), endTime: dayjs() };
+
+  const notatorTools = useNotatorTools();
+  console.log("Nice! :)");
 
   return (
     <Box
