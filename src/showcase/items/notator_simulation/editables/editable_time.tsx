@@ -1,8 +1,8 @@
 import { Box, Button, ButtonBase, Typography } from "@mui/material";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 //@ts-ignore
 import { ReactComponent as ClockSVG } from "../svg/ClockSVG.svg";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { NotatorSimulationModal } from "../components/modal";
 import { TimeAutocomplete } from "../components/time_picker";
 import { useNotatorTools } from "../tools/hooks/use_notator_tools";
@@ -54,8 +54,8 @@ export function EditableTime() {
           >
             <ClockSVG />
             <Typography sx={{ color: COLOR }} variant="body2">
-              {draftEvent.eventTimes.startTime.format("h:mm a - ") +
-                draftEvent.eventTimes.endTime.format("h:mm a")}
+              {dayjs(draftEvent.eventTimes.startTime).format("h:mm a - ") +
+                dayjs(draftEvent.eventTimes.endTime).format("h:mm a")}
             </Typography>
           </ButtonBase>
         </>
@@ -78,6 +78,11 @@ function StartEndTimeEditorModal(props: {
   const [stagedEnd, setStagedEnd] = useState<Dayjs>(
     props.defaultValues.endTime
   );
+
+  useEffect(() => {
+    setStagedStart(props.defaultValues.startTime);
+    setStagedEnd(props.defaultValues.endTime);
+  }, [props.open]);
 
   return (
     <>
@@ -111,16 +116,16 @@ function StartEndTimeEditorModal(props: {
           >
             <TimeAutocomplete
               label="Start Time"
-              value={props.defaultValues.startTime}
+              value={stagedStart}
               onChange={(v: Dayjs) => setStagedStart(v)}
               ref={startTimeInputRef}
-              defaultValue={props.defaultValues.startTime}
+              defaultValue={dayjs(props.defaultValues.startTime)}
             />
             <TimeAutocomplete
               label="End Time"
-              value={props.defaultValues.endTime}
+              value={stagedEnd}
               onChange={(v: Dayjs) => setStagedEnd(v)}
-              defaultValue={props.defaultValues.endTime}
+              defaultValue={dayjs(props.defaultValues.endTime)}
             />
           </Box>
           <Box sx={{ padding: "1rem", display: "flex", gap: "1rem" }}>

@@ -7,9 +7,20 @@ import {
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { useEditableControlledVisbilityStyling as useControlledVisbilityStyling } from "./use_editable";
+import { useNotatorTools } from "../tools/hooks/use_notator_tools";
+import { useEffect } from "react";
 
 export function EditableTitle() {
-  const [text, setText] = useState<string>("Click to edit me!");
+  const { draftEvent, editDraft } = useNotatorTools();
+
+  const [text, setText] = useState<string>("");
+
+  useEffect(() => {
+    if (!draftEvent) return;
+
+    setText(draftEvent.title);
+  }, [draftEvent]);
+
   const [inputHasBeenFocused, setInputHasBeenFocusedOn] =
     useState<boolean>(false);
 
@@ -54,6 +65,9 @@ export function EditableTitle() {
         value={text}
         onChange={(e) => setText(e.target.value)}
         id={visibilitySx.inputID}
+        onBlur={(e) => {
+          editDraft("title", e.target.value);
+        }}
         sx={{
           ...exactTextStyle,
           ".MuiInputBase-input": {

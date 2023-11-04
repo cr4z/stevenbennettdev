@@ -1,4 +1,4 @@
-import { useState, useEffect, forwardRef } from "react";
+import { useEffect, forwardRef } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import dayjs, { Dayjs } from "dayjs";
@@ -10,7 +10,6 @@ interface RequiredProps {
 }
 interface OptionalProps {
   label?: string;
-  defaultValue?: Dayjs;
 }
 export type TimeAutocompleteProps = RequiredProps & OptionalProps;
 
@@ -18,19 +17,12 @@ export const TimeAutocomplete = forwardRef<
   HTMLInputElement,
   TimeAutocompleteProps
 >((props, ref) => {
-  const defaultValue = props.defaultValue
-    ? props.defaultValue?.format("hh:mm A")
-    : dayjs().format("hh:mm A");
-
-  const [value, setValue] = useState<string>(defaultValue);
-  const [invalid, setInvalid] = useState<boolean>(false);
+  const { value, onChange, label } = props;
 
   useEffect(() => {
-    if (timeUtils.isValidTime(value) || value === "") {
-      setInvalid(false);
-      props.onChange(dayjs(value, "hh:mm A"));
-    } else {
-      setInvalid(true);
+    // Assuming you want to check for a valid time whenever the value changes
+    if (!timeUtils.isValidTime(value.format("hh:mm A"))) {
+      // Handle invalid time if necessary
     }
   }, [value]);
 
@@ -38,16 +30,19 @@ export const TimeAutocomplete = forwardRef<
     <Autocomplete
       id="time-autocomplete"
       options={timeUtils.options}
-      value={value}
+      value={value.format("hh:mm A")}
       freeSolo
       onInputChange={(e, newValue) => {
-        setValue(newValue);
+        const newTime = dayjs(newValue, "hh:mm A");
+        if (timeUtils.isValidTime(newValue) || newValue === "") {
+          onChange(newTime);
+        }
       }}
       renderInput={(params) => (
         <TextField
-          error={invalid}
           {...params}
-          label={props.label ?? "Select Time"}
+          error={!timeUtils.isValidTime(value.format("hh:mm A"))}
+          label={label ?? "Select Time"}
           variant="outlined"
           inputRef={ref}
         />
