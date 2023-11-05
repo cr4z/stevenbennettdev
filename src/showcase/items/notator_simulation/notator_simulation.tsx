@@ -1,5 +1,6 @@
 import {
   Box,
+  Grid,
   IconButton,
   Paper,
   ThemeProvider,
@@ -70,23 +71,30 @@ function NotatorSimulation() {
             display: "flex",
             flexDirection: "column",
             gap: "1rem",
+            minWidth: "60rem",
           }}
         >
           <Paper
             sx={{
               width: "100%",
-              padding: ".75rem .75rem",
-              display: "flex",
-              flexDirection: "column",
-              gap: ".25rem",
+              padding: ".5rem",
             }}
           >
-            <EditableTitle />
-            <Box sx={{ display: "flex" }}>
-              <EditableTime />
-              {/* <EditableLocation /> */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: ".5rem",
+                maxWidth: "24rem",
+              }}
+            >
+              <EditableTitle />
+              <Box sx={{ display: "flex" }}>
+                <EditableTime />
+                {/* <EditableLocation /> */}
+              </Box>
+              <EditableDescription />
             </Box>
-            <EditableDescription />
           </Paper>
           <Box sx={{ height: "100%", display: "flex", gap: "1rem" }}>
             <Paper
@@ -107,7 +115,11 @@ function NotatorSimulation() {
                 <Typography variant="h6" color="white" sx={{ pl: ".5rem" }}>
                   Event Segments
                 </Typography>
-                <IconButton sx={{ svg: { color: "white" } }}>
+                <IconButton
+                  sx={{
+                    svg: { color: "white", width: "1.2rem", height: "1.2rem" },
+                  }}
+                >
                   <BsFillTrash3Fill />
                 </IconButton>
               </Box>
