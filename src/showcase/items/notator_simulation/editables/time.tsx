@@ -3,7 +3,7 @@ import dayjs, { Dayjs } from "dayjs";
 //@ts-ignore
 import { ReactComponent as ClockSVG } from "../svg/ClockSVG.svg";
 import { useRef, useState, useEffect } from "react";
-import { NotatorSimulationModal } from "../components/modal";
+import { NotatorSimulationModal } from "../components/modals/modal";
 import { TimeAutocomplete } from "../components/time_picker";
 import { useNotatorTools } from "../tools/hooks/use_notator_tools";
 
@@ -91,7 +91,7 @@ function StartEndTimeEditorModal(props: {
       <NotatorSimulationModal
         open={props.open}
         onClose={() => props.onClose()}
-        onTransitionEnd={() => {
+        onFocusReady={() => {
           if (props.open) {
             startTimeInputRef.current?.focus();
           }
@@ -113,7 +113,6 @@ function StartEndTimeEditorModal(props: {
               flexDirection: "column",
               padding: "1rem",
               gap: "1rem",
-              width: "15rem",
             }}
           >
             <TimeAutocomplete

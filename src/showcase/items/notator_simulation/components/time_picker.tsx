@@ -40,6 +40,7 @@ export const TimeAutocomplete = forwardRef<
   return (
     <Autocomplete
       id="time-autocomplete"
+      fullWidth
       options={timeUtils.options}
       value={formatTimeValue(value)}
       freeSolo

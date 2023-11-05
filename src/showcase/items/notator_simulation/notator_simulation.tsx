@@ -5,11 +5,9 @@ import {
   createTheme,
   useTheme,
 } from "@mui/material";
-import { EditableLabel } from "./components/editable_label/editable_label";
 import { EditableTime } from "./editables/time";
 import { useNotatorTools } from "./tools/hooks/use_notator_tools";
 import { NotatorToolsProvider } from "./tools/provider";
-import { useState } from "react";
 import { EditableTitle } from "./editables/title";
 import { EditableDescription } from "./editables/description";
 

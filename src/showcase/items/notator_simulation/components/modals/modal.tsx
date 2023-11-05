@@ -1,11 +1,28 @@
-import { Box } from "@mui/material";
+import { Box, SxProps } from "@mui/material";
 
 export function NotatorSimulationModal(props: {
   open: boolean;
   onClose: () => void;
   children: React.ReactNode;
-  onTransitionEnd?: () => void;
+  onFocusReady?: () => void;
+  sx?: SxProps;
+  minWidth?: "lg" | "md" | "sm";
 }) {
+  function getMaxWidth(): string {
+    switch (props.minWidth) {
+      case "lg":
+        return "40rem";
+      case "md":
+        return "30rem";
+      case "sm":
+        return "20rem";
+    }
+
+    return "20rem";
+  }
+
+  const maxWidth = getMaxWidth();
+
   return (
     <Box
       key={`notator-simulation-modal-${props.open}`}
@@ -28,10 +45,10 @@ export function NotatorSimulationModal(props: {
         transition: "opacity 0.1s ease, visibility 0.1s ease", // Add transition to opacity and visibility
       }}
       onTransitionEnd={(e) => {
-        if (e.propertyName === "opacity") {
-          if (props.open && props.onTransitionEnd) {
+        if (e.propertyName === "transform") {
+          if (props.open && props.onFocusReady) {
             // Call the onTransitionEnd callback only when the modal is opened
-            props.onTransitionEnd();
+            props.onFocusReady();
           }
         }
       }}
@@ -42,6 +59,9 @@ export function NotatorSimulationModal(props: {
           bgcolor: "white",
           borderRadius: ".5rem",
           zIndex: 2,
+          width: "calc(100% - 2rem)",
+          maxWidth: maxWidth,
+          ...props.sx,
         }}
       >
         {props.children}

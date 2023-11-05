@@ -5,10 +5,11 @@ import truncateTextPretty from "../../../../../utils/truncate_text_pretty";
 
 interface RequiredProps {
   value: string;
-  onChange: (v: string) => void;
-  onBlur: (v: string) => void;
 }
 interface OptionalProps {
+  onChange?: (v: string) => void;
+  onBlur?: (v: string) => void;
+  onClick?: () => void;
   placeholder?: string;
 }
 interface StyleProps {
@@ -30,6 +31,11 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
       fontWeight: 500,
     } as SxProps,
   };
+
+  function handleClick() {
+    setInputHasBeenFocusedOn(true);
+    props.onClick?.call(null);
+  }
 
   const [inputHasBeenFocused, setInputHasBeenFocusedOn] =
     useState<boolean>(false);
@@ -61,14 +67,18 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
           margin: 0,
         },
       }}
-      onClick={() => setInputHasBeenFocusedOn(true)}
+      onClick={() => handleClick()}
       onBlur={() => setInputHasBeenFocusedOn(false)}
     >
       <InputBase
         placeholder={placeholder.text}
         multiline
         value={props.value}
-        onChange={(e) => props.onChange(e.target.value)}
+        onChange={(e) => {
+          if (props.onChange) {
+            props.onChange(e.target.value);
+          }
+        }}
         id={visibilitySx.inputID}
         onBlur={(e) => {
           if (props.onBlur) {
