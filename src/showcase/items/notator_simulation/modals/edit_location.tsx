@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useRef, useState } from "react";
-import { NotatorSimulationModal } from "../components/modals/modal";
+import { NotatorSimulationModal } from "../components/modal";
 
 export function EditLocationModal(props: {
   open: boolean;

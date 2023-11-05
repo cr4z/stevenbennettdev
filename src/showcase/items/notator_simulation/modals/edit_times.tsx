@@ -3,7 +3,7 @@ import { TimeAutocomplete } from "../components/time_picker";
 import { EventTimes } from "../data/types/event";
 import { useRef, useState, useEffect } from "react";
 import { Dayjs } from "dayjs";
-import { NotatorSimulationModal } from "../components/modals/modal";
+import { NotatorSimulationModal } from "../components/modal";
 
 export function EditEventTimesModal(props: {
   open: boolean;

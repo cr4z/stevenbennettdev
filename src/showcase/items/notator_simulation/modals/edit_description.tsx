@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNotatorTools } from "../tools/hooks/use_notator_tools";
-import { NotatorSimulationModal } from "../components/modals/modal";
+import { NotatorSimulationModal } from "../components/modal";
 import { Box, Button, TextField, Typography } from "@mui/material";
 
 export function EditDesriptionModal(props: {
