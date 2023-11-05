@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNotatorTools } from "../tools/hooks/use_notator_tools";
 import { NotatorSimulationModal } from "../components/modals/modal";
 import { Box, Button, TextField, Typography } from "@mui/material";
@@ -13,6 +13,15 @@ export function EditDesriptionModal(props: {
   useEffect(() => {
     setCachedDescription(draftEvent?.description ?? "");
   }, [draftEvent]);
+
+  const focusRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (props.open && focusRef.current) {
+      const length = focusRef.current.value.length;
+      focusRef.current.focus();
+      focusRef.current.setSelectionRange(length, length);
+    }
+  }, [props.open]);
 
   return (
     <NotatorSimulationModal
@@ -32,7 +41,7 @@ export function EditDesriptionModal(props: {
           Add a description
         </Typography>
         <TextField
-          autoFocus
+          inputRef={focusRef}
           id="add-description-textbox"
           label="Description"
           multiline
