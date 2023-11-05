@@ -1,7 +1,9 @@
 import {
   Box,
+  IconButton,
   Paper,
   ThemeProvider,
+  Typography,
   createTheme,
   useTheme,
 } from "@mui/material";
@@ -10,6 +12,7 @@ import { useNotatorTools } from "./tools/hooks/use_notator_tools";
 import { NotatorToolsProvider } from "./tools/provider";
 import { EditableTitle } from "./editables/title";
 import { EditableDescription } from "./editables/description";
+import { BsFillTrash3Fill } from "react-icons/bs";
 
 const notatorTheme = createTheme({
   palette: {
@@ -25,6 +28,12 @@ const notatorTheme = createTheme({
           boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
         },
       },
+    },
+  },
+  typography: {
+    h6: {
+      fontSize: "1.2rem",
+      padding: 0,
     },
   },
 });
@@ -58,6 +67,9 @@ function NotatorSimulation() {
               color: "white",
             },
             position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
           }}
         >
           <Paper
@@ -76,6 +88,32 @@ function NotatorSimulation() {
             </Box>
             <EditableDescription />
           </Paper>
+          <Box sx={{ height: "100%", display: "flex", gap: "1rem" }}>
+            <Paper
+              sx={{
+                flexBasis: "20rem",
+                background:
+                  "linear-gradient(197deg, rgba(23, 42, 58, 0.56) -1.71%, rgba(23, 42, 58, 0.91) 102.94%)",
+                padding: ".5rem",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="h6" color="white" sx={{ pl: ".5rem" }}>
+                  Event Segments
+                </Typography>
+                <IconButton sx={{ svg: { color: "white" } }}>
+                  <BsFillTrash3Fill />
+                </IconButton>
+              </Box>
+            </Paper>
+            <Paper sx={{ flexGrow: 1 }}></Paper>
+          </Box>
         </Box>
       )}
     </>
