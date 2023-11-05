@@ -5,10 +5,13 @@ import {
   createTheme,
   useTheme,
 } from "@mui/material";
-import { EditableTitle } from "./editables/editable_title";
-import { EditableTime } from "./editables/editable_time";
+import { EditableLabel } from "./components/editable_label/editable_label";
+import { EditableTime } from "./editables/time";
 import { useNotatorTools } from "./tools/hooks/use_notator_tools";
 import { NotatorToolsProvider } from "./tools/provider";
+import { useState } from "react";
+import { EditableTitle } from "./editables/title";
+import { EditableDescription } from "./editables/description";
 
 const notatorTheme = createTheme({
   palette: {
@@ -59,13 +62,13 @@ function NotatorSimulation() {
             position: "relative",
           }}
         >
-          <Paper sx={{ height: "6rem", width: "100%", padding: ".5rem 1rem" }}>
+          <Paper sx={{ height: "8rem", width: "100%", padding: ".5rem 1rem" }}>
             <EditableTitle />
             <Box sx={{ display: "flex" }}>
               <EditableTime />
               {/* <EditableLocation /> */}
             </Box>
-            {/* <EditableDescription /> */}
+            <EditableDescription />
           </Paper>
         </Box>
       )}

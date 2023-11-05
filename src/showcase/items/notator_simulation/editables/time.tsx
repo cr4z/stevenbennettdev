@@ -84,13 +84,11 @@ function StartEndTimeEditorModal(props: {
       setStagedStart(props.defaultValues.startTime);
       setStagedEnd(props.defaultValues.endTime);
     }
-    console.log("HEYOOOOOOOOOOOOO");
   }, [props.open]);
 
   return (
     <>
       <NotatorSimulationModal
-        key={`NotatorSimulationModal-${props.open}`}
         open={props.open}
         onClose={() => props.onClose()}
         onTransitionEnd={() => {
