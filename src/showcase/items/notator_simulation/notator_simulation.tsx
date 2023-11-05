@@ -62,7 +62,15 @@ function NotatorSimulation() {
             position: "relative",
           }}
         >
-          <Paper sx={{ height: "8rem", width: "100%", padding: ".5rem 1rem" }}>
+          <Paper
+            sx={{
+              width: "100%",
+              padding: ".75rem .75rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: ".25rem",
+            }}
+          >
             <EditableTitle />
             <Box sx={{ display: "flex" }}>
               <EditableTime />

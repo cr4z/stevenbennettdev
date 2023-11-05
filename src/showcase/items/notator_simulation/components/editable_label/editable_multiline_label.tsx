@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  InputBase,
-  SxProps,
-  Typography,
-  TypographyVariant,
-  Box,
-} from "@mui/material";
+import { InputBase, SxProps, Box, Typography } from "@mui/material";
 import { useEditableControlledVisbilityStyling } from "./use_styling";
 
 interface RequiredProps {
@@ -18,11 +12,6 @@ interface OptionalProps {
 }
 interface StyleProps {
   height: string;
-  fontStyling: {
-    fontSize: { fontSize?: string; variant?: TypographyVariant };
-    fontFamily?: string;
-    letterSpacing?: string;
-  };
   px?: string;
 }
 
@@ -35,6 +24,7 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
       color: "#000",
       fontFamily: "Inter",
       fontStyle: "italic",
+      fontSize: ".8rem",
       fontVariationSettings: "'slnt' 10",
       fontWeight: 500,
     } as SxProps,
@@ -49,22 +39,26 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
   });
 
   const textStyle: SxProps = {
-    fontSize: props.fontStyling.fontSize.fontSize,
-    fontFamily: props.fontStyling?.fontFamily,
-    letterSpacing: props.fontStyling.letterSpacing,
+    fontFamily: "Roboto",
+    letterSpacing: "-.5px",
     height: "100%",
     width: "100%",
     display: "flex",
     alignItems: "flex-start",
-    pt: "2px",
+    color: "#000B",
+    fontSize: ".9rem",
   };
 
   return (
     <Box
       sx={{
-        height: props.height,
+        height: `calc(${props.height} + 1px)`,
         position: "relative",
         ...visibilitySx.containerStyle,
+        ".MuiInputBase-root": {
+          padding: 0,
+          margin: 0,
+        },
       }}
       onClick={() => setInputHasBeenFocusedOn(true)}
       onBlur={() => setInputHasBeenFocusedOn(false)}
@@ -82,6 +76,7 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
         }}
         sx={{
           ...textStyle,
+
           ".MuiInputBase-input": {
             padding: 0,
             margin: 0,
@@ -89,7 +84,6 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
             height: "100%",
             px: props.px,
             "&::placeholder": {
-              pt: "1px",
               ...(placeholder.typographyStyle as any),
             },
           },
@@ -99,11 +93,13 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
           position: "absolute",
           top: 0,
           left: 0,
+          padding: 0,
+          margin: 0,
         }}
       />
       <Box id={visibilitySx.typographyID}>
         <Typography
-          variant={props.fontStyling.fontSize.variant}
+          variant="body2"
           sx={{
             ...textStyle,
             position: "absolute",
@@ -111,14 +107,24 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
             left: 0,
             px: props.px,
             ...(props.value === "" && {
+              pt: "1px",
               opacity: 0.4,
               ...placeholder.typographyStyle,
             }),
           }}
         >
-          {props.value === "" ? placeholder.text : props.value}
+          {props.value === ""
+            ? placeholder.text
+            : truncateText(props.value, 100)}
         </Typography>
       </Box>
     </Box>
   );
+}
+
+function truncateText(text: string, maxLength: number) {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength - 3) + "...";
+  }
+  return text;
 }

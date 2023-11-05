@@ -14,11 +14,6 @@ export function EditableDescription() {
       onChange={(v) => setStagedDescription(v)}
       onBlur={(v) => editDraft("description", v)}
       height="2.5rem"
-      fontStyling={{
-        fontSize: { fontSize: "unset", variant: "body1" },
-        fontFamily: "Roboto",
-        letterSpacing: "-.5px",
-      }}
       px=".5rem"
     />
   );
