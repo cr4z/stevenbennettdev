@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { InputBase, SxProps, Box, Typography } from "@mui/material";
 import { useEditableControlledVisbilityStyling } from "./use_styling";
+import truncateTextPretty from "../../../../../utils/truncate_text_pretty";
 
 interface RequiredProps {
   value: string;
@@ -115,16 +116,9 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
         >
           {props.value === ""
             ? placeholder.text
-            : truncateText(props.value, 100)}
+            : truncateTextPretty(props.value, 100)}
         </Typography>
       </Box>
     </Box>
   );
-}
-
-function truncateText(text: string, maxLength: number) {
-  if (text.length > maxLength) {
-    return text.substring(0, maxLength - 3) + "...";
-  }
-  return text;
 }
