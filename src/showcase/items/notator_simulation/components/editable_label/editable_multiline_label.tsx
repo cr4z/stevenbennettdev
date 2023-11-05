@@ -54,6 +54,7 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
     alignItems: "flex-start",
     color: "#000B",
     fontSize: ".9rem",
+    fontWeight: 400,
   };
 
   return (

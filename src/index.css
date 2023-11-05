@@ -17,14 +17,32 @@
   src: url("./fonts/Lato/Lato-Bold.ttf") format("truetype");
 }
 
-body {
-  margin: 0;
-  font-family: "Roboto";
+:root {
+  /* Selection colors for my website */
+  --selection-background: #06a3c6;
+  --selection-color: white;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  /* Selection colors for notator simulation */
+  --selection-background-ns: #09bc8a;
+  --selection-color-ns: white;
+}
+
+*::selection {
+  color: var(--selection-color);
+  background: var(--selection-background);
+}
+*::-moz-selection {
+  color: var(--selection-color);
+  background: var(--selection-background);
+}
+*::-webkit-selection {
+  color: var(--selection-color);
+  background: var(--selection-background);
+}
+
+.notator-selection-colors *::selection {
+  background: var(--selection-background-ns);
+  color: var(--selection-color-ns);
 }
 
 #root,
@@ -36,6 +54,16 @@ html {
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto";
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 ul {
@@ -51,19 +79,6 @@ ul {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-*::selection {
-  /* background: #e61134; /* WebKit/Blink Browsers */
-  background: #3a6974; /* Gecko Browsers */
-}
-*::-moz-selection {
-  /* background: #e61134; /* Gecko Browsers */
-  background: #06a3c6; /* Gecko Browsers */
-}
-*::-webkit-selection {
-  /* background: #e61134; /* Gecko Browsers */
-  background: #06a3c6; /* Gecko Browsers */
 }
 
 .typewriter h4 {

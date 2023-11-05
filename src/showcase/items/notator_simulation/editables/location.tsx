@@ -1,0 +1,30 @@
+import { Typography } from "@mui/material";
+import { useState } from "react";
+import { useNotatorTools } from "../tools/hooks/use_notator_tools";
+import { IoLocationSharp } from "react-icons/io5";
+import { EditLocationModal } from "../modals/edit_location";
+import { Chip } from "../components/chip";
+
+export function EditableLocation() {
+  const [open, setOpen] = useState<boolean>(false);
+  const { draftEvent, editDraft } = useNotatorTools();
+
+  return (
+    <>
+      {draftEvent && (
+        <>
+          <EditLocationModal
+            defaultValue={draftEvent.location}
+            open={open}
+            onClose={() => setOpen(false)}
+            onApply={(v) => editDraft("location", v)}
+          />
+          <Chip onClick={() => setOpen(true)}>
+            <IoLocationSharp />
+            <Typography variant="body2">{draftEvent.location}</Typography>
+          </Chip>
+        </>
+      )}
+    </>
+  );
+}

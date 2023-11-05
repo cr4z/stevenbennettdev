@@ -8,4 +8,11 @@ export const MOCK_NOTATOR_EVENT: NotatorEvent = {
     startTime: dayjs().startOf("hour"),
     endTime: dayjs().startOf("hour").add(1, "hour"),
   },
+  location: "Austin, TX",
+  segments: [
+    { title: "Pre-Event Preparations" },
+    { title: "Ceremony/Opening Segment" },
+    { title: "Activities/Games" },
+    { title: "Dining/Food & Drinks" },
+  ],
 };
