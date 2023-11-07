@@ -2,7 +2,7 @@ import { Box, ThemeProvider, useTheme } from "@mui/material";
 import { useNotatorTools } from "./tools/hooks/use_notator_tools";
 import { NotatorToolsProvider } from "./tools/provider";
 import { notatorTheme } from "./theme/theme";
-import { LeftWidget } from "./widgets/left";
+import { LeftWidget } from "./widgets/left/left";
 import { HeaderWidget } from "./widgets/header";
 import { RightWidget } from "./widgets/right";
 

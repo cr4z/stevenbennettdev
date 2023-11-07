@@ -9,20 +9,12 @@ export const theme = createTheme({
       400: "#969696",
       500: "#808080",
       600: "#747474",
-      700: "#404040",
     },
     text: { primary: "#FFF" },
   },
   components: {
     MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          backdropFilter: "blur(40px)",
-          bgcolor: "rgb(50, 50, 50, .3)",
-          borderRadius: "8px",
-          border: "1px solid " + "#808080",
-        },
-      },
+      defaultProps: { arrow: true, disableInteractive: true },
     },
   },
   typography: {
@@ -80,7 +72,7 @@ export const theme = createTheme({
     subtitle1: {
       fontFamily: "Roboto",
       fontSize: "16px",
-      lineHeight: "1.6rem"
+      lineHeight: "1.6rem",
     },
   },
 });
