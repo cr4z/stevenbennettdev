@@ -2,7 +2,7 @@ import HeadshotPNG from "../../img/headshot_natural.png";
 import { OpenToWorkMessage } from "../../components/msg_open_to_work";
 import Button from "../../design_system/button";
 import { BsFileEarmarkPerson } from "react-icons/bs";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Tooltip, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export function IntroductoryText() {
@@ -183,17 +183,21 @@ function TitleAndResume() {
         Building Tomorrow's Web, One Line at a Time
       </Typography>
 
-      <Button
-        useIcon={<BsFileEarmarkPerson />}
-        onClick={() =>
-          window.open(
-            "https://docs.google.com/document/d/1NrQ0TLz_1hpkAS-9DffDTQvYMeb7JyZU6OonJSnjOY0/edit?usp=sharing",
-            "_blank"
-          )
-        }
-      >
-        View Resume
-      </Button>
+      <Tooltip title="View Resume">
+        <div>
+          <Button
+            useIcon={<BsFileEarmarkPerson />}
+            onClick={() =>
+              window.open(
+                "https://docs.google.com/document/d/1NrQ0TLz_1hpkAS-9DffDTQvYMeb7JyZU6OonJSnjOY0/edit?usp=sharing",
+                "_blank"
+              )
+            }
+          >
+            View Resume
+          </Button>
+        </div>
+      </Tooltip>
     </Box>
   );
 }
