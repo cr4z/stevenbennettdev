@@ -1,8 +1,16 @@
-import { Box, Button, ButtonBase, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonBase,
+  Typography,
+  useTheme,
+  Checkbox
+} from "@mui/material";
 import { NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE } from "./left";
 import { PiCaretRightBold } from "react-icons/pi";
 import { BsFillTrash3Fill, BsPlusCircle } from "react-icons/bs";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { useState } from "react";
 
 const SEGMENT_SX = {
   height: "3rem",
@@ -13,7 +21,10 @@ const SEGMENT_SX = {
   },
 };
 
-function SegmentBase(props: { children: React.ReactNode }) {
+function SegmentBase(props: {
+  children: React.ReactNode;
+  onClick?: () => void;
+}) {
   return (
     <Box
       sx={{
@@ -26,6 +37,7 @@ function SegmentBase(props: { children: React.ReactNode }) {
         borderRadius: "4px",
         overflow: "hidden",
       }}
+      onClick={() => props.onClick?.call(null)}
     >
       <ButtonBase
         sx={{
@@ -106,10 +118,10 @@ function AddSegmentButton() {
 }
 
 function SelectableSegment(props: { text: string }) {
-  const { palette } = useTheme();
+  const [isSelected, setIsSelected] = useState<boolean>(false);
 
   return (
-    <SegmentBase>
+    <SegmentBase onClick={() => setIsSelected(!isSelected)}>
       <Box
         sx={{
           display: "flex",
@@ -120,14 +132,7 @@ function SelectableSegment(props: { text: string }) {
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Box sx={SEGMENT_SX.segmentStatusDotAndPlusButtonWrapperStyling}>
-            <Box
-              sx={{
-                width: ".5rem",
-                height: ".5rem",
-                borderRadius: 999,
-                bgcolor: palette.success.main,
-              }}
-            />
+            <Checkbox checked={isSelected} />
           </Box>
           <Typography
             variant="body2"
