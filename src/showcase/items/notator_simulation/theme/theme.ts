@@ -35,7 +35,7 @@ export const notatorTheme = createTheme({
     },
     MuiButton: {
       styleOverrides: {
-        text: { textTransform: "none", fontWeight: 300 },
+        text: { textTransform: "none", fontWeight: 400 },
         contained: {
           textTransform: "none",
           fontWeight: 300,

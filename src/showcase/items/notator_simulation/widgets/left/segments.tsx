@@ -4,7 +4,7 @@ import {
   ButtonBase,
   Typography,
   useTheme,
-  Checkbox
+  Checkbox,
 } from "@mui/material";
 import { NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE } from "./left";
 import { PiCaretRightBold } from "react-icons/pi";
