@@ -18,7 +18,7 @@ export const notatorTheme = createTheme({
     },
     error: {
       main: "#ff3b55",
-      dark: "#8E3B46",
+      dark: "#AC1F31",
     },
   },
   components: {
@@ -29,6 +29,20 @@ export const notatorTheme = createTheme({
           boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
         },
       },
+    },
+    MuiTooltip: {
+      defaultProps: { arrow: true, disableInteractive: true, enterDelay: 0 },
+    },
+    MuiButton: {
+      styleOverrides: {
+        text: { textTransform: "none", fontWeight: 300 },
+        contained: {
+          textTransform: "none",
+          fontWeight: 300,
+        },
+        outlined: { textTransform: "none", fontWeight: 300 },
+      },
+      defaultProps: { disableElevation: true },
     },
   },
   typography: {
