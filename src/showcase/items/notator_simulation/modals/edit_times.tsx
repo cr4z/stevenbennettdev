@@ -50,17 +50,23 @@ export function EditEventTimesModal(props: {
             }}
           >
             <Typography variant="h6">Edit Event Times</Typography>
-            <TimeAutocomplete
-              label="Start Time"
-              value={stagedStart}
-              onChange={(v: Dayjs) => setStagedStart(v)}
-              ref={focusRef}
-            />
-            <TimeAutocomplete
-              label="End Time"
-              value={stagedEnd}
-              onChange={(v: Dayjs) => setStagedEnd(v)}
-            />
+            <Box sx={{ display: "flex" }}>
+              {/* Add start time datepicker */}
+              <TimeAutocomplete
+                label="Start Time"
+                value={stagedStart}
+                onChange={(v: Dayjs) => setStagedStart(v)}
+                ref={focusRef}
+              />
+            </Box>
+            <Box sx={{ display: "flex" }}>
+              {/* Add end time datepicker */}
+              <TimeAutocomplete
+                label="End Time"
+                value={stagedEnd}
+                onChange={(v: Dayjs) => setStagedEnd(v)}
+              />
+            </Box>
           </Box>
           <Box sx={{ padding: "1rem", display: "flex", gap: "1rem" }}>
             <Button fullWidth onClick={() => props.onClose()} type="button">
