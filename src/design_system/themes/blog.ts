@@ -15,14 +15,7 @@ export const blogTheme = createTheme({
   },
   components: {
     MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          backdropFilter: "blur(40px)",
-          bgcolor: "rgb(50, 50, 50, .3)",
-          borderRadius: "8px",
-          border: "1px solid " + "#808080",
-        },
-      },
+      defaultProps: { arrow: true, disableInteractive: true, enterDelay: 0 },
     },
   },
   typography: {

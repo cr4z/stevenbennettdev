@@ -14,7 +14,7 @@ export const theme = createTheme({
   },
   components: {
     MuiTooltip: {
-      defaultProps: { arrow: true, disableInteractive: true },
+      defaultProps: { arrow: true, disableInteractive: true, enterDelay: 0 },
     },
   },
   typography: {
