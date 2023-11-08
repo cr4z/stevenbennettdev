@@ -1,44 +1,11 @@
-import { useState } from "react";
 import { SessionContext } from "./context";
-import { useDraft } from "./hooks/use_draft";
-import { useEvent } from "./hooks/use_event";
-import { useSaveEvent } from "./hooks/use_save";
-import { useSoftRefresh } from "./hooks/use_refresh";
+import { useNotatorToolsProviderProps } from "./tools";
 
 export function NotatorToolsProvider(props: { children: React.ReactNode }) {
-  // ----- Notator-Wide Simple React State -----
-
-  const [selectedSegmentIndex, setSelectedSegmentIndex] = useState<number>(0);
-  const [isSaveSpinnerActive, setIsSaveSpinnerActive] =
-    useState<boolean>(false);
-
-  // ----- Notator-Wide Complex Modules -----
-
-  const { softRefreshSwitch, toggleSoftRefresh } = useSoftRefresh();
-
-  const event = useEvent({
-    dependencies: { softRefreshSwitch },
-    setIsSaveSpinnerActive,
-  });
-  const { draftEvent, editDraft } = useDraft({ dependencies: { event } });
-
-  const saveEvent = useSaveEvent({
-    setIsSaveSpinnerActive,
-    toggleSoftRefresh,
-  });
+  const notatorToolsProviderProps = useNotatorToolsProviderProps();
 
   return (
-    <SessionContext.Provider
-      value={{
-        draftEvent,
-        editDraft,
-        event,
-        saveEvent,
-        selectedSegmentIndex,
-        setSelectedSegmentIndex,
-        isSaveSpinnerActive,
-      }}
-    >
+    <SessionContext.Provider value={notatorToolsProviderProps}>
       {props.children}
     </SessionContext.Provider>
   );

@@ -62,10 +62,9 @@ export function CreateSegmentModal(props: {
               message: "Segment name must be 3 characters or longer",
             },
           })}
+          autoFocus
           id="add-segment-textbox"
           label="Name of segment"
-          multiline
-          rows={1}
           placeholder="Type your segment's name here"
           variant="outlined"
           fullWidth

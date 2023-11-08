@@ -22,10 +22,17 @@ function ConfirmModal(props: ConfirmModalProps) {
       minWidth="md"
     >
       <Box sx={{ display: "flex", flexDirection: "column", p: "1rem" }}>
-        <Typography variant="h6" sx={{ fontWeight: 500, color: "#000E" }}>
+        <Typography
+          className="noselect"
+          variant="h6"
+          sx={{ fontWeight: 500, color: "#000E" }}
+        >
           {props.overrideDisplay?.title ?? "Confirmation"}
         </Typography>
-        <Typography sx={{ color: "#000C", pt: ".5rem", pb: "1rem" }}>
+        <Typography
+          className="noselect"
+          sx={{ color: "#000C", pt: ".5rem", pb: "1rem" }}
+        >
           {props.overrideDisplay?.description ??
             "Are you sure you want to proceed?"}
         </Typography>
