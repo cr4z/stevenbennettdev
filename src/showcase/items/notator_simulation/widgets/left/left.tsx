@@ -131,19 +131,23 @@ function RemoveView(props: {
     setSelectedIDs(si);
   }
 
+  function handleRemovingSegments() {
+    const segmentsWithoutSelected = props.segments.filter(
+      (s) => !selectedIDs.includes(s.id)
+    );
+
+    const freshEvent = editDraft("segments", segmentsWithoutSelected, () =>
+      resetSelectedSegmentID(freshEvent)
+    );
+    props.onBack();
+  }
+
   return (
     <>
       <ConfirmModal
         open={confirmOpen}
         onClose={() => setConfirmOpen(false)}
-        onConfirm={() => {
-          const freshEvent = editDraft(
-            "segments",
-            props.segments.filter((s) => !selectedIDs.includes(s.id)),
-            () => resetSelectedSegmentID(freshEvent)
-          );
-          props.onBack();
-        }}
+        onConfirm={handleRemovingSegments}
         overrideDisplay={{
           title: "Delete Segments",
           description:
