@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { NotatorToolsProviderProps } from "./types";
+import { NotatorToolsProviderProps } from "./tools";
 
-export const SessionContext = createContext<
+export const EventContext = createContext<
   NotatorToolsProviderProps | undefined
 >(undefined);

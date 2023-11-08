@@ -73,6 +73,8 @@ export function LeftWidget() {
 }
 
 function DefaultView(props: { segments: NotatorEventSegment[] }) {
+  const { selectedSegmentTools } = useNotatorTools();
+
   const [createSegmentOpen, setCreateSegmentOpen] = useState<boolean>(false);
 
   return (
@@ -92,7 +94,11 @@ function DefaultView(props: { segments: NotatorEventSegment[] }) {
       >
         {props.segments.map((s, i) => (
           <FadeIn>
-            <LeftWidgetOptions.SegmentButton key={i} text={s.title} />
+            <LeftWidgetOptions.SegmentButton
+              key={i}
+              text={s.title}
+              onClick={() => selectedSegmentTools.setSelectedSegmentID(s.id)}
+            />
           </FadeIn>
         ))}
 
@@ -112,7 +118,10 @@ function RemoveView(props: {
   segments: NotatorEventSegment[];
   onBack: () => void;
 }) {
-  const { editDraft } = useNotatorTools();
+  const {
+    editDraft,
+    selectedSegmentTools: { resetSelectedSegmentID },
+  } = useNotatorTools();
 
   const [selectedIDs, setSelectedIDs] = useState<string[]>([]);
   const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
@@ -128,9 +137,10 @@ function RemoveView(props: {
         open={confirmOpen}
         onClose={() => setConfirmOpen(false)}
         onConfirm={() => {
-          editDraft(
+          const freshEvent = editDraft(
             "segments",
-            props.segments.filter((s) => !selectedIDs.includes(s.id))
+            props.segments.filter((s) => !selectedIDs.includes(s.id)),
+            () => resetSelectedSegmentID(freshEvent)
           );
           props.onBack();
         }}

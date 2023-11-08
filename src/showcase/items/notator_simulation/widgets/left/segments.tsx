@@ -58,11 +58,11 @@ function SegmentBase(props: {
   );
 }
 
-function SegmentButton(props: { text: string }) {
+function SegmentButton(props: { text: string; onClick: () => void }) {
   const { palette } = useTheme();
 
   return (
-    <SegmentBase>
+    <SegmentBase onClick={props.onClick}>
       <Box
         sx={{
           display: "flex",

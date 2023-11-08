@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { SessionContext } from "../context";
+import { EventContext } from "../context";
 
 export function useNotatorTools() {
-  const context = useContext(SessionContext);
+  const context = useContext(EventContext);
   
   if (!context) {
     throw new Error(

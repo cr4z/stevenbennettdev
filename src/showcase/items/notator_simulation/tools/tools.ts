@@ -5,15 +5,13 @@ import { useSaveEvent } from "./hooks/use_save";
 import { useEvent } from "./hooks/use_event";
 import { NotatorEvent } from "../data/types/event";
 import {
-  EditEventFunctionType,
-  SaveEventFunctionType,
-  SetSelectedSegmentIndexFunctionType,
-} from "./types";
+  SelectedSegmentTools,
+  useSelectedSegmentTools,
+} from "./hooks/selected_segment_tools";
 
 export function useNotatorToolsProviderProps(): NotatorToolsProviderProps {
   // ----- Notator-Wide Simple React State -----
 
-  const [selectedSegmentIndex, setSelectedSegmentIndex] = useState<number>(0);
   const [isSaveSpinnerActive, setIsSaveSpinnerActive] =
     useState<boolean>(false);
 
@@ -25,6 +23,11 @@ export function useNotatorToolsProviderProps(): NotatorToolsProviderProps {
     dependencies: { softRefreshSwitch },
     setIsSaveSpinnerActive,
   });
+
+  const selectedSegmentTools = useSelectedSegmentTools({
+    dependencies: { event },
+  });
+
   const { draftEvent, editDraft } = useDraft({ dependencies: { event } });
 
   const saveEvent = useSaveEvent({
@@ -37,9 +40,8 @@ export function useNotatorToolsProviderProps(): NotatorToolsProviderProps {
     editDraft,
     event,
     saveEvent,
-    selectedSegmentIndex,
-    setSelectedSegmentIndex,
     isSaveSpinnerActive,
+    selectedSegmentTools,
   };
 }
 
@@ -47,8 +49,15 @@ export interface NotatorToolsProviderProps {
   draftEvent: NotatorEvent | null;
   editDraft: EditEventFunctionType;
   event: NotatorEvent | null;
-  selectedSegmentIndex: number;
-  setSelectedSegmentIndex: SetSelectedSegmentIndexFunctionType;
   isSaveSpinnerActive: boolean;
   saveEvent: SaveEventFunctionType;
+  selectedSegmentTools: SelectedSegmentTools;
 }
+
+export type EditEventFunctionType = (
+  propertyPath: string,
+  updatedValue: any,
+  cb?: () => void
+) => NotatorEvent;
+
+export type SaveEventFunctionType = (freshEvent: NotatorEvent) => Promise<void>;
