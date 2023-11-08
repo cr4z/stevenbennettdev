@@ -179,6 +179,7 @@ function RemoveView(props: {
           onRemove={() => {
             setConfirmOpen(true);
           }}
+          removeButtonDisabled={selectedIDs.length < 1}
         />
       </Box>
     </>

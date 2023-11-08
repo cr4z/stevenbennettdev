@@ -146,6 +146,7 @@ function SelectableSegment(props: {
 function RemoveModeButtons(props: {
   onBack: () => void;
   onRemove: () => void;
+  removeButtonDisabled: boolean;
 }) {
   const { palette } = useTheme();
 
@@ -185,6 +186,7 @@ function RemoveModeButtons(props: {
         </Box>
       </ButtonBase>
       <Button
+        disabled={props.removeButtonDisabled}
         fullWidth
         variant="contained"
         color="error"
@@ -194,6 +196,7 @@ function RemoveModeButtons(props: {
           svg: { minWidth: "1.2rem", minHeight: "1.2rem", mb: "2px" },
           whiteSpace: "nowrap",
           gap: "4px",
+          ...(props.removeButtonDisabled && { color: "#FFF9!important" }),
         }}
         onClick={() => props.onRemove()}
       >
