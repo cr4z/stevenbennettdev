@@ -10,9 +10,9 @@ export const MOCK_NOTATOR_EVENT: NotatorEvent = {
   },
   location: "Austin, TX",
   segments: [
-    { title: "Pre-Event Preparations" },
-    { title: "Ceremony/Opening Segment" },
-    { title: "Activities/Games" },
-    { title: "Dining/Food & Drinks" },
+    { id: "547abffb", title: "Pre-Event Preparations" },
+    { id: "a6e31c46", title: "Ceremony/Opening Segment" },
+    { id: "9385d06f", title: "Activities/Games" },
+    { id: "da4679ee", title: "Dining/Food & Drinks" },
   ],
 };

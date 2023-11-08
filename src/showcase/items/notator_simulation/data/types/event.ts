@@ -9,6 +9,7 @@ export interface NotatorEvent {
 }
 
 export interface NotatorEventSegment {
+  id: string;
   title: string;
 }
 

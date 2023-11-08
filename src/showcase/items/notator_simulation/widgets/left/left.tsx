@@ -4,6 +4,10 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import { NotatorEventSegment } from "../../data/types/event";
 import { useState } from "react";
 import LeftWidgetOptions from "./segments";
+import FadeIn from "../../components/fade_in";
+import toggleFromArray from "../../utils/toggle_from_array";
+import ConfirmModal from "../../modals/confirm";
+import { CreateSegmentModal } from "../../modals/create_segment";
 
 export const NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE = "#FFFD";
 
@@ -36,7 +40,7 @@ export function LeftWidget() {
         >
           {isRemoveMode ? "Remove Event Segments" : "Event Segments"}
         </Typography>
-        <Tooltip title="Remove Segments">
+        <Tooltip title={isRemoveMode ? "Go Back" : "Remove Event Segments"}>
           <IconButton
             sx={{
               svg: {
@@ -69,25 +73,38 @@ export function LeftWidget() {
 }
 
 function DefaultView(props: { segments: NotatorEventSegment[] }) {
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: ".5rem",
-        pt: ".5rem",
-      }}
-    >
-      {props.segments.map((s, i) => (
-        <LeftWidgetOptions.SegmentButton key={i} text={s.title} />
-      ))}
+  const [createSegmentOpen, setCreateSegmentOpen] = useState<boolean>(false);
 
-      <Tooltip title="Add event segment">
-        <div>
-          <LeftWidgetOptions.AddSegmentButton />
-        </div>
-      </Tooltip>
-    </Box>
+  return (
+    <>
+      <CreateSegmentModal
+        open={createSegmentOpen}
+        onClose={() => setCreateSegmentOpen(false)}
+      />
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: ".5rem",
+          pt: ".5rem",
+        }}
+      >
+        {props.segments.map((s, i) => (
+          <FadeIn>
+            <LeftWidgetOptions.SegmentButton key={i} text={s.title} />
+          </FadeIn>
+        ))}
+
+        <Tooltip title="Add event segment">
+          <div>
+            <LeftWidgetOptions.AddSegmentButton
+              onClick={() => setCreateSegmentOpen(true)}
+            />
+          </div>
+        </Tooltip>
+      </Box>
+    </>
   );
 }
 
@@ -95,23 +112,61 @@ function RemoveView(props: {
   segments: NotatorEventSegment[];
   onBack: () => void;
 }) {
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: ".5rem",
-        pt: ".5rem",
-      }}
-    >
-      {props.segments.map((s, i) => (
-        <LeftWidgetOptions.SelectableSegment key={i} text={s.title} />
-      ))}
+  const { editDraft } = useNotatorTools();
 
-      <LeftWidgetOptions.RemoveModeButtons
-        onBack={() => props.onBack()}
-        onRemove={() => {}}
+  const [selectedIDs, setSelectedIDs] = useState<string[]>([]);
+  const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
+
+  function handleToggleIndex(id: string) {
+    const si = toggleFromArray(selectedIDs, id);
+    setSelectedIDs(si);
+  }
+
+  return (
+    <>
+      <ConfirmModal
+        open={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        onConfirm={() => {
+          editDraft(
+            "segments",
+            props.segments.filter((s) => !selectedIDs.includes(s.id))
+          );
+          props.onBack();
+        }}
+        overrideDisplay={{
+          title: "Delete Segments",
+          description:
+            "Are you sure that you want to delete the selected segments from your event?",
+          confirmColor: "error",
+        }}
       />
-    </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: ".5rem",
+          pt: ".5rem",
+        }}
+      >
+        {props.segments.map((s, i) => (
+          <FadeIn>
+            <LeftWidgetOptions.SelectableSegment
+              key={i}
+              text={s.title}
+              onToggle={() => handleToggleIndex(s.id)}
+              value={selectedIDs.includes(s.id)}
+            />
+          </FadeIn>
+        ))}
+
+        <LeftWidgetOptions.RemoveModeButtons
+          onBack={() => props.onBack()}
+          onRemove={() => {
+            setConfirmOpen(true);
+          }}
+        />
+      </Box>
+    </>
   );
 }

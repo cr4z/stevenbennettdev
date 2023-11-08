@@ -5,12 +5,13 @@ import {
   Typography,
   useTheme,
   Checkbox,
+  Tooltip,
 } from "@mui/material";
 import { NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE } from "./left";
 import { PiCaretRightBold } from "react-icons/pi";
 import { BsFillTrash3Fill, BsPlusCircle } from "react-icons/bs";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SEGMENT_SX = {
   height: "3rem",
@@ -96,9 +97,9 @@ function SegmentButton(props: { text: string }) {
   );
 }
 
-function AddSegmentButton() {
+function AddSegmentButton(props: { onClick: () => void }) {
   return (
-    <SegmentBase>
+    <SegmentBase onClick={props.onClick}>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Box
           sx={{
@@ -117,33 +118,26 @@ function AddSegmentButton() {
   );
 }
 
-function SelectableSegment(props: { text: string }) {
-  const [isSelected, setIsSelected] = useState<boolean>(false);
-
+function SelectableSegment(props: {
+  text: string;
+  onToggle: () => void;
+  value: boolean;
+}) {
   return (
-    <SegmentBase onClick={() => setIsSelected(!isSelected)}>
+    <SegmentBase onClick={() => props.onToggle()}>
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
           width: "100%",
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Box sx={SEGMENT_SX.segmentStatusDotAndPlusButtonWrapperStyling}>
-            <Checkbox checked={isSelected} />
-          </Box>
-          <Typography
-            variant="body2"
-            color={NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE}
-          >
-            {props.text}
-          </Typography>
+        <Box sx={SEGMENT_SX.segmentStatusDotAndPlusButtonWrapperStyling}>
+          <Checkbox checked={props.value} />
         </Box>
-        <Box mr="1rem" sx={{ pt: ".4rem" }}>
-          <PiCaretRightBold />
-        </Box>
+        <Typography variant="body2" color={NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE}>
+          {props.text}
+        </Typography>
       </Box>
     </SegmentBase>
   );
@@ -168,26 +162,27 @@ function RemoveModeButtons(props: {
           overflow: "hidden",
           borderRadius: "4px",
           minWidth: "45%",
-          gap: ".3rem",
           ":hover": {
             bgcolor: "#454545",
           },
         }}
         onClick={() => props.onBack()}
       >
-        <Box
-          sx={{
-            color: "white",
-            svg: { minWidth: "1.2rem", minHeight: "1.2rem" },
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <AiOutlineArrowLeft />
+        <Box sx={{ display: "flex", alignItems: "center", gap: ".3rem" }}>
+          <Box
+            sx={{
+              color: "white",
+              svg: { minWidth: "1.2rem", minHeight: "1.2rem" },
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <AiOutlineArrowLeft />
+          </Box>
+          <Typography variant="body2" color="#FFF">
+            Go back
+          </Typography>
         </Box>
-        <Typography variant="body2" color="#FFF">
-          Go back
-        </Typography>
       </ButtonBase>
       <Button
         fullWidth
@@ -200,6 +195,7 @@ function RemoveModeButtons(props: {
           whiteSpace: "nowrap",
           gap: "4px",
         }}
+        onClick={() => props.onRemove()}
       >
         <BsFillTrash3Fill />
         <span>Remove selected</span>
