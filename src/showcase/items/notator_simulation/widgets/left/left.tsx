@@ -23,6 +23,7 @@ export function LeftWidget() {
         background:
           "linear-gradient(197deg, rgba(14, 14, 15, 0.75) -1.71%, #0E0E0F 102.94%)",
         padding: ".5rem",
+        maxHeight: "100%",
       }}
     >
       <Box
@@ -85,11 +86,14 @@ function DefaultView(props: { segments: NotatorEventSegment[] }) {
       />
 
       <Box
+        className="green-scrollbar"
         sx={{
           display: "flex",
           flexDirection: "column",
           gap: ".5rem",
           pt: ".5rem",
+          maxHeight: "calc(100vh - 30.3rem)",
+          overflowY: "auto",
         }}
       >
         {props.segments.map((s, i) => (
@@ -101,15 +105,14 @@ function DefaultView(props: { segments: NotatorEventSegment[] }) {
             />
           </FadeIn>
         ))}
-
-        <Tooltip title="Add event segment">
-          <div>
-            <LeftWidgetOptions.AddSegmentButton
-              onClick={() => setCreateSegmentOpen(true)}
-            />
-          </div>
-        </Tooltip>
       </Box>
+      <Tooltip title="Add event segment">
+        <div>
+          <LeftWidgetOptions.AddSegmentButton
+            onClick={() => setCreateSegmentOpen(true)}
+          />
+        </div>
+      </Tooltip>
     </>
   );
 }
