@@ -5,6 +5,7 @@ export interface SelectedSegmentTools {
   selectedSegmentID: string | null;
   setSelectedSegmentID: React.Dispatch<React.SetStateAction<string | null>>;
   resetSelectedSegmentID: (freshEvent: NotatorEvent) => void;
+  setSelectedSegmentToLast: (freshEvent: NotatorEvent) => void;
 }
 
 export function useSelectedSegmentTools(props: {
@@ -25,8 +26,21 @@ export function useSelectedSegmentTools(props: {
   }, [event]);
 
   function resetSelectedSegmentID(freshEvent: NotatorEvent) {
-    setSelectedSegmentID(freshEvent.segments[0].id);
+    setSelectedSegmentID(freshEvent.segments[0]?.id);
   }
 
-  return { selectedSegmentID, setSelectedSegmentID, resetSelectedSegmentID };
+  function setSelectedSegmentToLast(freshEvent: NotatorEvent) {
+    const lastIndex = freshEvent.segments.length - 1;
+
+    console.log({ lastIndex });
+
+    setSelectedSegmentID(freshEvent.segments[lastIndex]?.id);
+  }
+
+  return {
+    selectedSegmentID,
+    setSelectedSegmentID,
+    resetSelectedSegmentID,
+    setSelectedSegmentToLast,
+  };
 }

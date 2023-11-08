@@ -13,7 +13,11 @@ export function CreateSegmentModal(props: {
   open: boolean;
   onClose: () => void;
 }) {
-  const { editDraft, draftEvent } = useNotatorTools();
+  const {
+    editDraft,
+    draftEvent,
+    selectedSegmentTools: { setSelectedSegmentToLast },
+  } = useNotatorTools();
   const {
     register,
     handleSubmit,
@@ -38,7 +42,9 @@ export function CreateSegmentModal(props: {
       title: data.segmentName,
     };
     const updatedSegments = [...draftEvent!.segments, newSegment];
-    editDraft("segments", updatedSegments);
+    const freshEvent = editDraft("segments", updatedSegments, () =>
+      setSelectedSegmentToLast(freshEvent)
+    );
     reset(); // Reset the form fields
     props.onClose(); // Close the modal
   }
