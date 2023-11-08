@@ -67,6 +67,13 @@ export function CreateSegmentModal(props: {
               value: 3,
               message: "Segment name must be 3 characters or longer",
             },
+            validate: {
+              isUnique: (value) =>
+                draftEvent!.segments.every(
+                  (s) =>
+                    s.title.toLocaleLowerCase() !== value.toLocaleLowerCase()
+                ) || "Segment name already exists",
+            },
           })}
           autoFocus
           id="add-segment-textbox"

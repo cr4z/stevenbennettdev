@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
 import { NotatorSimulationModal } from "../components/modal";
+import useActionOnEnterPressed from "../tools/hooks/use_action_on_enter";
 
 export interface ConfirmModalProps {
   open: boolean;
@@ -15,6 +16,15 @@ export interface ConfirmModalProps {
 }
 
 function ConfirmModal(props: ConfirmModalProps) {
+  function handleConfirm() {
+    props.onConfirm();
+    props.onClose();
+  }
+
+  useActionOnEnterPressed(() => {
+    handleConfirm();
+  }, [props.onConfirm]);
+
   return (
     <NotatorSimulationModal
       open={props.open}
@@ -39,10 +49,7 @@ function ConfirmModal(props: ConfirmModalProps) {
         <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1rem" }}>
           <Button onClick={props.onClose}>Cancel</Button>
           <Button
-            onClick={() => {
-              props.onConfirm();
-              props.onClose();
-            }}
+            onClick={handleConfirm}
             variant="contained"
             color={props.overrideDisplay?.confirmColor ?? "primary"}
           >
