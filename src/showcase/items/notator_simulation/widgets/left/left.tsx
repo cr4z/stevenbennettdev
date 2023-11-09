@@ -8,6 +8,7 @@ import FadeIn from "../../components/fade_in";
 import toggleFromArray from "../../utils/toggle_from_array";
 import ConfirmModal from "../../modals/confirm";
 import { CreateSegmentModal } from "../../modals/create_segment";
+import { ShadowScrollProvider } from "../../components/shadow_scroll";
 
 export const NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE = "#FFFD";
 
@@ -85,17 +86,7 @@ function DefaultView(props: { segments: NotatorEventSegment[] }) {
         onClose={() => setCreateSegmentOpen(false)}
       />
 
-      <Box
-        className="green-scrollbar"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: ".5rem",
-          pt: ".5rem",
-          maxHeight: "calc(100vh - 30.3rem)",
-          overflowY: "auto",
-        }}
-      >
+      <ScrollbarLayout dependencies={{ segments: props.segments }}>
         {props.segments.map((s, i) => (
           <FadeIn>
             <LeftWidgetOptions.SegmentButton
@@ -105,7 +96,8 @@ function DefaultView(props: { segments: NotatorEventSegment[] }) {
             />
           </FadeIn>
         ))}
-      </Box>
+      </ScrollbarLayout>
+
       <Tooltip title="Add event segment">
         <div>
           <LeftWidgetOptions.AddSegmentButton
@@ -158,14 +150,8 @@ function RemoveView(props: {
           confirmColor: "error",
         }}
       />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: ".5rem",
-          pt: ".5rem",
-        }}
-      >
+
+      <ScrollbarLayout dependencies={{ segments: props.segments }}>
         {props.segments.map((s, i) => (
           <FadeIn>
             <LeftWidgetOptions.SelectableSegment
@@ -176,15 +162,32 @@ function RemoveView(props: {
             />
           </FadeIn>
         ))}
+      </ScrollbarLayout>
 
-        <LeftWidgetOptions.RemoveModeButtons
-          onBack={() => props.onBack()}
-          onRemove={() => {
-            setConfirmOpen(true);
-          }}
-          removeButtonDisabled={selectedIDs.length < 1}
-        />
-      </Box>
+      <LeftWidgetOptions.RemoveModeButtons
+        onBack={() => props.onBack()}
+        onRemove={() => {
+          setConfirmOpen(true);
+        }}
+        removeButtonDisabled={selectedIDs.length < 1}
+      />
     </>
+  );
+}
+
+function ScrollbarLayout(props: {
+  children: React.ReactNode;
+  dependencies: { segments: NotatorEventSegment[] };
+}) {
+  return (
+    <Box sx={{ pb: ".5rem" }}>
+      <ShadowScrollProvider
+        dependencies={[props.dependencies.segments]}
+        maxHeight="calc(100vh - 30.9rem)"
+        gap=".5rem"
+      >
+        {props.children}
+      </ShadowScrollProvider>
+    </Box>
   );
 }
