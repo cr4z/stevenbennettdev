@@ -2,16 +2,14 @@ import { Box, ButtonBase, Paper, Typography } from "@mui/material";
 import StatusDot from "../../../components/status_dot";
 import { useNotatorTools } from "../../../tools/hooks/use_notator_tools";
 import { NotatorSegmentTabTitle } from "../../../tools/hooks/use_navbar";
-import {
-  selectDraftEvent,
-  selectSelectedSegmentID,
-  useNotatorToolsSelector,
-} from "../../../tools/selector";
+
 import { memo } from "react";
 
 export default function RightWidgetMainContent() {
-  const selectedSegmentID = useNotatorToolsSelector(selectSelectedSegmentID);
-  const draftEvent = useNotatorToolsSelector(selectDraftEvent);
+  const {
+    draftEvent,
+    selectedSegmentTools: { selectedSegmentID },
+  } = useNotatorTools();
 
   return (
     <>

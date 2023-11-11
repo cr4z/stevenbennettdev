@@ -1,14 +1,10 @@
-import { Box, ThemeProvider, Typography, useTheme } from "@mui/material";
-import { useNotatorTools } from "./tools/hooks/use_notator_tools";
+import { Box, ThemeProvider, useTheme } from "@mui/material";
 import { NotatorToolsProvider } from "./tools/provider";
 import { notatorTheme } from "./theme/theme";
 import { LeftWidget } from "./widgets/left/left";
 import { HeaderWidget } from "./widgets/header";
 import { RightWidget } from "./widgets/right/right";
-import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
-import { NotatorSimulationModal } from "./components/modal";
-import { useEffect } from "react";
-import { selectDraftEvent, useNotatorToolsSelector } from "./tools/selector";
+import { useNotatorTools } from "./tools/hooks/use_notator_tools";
 
 export default function NotatorSimulationContextWrapper() {
   return (
@@ -23,7 +19,7 @@ export default function NotatorSimulationContextWrapper() {
 function NotatorSimulation() {
   const { palette } = useTheme();
 
-  const draftEvent = useNotatorToolsSelector(selectDraftEvent);
+  const { draftEvent } = useNotatorTools();
 
   return (
     <>
