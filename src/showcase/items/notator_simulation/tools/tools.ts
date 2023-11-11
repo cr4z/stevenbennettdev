@@ -7,7 +7,8 @@ import { NotatorEvent } from "../data/types/event";
 import {
   SelectedSegmentTools,
   useSelectedSegmentTools,
-} from "./hooks/selected_segment_tools";
+} from "./hooks/use_selected_segment_tools";
+import useSegmentNavbarTools, { SegmentNavbarTools } from "./hooks/use_navbar";
 
 export function useNotatorToolsProviderProps(): NotatorToolsProviderProps {
   // ----- Notator-Wide Simple React State -----
@@ -35,6 +36,8 @@ export function useNotatorToolsProviderProps(): NotatorToolsProviderProps {
     toggleSoftRefresh,
   });
 
+  const segmentNavbarTools = useSegmentNavbarTools();
+
   return {
     draftEvent,
     editDraft,
@@ -42,6 +45,7 @@ export function useNotatorToolsProviderProps(): NotatorToolsProviderProps {
     saveEvent,
     isSaveSpinnerActive,
     selectedSegmentTools,
+    segmentNavbarTools,
   };
 }
 
@@ -52,6 +56,7 @@ export interface NotatorToolsProviderProps {
   isSaveSpinnerActive: boolean;
   saveEvent: SaveEventFunctionType;
   selectedSegmentTools: SelectedSegmentTools;
+  segmentNavbarTools: SegmentNavbarTools;
 }
 
 export type EditEventFunctionType = (

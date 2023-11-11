@@ -12,6 +12,7 @@ import { PiCaretRightBold } from "react-icons/pi";
 import { BsFillTrash3Fill, BsPlusCircle } from "react-icons/bs";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useEffect, useState } from "react";
+import StatusDot from "../../components/status_dot";
 
 const SEGMENT_SX = {
   height: "3rem",
@@ -59,8 +60,6 @@ function SegmentBase(props: {
 }
 
 function SegmentButton(props: { text: string; onClick: () => void }) {
-  const { palette } = useTheme();
-
   return (
     <SegmentBase onClick={props.onClick}>
       <Box
@@ -73,14 +72,7 @@ function SegmentButton(props: { text: string; onClick: () => void }) {
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Box sx={SEGMENT_SX.segmentStatusDotAndPlusButtonWrapperStyling}>
-            <Box
-              sx={{
-                width: ".5rem",
-                height: ".5rem",
-                borderRadius: 999,
-                bgcolor: palette.success.main,
-              }}
-            />
+            <StatusDot />
           </Box>
           <Typography
             variant="body2"

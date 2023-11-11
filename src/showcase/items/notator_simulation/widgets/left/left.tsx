@@ -182,9 +182,9 @@ function ScrollbarLayout(props: {
   return (
     <Box sx={{ pb: ".5rem" }}>
       <ShadowScrollProvider
-        dependencies={[props.dependencies.segments]}
         maxHeight="calc(100vh - 30.9rem)"
         gap=".5rem"
+        dependencies={[props.dependencies.segments.length]}
       >
         {props.children}
       </ShadowScrollProvider>
