@@ -7,7 +7,7 @@ import {
   selectSelectedSegmentID,
   useNotatorToolsSelector,
 } from "../../../tools/selector";
-
+import { memo } from "react";
 
 export default function RightWidgetMainContent() {
   const selectedSegmentID = useNotatorToolsSelector(selectSelectedSegmentID);
@@ -45,7 +45,7 @@ function NotatorSegmentNavigationBar() {
   return (
     <Box sx={{ display: "flex", gap: ".75rem" }}>
       {tabTitles.map((title: NotatorSegmentTabTitle) => (
-        <SegmentNavButton
+        <MemoizedSegmentNavButton
           key={title}
           onClick={() => setSelectedTab(title)}
           title={title}
@@ -54,12 +54,15 @@ function NotatorSegmentNavigationBar() {
       ))}
     </Box>
   );
+}
 
-  function SegmentNavButton(props: {
-    title: string;
-    onClick: () => void;
-    isSelected: boolean;
-  }) {
+type MemoizedSegmentNavButtonProps = {
+  title: string;
+  onClick: () => void;
+  isSelected: boolean;
+};
+const MemoizedSegmentNavButton = memo(
+  (props: MemoizedSegmentNavButtonProps) => {
     return (
       <ButtonBase
         sx={{
@@ -77,7 +80,7 @@ function NotatorSegmentNavigationBar() {
       </ButtonBase>
     );
   }
-}
+);
 
 function TabViewport() {
   return <></>;

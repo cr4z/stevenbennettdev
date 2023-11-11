@@ -5,13 +5,11 @@ import {
   Typography,
   useTheme,
   Checkbox,
-  Tooltip,
 } from "@mui/material";
 import { NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE } from "./left";
 import { PiCaretRightBold } from "react-icons/pi";
 import { BsFillTrash3Fill, BsPlusCircle } from "react-icons/bs";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { useEffect, useState } from "react";
 import StatusDot from "../../components/status_dot";
 
 const SEGMENT_SX = {
