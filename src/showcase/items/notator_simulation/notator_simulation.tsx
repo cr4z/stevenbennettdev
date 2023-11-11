@@ -4,9 +4,9 @@ import { NotatorToolsProvider } from "./tools/provider";
 import { notatorTheme } from "./theme/theme";
 import { LeftWidget } from "./widgets/left/left";
 import { HeaderWidget } from "./widgets/header";
-import { RightWidget } from "./widgets/right";
 import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
 import { NotatorSimulationModal } from "./components/modal";
+import { RightWidget } from "./widgets/right";
 
 export default function NotatorSimulationContextWrapper() {
   return (
@@ -60,7 +60,14 @@ function NotatorSimulation() {
           }}
         >
           <HeaderWidget />
-          <Box sx={{ height: "calc(100vh - 24rem)", display: "flex", gap: "1rem", overflow: "hidden" }}>
+          <Box
+            sx={{
+              height: "calc(100vh - 24rem)",
+              display: "flex",
+              gap: "1rem",
+              overflow: "hidden",
+            }}
+          >
             <LeftWidget />
             <RightWidget />
           </Box>
