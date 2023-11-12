@@ -39,7 +39,6 @@ export default function useSegmentSelectorTools(props: {
     setSelectedSegmentID(freshEvent.segments[lastIndex]?.id);
   }
 
-  console.log("asdf");
   const selectedSegmentIndex =
     draftEvent?.segments.findIndex(
       (segment) => segment.id === selectedSegmentID
