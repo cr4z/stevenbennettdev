@@ -6,7 +6,7 @@ import { LeftWidget } from "./widgets/left/left";
 import { HeaderWidget } from "./widgets/header";
 import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
 import { NotatorSimulationModal } from "./components/modal";
-import { RightWidget } from "./widgets/right";
+import { RightWidget } from "./widgets/right/right";
 
 export default function NotatorSimulationContextWrapper() {
   return (

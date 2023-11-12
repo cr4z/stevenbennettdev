@@ -9,16 +9,16 @@ export const notatorTheme = createTheme({
       primary: "#000C",
     },
     primary: {
-      main: "#172A3A",
-      light: "#75DDDD",
+      main: "#184663",
     },
     success: {
-      dark: "#004346",
       main: "#09BC8A",
     },
     error: {
-      main: "#ff3b55",
-      dark: "#AC1F31",
+      main: "#FF312E",
+    },
+    warning: {
+      main: "#F6AE2D",
     },
   },
   components: {
@@ -35,7 +35,7 @@ export const notatorTheme = createTheme({
     },
     MuiButton: {
       styleOverrides: {
-        text: { textTransform: "none", fontWeight: 400 },
+        text: { textTransform: "none", fontWeight: 400, color: "#333" },
         contained: {
           textTransform: "none",
           fontWeight: 300,

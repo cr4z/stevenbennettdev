@@ -2,8 +2,16 @@ import { Box, ButtonBase, Paper, Typography } from "@mui/material";
 import StatusDot from "../../../components/status_dot";
 import { useNotatorTools } from "../../../tools/hooks/use_notator_tools";
 import { NotatorSegmentTabTitle } from "../../../tools/hooks/use_navbar";
-
-import { memo } from "react";
+import React, { memo } from "react";
+import {
+  DurationTabView,
+  NotesTabView,
+  PriorityTabView,
+  ResourcesTabView,
+  ResponsibilitiesTabView,
+  TaskListTabView,
+} from "../../../views";
+import FadeIn from "../../../components/fade_in";
 
 export default function RightWidgetMainContent() {
   const {
@@ -15,12 +23,18 @@ export default function RightWidgetMainContent() {
     <>
       {draftEvent && (
         <Paper sx={{ flexGrow: 1, padding: "1rem" }}>
-          <Typography variant="h6">
-            {draftEvent.segments.find((s) => s.id === selectedSegmentID)?.title}
-          </Typography>
+          <FadeIn key={selectedSegmentID} useScale={{ from: 0.98 }}>
+            <Typography variant="h6">
+              {
+                draftEvent.segments.find((s) => s.id === selectedSegmentID)
+                  ?.title
+              }
+            </Typography>
 
-          <NotatorSegmentNavigationBar />
-          <TabViewport />
+            <NotatorSegmentNavigationBar />
+
+            <TabViewport />
+          </FadeIn>
         </Paper>
       )}
     </>
@@ -35,7 +49,7 @@ function NotatorSegmentNavigationBar() {
     "Priority",
     "Duration",
     "Task List",
-    "Responsiblities",
+    "Responsibilities",
     "Resources",
     "Notes",
   ];
@@ -85,6 +99,21 @@ const MemoizedSegmentNavButton = memo(
   }
 );
 
-function TabViewport() {
-  return <></>;
+function TabViewport(): React.ReactNode {
+  const { segmentNavbarTools } = useNotatorTools();
+
+  switch (segmentNavbarTools.selectedTab) {
+    case "Priority":
+      return <PriorityTabView />;
+    case "Duration":
+      return <DurationTabView />;
+    case "Task List":
+      return <TaskListTabView />;
+    case "Responsibilities":
+      return <ResponsibilitiesTabView />;
+    case "Resources":
+      return <ResourcesTabView />;
+    case "Notes":
+      return <NotesTabView />;
+  }
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSoftRefresh } from "./hooks/use_refresh";
 import { useDraft } from "./hooks/use_draft";
 import { useSaveEvent } from "./hooks/use_save";
@@ -38,6 +38,11 @@ export function useNotatorToolsProviderProps(): NotatorToolsProviderProps {
   });
 
   const segmentNavbarTools = useSegmentNavbarTools();
+
+  // --- LIFECYCLE EFFECTS ---
+  useEffect(() => {
+    segmentNavbarTools.setToFirstTab();
+  }, [selectedSegmentTools.selectedSegmentID]);
 
   return {
     draftEvent,
