@@ -27,8 +27,8 @@ export default function StatusDot(props: {
   return (
     <Box
       sx={{
-        width: ".5rem",
-        height: ".5rem",
+        minWidth: ".5rem",
+        minHeight: ".5rem",
         borderRadius: 999,
         bgcolor: color,
         position: "relative",

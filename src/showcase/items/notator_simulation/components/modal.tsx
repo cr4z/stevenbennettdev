@@ -39,7 +39,7 @@ export function NotatorSimulationModal(props: {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        zIndex: 1,
+        zIndex: 100,
         opacity: props.open ? 1 : 0, // Use opacity for fade-in and fade-out
         visibility: props.open ? "visible" : "hidden", // Use visibility to actually hide the element
         transition: "opacity 0.1s ease, visibility 0.1s ease", // Add transition to opacity and visibility

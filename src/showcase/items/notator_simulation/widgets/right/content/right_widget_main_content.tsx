@@ -59,6 +59,11 @@ type MemoizedSegmentNavButtonProps = {
   onClick: () => void;
   isSelected: boolean;
 };
+
+/**
+ * Reason for memoization: This component was rerendering every time a button was click, preventing its
+ * MUI ripple animation from occurring.
+ */
 const MemoizedSegmentNavButton = memo(
   (props: MemoizedSegmentNavButtonProps) => {
     return (
