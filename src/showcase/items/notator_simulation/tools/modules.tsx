@@ -1,3 +1,4 @@
+import { EventContext } from "./context";
 import { useState, useEffect } from "react";
 import { useSoftRefresh } from "./modules/use_refresh";
 import { EditDraftFunctionType, useDraftEvent } from "./modules/use_draft";
@@ -15,7 +16,27 @@ import {
   useSegmentTools as useEditSegmentTools,
 } from "./modules/use_segment_tools";
 
-export function useAllNotatorToolModules(): NotatorToolModules {
+export function NotatorToolsProvider(props: { children: React.ReactNode }) {
+  const notatorToolModules = useNotatorToolModules();
+
+  return (
+    <EventContext.Provider value={notatorToolModules}>
+      {props.children}
+    </EventContext.Provider>
+  );
+}
+
+export interface NotatorToolModules {
+  event: NotatorEvent | null;
+  draftEvent: NotatorEvent | null;
+  editDraft: EditDraftFunctionType;
+  saveEvent: SaveEventFunctionType;
+  segmentTools: EditSegmentTools;
+  segmentSelectorTools: SegmentSelectorTools;
+  viewportNavbarTools: ViewportNavbarTools;
+  isSaveSpinnerActive: boolean;
+}
+function useNotatorToolModules(): NotatorToolModules {
   // Local Modules
 
   const [isSaveSpinnerActive, setIsSaveSpinnerActive] =
@@ -36,20 +57,20 @@ export function useAllNotatorToolModules(): NotatorToolModules {
     dependencies: { draftEvent },
   });
 
-  const saveEvent = useSaveEvent({
-    setIsSaveSpinnerActive,
-    toggleSoftRefresh,
-  });
-
-  const viewportNavbarTools = useViewportNavbarTools();
-
-  const editSegmentTools = useEditSegmentTools({
+  const segmentTools = useEditSegmentTools({
     dependencies: {
       editDraft,
       selectedSegmentIndex: segmentSelectorTools.selectedSegmentIndex,
       draftEvent,
     },
   });
+
+  const saveEvent = useSaveEvent({
+    setIsSaveSpinnerActive,
+    toggleSoftRefresh,
+  });
+
+  const viewportNavbarTools = useViewportNavbarTools();
 
   // Lifecycle Effects
 
@@ -67,17 +88,6 @@ export function useAllNotatorToolModules(): NotatorToolModules {
     isSaveSpinnerActive,
     segmentSelectorTools,
     viewportNavbarTools,
-    segmentTools: editSegmentTools,
+    segmentTools,
   };
-}
-
-export interface NotatorToolModules {
-  event: NotatorEvent | null;
-  draftEvent: NotatorEvent | null;
-  editDraft: EditDraftFunctionType;
-  saveEvent: SaveEventFunctionType;
-  segmentTools: EditSegmentTools;
-  segmentSelectorTools: SegmentSelectorTools;
-  viewportNavbarTools: ViewportNavbarTools;
-  isSaveSpinnerActive: boolean;
 }

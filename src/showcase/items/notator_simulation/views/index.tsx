@@ -1,15 +1,15 @@
-import { DurationTabView } from "./duration";
+import { TruckerStatusTabView } from "./trucker_status";
+import { ScheduleTabView } from "./schedule";
+import { SmallItemsTabView } from "./small_items";
+import { MediumItemsTabView } from "./medium_items";
+import { LargeItemsTabView } from "./large_items";
 import { NotesTabView } from "./notes";
-import { PriorityTabView } from "./priority";
-import { ResourcesTabView } from "./resources";
-import { ResponsibilitiesTabView } from "./responsiblities";
-import { TaskListTabView } from "./task_list";
 
 export {
-  PriorityTabView,
-  DurationTabView,
-  TaskListTabView,
-  ResponsibilitiesTabView,
-  ResourcesTabView,
+  TruckerStatusTabView,
+  ScheduleTabView,
+  LargeItemsTabView,
+  MediumItemsTabView,
+  SmallItemsTabView,
   NotesTabView,
 };

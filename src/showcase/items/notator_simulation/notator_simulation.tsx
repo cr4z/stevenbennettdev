@@ -1,6 +1,6 @@
 import { Box, ThemeProvider, Typography, useTheme } from "@mui/material";
 import { useNotatorTools } from "./tools/use_notator_tools";
-import { NotatorToolsProvider } from "./tools/provider";
+import { NotatorToolsProvider } from "./tools/modules";
 import { notatorTheme } from "./theme/theme";
 import { LeftWidget } from "./widgets/left/left";
 import { HeaderWidget } from "./widgets/header";

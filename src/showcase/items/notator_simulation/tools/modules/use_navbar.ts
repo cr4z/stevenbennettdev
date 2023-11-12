@@ -1,26 +1,50 @@
 import { useState } from "react";
 
 export type NotatorSegmentTabTitle =
-  | "Priority"
-  | "Duration"
-  | "Task List"
-  | "Responsibilities"
-  | "Resources"
+  | "Status"
+  | "Schedule"
+  | "Small Items"
+  | "Medium Items"
+  | "Large Items"
   | "Notes";
+
+export const tabsInOrder: NotatorSegmentTabTitle[] = [
+  "Status",
+  "Schedule",
+  "Small Items",
+  "Medium Items",
+  "Large Items",
+  "Notes",
+];
 
 export type ViewportNavbarTools = {
   selectedTab: NotatorSegmentTabTitle;
   setSelectedTab: React.Dispatch<React.SetStateAction<NotatorSegmentTabTitle>>;
   setToFirstTab: () => void;
+  isLastTab: boolean;
+  nextTab: () => void;
 };
+
+const FIRST_TAB: NotatorSegmentTabTitle = "Status";
 
 export default function useSegmentNavbarTools(): ViewportNavbarTools {
   const [selectedTab, setSelectedTab] =
-    useState<NotatorSegmentTabTitle>("Priority");
+    useState<NotatorSegmentTabTitle>(FIRST_TAB);
 
   function setToFirstTab() {
-    setSelectedTab("Priority");
+    setSelectedTab(FIRST_TAB);
   }
 
-  return { selectedTab, setSelectedTab, setToFirstTab };
+  const isLastTab = selectedTab === "Notes";
+
+  function nextTab() {
+    const i = tabsInOrder.indexOf(selectedTab);
+    if (i === tabsInOrder.length - 1) {
+      setSelectedTab(tabsInOrder[0]);
+    } else {
+      setSelectedTab(tabsInOrder[i + 1]);
+    }
+  }
+
+  return { selectedTab, setSelectedTab, setToFirstTab, isLastTab, nextTab };
 }

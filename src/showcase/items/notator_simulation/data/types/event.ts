@@ -11,9 +11,15 @@ export interface NotatorEvent {
 export interface NotatorEventSegment {
   id: string;
   title: string;
-  priority: SegmentPriority;
+  priority: TruckerStatus;
 }
 
 export type EventTimes = { startTime: Dayjs; endTime: Dayjs };
 
-export type SegmentPriority = "Low" | "Medium" | "High";
+export type TruckerStatus =
+  | "Off Duty"
+  | "En Route"
+  | "Running Late"
+  | "Heading Back"
+  | "Awaiting Instruction"
+  | "Vehicle in Maintenence";

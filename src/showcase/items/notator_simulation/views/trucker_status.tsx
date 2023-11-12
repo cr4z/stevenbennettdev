@@ -6,9 +6,9 @@ import {
   RadioGroup,
 } from "@mui/material";
 import { useNotatorTools } from "../tools/use_notator_tools";
-import { SegmentPriority } from "../data/types/event";
+import { TruckerStatus } from "../data/types/event";
 
-export function PriorityTabView() {
+export function TruckerStatusTabView() {
   const {
     segmentTools: { editSegment, draftSegment },
   } = useNotatorTools();
@@ -25,24 +25,24 @@ export function PriorityTabView() {
               onChange={(e) =>
                 editSegment({
                   path: "priority",
-                  value: e.target.value as SegmentPriority,
+                  value: e.target.value as TruckerStatus,
                 })
               }
             >
               <FormControlLabel
-                value={"High" as SegmentPriority}
+                value={"High" as TruckerStatus}
                 control={<Radio size="small" />}
-                label={"High" as SegmentPriority}
+                label={"High" as TruckerStatus}
               />
               <FormControlLabel
-                value={"Medium" as SegmentPriority}
+                value={"Medium" as TruckerStatus}
                 control={<Radio size="small" />}
-                label={"Medium" as SegmentPriority}
+                label={"Medium" as TruckerStatus}
               />
               <FormControlLabel
-                value={"Low" as SegmentPriority}
+                value={"Low" as TruckerStatus}
                 control={<Radio size="small" />}
-                label={"Low" as SegmentPriority}
+                label={"Low" as TruckerStatus}
               />
             </RadioGroup>
           </FormControl>

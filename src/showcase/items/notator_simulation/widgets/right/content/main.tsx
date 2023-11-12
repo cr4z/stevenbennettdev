@@ -1,22 +1,23 @@
-import { Box, ButtonBase, Paper, Typography } from "@mui/material";
+import { Box, Button, ButtonBase, Paper, Typography } from "@mui/material";
 import StatusDot from "../../../components/status_dot";
 import { useNotatorTools } from "../../../tools/use_notator_tools";
 import { NotatorSegmentTabTitle } from "../../../tools/modules/use_navbar";
 import React, { memo } from "react";
-import {
-  DurationTabView,
-  NotesTabView,
-  PriorityTabView,
-  ResourcesTabView,
-  ResponsibilitiesTabView,
-  TaskListTabView,
-} from "../../../views";
 import FadeIn from "../../../components/fade_in";
+import {
+  TruckerStatusTabView,
+  ScheduleTabView,
+  SmallItemsTabView,
+  MediumItemsTabView,
+  LargeItemsTabView,
+  NotesTabView,
+} from "../../../views";
 
 export default function MainContent() {
   const {
     draftEvent,
     segmentSelectorTools: { selectedSegmentID },
+    viewportNavbarTools,
   } = useNotatorTools();
 
   return (
@@ -34,7 +35,20 @@ export default function MainContent() {
 
               <NotatorSegmentNavigationBar />
 
-              <TabViewport />
+              <Box sx={{ height: "calc(100% - 7rem)" }}>
+                <TabViewport />
+              </Box>
+
+              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                {!viewportNavbarTools.isLastTab && (
+                  <Button
+                    variant="contained"
+                    onClick={() => viewportNavbarTools.nextTab()}
+                  >
+                    Next
+                  </Button>
+                )}
+              </Box>
             </Box>
           </FadeIn>
         </Paper>
@@ -49,11 +63,11 @@ function NotatorSegmentNavigationBar() {
   } = useNotatorTools();
 
   const tabTitles: NotatorSegmentTabTitle[] = [
-    "Priority",
-    "Duration",
-    "Task List",
-    "Responsibilities",
-    "Resources",
+    "Status",
+    "Schedule",
+    "Small Items",
+    "Medium Items",
+    "Large Items",
     "Notes",
   ];
 
@@ -106,16 +120,16 @@ function TabViewport(): React.ReactNode {
   const { viewportNavbarTools } = useNotatorTools();
 
   switch (viewportNavbarTools.selectedTab) {
-    case "Priority":
-      return <PriorityTabView />;
-    case "Duration":
-      return <DurationTabView />;
-    case "Task List":
-      return <TaskListTabView />;
-    case "Responsibilities":
-      return <ResponsibilitiesTabView />;
-    case "Resources":
-      return <ResourcesTabView />;
+    case "Status":
+      return <TruckerStatusTabView />;
+    case "Schedule":
+      return <ScheduleTabView />;
+    case "Small Items":
+      return <SmallItemsTabView />;
+    case "Medium Items":
+      return <MediumItemsTabView />;
+    case "Large Items":
+      return <LargeItemsTabView />;
     case "Notes":
       return <NotesTabView />;
   }
