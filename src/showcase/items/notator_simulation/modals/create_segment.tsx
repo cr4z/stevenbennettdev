@@ -40,6 +40,7 @@ export function CreateSegmentModal(props: {
     const newSegment: NotatorEventSegment = {
       id: crypto.randomUUID(),
       title: data.segmentName,
+      priority: "High",
     };
     const updatedSegments = [...draftEvent!.segments, newSegment];
     const freshEvent = editDraft({

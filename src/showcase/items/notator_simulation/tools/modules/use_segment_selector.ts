@@ -13,10 +13,10 @@ export interface SegmentSelectorTools {
  * Module responsible for managing the selected segment user interface in the left widget.
  */
 export default function useSegmentSelectorTools(props: {
-  dependencies: { event: NotatorEvent | null };
+  dependencies: { draftEvent: NotatorEvent | null };
 }): SegmentSelectorTools {
   const {
-    dependencies: { event },
+    dependencies: { draftEvent },
   } = props;
 
   const [selectedSegmentID, setSelectedSegmentID] = useState<string | null>(
@@ -24,10 +24,10 @@ export default function useSegmentSelectorTools(props: {
   );
 
   useEffect(() => {
-    if (event) {
-      resetSelectedSegmentID(event);
+    if (draftEvent) {
+      resetSelectedSegmentID(draftEvent);
     }
-  }, [event]);
+  }, [draftEvent]);
 
   function resetSelectedSegmentID(freshEvent: NotatorEvent) {
     setSelectedSegmentID(freshEvent.segments[0]?.id);
@@ -39,9 +39,11 @@ export default function useSegmentSelectorTools(props: {
     setSelectedSegmentID(freshEvent.segments[lastIndex]?.id);
   }
 
+  console.log("asdf");
   const selectedSegmentIndex =
-    event?.segments.findIndex((segment) => segment.id === selectedSegmentID) ??
-    0;
+    draftEvent?.segments.findIndex(
+      (segment) => segment.id === selectedSegmentID
+    ) ?? 0;
 
   return {
     selectedSegmentID,

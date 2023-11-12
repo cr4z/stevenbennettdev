@@ -30,11 +30,11 @@ export function useAllNotatorToolModules(): NotatorToolModules {
     setIsSaveSpinnerActive,
   });
 
-  const segmentSelectorTools = useSegmentSelectorTools({
-    dependencies: { event },
-  });
-
   const { draftEvent, editDraft } = useDraftEvent({ dependencies: { event } });
+
+  const segmentSelectorTools = useSegmentSelectorTools({
+    dependencies: { draftEvent },
+  });
 
   const saveEvent = useSaveEvent({
     setIsSaveSpinnerActive,
