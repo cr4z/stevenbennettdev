@@ -46,7 +46,6 @@ function useScrollShadow(props: {
   const [shadow, setShadow] = useState({ top: false, bottom: false });
 
   useEffect(() => {
-    alert("RAN");
     const element = scrollRef.current;
     if (!element) return;
 
