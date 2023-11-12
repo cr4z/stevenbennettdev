@@ -12,7 +12,7 @@ export function ShadowScrollProvider(props: {
   const scrollRef = useRef<HTMLDivElement>(null);
   const shadowStyle = useScrollShadow({
     scrollRef,
-    colorHex: "#0004",
+    colorHex: "#0008",
     dependencies,
   });
 
