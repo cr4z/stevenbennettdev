@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNotatorTools } from "../tools/hooks/use_notator_tools";
+import { useNotatorTools } from "../tools/use_notator_tools";
 import { EditableLabelMultiline } from "../components/editable_label/editable_multiline_label";
 import { EditDesriptionModal } from "../modals/edit_description";
 

@@ -8,13 +8,13 @@ export type NotatorSegmentTabTitle =
   | "Resources"
   | "Notes";
 
-export type SegmentNavbarTools = {
+export type ViewportNavbarTools = {
   selectedTab: NotatorSegmentTabTitle;
   setSelectedTab: React.Dispatch<React.SetStateAction<NotatorSegmentTabTitle>>;
   setToFirstTab: () => void;
 };
 
-export default function useSegmentNavbarTools(): SegmentNavbarTools {
+export default function useSegmentNavbarTools(): ViewportNavbarTools {
   const [selectedTab, setSelectedTab] =
     useState<NotatorSegmentTabTitle>("Priority");
 

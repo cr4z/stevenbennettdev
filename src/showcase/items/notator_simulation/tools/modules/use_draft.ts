@@ -3,14 +3,10 @@ import { NotatorEvent } from "../../data/types/event";
 
 type UseDraftResponse = {
   draftEvent: NotatorEvent | null;
-  editDraft: (
-    propertyPath: string,
-    updatedValue: any,
-    cb?: () => void
-  ) => NotatorEvent;
+  editDraft: EditDraftFunctionType;
 };
 
-export function useDraft(props: {
+export function useDraftEvent(props: {
   dependencies: { event: NotatorEvent | null };
 }): UseDraftResponse {
   const { event } = props.dependencies;
@@ -39,19 +35,19 @@ export function useDraft(props: {
    * @returns The updated session object, providing immediate access to the most
    * recent state andthus bypassing the asynchronous nature of state updates.
    */
-  function editDraft(propertyPath: string, updatedValue: any, cb?: () => void) {
-    if (cb) {
-      setDraftEventChangeCallback(cb);
+  function editDraft(props: EditDraftFunctionProps): NotatorEvent {
+    if (props.cb) {
+      setDraftEventChangeCallback(props.cb);
     }
 
-    const pathArray = propertyPath.split(".");
+    const pathArray = props.path.split(".");
     const deepCopy = JSON.parse(JSON.stringify(draftEvent)) as NotatorEvent;
     let currentObject: any = deepCopy;
 
     for (let i = 0; i < pathArray.length - 1; i++) {
       currentObject = currentObject[pathArray[i]];
     }
-    currentObject[pathArray[pathArray.length - 1]] = updatedValue;
+    currentObject[pathArray[pathArray.length - 1]] = props.value;
 
     setDraftEvent(deepCopy);
 
@@ -75,3 +71,12 @@ function useCallbackOnUpdate(dependency: any) {
 
   return setCallback; // This just sets the state, should not invoke the callback
 }
+
+export type EditDraftFunctionProps = {
+  path: string;
+  value: any;
+  cb?: () => void;
+};
+export type EditDraftFunctionType = (
+  props: EditDraftFunctionProps
+) => NotatorEvent;

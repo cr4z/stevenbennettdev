@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { useState } from "react";
-import { useNotatorTools } from "../tools/hooks/use_notator_tools";
+import { useNotatorTools } from "../tools/use_notator_tools";
 import { EditEventTimesModal } from "../modals/edit_times";
 import { EventTimes } from "../data/types/event";
 import { Chip } from "../components/chip";

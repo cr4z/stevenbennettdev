@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { NotatorToolsProviderProps } from "./tools";
+import { NotatorToolModules } from "./modules";
 
 export const EventContext = createContext<
-  NotatorToolsProviderProps | undefined
+  NotatorToolModules | undefined
 >(undefined);

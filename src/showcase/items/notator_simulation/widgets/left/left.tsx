@@ -1,5 +1,5 @@
 import { Box, IconButton, Paper, Tooltip, Typography } from "@mui/material";
-import { useNotatorTools } from "../../tools/hooks/use_notator_tools";
+import { useNotatorTools } from "../../tools/use_notator_tools";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { NotatorEventSegment } from "../../data/types/event";
 import { useState } from "react";
@@ -21,6 +21,7 @@ export function LeftWidget() {
     <Paper
       sx={{
         flexBasis: "20rem",
+        minWidth: "20rem",
         background:
           "linear-gradient(197deg, rgba(14, 14, 15, 0.75) -1.71%, #0E0E0F 102.94%)",
         padding: ".5rem",
@@ -75,7 +76,7 @@ export function LeftWidget() {
 }
 
 function DefaultView(props: { segments: NotatorEventSegment[] }) {
-  const { selectedSegmentTools } = useNotatorTools();
+  const { segmentSelectorTools } = useNotatorTools();
 
   const [createSegmentOpen, setCreateSegmentOpen] = useState<boolean>(false);
 
@@ -88,11 +89,11 @@ function DefaultView(props: { segments: NotatorEventSegment[] }) {
 
       <ScrollbarLayout dependencies={{ segments: props.segments }}>
         {props.segments.map((s, i) => (
-          <FadeIn>
+          <FadeIn key={i}>
             <LeftWidgetOptions.SegmentButton
               key={i}
               text={s.title}
-              onClick={() => selectedSegmentTools.setSelectedSegmentID(s.id)}
+              onClick={() => segmentSelectorTools.setSelectedSegmentID(s.id)}
             />
           </FadeIn>
         ))}
@@ -115,7 +116,7 @@ function RemoveView(props: {
 }) {
   const {
     editDraft,
-    selectedSegmentTools: { resetSelectedSegmentID },
+    segmentSelectorTools: { resetSelectedSegmentID },
   } = useNotatorTools();
 
   const [selectedIDs, setSelectedIDs] = useState<string[]>([]);
@@ -131,9 +132,11 @@ function RemoveView(props: {
       (s) => !selectedIDs.includes(s.id)
     );
 
-    const freshEvent = editDraft("segments", segmentsWithoutSelected, () =>
-      resetSelectedSegmentID(freshEvent)
-    );
+    const freshEvent = editDraft({
+      path: "segments",
+      value: segmentsWithoutSelected,
+      cb: () => resetSelectedSegmentID(freshEvent),
+    });
     props.onBack();
   }
 
@@ -153,7 +156,7 @@ function RemoveView(props: {
 
       <ScrollbarLayout dependencies={{ segments: props.segments }}>
         {props.segments.map((s, i) => (
-          <FadeIn>
+          <FadeIn key={i}>
             <LeftWidgetOptions.SelectableSegment
               key={i}
               text={s.title}

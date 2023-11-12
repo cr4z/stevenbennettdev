@@ -30,3 +30,5 @@ export function useSaveEvent(props: {
 
   return saveEvent;
 }
+
+export type SaveEventFunctionType = (freshEvent: NotatorEvent) => Promise<void>;

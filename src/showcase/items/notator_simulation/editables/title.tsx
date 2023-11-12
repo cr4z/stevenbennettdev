@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNotatorTools } from "../tools/hooks/use_notator_tools";
+import { useNotatorTools } from "../tools/use_notator_tools";
 import { EditableLabel } from "../components/editable_label/editable_label";
 
 export function EditableTitle() {

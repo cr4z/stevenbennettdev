@@ -1,7 +1,7 @@
 import { Box, ButtonBase, Paper, Typography } from "@mui/material";
 import StatusDot from "../../../components/status_dot";
-import { useNotatorTools } from "../../../tools/hooks/use_notator_tools";
-import { NotatorSegmentTabTitle } from "../../../tools/hooks/use_navbar";
+import { useNotatorTools } from "../../../tools/use_notator_tools";
+import { NotatorSegmentTabTitle } from "../../../tools/modules/use_navbar";
 import React, { memo } from "react";
 import {
   DurationTabView,
@@ -13,27 +13,29 @@ import {
 } from "../../../views";
 import FadeIn from "../../../components/fade_in";
 
-export default function RightWidgetMainContent() {
+export default function MainContent() {
   const {
     draftEvent,
-    selectedSegmentTools: { selectedSegmentID },
+    segmentSelectorTools: { selectedSegmentID },
   } = useNotatorTools();
 
   return (
     <>
-      {draftEvent && (
-        <Paper sx={{ flexGrow: 1, padding: "1rem" }}>
+      {draftEvent && selectedSegmentID && (
+        <Paper sx={{ flexGrow: 1, overflow: "hidden" }}>
           <FadeIn key={selectedSegmentID} useScale={{ from: 0.98 }}>
-            <Typography variant="h6">
-              {
-                draftEvent.segments.find((s) => s.id === selectedSegmentID)
-                  ?.title
-              }
-            </Typography>
+            <Box sx={{ padding: "1rem" }}>
+              <Typography variant="h6">
+                {
+                  draftEvent.segments.find((s) => s.id === selectedSegmentID)
+                    ?.title
+                }
+              </Typography>
 
-            <NotatorSegmentNavigationBar />
+              <NotatorSegmentNavigationBar />
 
-            <TabViewport />
+              <TabViewport />
+            </Box>
           </FadeIn>
         </Paper>
       )}
@@ -42,8 +44,9 @@ export default function RightWidgetMainContent() {
 }
 
 function NotatorSegmentNavigationBar() {
-  const { segmentNavbarTools } = useNotatorTools();
-  const { selectedTab, setSelectedTab } = segmentNavbarTools;
+  const {
+    viewportNavbarTools: { setSelectedTab, selectedTab },
+  } = useNotatorTools();
 
   const tabTitles: NotatorSegmentTabTitle[] = [
     "Priority",
@@ -100,9 +103,9 @@ const MemoizedSegmentNavButton = memo(
 );
 
 function TabViewport(): React.ReactNode {
-  const { segmentNavbarTools } = useNotatorTools();
+  const { viewportNavbarTools } = useNotatorTools();
 
-  switch (segmentNavbarTools.selectedTab) {
+  switch (viewportNavbarTools.selectedTab) {
     case "Priority":
       return <PriorityTabView />;
     case "Duration":

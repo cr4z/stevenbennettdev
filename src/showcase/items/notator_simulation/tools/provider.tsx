@@ -1,11 +1,11 @@
 import { EventContext } from "./context";
-import { useNotatorToolsProviderProps } from "./tools";
+import { useAllNotatorToolModules } from "./modules";
 
 export function NotatorToolsProvider(props: { children: React.ReactNode }) {
-  const notatorToolsProviderProps = useNotatorToolsProviderProps();
+  const allNotatorToolModules = useAllNotatorToolModules();
 
   return (
-    <EventContext.Provider value={notatorToolsProviderProps}>
+    <EventContext.Provider value={allNotatorToolModules}>
       {props.children}
     </EventContext.Provider>
   );

@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
 import { NotatorSimulationModal } from "../components/modal";
-import useActionOnEnterPressed from "../tools/hooks/use_action_on_enter";
+import useActionOnEnterPressed from "../hooks/use_action_on_enter";
 
 export interface ConfirmModalProps {
   open: boolean;

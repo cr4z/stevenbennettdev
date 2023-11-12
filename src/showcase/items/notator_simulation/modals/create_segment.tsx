@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNotatorTools } from "../tools/hooks/use_notator_tools";
+import { useNotatorTools } from "../tools/use_notator_tools";
 import { NotatorSimulationModal } from "../components/modal";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { NotatorEventSegment } from "../data/types/event";
@@ -16,7 +16,7 @@ export function CreateSegmentModal(props: {
   const {
     editDraft,
     draftEvent,
-    selectedSegmentTools: { setSelectedSegmentToLast },
+    segmentSelectorTools: { setSelectedSegmentToLast },
   } = useNotatorTools();
   const {
     register,
@@ -42,9 +42,11 @@ export function CreateSegmentModal(props: {
       title: data.segmentName,
     };
     const updatedSegments = [...draftEvent!.segments, newSegment];
-    const freshEvent = editDraft("segments", updatedSegments, () =>
-      setSelectedSegmentToLast(freshEvent)
-    );
+    const freshEvent = editDraft({
+      path: "segments",
+      value: updatedSegments,
+      cb: () => setSelectedSegmentToLast(freshEvent),
+    });
     reset(); // Reset the form fields
     props.onClose(); // Close the modal
   }

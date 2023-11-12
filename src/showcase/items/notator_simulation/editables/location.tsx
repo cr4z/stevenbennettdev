@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { useState } from "react";
-import { useNotatorTools } from "../tools/hooks/use_notator_tools";
+import { useNotatorTools } from "../tools/use_notator_tools";
 import { IoLocationSharp } from "react-icons/io5";
 import { EditLocationModal } from "../modals/edit_location";
 import { Chip } from "../components/chip";
