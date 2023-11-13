@@ -4,7 +4,7 @@ import { useNotatorTools } from "../../tools/use_notator_tools";
 
 export function RightWidget() {
   const {
-    segmentSelectorTools: { selectedSegmentID },
+    truckerSelectorTools: { selectedTruckerID: selectedSegmentID },
   } = useNotatorTools();
 
   return (

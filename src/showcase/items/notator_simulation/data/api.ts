@@ -1,11 +1,11 @@
-import { NotatorEvent } from "./types/event";
-import { MOCK_NOTATOR_EVENT } from "./mocks/notator_event";
+import { NotatorTruckerReport } from "./types/report";
+import { MOCK_NOTATOR_EVENT } from "./mocks/report";
 
-export const API_EVENTS = {
-  v1EventGet: async () => {
+export const API_REPORTS = {
+  v1ReportsGet: async () => {
     return MOCK_NOTATOR_EVENT;
   },
-  v1EventsPut: async (stateInUS: string, freshEvent: NotatorEvent) => {
-    return {} as NotatorEvent;
+  v1EventsPut: async (stateInUS: string, freshEvent: NotatorTruckerReport) => {
+    return {} as NotatorTruckerReport;
   },
 };

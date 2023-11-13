@@ -3,7 +3,7 @@ import { useNotatorTools } from "../tools/use_notator_tools";
 import { EditableLabel } from "../components/editable_label/editable_label";
 
 export function EditableTitle() {
-  const { draftEvent, editDraft } = useNotatorTools();
+  const { draftReport: draftEvent, editDraft } = useNotatorTools();
   const [stagedTitle, setStagedTitle] = useState<string>(draftEvent!.title);
 
   return (

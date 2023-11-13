@@ -7,7 +7,7 @@ export function EditDesriptionModal(props: {
   open: boolean;
   onClose: () => void;
 }) {
-  const { editDraft, draftEvent } = useNotatorTools();
+  const { editDraft, draftReport: draftEvent } = useNotatorTools();
   const [cachedDescription, setCachedDescription] = useState<string>("");
 
   useEffect(() => {

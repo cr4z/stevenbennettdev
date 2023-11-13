@@ -1,17 +1,17 @@
 import { Dayjs } from "dayjs";
 
-export interface NotatorEvent {
+export interface NotatorTruckerReport {
   title: string;
   description: string;
   eventTimes: EventTimes;
-  segments: NotatorEventSegment[];
+  truckerJournals: NotatorTruckerJournal[];
   location: string;
 }
 
-export interface NotatorEventSegment {
+export interface NotatorTruckerJournal {
   id: string;
   title: string;
-  priority: TruckerStatus;
+  status: TruckerStatus;
 }
 
 export type EventTimes = { startTime: Dayjs; endTime: Dayjs };

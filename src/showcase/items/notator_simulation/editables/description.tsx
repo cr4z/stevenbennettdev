@@ -4,7 +4,7 @@ import { EditableLabelMultiline } from "../components/editable_label/editable_mu
 import { EditDesriptionModal } from "../modals/edit_description";
 
 export function EditableDescription() {
-  const { draftEvent } = useNotatorTools();
+  const { draftReport: draftEvent } = useNotatorTools();
   const [open, setOpen] = useState<boolean>(false);
 
   return (

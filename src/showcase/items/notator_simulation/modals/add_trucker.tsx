@@ -3,20 +3,22 @@ import { useForm } from "react-hook-form";
 import { useNotatorTools } from "../tools/use_notator_tools";
 import { NotatorSimulationModal } from "../components/modal";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { NotatorEventSegment } from "../data/types/event";
+import { NotatorTruckerJournal } from "../data/types/report";
 
 type FormValues = {
-  segmentName: "";
+  truckerName: "";
 };
 
-export function CreateSegmentModal(props: {
+export function CreateTruckerModal(props: {
   open: boolean;
   onClose: () => void;
 }) {
   const {
     editDraft,
-    draftEvent,
-    segmentSelectorTools: { setSelectedSegmentToLast },
+    draftReport: draftEvent,
+    truckerSelectorTools: {
+      setSelectedTruckerToLast: setSelectedTruckerToLast,
+    },
   } = useNotatorTools();
   const {
     register,
@@ -26,27 +28,27 @@ export function CreateSegmentModal(props: {
     setFocus,
   } = useForm<FormValues>({
     defaultValues: {
-      segmentName: "",
+      truckerName: "",
     },
   });
 
   useEffect(() => {
     if (props.open) {
-      setFocus("segmentName");
+      setFocus("truckerName");
     }
   }, [open, setFocus]);
 
   function onSubmit(data: FormValues) {
-    const newSegment: NotatorEventSegment = {
+    const newTrucker: NotatorTruckerJournal = {
       id: crypto.randomUUID(),
-      title: data.segmentName,
-      priority: "High",
+      title: data.truckerName,
+      status: "Off Duty",
     };
-    const updatedSegments = [...draftEvent!.segments, newSegment];
+    const updatedTruckers = [...draftEvent!.truckerJournals, newTrucker];
     const freshEvent = editDraft({
-      path: "segments",
-      value: updatedSegments,
-      cb: () => setSelectedSegmentToLast(freshEvent),
+      path: "truckerJournals",
+      value: updatedTruckers,
+      cb: () => setSelectedTruckerToLast(freshEvent),
     });
     reset(); // Reset the form fields
     props.onClose(); // Close the modal
@@ -61,32 +63,32 @@ export function CreateSegmentModal(props: {
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <Typography id="add-description-modal" variant="h6" component="h2">
-          Create a new segment
+          Add a new trucker
         </Typography>
         <TextField
-          {...register("segmentName", {
-            required: "Segment name is required",
+          {...register("truckerName", {
+            required: "Trucker name is required",
             minLength: {
               value: 3,
-              message: "Segment name must be 3 characters or longer",
+              message: "Trucker's name must be 3 characters or longer",
             },
             validate: {
               isUnique: (value) =>
-                draftEvent!.segments.every(
+                draftEvent!.truckerJournals.every(
                   (s) =>
                     s.title.toLocaleLowerCase() !== value.toLocaleLowerCase()
-                ) || "Segment name already exists",
+                ) || "Trucker name already exists",
             },
           })}
           autoFocus
-          id="add-segment-textbox"
-          label="Name of segment"
-          placeholder="Type your segment's name here"
+          id="add-trucker-textbox"
+          label="Name of trucker"
+          placeholder="Type the trucker's name here"
           variant="outlined"
           fullWidth
           margin="normal"
-          error={!!errors.segmentName}
-          helperText={errors.segmentName?.message ?? ""}
+          error={!!errors.truckerName}
+          helperText={errors.truckerName?.message ?? ""}
         />
         <Box
           sx={{
@@ -98,7 +100,7 @@ export function CreateSegmentModal(props: {
         >
           <Button onClick={props.onClose}>Cancel</Button>
           <Button type="submit" variant="contained">
-            Create Segment
+            Add Trucker
           </Button>
         </Box>
       </form>

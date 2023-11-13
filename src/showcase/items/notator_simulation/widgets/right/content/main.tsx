@@ -15,8 +15,8 @@ import {
 
 export default function MainContent() {
   const {
-    draftEvent,
-    segmentSelectorTools: { selectedSegmentID },
+    draftReport: draftEvent,
+    truckerSelectorTools: { selectedTruckerID: selectedSegmentID },
     viewportNavbarTools,
   } = useNotatorTools();
 
@@ -25,10 +25,10 @@ export default function MainContent() {
       {draftEvent && selectedSegmentID && (
         <Paper sx={{ flexGrow: 1, overflow: "hidden" }}>
           <FadeIn key={selectedSegmentID} useScale={{ from: 0.98 }}>
-            <Box sx={{ padding: "1rem" }}>
+            <Box sx={{ padding: "1rem", height: "100%" }}>
               <Typography variant="h6">
                 {
-                  draftEvent.segments.find((s) => s.id === selectedSegmentID)
+                  draftEvent.truckerJournals.find((s) => s.id === selectedSegmentID)
                     ?.title
                 }
               </Typography>

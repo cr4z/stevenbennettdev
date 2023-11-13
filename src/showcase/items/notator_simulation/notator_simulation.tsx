@@ -20,7 +20,7 @@ export default function NotatorSimulationContextWrapper() {
 
 function NotatorSimulation() {
   const { palette } = useTheme();
-  const { draftEvent } = useNotatorTools();
+  const { draftReport } = useNotatorTools();
 
   const bph = useBreakpointHelper();
   const showMobileNotice = !bph.isGreaterThanEqualTo(800);
@@ -44,7 +44,7 @@ function NotatorSimulation() {
           experience won't be as optimal.
         </Typography>
       </NotatorSimulationModal>
-      {draftEvent && (
+      {draftReport && (
         <Box
           className="notator-selection-colors"
           sx={{

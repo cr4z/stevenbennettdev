@@ -7,7 +7,7 @@ import { Chip } from "../components/chip";
 
 export function EditableLocation() {
   const [open, setOpen] = useState<boolean>(false);
-  const { draftEvent, editDraft } = useNotatorTools();
+  const { draftReport: draftEvent, editDraft } = useNotatorTools();
 
   return (
     <>

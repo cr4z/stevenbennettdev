@@ -1,38 +1,38 @@
-import { EventContext } from "./context";
+import { ReportContext } from "./context";
 import { useState, useEffect } from "react";
 import { useSoftRefresh } from "./modules/use_refresh";
-import { EditDraftFunctionType, useDraftEvent } from "./modules/use_draft";
-import { SaveEventFunctionType, useSaveEvent } from "./modules/use_save";
-import { useEvent } from "./modules/use_event";
-import { NotatorEvent } from "../data/types/event";
-import useSegmentSelectorTools, {
-  SegmentSelectorTools,
-} from "./modules/use_segment_selector";
+import { EditDraftFunctionType, useDraftReport } from "./modules/use_draft";
+import { SaveReportFunctionType, useSaveReport } from "./modules/use_save";
+import { useFetchReport } from "./modules/use_fetch_report";
+import { NotatorTruckerReport } from "../data/types/report";
+import useTruckerSelectorTools, {
+  TruckerSelectorTools,
+} from "./modules/use_trucker_selector";
 import useViewportNavbarTools, {
   ViewportNavbarTools,
 } from "./modules/use_navbar";
 import {
-  EditSegmentTools,
-  useSegmentTools as useEditSegmentTools,
-} from "./modules/use_segment_tools";
+  EditTruckerTools,
+  useEditTruckerTools,
+} from "./modules/use_trucker_tools";
 
 export function NotatorToolsProvider(props: { children: React.ReactNode }) {
   const notatorToolModules = useNotatorToolModules();
 
   return (
-    <EventContext.Provider value={notatorToolModules}>
+    <ReportContext.Provider value={notatorToolModules}>
       {props.children}
-    </EventContext.Provider>
+    </ReportContext.Provider>
   );
 }
 
 export interface NotatorToolModules {
-  event: NotatorEvent | null;
-  draftEvent: NotatorEvent | null;
+  report: NotatorTruckerReport | null;
+  draftReport: NotatorTruckerReport | null;
   editDraft: EditDraftFunctionType;
-  saveEvent: SaveEventFunctionType;
-  segmentTools: EditSegmentTools;
-  segmentSelectorTools: SegmentSelectorTools;
+  saveReport: SaveReportFunctionType;
+  truckerTools: EditTruckerTools;
+  truckerSelectorTools: TruckerSelectorTools;
   viewportNavbarTools: ViewportNavbarTools;
   isSaveSpinnerActive: boolean;
 }
@@ -46,26 +46,28 @@ function useNotatorToolModules(): NotatorToolModules {
 
   const { softRefreshSwitch, toggleSoftRefresh } = useSoftRefresh();
 
-  const event = useEvent({
+  const report = useFetchReport({
     dependencies: { softRefreshSwitch },
     setIsSaveSpinnerActive,
   });
 
-  const { draftEvent, editDraft } = useDraftEvent({ dependencies: { event } });
-
-  const segmentSelectorTools = useSegmentSelectorTools({
-    dependencies: { draftEvent },
+  const { draftReport, editDraft } = useDraftReport({
+    dependencies: { report },
   });
 
-  const segmentTools = useEditSegmentTools({
+  const truckerSelectorTools = useTruckerSelectorTools({
+    dependencies: { draftReport, report },
+  });
+
+  const truckerTools = useEditTruckerTools({
     dependencies: {
       editDraft,
-      selectedSegmentIndex: segmentSelectorTools.selectedSegmentIndex,
-      draftEvent,
+      selectedTruckerIndex: truckerSelectorTools.selectedTruckerIndex,
+      draftReport: draftReport,
     },
   });
 
-  const saveEvent = useSaveEvent({
+  const saveReport = useSaveReport({
     setIsSaveSpinnerActive,
     toggleSoftRefresh,
   });
@@ -76,18 +78,18 @@ function useNotatorToolModules(): NotatorToolModules {
 
   useEffect(() => {
     viewportNavbarTools.setToFirstTab();
-  }, [segmentSelectorTools.selectedSegmentID]);
+  }, [truckerSelectorTools.selectedTruckerID]);
 
   // Return Statement
 
   return {
-    draftEvent,
+    draftReport,
     editDraft,
-    event,
-    saveEvent,
+    report,
+    saveReport,
     isSaveSpinnerActive,
-    segmentSelectorTools,
+    truckerSelectorTools,
     viewportNavbarTools,
-    segmentTools,
+    truckerTools,
   };
 }

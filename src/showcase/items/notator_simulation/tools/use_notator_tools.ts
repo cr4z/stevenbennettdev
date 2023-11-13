@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { EventContext } from "./context";
+import { ReportContext } from "./context";
 
 export function useNotatorTools() {
-  const context = useContext(EventContext);
+  const context = useContext(ReportContext);
 
   if (!context) {
     throw new Error(

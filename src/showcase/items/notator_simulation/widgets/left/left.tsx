@@ -1,19 +1,19 @@
 import { Box, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import { useNotatorTools } from "../../tools/use_notator_tools";
 import { BsFillTrash3Fill } from "react-icons/bs";
-import { NotatorEventSegment } from "../../data/types/event";
+import { NotatorTruckerJournal } from "../../data/types/report";
 import { useState } from "react";
 import LeftWidgetOptions from "./segments";
 import FadeIn from "../../components/fade_in";
 import toggleFromArray from "../../utils/toggle_from_array";
 import ConfirmModal from "../../modals/confirm";
-import { CreateSegmentModal } from "../../modals/create_segment";
+import { CreateTruckerModal } from "../../modals/add_trucker";
 import { ShadowScrollProvider } from "../../components/shadow_scroll";
 
 export const NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE = "#FFFD";
 
 export function LeftWidget() {
-  const { draftEvent } = useNotatorTools();
+  const { draftReport: draftEvent } = useNotatorTools();
 
   const [isRemoveMode, setIsRemoveMode] = useState<boolean>(false);
 
@@ -63,11 +63,11 @@ export function LeftWidget() {
         <>
           {isRemoveMode ? (
             <RemoveView
-              segments={draftEvent.segments}
+              segments={draftEvent.truckerJournals}
               onBack={() => setIsRemoveMode(false)}
             />
           ) : (
-            <DefaultView segments={draftEvent.segments} />
+            <DefaultView segments={draftEvent.truckerJournals} />
           )}
         </>
       )}
@@ -75,14 +75,14 @@ export function LeftWidget() {
   );
 }
 
-function DefaultView(props: { segments: NotatorEventSegment[] }) {
-  const { segmentSelectorTools } = useNotatorTools();
+function DefaultView(props: { segments: NotatorTruckerJournal[] }) {
+  const { truckerSelectorTools: segmentSelectorTools } = useNotatorTools();
 
   const [createSegmentOpen, setCreateSegmentOpen] = useState<boolean>(false);
 
   return (
     <>
-      <CreateSegmentModal
+      <CreateTruckerModal
         open={createSegmentOpen}
         onClose={() => setCreateSegmentOpen(false)}
       />
@@ -93,7 +93,7 @@ function DefaultView(props: { segments: NotatorEventSegment[] }) {
             <LeftWidgetOptions.SegmentButton
               key={i}
               text={s.title}
-              onClick={() => segmentSelectorTools.setSelectedSegmentID(s.id)}
+              onClick={() => segmentSelectorTools.setSelectedTruckerID(s.id)}
             />
           </FadeIn>
         ))}
@@ -111,12 +111,12 @@ function DefaultView(props: { segments: NotatorEventSegment[] }) {
 }
 
 function RemoveView(props: {
-  segments: NotatorEventSegment[];
+  segments: NotatorTruckerJournal[];
   onBack: () => void;
 }) {
   const {
     editDraft,
-    segmentSelectorTools: { resetSelectedSegmentID },
+    truckerSelectorTools: { resetSelectedTruckerToFirst: resetSelectedSegmentID },
   } = useNotatorTools();
 
   const [selectedIDs, setSelectedIDs] = useState<string[]>([]);
@@ -180,7 +180,7 @@ function RemoveView(props: {
 
 function ScrollbarLayout(props: {
   children: React.ReactNode;
-  dependencies: { segments: NotatorEventSegment[] };
+  dependencies: { segments: NotatorTruckerJournal[] };
 }) {
   return (
     <Box sx={{ pb: ".5rem" }}>

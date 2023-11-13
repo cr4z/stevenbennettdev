@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
-import { NotatorEvent } from "../../data/types/event";
+import { NotatorTruckerReport } from "../../data/types/report";
 
 type UseDraftResponse = {
-  draftEvent: NotatorEvent | null;
+  draftReport: NotatorTruckerReport | null;
   editDraft: EditDraftFunctionType;
 };
 
-export function useDraftEvent(props: {
-  dependencies: { event: NotatorEvent | null };
+export function useDraftReport(props: {
+  dependencies: { report: NotatorTruckerReport | null };
 }): UseDraftResponse {
-  const { event } = props.dependencies;
+  const { report } = props.dependencies;
 
-  const [draftEvent, setDraftEvent] = useState<NotatorEvent | null>(null);
+  const [draftReport, setDraftReport] = useState<NotatorTruckerReport | null>(
+    null
+  );
 
   useEffect(() => {
-    if (!event) return;
+    if (!report) return;
 
-    setDraftEvent(event);
-  }, [event]);
+    setDraftReport(report);
+  }, [report]);
 
-  const setDraftEventChangeCallback = useCallbackOnUpdate(draftEvent);
+  const setDraftReportChangeCallback = useCallbackOnUpdate(draftReport);
 
   /**
    * Edits a draft session's deep properties while avoiding React lifecycle issues.
@@ -35,13 +37,15 @@ export function useDraftEvent(props: {
    * @returns The updated session object, providing immediate access to the most
    * recent state andthus bypassing the asynchronous nature of state updates.
    */
-  function editDraft(props: EditDraftFunctionProps): NotatorEvent {
+  function editDraft(props: EditDraftFunctionProps): NotatorTruckerReport {
     if (props.cb) {
-      setDraftEventChangeCallback(props.cb);
+      setDraftReportChangeCallback(props.cb);
     }
 
     const pathArray = props.path.split(".");
-    const deepCopy = JSON.parse(JSON.stringify(draftEvent)) as NotatorEvent;
+    const deepCopy = JSON.parse(
+      JSON.stringify(draftReport)
+    ) as NotatorTruckerReport;
     let currentObject: any = deepCopy;
 
     for (let i = 0; i < pathArray.length - 1; i++) {
@@ -49,12 +53,12 @@ export function useDraftEvent(props: {
     }
     currentObject[pathArray[pathArray.length - 1]] = props.value;
 
-    setDraftEvent(deepCopy);
+    setDraftReport(deepCopy);
 
     return deepCopy;
   }
 
-  return { draftEvent, editDraft };
+  return { draftReport: draftReport, editDraft };
 }
 
 // -------- PRIVATE HOOKS --------
@@ -79,4 +83,4 @@ export type EditDraftFunctionProps = {
 };
 export type EditDraftFunctionType = (
   props: EditDraftFunctionProps
-) => NotatorEvent;
+) => NotatorTruckerReport;

@@ -3,14 +3,14 @@ import dayjs from "dayjs";
 import { useState } from "react";
 import { useNotatorTools } from "../tools/use_notator_tools";
 import { EditEventTimesModal } from "../modals/edit_times";
-import { EventTimes } from "../data/types/event";
+import { EventTimes } from "../data/types/report";
 import { Chip } from "../components/chip";
 import { FaClock } from "react-icons/fa";
 
 export function EditableTime() {
   const [open, setOpen] = useState<boolean>(false);
 
-  const { draftEvent, editDraft } = useNotatorTools();
+  const { draftReport: draftEvent, editDraft } = useNotatorTools();
 
   function onApplyTimes(v: EventTimes) {
     editDraft("eventTimes", v);

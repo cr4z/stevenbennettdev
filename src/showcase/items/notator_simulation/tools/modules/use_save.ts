@@ -1,8 +1,8 @@
-import { API_EVENTS } from "../../data/api";
+import { API_REPORTS } from "../../data/api";
 import { selectStateInUS, useSelector } from "../../data/redux";
-import { NotatorEvent } from "../../data/types/event";
+import { NotatorTruckerReport } from "../../data/types/report";
 
-export function useSaveEvent(props: {
+export function useSaveReport(props: {
   setIsSaveSpinnerActive: (v: boolean) => void;
   toggleSoftRefresh: () => void;
 }) {
@@ -14,13 +14,13 @@ export function useSaveEvent(props: {
    * @param freshEvent Requires developer to pass in the most recently available version of session to avoid asynchronous lifecycle issues.
    * @returns The freshest version of Event in the instance of immediate subsequent actions.
    */
-  async function saveEvent(freshEvent: NotatorEvent) {
+  async function saveEvent(freshEvent: NotatorTruckerReport) {
     setIsSaveSpinnerActive(true);
 
     const stateInUS = useSelector(selectStateInUS);
 
     try {
-      await API_EVENTS.v1EventsPut(stateInUS, freshEvent);
+      await API_REPORTS.v1EventsPut(stateInUS, freshEvent);
       toggleSoftRefresh();
       setIsSaveSpinnerActive(false);
     } catch (err) {
@@ -31,4 +31,4 @@ export function useSaveEvent(props: {
   return saveEvent;
 }
 
-export type SaveEventFunctionType = (freshEvent: NotatorEvent) => Promise<void>;
+export type SaveReportFunctionType = (freshEvent: NotatorTruckerReport) => Promise<void>;

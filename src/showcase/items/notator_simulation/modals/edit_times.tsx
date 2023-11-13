@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { TimeAutocomplete } from "../components/time_picker";
-import { EventTimes } from "../data/types/event";
+import { EventTimes } from "../data/types/report";
 import { useRef, useState } from "react";
 import { Dayjs } from "dayjs";
 import { NotatorSimulationModal } from "../components/modal";
