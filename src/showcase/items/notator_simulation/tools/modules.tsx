@@ -63,7 +63,7 @@ function useNotatorToolModules(): NotatorToolModules {
     dependencies: {
       editDraft,
       selectedTruckerIndex: truckerSelectorTools.selectedTruckerIndex,
-      draftReport: draftReport,
+      draftReport,
     },
   });
 

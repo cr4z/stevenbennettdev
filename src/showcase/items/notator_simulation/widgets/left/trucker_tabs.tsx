@@ -12,18 +12,19 @@ import { BsFillTrash3Fill, BsPlusCircle } from "react-icons/bs";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import StatusDot from "../../components/status_dot";
 
-const SEGMENT_SX = {
+const TRUCKER_TAB_SX = {
   height: "3rem",
-  segmentStatusDotAndPlusButtonWrapperStyling: {
+  truckerStatusDotAndPlusButtonWrapperStyling: {
     display: "flex",
     justifyContent: "center",
     width: "3rem",
   },
 };
 
-function SegmentBase(props: {
+function TruckerTabBase(props: {
   children: React.ReactNode;
   onClick?: () => void;
+  highlighted?: boolean;
 }) {
   return (
     <Box
@@ -36,6 +37,7 @@ function SegmentBase(props: {
         justifyContent: "space-between",
         borderRadius: "4px",
         overflow: "hidden",
+        ...(props.highlighted && { bgcolor: "#FFFFFF18" }),
       }}
       onClick={() => props.onClick?.call(null)}
     >
@@ -45,7 +47,7 @@ function SegmentBase(props: {
           alignItems: "center",
           justifyContent: "flex-start",
           width: "100%",
-          height: SEGMENT_SX.height,
+          height: TRUCKER_TAB_SX.height,
           ":hover": {
             bgcolor: "#454545",
           },
@@ -57,9 +59,13 @@ function SegmentBase(props: {
   );
 }
 
-function SegmentButton(props: { text: string; onClick: () => void }) {
+function TruckerTab(props: {
+  text: string;
+  onClick: () => void;
+  highlighted: boolean;
+}) {
   return (
-    <SegmentBase onClick={props.onClick}>
+    <TruckerTabBase onClick={props.onClick} highlighted={props.highlighted}>
       <Box
         sx={{
           display: "flex",
@@ -69,7 +75,7 @@ function SegmentButton(props: { text: string; onClick: () => void }) {
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Box sx={SEGMENT_SX.segmentStatusDotAndPlusButtonWrapperStyling}>
+          <Box sx={TRUCKER_TAB_SX.truckerStatusDotAndPlusButtonWrapperStyling}>
             <StatusDot />
           </Box>
           <Typography
@@ -83,17 +89,17 @@ function SegmentButton(props: { text: string; onClick: () => void }) {
           <PiCaretRightBold />
         </Box>
       </Box>
-    </SegmentBase>
+    </TruckerTabBase>
   );
 }
 
-function AddSegmentButton(props: { onClick: () => void }) {
+function AddTruckerButton(props: { onClick: () => void }) {
   return (
-    <SegmentBase onClick={props.onClick}>
+    <TruckerTabBase onClick={props.onClick}>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Box
           sx={{
-            ...SEGMENT_SX.segmentStatusDotAndPlusButtonWrapperStyling,
+            ...TRUCKER_TAB_SX.truckerStatusDotAndPlusButtonWrapperStyling,
             svg: { width: "1.5rem", height: "1.5rem" },
           }}
         >
@@ -101,20 +107,20 @@ function AddSegmentButton(props: { onClick: () => void }) {
         </Box>
 
         <Typography variant="body2" color={NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE}>
-          Add event segment
+          Add new trucker
         </Typography>
       </Box>
-    </SegmentBase>
+    </TruckerTabBase>
   );
 }
 
-function SelectableSegment(props: {
+function SelectableTruckerTab(props: {
   text: string;
   onToggle: () => void;
   value: boolean;
 }) {
   return (
-    <SegmentBase onClick={() => props.onToggle()}>
+    <TruckerTabBase onClick={() => props.onToggle()}>
       <Box
         sx={{
           display: "flex",
@@ -122,18 +128,18 @@ function SelectableSegment(props: {
           width: "100%",
         }}
       >
-        <Box sx={SEGMENT_SX.segmentStatusDotAndPlusButtonWrapperStyling}>
+        <Box sx={TRUCKER_TAB_SX.truckerStatusDotAndPlusButtonWrapperStyling}>
           <Checkbox checked={props.value} />
         </Box>
         <Typography variant="body2" color={NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE}>
           {props.text}
         </Typography>
       </Box>
-    </SegmentBase>
+    </TruckerTabBase>
   );
 }
 
-function RemoveModeButtons(props: {
+function RemoveModeActionButtons(props: {
   onBack: () => void;
   onRemove: () => void;
   removeButtonDisabled: boolean;
@@ -144,7 +150,7 @@ function RemoveModeButtons(props: {
     <Box
       sx={{
         display: "flex",
-        height: SEGMENT_SX.height,
+        height: TRUCKER_TAB_SX.height,
         gap: ".5rem",
       }}
     >
@@ -198,9 +204,9 @@ function RemoveModeButtons(props: {
 }
 
 const LeftWidgetOptions = {
-  RemoveModeButtons,
-  SelectableSegment,
-  SegmentButton,
-  AddSegmentButton,
+  RemoveModeActionButtons,
+  SelectableTruckerTab,
+  TruckerTab,
+  AddTruckerButton,
 };
 export default LeftWidgetOptions;

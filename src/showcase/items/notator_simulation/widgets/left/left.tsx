@@ -3,7 +3,7 @@ import { useNotatorTools } from "../../tools/use_notator_tools";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { NotatorTruckerJournal } from "../../data/types/report";
 import { useState } from "react";
-import LeftWidgetOptions from "./segments";
+import LeftWidgetOptions from "./trucker_tabs";
 import FadeIn from "../../components/fade_in";
 import toggleFromArray from "../../utils/toggle_from_array";
 import ConfirmModal from "../../modals/confirm";
@@ -13,7 +13,7 @@ import { ShadowScrollProvider } from "../../components/shadow_scroll";
 export const NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE = "#FFFD";
 
 export function LeftWidget() {
-  const { draftReport: draftEvent } = useNotatorTools();
+  const { draftReport } = useNotatorTools();
 
   const [isRemoveMode, setIsRemoveMode] = useState<boolean>(false);
 
@@ -41,9 +41,9 @@ export function LeftWidget() {
           sx={{ pl: ".5rem" }}
           className="noselect"
         >
-          {isRemoveMode ? "Remove Event Segments" : "Event Segments"}
+          {isRemoveMode ? "Remove Truckers" : "Truckers"}
         </Typography>
-        <Tooltip title={isRemoveMode ? "Go Back" : "Remove Event Segments"}>
+        <Tooltip title={isRemoveMode ? "Go Back" : "Remove Truckers"}>
           <IconButton
             sx={{
               svg: {
@@ -59,15 +59,15 @@ export function LeftWidget() {
         </Tooltip>
       </Box>
 
-      {draftEvent && (
+      {draftReport && (
         <>
           {isRemoveMode ? (
             <RemoveView
-              segments={draftEvent.truckerJournals}
+              truckerJournals={draftReport.truckerJournals}
               onBack={() => setIsRemoveMode(false)}
             />
           ) : (
-            <DefaultView segments={draftEvent.truckerJournals} />
+            <DefaultView truckerJournals={draftReport.truckerJournals} />
           )}
         </>
       )}
@@ -75,25 +75,28 @@ export function LeftWidget() {
   );
 }
 
-function DefaultView(props: { segments: NotatorTruckerJournal[] }) {
-  const { truckerSelectorTools: segmentSelectorTools } = useNotatorTools();
+function DefaultView(props: { truckerJournals: NotatorTruckerJournal[] }) {
+  const { truckerSelectorTools } = useNotatorTools();
 
-  const [createSegmentOpen, setCreateSegmentOpen] = useState<boolean>(false);
+  const [createTruckerOpen, setCreateTruckerOpen] = useState<boolean>(false);
 
   return (
     <>
       <CreateTruckerModal
-        open={createSegmentOpen}
-        onClose={() => setCreateSegmentOpen(false)}
+        open={createTruckerOpen}
+        onClose={() => setCreateTruckerOpen(false)}
       />
 
-      <ScrollbarLayout dependencies={{ segments: props.segments }}>
-        {props.segments.map((s, i) => (
+      <ScrollbarLayout
+        dependencies={{ truckerJournals: props.truckerJournals }}
+      >
+        {props.truckerJournals.map((s, i) => (
           <FadeIn key={i}>
-            <LeftWidgetOptions.SegmentButton
+            <LeftWidgetOptions.TruckerTab
               key={i}
               text={s.title}
-              onClick={() => segmentSelectorTools.setSelectedTruckerID(s.id)}
+              onClick={() => truckerSelectorTools.setSelectedTruckerID(s.id)}
+              highlighted={s.id === truckerSelectorTools.selectedTruckerID}
             />
           </FadeIn>
         ))}
@@ -101,8 +104,8 @@ function DefaultView(props: { segments: NotatorTruckerJournal[] }) {
 
       <Tooltip title="Add event segment">
         <div>
-          <LeftWidgetOptions.AddSegmentButton
-            onClick={() => setCreateSegmentOpen(true)}
+          <LeftWidgetOptions.AddTruckerButton
+            onClick={() => setCreateTruckerOpen(true)}
           />
         </div>
       </Tooltip>
@@ -111,12 +114,12 @@ function DefaultView(props: { segments: NotatorTruckerJournal[] }) {
 }
 
 function RemoveView(props: {
-  segments: NotatorTruckerJournal[];
+  truckerJournals: NotatorTruckerJournal[];
   onBack: () => void;
 }) {
   const {
     editDraft,
-    truckerSelectorTools: { resetSelectedTruckerToFirst: resetSelectedSegmentID },
+    truckerSelectorTools: { resetSelectedTruckerToFirst },
   } = useNotatorTools();
 
   const [selectedIDs, setSelectedIDs] = useState<string[]>([]);
@@ -127,15 +130,15 @@ function RemoveView(props: {
     setSelectedIDs(si);
   }
 
-  function handleRemovingSegments() {
-    const segmentsWithoutSelected = props.segments.filter(
+  function handleRemovingTruckers() {
+    const truckerJournalsWithoutSelected = props.truckerJournals.filter(
       (s) => !selectedIDs.includes(s.id)
     );
 
     const freshEvent = editDraft({
-      path: "segments",
-      value: segmentsWithoutSelected,
-      cb: () => resetSelectedSegmentID(freshEvent),
+      path: "truckerJournals",
+      value: truckerJournalsWithoutSelected,
+      cb: () => resetSelectedTruckerToFirst(freshEvent),
     });
     props.onBack();
   }
@@ -145,19 +148,21 @@ function RemoveView(props: {
       <ConfirmModal
         open={confirmOpen}
         onClose={() => setConfirmOpen(false)}
-        onConfirm={handleRemovingSegments}
+        onConfirm={handleRemovingTruckers}
         overrideDisplay={{
-          title: "Delete Segments",
+          title: "Remove Selected Truckers",
           description:
-            "Are you sure that you want to delete the selected segments from your event?",
+            "Are you sure that you want to delete the selected truckers from your report?",
           confirmColor: "error",
         }}
       />
 
-      <ScrollbarLayout dependencies={{ segments: props.segments }}>
-        {props.segments.map((s, i) => (
+      <ScrollbarLayout
+        dependencies={{ truckerJournals: props.truckerJournals }}
+      >
+        {props.truckerJournals.map((s, i) => (
           <FadeIn key={i}>
-            <LeftWidgetOptions.SelectableSegment
+            <LeftWidgetOptions.SelectableTruckerTab
               key={i}
               text={s.title}
               onToggle={() => handleToggleIndex(s.id)}
@@ -167,7 +172,7 @@ function RemoveView(props: {
         ))}
       </ScrollbarLayout>
 
-      <LeftWidgetOptions.RemoveModeButtons
+      <LeftWidgetOptions.RemoveModeActionButtons
         onBack={() => props.onBack()}
         onRemove={() => {
           setConfirmOpen(true);
@@ -180,14 +185,14 @@ function RemoveView(props: {
 
 function ScrollbarLayout(props: {
   children: React.ReactNode;
-  dependencies: { segments: NotatorTruckerJournal[] };
+  dependencies: { truckerJournals: NotatorTruckerJournal[] };
 }) {
   return (
     <Box sx={{ pb: ".5rem" }}>
       <ShadowScrollProvider
         maxHeight="calc(100vh - 30.9rem)"
         gap=".5rem"
-        dependencies={[props.dependencies.segments.length]}
+        dependencies={[props.dependencies.truckerJournals.length]}
       >
         {props.children}
       </ShadowScrollProvider>
