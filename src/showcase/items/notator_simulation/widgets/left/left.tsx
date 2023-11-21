@@ -6,8 +6,8 @@ import { useState } from "react";
 import LeftWidgetOptions from "./trucker_tabs";
 import FadeIn from "../../components/fade_in";
 import toggleFromArray from "../../utils/toggle_from_array";
-import ConfirmModal from "../../modals/confirm";
-import { CreateTruckerModal } from "../../modals/add_trucker";
+import ConfirmModal from "../../modals/templates/confirm";
+import { CreateTruckerModal } from "../../modals/views/add_trucker";
 import { ShadowScrollProvider } from "../../components/shadow_scroll";
 
 export const NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE = "#FFFD";
@@ -102,7 +102,7 @@ function DefaultView(props: { truckerJournals: NotatorTruckerJournal[] }) {
         ))}
       </ScrollbarLayout>
 
-      <Tooltip title="Add event segment">
+      <Tooltip title="Add Trucker to Report">
         <div>
           <LeftWidgetOptions.AddTruckerButton
             onClick={() => setCreateTruckerOpen(true)}
@@ -151,8 +151,7 @@ function RemoveView(props: {
         onConfirm={handleRemovingTruckers}
         overrideDisplay={{
           title: "Remove Selected Truckers",
-          description:
-            "Are you sure that you want to delete the selected truckers from your report?",
+          description: `Are you sure that you want to delete the (${selectedIDs.length}) selected truckers from your report?`,
           confirmColor: "error",
         }}
       />

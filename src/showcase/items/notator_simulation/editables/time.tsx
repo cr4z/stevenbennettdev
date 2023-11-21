@@ -10,20 +10,20 @@ import { FaClock } from "react-icons/fa";
 export function EditableTime() {
   const [open, setOpen] = useState<boolean>(false);
 
-  const { draftReport: draftEvent, editDraft } = useNotatorTools();
+  const { draftReport, editDraft } = useNotatorTools();
 
-  function onApplyTimes(v: EventTimes) {
-    editDraft("eventTimes", v);
+  function onApplyTimes(value: EventTimes) {
+    editDraft({ path: "eventTimes", value });
   }
 
   const defaultValues: EventTimes = {
-    startTime: draftEvent!.eventTimes.startTime,
-    endTime: draftEvent!.eventTimes.endTime,
+    startTime: draftReport!.eventTimes.startTime,
+    endTime: draftReport!.eventTimes.endTime,
   };
 
   return (
     <>
-      {draftEvent && (
+      {draftReport && (
         <>
           <EditEventTimesModal
             defaultValues={defaultValues}
@@ -34,8 +34,8 @@ export function EditableTime() {
           <Chip onClick={() => setOpen(true)}>
             <FaClock />
             <Typography variant="body2">
-              {dayjs(draftEvent.eventTimes.startTime).format("h:mm a - ") +
-                dayjs(draftEvent.eventTimes.endTime).format("h:mm a")}
+              {dayjs(draftReport.eventTimes.startTime).format("h:mm a - ") +
+                dayjs(draftReport.eventTimes.endTime).format("h:mm a")}
             </Typography>
           </Chip>
         </>

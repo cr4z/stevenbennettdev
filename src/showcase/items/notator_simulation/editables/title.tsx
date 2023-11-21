@@ -10,7 +10,7 @@ export function EditableTitle() {
     <EditableLabel
       value={stagedTitle}
       onChange={(v) => setStagedTitle(v)}
-      onBlur={(v) => editDraft("title", v)}
+      onBlur={(value) => editDraft({ path: "title", value })}
       height="2.5rem"
       fontStyling={{
         fontSize: { fontSize: "1.2rem", variant: "h2" },

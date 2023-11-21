@@ -25,7 +25,7 @@ export function NotatorSimulationModal(props: {
 
   return (
     <Box
-      key={`notator-simulation-modal-${props.open}`}
+      key={`notator-simulation-modal`}
       onClick={() => {
         props.onClose();
       }}
@@ -35,17 +35,17 @@ export function NotatorSimulationModal(props: {
         left: 0,
         width: "100%",
         height: "100%",
-        bgcolor: "#0004",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         zIndex: 100,
-        opacity: props.open ? 1 : 0, // Use opacity for fade-in and fade-out
         visibility: props.open ? "visible" : "hidden", // Use visibility to actually hide the element
-        transition: "opacity 0.1s ease, visibility 0.1s ease", // Add transition to opacity and visibility
+        bgcolor: props.open ? "#0004" : "#0000",
+        transition: "background-color .1s ease", // Add transition to opacity and visibility
       }}
       onTransitionEnd={(e) => {
-        if (e.propertyName === "transform") {
+        if (e.propertyName === "background-color") {
+          console.log("caling");
           if (props.open && props.onFocusReady) {
             // Call the onTransitionEnd callback only when the modal is opened
             props.onFocusReady();

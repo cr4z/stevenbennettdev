@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
-import { NotatorSimulationModal } from "../components/modal";
-import useActionOnEnterPressed from "../hooks/use_action_on_enter";
+import { NotatorSimulationModal } from "../modal";
+import useActionOnEnterPressed from "../../hooks/use_action_on_enter";
 
 export interface ConfirmModalProps {
   open: boolean;
@@ -13,6 +13,7 @@ export interface ConfirmModalProps {
     confirmText?: string;
     confirmColor?: "primary" | "error";
   };
+  injectBody?: JSX.Element;
 }
 
 function ConfirmModal(props: ConfirmModalProps) {
@@ -39,13 +40,13 @@ function ConfirmModal(props: ConfirmModalProps) {
         >
           {props.overrideDisplay?.title ?? "Confirmation"}
         </Typography>
-        <Typography
-          className="noselect"
-          sx={{ color: "#000C", pt: ".5rem", pb: "1rem" }}
-        >
+        <Typography sx={{ color: "#000C", pt: ".5rem", pb: "1rem" }}>
           {props.overrideDisplay?.description ??
             "Are you sure you want to proceed?"}
         </Typography>
+
+        {props.injectBody}
+
         <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1rem" }}>
           <Button onClick={props.onClose}>Cancel</Button>
           <Button

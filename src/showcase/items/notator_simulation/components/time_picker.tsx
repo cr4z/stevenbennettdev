@@ -7,7 +7,7 @@ import timeUtils from "../utils/time";
 const formatTimeValue = (time: Dayjs) => time.format("h:mm A");
 const parseTimeValue = (newValue: string) => dayjs(newValue, "h:mm A");
 const isTimeValueValid = (newValue: string) =>
-  timeUtils.isValidTime(newValue) || newValue === "";
+  timeUtils.isValidTime(newValue);
 
 interface RequiredProps {
   onChange: (v: Dayjs) => void;

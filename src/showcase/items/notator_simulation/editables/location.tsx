@@ -17,7 +17,7 @@ export function EditableLocation() {
             defaultValue={draftEvent.location}
             open={open}
             onClose={() => setOpen(false)}
-            onApply={(v) => editDraft("location", v)}
+            onApply={(value) => editDraft({ path: "location", value })}
           />
           <Chip onClick={() => setOpen(true)}>
             <IoLocationSharp />

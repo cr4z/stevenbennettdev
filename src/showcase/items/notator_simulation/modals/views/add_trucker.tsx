@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNotatorTools } from "../tools/use_notator_tools";
-import { NotatorSimulationModal } from "../components/modal";
+import { useNotatorTools } from "../../tools/use_notator_tools";
+import { NotatorSimulationModal } from "../modal";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { NotatorTruckerJournal } from "../data/types/report";
+import { NotatorTruckerJournal } from "../../data/types/report";
 
 type FormValues = {
   truckerName: "";

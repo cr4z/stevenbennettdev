@@ -3,7 +3,7 @@ import { TimeAutocomplete } from "../components/time_picker";
 import { EventTimes } from "../data/types/report";
 import { useRef, useState } from "react";
 import { Dayjs } from "dayjs";
-import { NotatorSimulationModal } from "../components/modal";
+import { NotatorSimulationModal } from "./modal";
 
 export function EditEventTimesModal(props: {
   open: boolean;
@@ -16,6 +16,7 @@ export function EditEventTimesModal(props: {
   const [stagedStart, setStagedStart] = useState<Dayjs>(
     props.defaultValues.startTime
   );
+
   const [stagedEnd, setStagedEnd] = useState<Dayjs>(
     props.defaultValues.endTime
   );
@@ -27,11 +28,13 @@ export function EditEventTimesModal(props: {
         onClose={() => props.onClose()}
         onFocusReady={() => {
           if (props.open) {
+            console.log("ey");
             focusRef.current?.focus();
           }
         }}
       >
         <form
+          key={`edit-times-modal-form-${props.open}`}
           onSubmit={(e) => {
             e.preventDefault();
             props.onApplyTimes({
@@ -51,7 +54,6 @@ export function EditEventTimesModal(props: {
           >
             <Typography variant="h6">Edit Event Times</Typography>
             <Box sx={{ display: "flex" }}>
-              {/* Add start time datepicker */}
               <TimeAutocomplete
                 label="Start Time"
                 value={stagedStart}
@@ -60,7 +62,6 @@ export function EditEventTimesModal(props: {
               />
             </Box>
             <Box sx={{ display: "flex" }}>
-              {/* Add end time datepicker */}
               <TimeAutocomplete
                 label="End Time"
                 value={stagedEnd}

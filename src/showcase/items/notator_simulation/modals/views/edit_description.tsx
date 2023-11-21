@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { useNotatorTools } from "../tools/use_notator_tools";
-import { NotatorSimulationModal } from "../components/modal";
+import { useNotatorTools } from "../../tools/use_notator_tools";
+import { NotatorSimulationModal } from "../modal";
 import { Box, Button, TextField, Typography } from "@mui/material";
 
 export function EditDesriptionModal(props: {
@@ -33,7 +33,7 @@ export function EditDesriptionModal(props: {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          editDraft("description", cachedDescription);
+          editDraft({ path: "description", value: cachedDescription });
           props.onClose();
         }}
       >
