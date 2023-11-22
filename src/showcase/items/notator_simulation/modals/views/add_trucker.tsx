@@ -41,7 +41,7 @@ export function CreateTruckerModal(props: {
   function onSubmit(data: FormValues) {
     const newTrucker: NotatorTruckerJournal = {
       id: crypto.randomUUID(),
-      title: data.truckerName,
+      fullName: data.truckerName,
       status: "Off Duty",
     };
     const updatedTruckers = [...draftEvent!.truckerJournals, newTrucker];
@@ -76,7 +76,7 @@ export function CreateTruckerModal(props: {
               isUnique: (value) =>
                 draftEvent!.truckerJournals.every(
                   (s) =>
-                    s.title.toLocaleLowerCase() !== value.toLocaleLowerCase()
+                    s.fullName.toLocaleLowerCase() !== value.toLocaleLowerCase()
                 ) || "Trucker name already exists",
             },
           })}

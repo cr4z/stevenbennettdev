@@ -1,18 +1,60 @@
 import dayjs from "dayjs";
-import { NotatorTruckerReport } from "../types/report";
+import {
+  NotatorTruckerReport,
+  TruckerItemLedger,
+  TruckerSchedule,
+} from "../types/report";
 
-export const MOCK_NOTATOR_EVENT: NotatorTruckerReport = {
-  title: "Example Event 1",
+export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
+  title: "Example Report 1",
   description: "",
-  eventTimes: {
+  reportingDuration: {
     startTime: dayjs().startOf("hour"),
     endTime: dayjs().startOf("hour").add(1, "hour"),
   },
   location: "Austin, TX",
+  customItemLedger: { smallItems: [], mediumItems: [], largeItems: [] },
   truckerJournals: [
-    { id: "547abffb", status: "Off Duty", title: "Edward Vedder" },
-    { id: "a6e31c46", status: "En Route", title: "Devon Rice" },
-    { id: "9385d06f", status: "En Route", title: "Ray LaMontagne" },
-    { id: "da4679ee", status: "Heading Back", title: "Alice Cheynes" },
+    {
+      id: "547abffb",
+      status: "En Route",
+      fullName: "Edward Vedder",
+      schedule: getRandomSchedule(),
+      itemLedger: getRandomItemLedger(),
+    },
+    {
+      id: "a6e31c46",
+      status: "Off Duty",
+      fullName: "Devon Rice",
+      schedule: getRandomSchedule(),
+      itemLedger: getRandomItemLedger(),
+    },
+    {
+      id: "9385d06f",
+      status: "Heading Back",
+      fullName: "Ray LaMontagne",
+      schedule: getRandomSchedule(),
+      itemLedger: getRandomItemLedger(),
+    },
+    {
+      id: "da4679ee",
+      status: "Off Duty",
+      fullName: "Alice Cheynes",
+      schedule: getRandomSchedule(),
+      itemLedger: getRandomItemLedger(),
+    },
   ],
 };
+
+function getRandomSchedule(): TruckerSchedule {
+  const daysOffset = Math.random() * 8 - 4;
+
+  return {
+    departureDate: dayjs().subtract(daysOffset, "days"),
+    returnDate: dayjs().subtract(daysOffset, "days").add(8, "days"),
+  };
+}
+
+function getRandomItemLedger(): TruckerItemLedger {
+  return { smallItems: [], mediumItems: [], largeItems: [] };
+}

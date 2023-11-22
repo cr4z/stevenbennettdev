@@ -15,6 +15,8 @@ import {
   EditTruckerTools,
   useEditTruckerTools,
 } from "./modules/use_trucker_tools";
+import { useFetchWarehouseProfile } from "./modules/use_fetch_warehouse_profile";
+import { WarehouseProfile } from "../data/types/warehouse_profile";
 
 export function NotatorToolsProvider(props: { children: React.ReactNode }) {
   const notatorToolModules = useNotatorToolModules();
@@ -27,6 +29,7 @@ export function NotatorToolsProvider(props: { children: React.ReactNode }) {
 }
 
 export interface NotatorToolModules {
+  warehouseProfile: WarehouseProfile | null;
   report: NotatorTruckerReport | null;
   draftReport: NotatorTruckerReport | null;
   editDraft: EditDraftFunctionType;
@@ -35,6 +38,8 @@ export interface NotatorToolModules {
   truckerSelectorTools: TruckerSelectorTools;
   viewportNavbarTools: ViewportNavbarTools;
   isSaveSpinnerActive: boolean;
+  softRefreshSwitch: boolean;
+  toggleSoftRefresh: () => void;
 }
 function useNotatorToolModules(): NotatorToolModules {
   // Local Modules
@@ -43,6 +48,8 @@ function useNotatorToolModules(): NotatorToolModules {
     useState<boolean>(false);
 
   // Imported Modules
+
+  const warehouseProfile = useFetchWarehouseProfile();
 
   const { softRefreshSwitch, toggleSoftRefresh } = useSoftRefresh();
 
@@ -80,9 +87,8 @@ function useNotatorToolModules(): NotatorToolModules {
     viewportNavbarTools.setToFirstTab();
   }, [truckerSelectorTools.selectedTruckerID]);
 
-  // Return Statement
-
   return {
+    warehouseProfile,
     draftReport,
     editDraft,
     report,
@@ -91,5 +97,7 @@ function useNotatorToolModules(): NotatorToolModules {
     truckerSelectorTools,
     viewportNavbarTools,
     truckerTools,
+    softRefreshSwitch,
+    toggleSoftRefresh,
   };
 }

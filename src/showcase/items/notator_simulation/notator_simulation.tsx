@@ -56,7 +56,7 @@ function NotatorSimulation() {
             display: "flex",
             flexDirection: "column",
             gap: "1rem",
-            minWidth: "70rem",
+            minWidth: "72rem",
           }}
         >
           <HeaderWidget />

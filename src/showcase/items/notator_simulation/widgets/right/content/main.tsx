@@ -1,17 +1,12 @@
 import { Box, Button, ButtonBase, Paper, Typography } from "@mui/material";
 import StatusDot from "../../../components/status_dot";
 import { useNotatorTools } from "../../../tools/use_notator_tools";
-import { NotatorSegmentTabTitle } from "../../../tools/modules/use_navbar";
+import { NotatorNavbarTabName } from "../../../tools/modules/use_navbar";
 import React, { memo } from "react";
 import FadeIn from "../../../components/fade_in";
-import {
-  TruckerStatusTabView,
-  ScheduleTabView,
-  SmallItemsTabView,
-  MediumItemsTabView,
-  LargeItemsTabView,
-  NotesTabView,
-} from "../../../views";
+import { StatusTabView } from "../../../views/status";
+import { ScheduleTabView } from "../../../views/schedule";
+import { NotesTabView } from "../../../views/notes";
 
 export default function MainContent() {
   const {
@@ -25,29 +20,55 @@ export default function MainContent() {
       {draftEvent && selectedSegmentID && (
         <Paper sx={{ flexGrow: 1, overflow: "hidden" }}>
           <FadeIn key={selectedSegmentID} useScale={{ from: 0.98 }}>
-            <Box sx={{ padding: "1rem", height: "100%" }}>
-              <Typography variant="h6">
-                {
-                  draftEvent.truckerJournals.find((s) => s.id === selectedSegmentID)
-                    ?.title
-                }
-              </Typography>
+            <Box
+              sx={{
+                padding: "1rem",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <Box>
+                <Typography variant="h6">
+                  {
+                    draftEvent.truckerJournals.find(
+                      (s) => s.id === selectedSegmentID
+                    )?.fullName
+                  }
+                </Typography>
 
-              <NotatorSegmentNavigationBar />
+                <Box sx={{ width: "45.5rem" }}>
+                  <NotatorSegmentNavigationBar />
 
-              <Box sx={{ height: "calc(100% - 7rem)" }}>
-                <TabViewport />
+                  <Box sx={{ height: "calc(100% - 7rem)" }}>
+                    <MemoizedTabViewport />
+                  </Box>
+                </Box>
               </Box>
 
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                {!viewportNavbarTools.isLastTab && (
-                  <Button
-                    variant="contained"
-                    onClick={() => viewportNavbarTools.nextTab()}
-                  >
-                    Next
-                  </Button>
-                )}
+              <Box
+                className="noselect"
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  gap: "1rem",
+                }}
+              >
+                <Button
+                  disabled={viewportNavbarTools.isFirstTab}
+                  variant="contained"
+                  onClick={() => viewportNavbarTools.previousTab()}
+                >
+                  Back
+                </Button>
+                <Button
+                  disabled={viewportNavbarTools.isLastTab}
+                  variant="contained"
+                  onClick={() => viewportNavbarTools.nextTab()}
+                >
+                  Next
+                </Button>
               </Box>
             </Box>
           </FadeIn>
@@ -60,9 +81,10 @@ export default function MainContent() {
 function NotatorSegmentNavigationBar() {
   const {
     viewportNavbarTools: { setSelectedTab, selectedTab },
+    truckerTools: { draftTrucker },
   } = useNotatorTools();
 
-  const tabTitles: NotatorSegmentTabTitle[] = [
+  const tabTitles: NotatorNavbarTabName[] = [
     "Status",
     "Schedule",
     "Small Items",
@@ -72,15 +94,20 @@ function NotatorSegmentNavigationBar() {
   ];
 
   return (
-    <Box sx={{ display: "flex", gap: ".75rem" }}>
-      {tabTitles.map((title: NotatorSegmentTabTitle) => (
-        <MemoizedSegmentNavButton
-          key={title}
-          onClick={() => setSelectedTab(title)}
-          title={title}
-          isSelected={selectedTab === title}
-        />
-      ))}
+    <Box
+      sx={{ display: "flex", gap: ".75rem", justifyContent: "space-between" }}
+    >
+      {tabTitles.map((title: NotatorNavbarTabName) => {
+        return (
+          <MemoizedSegmentNavButton
+            key={title}
+            onClick={() => setSelectedTab(title)}
+            title={title}
+            isSelected={selectedTab === title}
+            disabled={draftTrucker?.status === "Off Duty" && title !== "Status"}
+          />
+        );
+      })}
     </Box>
   );
 }
@@ -89,6 +116,7 @@ type MemoizedSegmentNavButtonProps = {
   title: string;
   onClick: () => void;
   isSelected: boolean;
+  disabled?: boolean;
 };
 
 /**
@@ -103,10 +131,12 @@ const MemoizedSegmentNavButton = memo(
           p: ".5rem .75rem",
           display: "flex",
           alignItems: "center",
-          gap: ".5rem",
           borderBottom: "2px solid #0002",
           mt: ".25rem",
+          gap: ".5rem",
+          opacity: props.disabled ? 0.6 : 1,
         }}
+        disabled={props.disabled}
         onClick={props.onClick}
       >
         <StatusDot isSelected={props.isSelected} />
@@ -116,21 +146,35 @@ const MemoizedSegmentNavButton = memo(
   }
 );
 
-function TabViewport(): React.ReactNode {
+function MemoizedTabViewport() {
   const { viewportNavbarTools } = useNotatorTools();
 
-  switch (viewportNavbarTools.selectedTab) {
-    case "Status":
-      return <TruckerStatusTabView />;
-    case "Schedule":
-      return <ScheduleTabView />;
-    case "Small Items":
-      return <SmallItemsTabView />;
-    case "Medium Items":
-      return <MediumItemsTabView />;
-    case "Large Items":
-      return <LargeItemsTabView />;
-    case "Notes":
-      return <NotesTabView />;
+  /**
+   * We are opting to simply hide a box's visibility rather than unmounting the component entirely
+   * so that individual states persist.
+   */
+  function ShowIfSelected(props: {
+    tab: NotatorNavbarTabName;
+    component: React.ReactNode;
+  }) {
+    return (
+      <Box
+        sx={
+          viewportNavbarTools.selectedTab === props.tab
+            ? { visibility: "visible" }
+            : { visibility: "hidden", height: 0, width: 0, overflow: "none" }
+        }
+      >
+        {props.component}
+      </Box>
+    );
   }
+
+  return (
+    <Box sx={{ padding: "1rem" }}>
+      <ShowIfSelected tab="Status" component={<StatusTabView />} />
+      <ShowIfSelected tab="Schedule" component={<ScheduleTabView />} />
+      <ShowIfSelected tab="Notes" component={<NotesTabView />} />
+    </Box>
+  );
 }

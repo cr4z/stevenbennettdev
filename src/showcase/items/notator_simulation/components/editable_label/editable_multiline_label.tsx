@@ -27,7 +27,6 @@ export function EditableLabelMultiline(props: EditableLabelProps) {
       fontFamily: "Inter",
       fontStyle: "italic",
       fontSize: ".8rem",
-      fontVariationSettings: "'slnt' 10",
       fontWeight: 500,
     } as SxProps,
   };

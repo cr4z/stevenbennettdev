@@ -94,7 +94,7 @@ function DefaultView(props: { truckerJournals: NotatorTruckerJournal[] }) {
           <FadeIn key={i}>
             <LeftWidgetOptions.TruckerTab
               key={i}
-              text={s.title}
+              text={s.fullName}
               onClick={() => truckerSelectorTools.setSelectedTruckerID(s.id)}
               highlighted={s.id === truckerSelectorTools.selectedTruckerID}
             />
@@ -163,7 +163,7 @@ function RemoveView(props: {
           <FadeIn key={i}>
             <LeftWidgetOptions.SelectableTruckerTab
               key={i}
-              text={s.title}
+              text={s.fullName}
               onToggle={() => handleToggleIndex(s.id)}
               value={selectedIDs.includes(s.id)}
             />

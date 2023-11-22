@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export type NotatorSegmentTabTitle =
+export type NotatorNavbarTabName =
   | "Status"
   | "Schedule"
   | "Small Items"
@@ -8,7 +8,7 @@ export type NotatorSegmentTabTitle =
   | "Large Items"
   | "Notes";
 
-export const tabsInOrder: NotatorSegmentTabTitle[] = [
+export const tabsInOrder: NotatorNavbarTabName[] = [
   "Status",
   "Schedule",
   "Small Items",
@@ -18,24 +18,27 @@ export const tabsInOrder: NotatorSegmentTabTitle[] = [
 ];
 
 export type ViewportNavbarTools = {
-  selectedTab: NotatorSegmentTabTitle;
-  setSelectedTab: React.Dispatch<React.SetStateAction<NotatorSegmentTabTitle>>;
+  selectedTab: NotatorNavbarTabName;
+  setSelectedTab: React.Dispatch<React.SetStateAction<NotatorNavbarTabName>>;
   setToFirstTab: () => void;
   isLastTab: boolean;
+  isFirstTab: boolean;
   nextTab: () => void;
+  previousTab: () => void;
 };
 
-const FIRST_TAB: NotatorSegmentTabTitle = "Status";
+const FIRST_TAB: NotatorNavbarTabName = "Status";
 
 export default function useSegmentNavbarTools(): ViewportNavbarTools {
   const [selectedTab, setSelectedTab] =
-    useState<NotatorSegmentTabTitle>(FIRST_TAB);
+    useState<NotatorNavbarTabName>(FIRST_TAB);
 
   function setToFirstTab() {
     setSelectedTab(FIRST_TAB);
   }
 
   const isLastTab = selectedTab === "Notes";
+  const isFirstTab = selectedTab === "Status";
 
   function nextTab() {
     const i = tabsInOrder.indexOf(selectedTab);
@@ -46,5 +49,18 @@ export default function useSegmentNavbarTools(): ViewportNavbarTools {
     }
   }
 
-  return { selectedTab, setSelectedTab, setToFirstTab, isLastTab, nextTab };
+  function previousTab() {
+    const i = tabsInOrder.indexOf(selectedTab);
+    setSelectedTab(tabsInOrder[i - 1]);
+  }
+
+  return {
+    selectedTab,
+    setSelectedTab,
+    setToFirstTab,
+    isLastTab,
+    nextTab,
+    isFirstTab,
+    previousTab,
+  };
 }

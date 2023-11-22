@@ -17,8 +17,8 @@ export function EditableTime() {
   }
 
   const defaultValues: EventTimes = {
-    startTime: draftReport!.eventTimes.startTime,
-    endTime: draftReport!.eventTimes.endTime,
+    startTime: draftReport!.reportingDuration.startTime,
+    endTime: draftReport!.reportingDuration.endTime,
   };
 
   return (
@@ -34,8 +34,8 @@ export function EditableTime() {
           <Chip onClick={() => setOpen(true)}>
             <FaClock />
             <Typography variant="body2">
-              {dayjs(draftReport.eventTimes.startTime).format("h:mm a - ") +
-                dayjs(draftReport.eventTimes.endTime).format("h:mm a")}
+              {dayjs(draftReport.reportingDuration.startTime).format("h:mm a - ") +
+                dayjs(draftReport.reportingDuration.endTime).format("h:mm a")}
             </Typography>
           </Chip>
         </>

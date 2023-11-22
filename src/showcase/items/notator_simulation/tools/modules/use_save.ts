@@ -20,7 +20,7 @@ export function useSaveReport(props: {
     const stateInUS = useSelector(selectStateInUS);
 
     try {
-      await API_REPORTS.v1EventsPut(stateInUS, freshEvent);
+      await API_REPORTS.v1ReportsPut(stateInUS, freshEvent);
       toggleSoftRefresh();
       setIsSaveSpinnerActive(false);
     } catch (err) {
