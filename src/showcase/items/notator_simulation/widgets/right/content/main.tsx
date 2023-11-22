@@ -7,6 +7,7 @@ import FadeIn from "../../../components/fade_in";
 import { StatusTabView } from "../../../views/status";
 import { ScheduleTabView } from "../../../views/schedule";
 import { NotesTabView } from "../../../views/notes";
+import SmallItemsTabView from "../../../views/small_items/small_items";
 
 export default function MainContent() {
   const {
@@ -174,6 +175,7 @@ function MemoizedTabViewport() {
     <Box sx={{ padding: "1rem" }}>
       <ShowIfSelected tab="Status" component={<StatusTabView />} />
       <ShowIfSelected tab="Schedule" component={<ScheduleTabView />} />
+      <ShowIfSelected tab="Small Items" component={<SmallItemsTabView />} />
       <ShowIfSelected tab="Notes" component={<NotesTabView />} />
     </Box>
   );

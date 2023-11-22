@@ -20,28 +20,34 @@ export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
       status: "En Route",
       fullName: "Edward Vedder",
       schedule: getRandomSchedule(),
-      itemLedger: getRandomItemLedger(),
+      itemLedger: {
+        smallItems: [
+          { name: "246", increments: 3 },
+        ],
+        mediumItems: [],
+        largeItems: [],
+      },
     },
     {
       id: "a6e31c46",
       status: "Off Duty",
       fullName: "Devon Rice",
       schedule: getRandomSchedule(),
-      itemLedger: getRandomItemLedger(),
+      itemLedger: getBlankItemLedger(),
     },
     {
       id: "9385d06f",
       status: "Heading Back",
       fullName: "Ray LaMontagne",
       schedule: getRandomSchedule(),
-      itemLedger: getRandomItemLedger(),
+      itemLedger: getBlankItemLedger(),
     },
     {
       id: "da4679ee",
       status: "Off Duty",
       fullName: "Alice Cheynes",
       schedule: getRandomSchedule(),
-      itemLedger: getRandomItemLedger(),
+      itemLedger: getBlankItemLedger(),
     },
   ],
 };
@@ -55,6 +61,6 @@ function getRandomSchedule(): TruckerSchedule {
   };
 }
 
-function getRandomItemLedger(): TruckerItemLedger {
+function getBlankItemLedger(): TruckerItemLedger {
   return { smallItems: [], mediumItems: [], largeItems: [] };
 }
