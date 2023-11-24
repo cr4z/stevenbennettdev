@@ -4,6 +4,7 @@ import { useNotatorTools } from "../../tools/use_notator_tools";
 import { NotatorSimulationModal } from "../modal";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { NotatorTruckerJournal } from "../../data/types/report";
+import { getBlankTrucker } from "../../data/mocks/blank_trucker";
 
 type FormValues = {
   truckerName: "";
@@ -39,11 +40,7 @@ export function CreateTruckerModal(props: {
   }, [open, setFocus]);
 
   function onSubmit(data: FormValues) {
-    const newTrucker: NotatorTruckerJournal = {
-      id: crypto.randomUUID(),
-      fullName: data.truckerName,
-      status: "Off Duty",
-    };
+    const newTrucker: NotatorTruckerJournal = getBlankTrucker({name: data.truckerName});
     const updatedTruckers = [...draftEvent!.truckerJournals, newTrucker];
     const freshEvent = editDraft({
       path: "truckerJournals",

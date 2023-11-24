@@ -12,7 +12,10 @@ export default function SmallItemsTabView() {
   return (
     <Box sx={SX_ROW_MAJOR_GRID}>
       <LockedItems />
+
       {/* <UnlockedItems /> */}
     </Box>
   );
 }
+
+function UnlockedItems() {}

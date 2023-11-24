@@ -1,7 +1,7 @@
 import { DateTimePicker } from "@mui/x-date-pickers";
-import { NotatorTruckerJournal, TruckerSchedule } from "../data/types/report";
+import { TruckerSchedule } from "../data/types/report";
 import { useNotatorTools } from "../tools/use_notator_tools";
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 
 export function ScheduleTabView() {
   const { truckerTools } = useNotatorTools();

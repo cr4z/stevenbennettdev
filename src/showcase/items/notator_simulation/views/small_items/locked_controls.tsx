@@ -37,9 +37,12 @@ export default function LockedItems() {
               current.splice(docIndex, 1);
               editTrucker({ path: `itemLedger.smallItems`, value: current });
             }}
-            onAddSelfToLedger={() => {
+            onAddSelfToLedger={(defaultIncrements?: number) => {
               const current = draftTrucker.itemLedger.smallItems;
-              current.push({ increments: 1, name: cargoItem.name });
+              current.push({
+                increments: defaultIncrements ?? 1,
+                name: cargoItem.name,
+              });
               editTrucker({ path: `itemLedger.smallItems`, value: current });
             }}
           />

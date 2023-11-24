@@ -1,9 +1,6 @@
 import dayjs from "dayjs";
-import {
-  NotatorTruckerReport,
-  TruckerItemLedger,
-  TruckerSchedule,
-} from "../types/report";
+import { NotatorTruckerReport } from "../types/report";
+import { getBlankItemLedger, getRandomSchedule } from "./blank_trucker";
 
 export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
   title: "Example Report 1",
@@ -21,9 +18,7 @@ export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
       fullName: "Edward Vedder",
       schedule: getRandomSchedule(),
       itemLedger: {
-        smallItems: [
-          { name: "246", increments: 3 },
-        ],
+        smallItems: [{ name: "246", increments: 3 }],
         mediumItems: [],
         largeItems: [],
       },
@@ -51,16 +46,3 @@ export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
     },
   ],
 };
-
-function getRandomSchedule(): TruckerSchedule {
-  const daysOffset = Math.random() * 8 - 4;
-
-  return {
-    departureDate: dayjs().subtract(daysOffset, "days"),
-    returnDate: dayjs().subtract(daysOffset, "days").add(8, "days"),
-  };
-}
-
-function getBlankItemLedger(): TruckerItemLedger {
-  return { smallItems: [], mediumItems: [], largeItems: [] };
-}
