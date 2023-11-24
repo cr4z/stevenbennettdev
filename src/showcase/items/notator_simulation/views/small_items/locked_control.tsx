@@ -117,7 +117,6 @@ export default function LockedControl(props: {
           }}
           onClick={(e) => {
             e.stopPropagation();
-            console.log("intercepted");
           }}
         >
           <Box
