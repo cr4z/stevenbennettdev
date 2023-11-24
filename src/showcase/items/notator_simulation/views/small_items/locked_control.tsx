@@ -1,5 +1,6 @@
 import {
   Box,
+  ButtonBase,
   Checkbox,
   InputBase,
   SxProps,
@@ -190,13 +191,12 @@ function ToggleGroup(props: {
         outline: borderLineStyle,
       }}
     >
-      <Box
+      <ButtonBase
         onClick={() => setCachedValue(cachedValue - 1)}
-        sx={buttonStyle}
-        borderRight={borderLineStyle}
+        sx={{ ...buttonStyle, borderRight: borderLineStyle }}
       >
         -
-      </Box>
+      </ButtonBase>
 
       <InputBase
         sx={inputStyle}
@@ -204,9 +204,12 @@ function ToggleGroup(props: {
         onChange={(e) => setCachedValue(+e.target.value)}
       />
 
-      <Box onClick={() => setCachedValue(cachedValue + 1)} sx={buttonStyle}>
+      <ButtonBase
+        onClick={() => setCachedValue(cachedValue + 1)}
+        sx={buttonStyle}
+      >
         +
-      </Box>
+      </ButtonBase>
     </Box>
   );
 }
