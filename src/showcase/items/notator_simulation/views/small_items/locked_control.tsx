@@ -82,7 +82,7 @@ export default function LockedControl(props: {
             display: "flex",
           },
           "#hide": {
-            display: "none",
+            opacity: 0,
           },
         },
         position: "relative",
