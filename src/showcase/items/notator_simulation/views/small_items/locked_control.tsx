@@ -36,20 +36,23 @@ export default function LockedControl(props: {
   }
 
   function handleValueChange(v: number) {
-    if (v < 0) return;
-
+    // If the new value is the same as the current value, do nothing.
     if (increments === v) return;
 
+    // If the new value is 0, remove the item from the ledger.
     if (v === 0) {
       props.onRemoveSelfFromLedger();
       return;
     }
 
-    if (increments === 0 && v > 1) {
+    // If the current count is 0 and the new value is greater than 0, add the item to the ledger
+    // and pass the value as a parameter to use in initialization.
+    if (increments === 0 && v > 0) {
       props.onAddSelfToLedger(v);
       return;
     }
 
+    // For all other cases, update the current item's count.
     props.onChange({ increments: v, name });
   }
 
