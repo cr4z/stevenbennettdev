@@ -1,6 +1,6 @@
-import { SmallItem } from "../../data/types/report";
 import { useNotatorTools } from "../../tools/use_notator_tools";
-import { CargoItem } from "./cargo_item_type";
+import { CargoItem } from "./types/cargo_item_type";
+import { generateCargoItems } from "./logic/generate_cargo_items";
 import LockedControl from "./locked_control";
 
 export default function LockedItems() {
@@ -12,13 +12,16 @@ export default function LockedItems() {
   if (!warehouseProfile || !draftTrucker) return <></>;
 
   const defaultNames: string[] = warehouseProfile.defaultItemsLedger.smallItems;
-  const alreadyDocumented = draftTrucker.itemLedger.smallItems;
-  const cargoItems = getCargoItems({ defaultNames, alreadyDocumented });
+  const providedList = draftTrucker.itemLedger.smallItems;
+  const cargoItems = generateCargoItems({
+    namesToGenerate: defaultNames,
+    deriveIncrements: providedList,
+  });
 
   return (
     <>
       {cargoItems.map((cargoItem, i) => {
-        const docIndex = alreadyDocumented.findIndex(
+        const docIndex = providedList.findIndex(
           (ci) => ci.name === cargoItem.name
         );
 
@@ -50,24 +53,4 @@ export default function LockedItems() {
       })}
     </>
   );
-}
-
-function getCargoItems(props: {
-  defaultNames: string[];
-  alreadyDocumented: SmallItem[];
-}): CargoItem[] {
-  const { defaultNames, alreadyDocumented: cargoItems } = props;
-
-  const res: CargoItem[] = defaultNames.map((name) => {
-    const ci = { name, increments: 0 };
-
-    const incrementsIfAny = cargoItems.find(
-      (_ci) => _ci.name === name
-    )?.increments;
-    if (incrementsIfAny) ci.increments = incrementsIfAny;
-
-    return ci;
-  });
-
-  return res;
 }

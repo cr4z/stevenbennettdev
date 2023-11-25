@@ -1,8 +1,9 @@
-import { Box, Checkbox, TextField, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import { useState, useEffect } from "react";
-import { OtherField, OtherFieldStatus } from "./other_field";
+import { OtherField, OtherFieldStatus } from "./types/other_field";
 import { useNotatorTools } from "../../tools/use_notator_tools";
 import { MESSAGES_OTHER_VALIDATION } from "../../messages/other_validation";
+import { UnlockedControl } from "./unlocked_control";
 
 const BLANK_OTHER = {
   name: "",
@@ -71,8 +72,6 @@ export default function UnlockedControls() {
     const savable = otherFields.filter((of) => of.status.savable);
     const savableNames = savable.map((s) => s.name);
     editDraft({ path: "customItemLedger.smallItems", value: savableNames });
-
-    console.log(savableNames);
   }
 
   return (
@@ -96,28 +95,6 @@ export default function UnlockedControls() {
   );
 }
 
-function UnlockedControl(props: {
-  otherField: OtherField;
-  onChange: (updatedField: OtherField) => void;
-  onBlur: () => void;
-}) {
-  const { status, name } = props.otherField;
-
-  return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Checkbox />
-      <TextField
-        error={status.userFeedback !== ""}
-        value={name}
-        onChange={(e) => props.onChange({ name: e.target.value, status })}
-        size="small"
-        variant="outlined"
-        onBlur={props.onBlur}
-      />
-    </Box>
-  );
-}
-
 /**
  * Manages the other field state. This will reset for any refetch condition, particularly saving.
  */
@@ -127,13 +104,7 @@ function useOtherFields(): [
 ] {
   const { refetchSwitch } = useNotatorTools();
 
-  function getDefaultOrCachedValue(): OtherField[] {
-    return [BLANK_OTHER];
-  }
-
-  const [otherFields, setOtherFields] = useState<OtherField[]>(
-    getDefaultOrCachedValue()
-  );
+  const [otherFields, setOtherFields] = useState<OtherField[]>([BLANK_OTHER]);
 
   useEffect(() => {
     setOtherFields([BLANK_OTHER]);

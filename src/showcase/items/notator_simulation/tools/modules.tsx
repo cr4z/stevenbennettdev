@@ -11,10 +11,7 @@ import useTruckerSelectorTools, {
 import useViewportNavbarTools, {
   ViewportNavbarTools,
 } from "./modules/use_navbar";
-import {
-  EditTruckerTools,
-  useEditTruckerTools,
-} from "./modules/use_trucker_tools";
+import { TruckerTools, useTruckerTools } from "./modules/use_trucker_tools";
 import { useFetchWarehouseProfile } from "./modules/use_fetch_warehouse_profile";
 import { WarehouseProfile } from "../data/types/warehouse_profile";
 
@@ -34,7 +31,7 @@ export interface NotatorToolModules {
   draftReport: NotatorTruckerReport | null;
   editDraft: EditDraftFunctionType;
   saveReport: SaveReportFunctionType;
-  truckerTools: EditTruckerTools;
+  truckerTools: TruckerTools;
   truckerSelectorTools: TruckerSelectorTools;
   viewportNavbarTools: ViewportNavbarTools;
   isSaveSpinnerActive: boolean;
@@ -69,8 +66,9 @@ function useNotatorToolModules(): NotatorToolModules {
     dependencies: { draftReport, report },
   });
 
-  const truckerTools = useEditTruckerTools({
+  const truckerTools = useTruckerTools({
     dependencies: {
+      report,
       draftReport,
       editDraft,
       selectedTruckerIndex: truckerSelectorTools.selectedTruckerIndex,

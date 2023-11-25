@@ -8,7 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { CargoItemProps } from "./locked_control_props";
+import { CargoItemProps } from "./types/locked_control_props";
 
 const SX_TOGGLE_GROUP = {
   unitSize: 1.75,

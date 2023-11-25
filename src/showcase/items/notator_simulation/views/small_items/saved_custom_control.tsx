@@ -1,5 +1,5 @@
 import LockedControl from "./locked_control";
-import { CargoItemProps } from "./locked_control_props";
+import { CargoItemProps } from "./types/locked_control_props";
 
 export type SavedCustomControlProps = CargoItemProps & {
   onDelete: () => void;
