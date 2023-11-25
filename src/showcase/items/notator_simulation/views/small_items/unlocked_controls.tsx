@@ -1,6 +1,6 @@
 import { Box, Checkbox, TextField } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
-import { OtherField } from "./other_field";
+import { OtherField, OtherFieldStatus } from "./other_field";
 import { useNotatorTools } from "../../tools/use_notator_tools";
 
 const BLANK_OTHER = {
@@ -9,10 +9,15 @@ const BLANK_OTHER = {
 };
 
 export default function UnlockedControls() {
+  const {
+    truckerTools: { draftTrucker },
+  } = useNotatorTools();
+
   const [otherFields, setOtherFields] = useOtherFields();
 
   function handleFieldChange(of: OtherField, i: number) {
     const fieldIsEmpty = of.name.length === 0;
+    const validatedOtherField = validateOtherField(of);
 
     let _otherFields = [...otherFields];
 
@@ -32,7 +37,7 @@ export default function UnlockedControls() {
     // --- Helpers ---
 
     function updateFieldAtIndex() {
-      _otherFields[i] = of;
+      _otherFields[i] = validatedOtherField;
     }
 
     function removeFieldAtIndex() {
@@ -50,6 +55,28 @@ export default function UnlockedControls() {
     const saveable = otherFields.filter((of) => !of.status.unsaveable);
 
     console.log(saveable);
+  }
+
+  function validateOtherField(of: OtherField): OtherField {
+    let status: OtherFieldStatus = { unsaveable: true, userFeedback: "" };
+    const { name } = of;
+
+    console.log("HEYOO");
+
+    if (otherFields.find((of) => of.name === name)) {
+      status.userFeedback = "Custom item already exists, this will not save!";
+      return { name, status };
+    }
+
+    if (
+      draftTrucker?.itemLedger.smallItems.find((item) => item.name === name)
+    ) {
+      status.userFeedback = "Custom item already exists, this will not save!";
+      return { name, status };
+    }
+
+    status.unsaveable = false;
+    return { name, status };
   }
 
   return (

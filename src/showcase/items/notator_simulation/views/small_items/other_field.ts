@@ -1,7 +1,9 @@
 export type OtherField = {
   name: string;
-  status: {
-    unsaveable: boolean;
-    userFeedback: string | null;
-  };
+  status: OtherFieldStatus;
+};
+
+export type OtherFieldStatus = {
+  unsaveable: boolean;
+  userFeedback: string | null;
 };
