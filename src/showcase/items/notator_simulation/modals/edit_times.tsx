@@ -2,7 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { TimeAutocomplete } from "../components/time_picker";
 import { EventTimes } from "../data/types/report";
 import { useRef, useState } from "react";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { NotatorSimulationModal } from "./modal";
 
 export function EditEventTimesModal(props: {
@@ -14,12 +14,14 @@ export function EditEventTimesModal(props: {
   const focusRef = useRef<HTMLInputElement>(null);
 
   const [stagedStart, setStagedStart] = useState<Dayjs>(
-    props.defaultValues.startTime
+    dayjs(props.defaultValues.startTime)
   );
 
   const [stagedEnd, setStagedEnd] = useState<Dayjs>(
-    props.defaultValues.endTime
+    dayjs(props.defaultValues.endTime)
   );
+
+  console.log(stagedStart);
 
   return (
     <>

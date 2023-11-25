@@ -31,4 +31,6 @@ export function useSaveReport(props: {
   return saveEvent;
 }
 
-export type SaveReportFunctionType = (freshEvent: NotatorTruckerReport) => Promise<void>;
+export type SaveReportFunctionType = (
+  freshEvent: NotatorTruckerReport
+) => Promise<void>;

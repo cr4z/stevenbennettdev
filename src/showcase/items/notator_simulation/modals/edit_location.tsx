@@ -46,7 +46,7 @@ export function EditLocationModal(props: {
               gap: "1rem",
             }}
           >
-            <Typography variant="h6">Edit Event Location</Typography>
+            <Typography variant="h6">Edit Report Location</Typography>
             <Autocomplete
               options={top100Cities}
               value={stagedLocation}

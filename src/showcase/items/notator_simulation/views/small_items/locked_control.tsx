@@ -180,8 +180,6 @@ function ToggleGroup(props: {
     defaultValue: props.increments,
   });
 
-  console.log("rerender");
-
   return (
     <Box
       onPointerOut={() => props.handleValueChange(cachedValue)}

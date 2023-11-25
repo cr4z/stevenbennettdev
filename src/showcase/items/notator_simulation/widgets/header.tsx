@@ -1,15 +1,29 @@
-import { Box, Paper } from "@mui/material";
+import { Box, Button, Paper } from "@mui/material";
 import { EditableTitle } from "../editables/title";
 import { EditableTime } from "../editables/time";
 import { EditableDescription } from "../editables/description";
 import { EditableLocation } from "../editables/location";
+import { useNotatorTools } from "../tools/use_notator_tools";
 
 export function HeaderWidget() {
+  const { saveReport, draftReport } = useNotatorTools();
+
+  function handleSave() {
+    if (!draftReport) {
+      console.error("Report was not provided in save handler!");
+      return;
+    }
+
+    saveReport(draftReport);
+  }
+
   return (
     <Paper
       sx={{
         width: "100%",
         padding: ".5rem",
+        display: "flex",
+        justifyContent: "space-between",
       }}
     >
       <Box
@@ -26,6 +40,20 @@ export function HeaderWidget() {
           <EditableLocation />
         </Box>
         <EditableDescription />
+      </Box>
+
+      <Box sx={{ height: "100%", display: "flex", alignItems: "flex-end" }}>
+        <Box sx={{ display: "flex", gap: "1rem" }}>
+          <Button variant="outlined" onClick={handleSave}>
+            Save
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => alert("Show JSON result modal")}
+          >
+            Post
+          </Button>
+        </Box>
       </Box>
     </Paper>
   );
