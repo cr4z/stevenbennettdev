@@ -14,9 +14,11 @@ const SX_TOGGLE_GROUP = {
   unitSize: 1.75,
 };
 
-export type LockedControlProps = CargoItemProps & {
+type UseDeleteProp = {
   useDelete?: { onDelete: () => void };
 };
+
+export type LockedControlProps = CargoItemProps & UseDeleteProp;
 export default function LockedControl(props: LockedControlProps) {
   const { name, increments } = props.cargoItem;
 
@@ -106,41 +108,36 @@ export default function LockedControl(props: LockedControlProps) {
           </Typography>
         </Box>
         <Box
+          id="show"
           sx={{
             position: "absolute",
             right: 1,
             bottom: 1,
-            width: SX_TOGGLE_GROUP.unitSize * 3 + "rem",
-            height: SX_TOGGLE_GROUP.unitSize + "rem",
-            cursor: "pointer",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
           onClick={(e) => {
             e.stopPropagation();
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-            id="show"
-          >
-            <ToggleGroup
-              increments={increments}
-              handleValueChange={handleValueChange}
-            />
-          </Box>
+          <ToggleGroup
+            increments={increments}
+            handleValueChange={handleValueChange}
+            useDelete={props.useDelete}
+          />
         </Box>
       </Box>
     </Box>
   );
 }
 
-function ToggleGroup(props: {
+type ToggleGroupProps = {
   increments: number;
   handleValueChange: (v: number) => void;
-}) {
+} & UseDeleteProp;
+
+function ToggleGroup(props: ToggleGroupProps) {
   const size = SX_TOGGLE_GROUP.unitSize + "rem";
 
   const buttonStyle: SxProps = {
@@ -156,6 +153,19 @@ function ToggleGroup(props: {
     ":active": {
       bgcolor: "#0001",
     },
+  };
+
+  const { palette } = useTheme();
+
+  const exButtonStyle: SxProps = {
+    width: size,
+    height: size,
+    padding: 0,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    bgcolor: palette.error.dark,
+    color: "#FFF",
   };
 
   const borderLineStyle = "solid 1px #0002";
@@ -187,6 +197,7 @@ function ToggleGroup(props: {
         overflow: "hidden",
         bgcolor: "white",
         outline: borderLineStyle,
+        width: SX_TOGGLE_GROUP.unitSize * (props.useDelete ? 4 : 3) + "rem",
       }}
     >
       <ButtonBase
@@ -208,6 +219,15 @@ function ToggleGroup(props: {
       >
         +
       </ButtonBase>
+
+      {props.useDelete && (
+        <ButtonBase
+          onClick={() => props.useDelete?.onDelete()}
+          sx={exButtonStyle}
+        >
+          X
+        </ButtonBase>
+      )}
     </Box>
   );
 }

@@ -1,19 +1,18 @@
 import { useNotatorTools } from "../../tools/use_notator_tools";
 import { generateCargoItems } from "./logic/generate_cargo_items";
+import { useCustomsWithDeletions } from "./logic/use_customs_with_deletions";
 import { SavedCustomControl } from "./saved_custom_control";
 
 export function SavedCustomControls() {
   const {
-    report,
     truckerTools: { draftTrucker },
   } = useNotatorTools();
 
-  const allCustoms: string[] = report?.customItemLedger.smallItems ?? [];
-  const deletedCustoms: string[] = allCustoms; // later...
+  const customNamesToRender = useCustomsWithDeletions();
   const providedList = draftTrucker?.itemLedger.smallItems ?? [];
 
   const cargoItems = generateCargoItems({
-    namesToGenerate: deletedCustoms,
+    namesToGenerate: customNamesToRender,
     deriveIncrements: providedList,
   });
 

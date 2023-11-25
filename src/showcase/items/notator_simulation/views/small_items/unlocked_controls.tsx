@@ -4,6 +4,7 @@ import { OtherField, OtherFieldStatus } from "./types/other_field";
 import { useNotatorTools } from "../../tools/use_notator_tools";
 import { MESSAGES_OTHER_VALIDATION } from "../../messages/other_validation";
 import { UnlockedControl } from "./unlocked_control";
+import { useCustomsWithDeletions } from "./logic/use_customs_with_deletions";
 
 const BLANK_OTHER = {
   name: "",
@@ -68,10 +69,13 @@ export default function UnlockedControls() {
     return { name, status };
   }
 
+  const customsWithDeletions = useCustomsWithDeletions();
+
   function editDraftWithSavableOtherFields() {
     const savable = otherFields.filter((of) => of.status.savable);
     const savableNames = savable.map((s) => s.name);
-    editDraft({ path: "customItemLedger.smallItems", value: savableNames });
+    const namesToSave = [...customsWithDeletions, ...savableNames];
+    editDraft({ path: "customItemLedger.smallItems", value: namesToSave });
   }
 
   return (
