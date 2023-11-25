@@ -9,7 +9,7 @@ const BLANK_OTHER = {
 };
 
 export default function UnlockedControls() {
-  const { warehouseProfile } = useNotatorTools();
+  const { warehouseProfile, editDraft, draftReport } = useNotatorTools();
 
   const [otherFields, setOtherFields] = useOtherFields();
 
@@ -49,12 +49,6 @@ export default function UnlockedControls() {
     }
   }
 
-  function handleDataOperation() {
-    const savable = otherFields.filter((of) => of.status.savable);
-
-    console.log(savable);
-  }
-
   function validateOtherField(of: OtherField): OtherField {
     const { name } = of;
     let status: OtherFieldStatus = { savable: false, userFeedback: "" };
@@ -73,8 +67,26 @@ export default function UnlockedControls() {
       return { name, status };
     }
 
+    const itemExistsInCustom = Boolean(
+      draftReport?.customItemLedger.smallItems.find((_name) => _name === name)
+    );
+    if (itemExistsInCustom) {
+      status.userFeedback = "Custom item already exists, this will not save!";
+      return { name, status };
+    }
+
     status.savable = true;
     return { name, status };
+  }
+
+  function handleDataOperation() {
+    const savable = otherFields.filter((of) => of.status.savable);
+
+    const savableNames = savable.map((s) => s.name);
+
+    editDraft({ path: "customItemLedger.smallItems", value: savableNames });
+
+    console.log(savableNames);
   }
 
   return (
