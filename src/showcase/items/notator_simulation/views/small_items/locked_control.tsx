@@ -8,7 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { CargoItem } from "./cargo_item_type";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SX_TOGGLE_GROUP = {
   unitSize: 1.75,
@@ -180,6 +180,8 @@ function ToggleGroup(props: {
     defaultValue: props.increments,
   });
 
+  console.log("rerender");
+
   return (
     <Box
       onPointerOut={() => props.handleValueChange(cachedValue)}
@@ -225,6 +227,10 @@ function useCachedValue(props: {
 
     _setCachedValue(v);
   }
+
+  useEffect(() => {
+    _setCachedValue(props.defaultValue);
+  }, [props.defaultValue]);
 
   return [cachedValue, setCachedValue];
 }
