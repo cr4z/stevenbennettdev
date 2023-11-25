@@ -84,10 +84,10 @@ export default function UnlockedControls() {
         <Tooltip
           open={of.status.userFeedback !== ""}
           title={of.status.userFeedback}
+          key={i}
         >
           <div>
             <UnlockedControl
-              key={i}
               otherField={of}
               onChange={(_of) => handleOtherFieldChange(_of, i)}
               onBlur={() => editDraftWithSavableOtherFields()}

@@ -11,7 +11,11 @@ export function SavedCustomControl(props: SavedCustomControlProps) {
       onAddSelfToLedger={props.onAddSelfToLedger}
       onRemoveSelfFromLedger={props.onRemoveSelfFromLedger}
       onChange={props.onChange}
-      useDelete={{ onDelete: () => {} }}
+      useDelete={{
+        onDelete: () => {
+          alert("yo");
+        },
+      }}
     />
   );
 }
