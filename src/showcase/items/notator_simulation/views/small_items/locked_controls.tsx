@@ -1,8 +1,7 @@
 import { useNotatorTools } from "../../tools/use_notator_tools";
-import { CargoItem } from "./types/cargo_item_type";
 import { generateCargoItems } from "./logic/generate_cargo_items";
 import LockedControl from "./locked_control";
-import { CargoItemCallbackProps } from "./types/locked_control_props";
+import { useGetCargoItemCallbacks } from "./logic/use_get_cargo_item_callbacks";
 
 export default function LockedItems() {
   const {
@@ -19,6 +18,8 @@ export default function LockedItems() {
     deriveIncrements: providedList,
   });
 
+  const getCallbacks = useGetCargoItemCallbacks();
+
   return (
     <>
       {cargoItems.map((cargoItem, i) => {
@@ -26,10 +27,7 @@ export default function LockedItems() {
           (ci) => ci.name === cargoItem.name
         );
 
-        const cargoItemCallbacks = useCargoItemDataOperationCallbacks(
-          providedListIndex,
-          cargoItem
-        );
+        const cargoItemCallbacks = getCallbacks(cargoItem, providedListIndex);
 
         return (
           <LockedControl
@@ -43,39 +41,4 @@ export default function LockedItems() {
       })}
     </>
   );
-}
-
-function useCargoItemDataOperationCallbacks(
-  providedListIndex: number,
-  cargoItem: CargoItem
-): CargoItemCallbackProps {
-  const {
-    truckerTools: { draftTrucker, editTrucker },
-  } = useNotatorTools();
-
-  if (!draftTrucker) throw new Error("");
-
-  const onChange = (ci: CargoItem) => {
-    editTrucker({
-      path: `itemLedger.smallItems.${providedListIndex}`,
-      value: ci,
-    });
-  };
-
-  const onRemoveSelfFromLedger = () => {
-    const current = draftTrucker.itemLedger.smallItems;
-    current.splice(providedListIndex, 1);
-    editTrucker({ path: `itemLedger.smallItems`, value: current });
-  };
-
-  const onAddSelfToLedger = (defaultIncrements?: number) => {
-    const current = draftTrucker.itemLedger.smallItems;
-    current.push({
-      increments: defaultIncrements ?? 1,
-      name: cargoItem.name,
-    });
-    editTrucker({ path: `itemLedger.smallItems`, value: current });
-  };
-
-  return { onChange, onRemoveSelfFromLedger, onAddSelfToLedger };
 }
