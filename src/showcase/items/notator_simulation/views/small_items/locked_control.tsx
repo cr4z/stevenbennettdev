@@ -7,19 +7,17 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { CargoItem } from "./cargo_item_type";
 import { useEffect, useState } from "react";
+import { CargoItemProps } from "./locked_control_props";
 
 const SX_TOGGLE_GROUP = {
   unitSize: 1.75,
 };
 
-export default function LockedControl(props: {
-  cargoItem: CargoItem;
-  onChange: (ci: CargoItem) => void;
-  onRemoveSelfFromLedger: () => void;
-  onAddSelfToLedger: (increments?: number) => void;
-}) {
+export type LockedControlProps = CargoItemProps & {
+  useDelete?: { onDelete: () => void };
+};
+export default function LockedControl(props: LockedControlProps) {
   const { name, increments } = props.cargoItem;
 
   const { palette } = useTheme();
