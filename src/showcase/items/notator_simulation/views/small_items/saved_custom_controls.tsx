@@ -2,7 +2,6 @@ import { useNotatorTools } from "../../tools/use_notator_tools";
 import LockedControl from "./locked_control";
 import { generateCargoItems } from "./logic/generate_cargo_items";
 import { useCustomsWithDeletions } from "./logic/use_customs_with_deletions";
-import { SavedCustomControl } from "./saved_custom_control";
 
 export function SavedCustomControls() {
   const {
