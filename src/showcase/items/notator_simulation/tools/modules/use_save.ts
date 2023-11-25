@@ -3,10 +3,10 @@ import { selectStateInUS, useSelector } from "../../data/redux";
 import { NotatorTruckerReport } from "../../data/types/report";
 
 export function useSaveReport(props: {
-  setIsSaveSpinnerActive: (v: boolean) => void;
-  triggerRefetchSwitch: () => void;
+  onSetIsSaveSpinnerActive: (v: boolean) => void;
+  onTriggerRefetchSwitch: () => void;
 }) {
-  const { setIsSaveSpinnerActive, triggerRefetchSwitch: toggleSoftRefresh } = props;
+  const { onSetIsSaveSpinnerActive, onTriggerRefetchSwitch } = props;
 
   /**
    * This is only function that should ever be responsible for session saving.
@@ -15,14 +15,14 @@ export function useSaveReport(props: {
    * @returns The freshest version of Event in the instance of immediate subsequent actions.
    */
   async function saveEvent(freshEvent: NotatorTruckerReport) {
-    setIsSaveSpinnerActive(true);
+    onSetIsSaveSpinnerActive(true);
 
     const stateInUS = useSelector(selectStateInUS);
 
     try {
       await API_REPORTS.v1ReportsPut(stateInUS, freshEvent);
-      toggleSoftRefresh();
-      setIsSaveSpinnerActive(false);
+      onTriggerRefetchSwitch();
+      onSetIsSaveSpinnerActive(false);
     } catch (err) {
       throw err;
     }

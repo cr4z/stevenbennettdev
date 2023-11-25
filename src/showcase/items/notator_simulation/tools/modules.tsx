@@ -58,7 +58,7 @@ function useNotatorToolModules(): NotatorToolModules {
 
   const report = useFetchReport({
     dependencies: { refetchSwitch },
-    setIsSaveSpinnerActive,
+    onSetIsSaveSpinnerActive: (v: boolean) => setIsSaveSpinnerActive(v),
   });
 
   const { draftReport, editDraft } = useDraftReport({
@@ -71,15 +71,15 @@ function useNotatorToolModules(): NotatorToolModules {
 
   const truckerTools = useEditTruckerTools({
     dependencies: {
+      draftReport,
       editDraft,
       selectedTruckerIndex: truckerSelectorTools.selectedTruckerIndex,
-      draftReport,
     },
   });
 
   const saveReport = useSaveReport({
-    setIsSaveSpinnerActive,
-    triggerRefetchSwitch,
+    onSetIsSaveSpinnerActive: (v: boolean) => setIsSaveSpinnerActive(v),
+    onTriggerRefetchSwitch: () => triggerRefetchSwitch(),
   });
 
   const viewportNavbarTools = useViewportNavbarTools();
