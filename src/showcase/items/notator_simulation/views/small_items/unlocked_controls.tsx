@@ -9,7 +9,7 @@ const BLANK_OTHER = {
 };
 
 export default function UnlockedControls() {
-  const [otherFields, setOtherFields] = usePersistentOtherFields([BLANK_OTHER]);
+  const [otherFields, setOtherFields] = useOtherFields();
 
   function handleFieldChange(of: OtherField, i: number) {
     const fieldIsEmpty = of.name.length === 0;
@@ -46,6 +46,12 @@ export default function UnlockedControls() {
     }
   }
 
+  function handleDataOperation() {
+    const saveable = otherFields.filter((of) => !of.status.unsaveable);
+
+    console.log(saveable);
+  }
+
   return (
     <>
       {otherFields.map((of, i) => (
@@ -53,6 +59,7 @@ export default function UnlockedControls() {
           key={i}
           otherField={of}
           onChange={(_of) => handleFieldChange(_of, i)}
+          onBlur={() => handleDataOperation()}
         />
       ))}
     </>
@@ -62,6 +69,7 @@ export default function UnlockedControls() {
 function UnlockedControl(props: {
   otherField: OtherField;
   onChange: (updatedField: OtherField) => void;
+  onBlur: () => void;
 }) {
   const { status, name } = props.otherField;
 
@@ -73,31 +81,29 @@ function UnlockedControl(props: {
         onChange={(e) => props.onChange({ name: e.target.value, status })}
         size="small"
         variant="outlined"
+        onBlur={props.onBlur}
       />
     </Box>
   );
 }
 
-function usePersistentOtherFields(
-  initialValue: OtherField[]
-): [otherFields: OtherField[], setOtherFields: (v: OtherField[]) => void] {
+function useOtherFields(): [
+  otherFields: OtherField[],
+  setOtherFields: (v: OtherField[]) => void
+] {
   const { refetchSwitch } = useNotatorTools();
 
-  const ref = useRef<OtherField[]>(initialValue);
-  const [_, forceUpdate] = useState({});
-
-  if (ref.current === undefined) {
-    ref.current = initialValue;
+  function getDefaultOrCachedValue(): OtherField[] {
+    return [BLANK_OTHER];
   }
 
-  const setRef = (v: OtherField[]) => {
-    ref.current = v;
-    forceUpdate({});
-  };
+  const [otherFields, setOtherFields] = useState<OtherField[]>(
+    getDefaultOrCachedValue()
+  );
 
   useEffect(() => {
-    setRef([BLANK_OTHER]);
+    setOtherFields([BLANK_OTHER]);
   }, [refetchSwitch]);
 
-  return [ref.current, setRef];
+  return [otherFields, setOtherFields];
 }
