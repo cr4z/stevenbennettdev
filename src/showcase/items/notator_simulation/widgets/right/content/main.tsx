@@ -2,7 +2,7 @@ import { Box, Button, ButtonBase, Paper, Typography } from "@mui/material";
 import StatusDot from "../../../components/status_dot";
 import { useNotatorTools } from "../../../tools/use_notator_tools";
 import { NotatorNavbarTabName } from "../../../tools/modules/use_navbar";
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import FadeIn from "../../../components/fade_in";
 import { StatusTabView } from "../../../views/status";
 import { ScheduleTabView } from "../../../views/schedule";
@@ -148,35 +148,42 @@ const MemoizedSegmentNavButton = memo(
 );
 
 function MemoizedTabViewport() {
-  const { viewportNavbarTools } = useNotatorTools();
-
-  /**
-   * We are opting to simply hide a box's visibility rather than unmounting the component entirely
-   * so that individual states persist.
-   */
-  function ShowIfSelected(props: {
-    tab: NotatorNavbarTabName;
-    component: React.ReactNode;
-  }) {
-    return (
-      <Box
-        sx={
-          viewportNavbarTools.selectedTab === props.tab
-            ? { visibility: "visible" }
-            : { visibility: "hidden", height: 0, width: 0, overflow: "none" }
-        }
-      >
-        {props.component}
-      </Box>
-    );
-  }
-
   return (
     <Box sx={{ padding: "1rem" }}>
       <ShowIfSelected tab="Status" component={<StatusTabView />} />
       <ShowIfSelected tab="Schedule" component={<ScheduleTabView />} />
       <ShowIfSelected tab="Small Items" component={<SmallItemsTabView />} />
       <ShowIfSelected tab="Notes" component={<NotesTabView />} />
+    </Box>
+  );
+}
+
+/**
+ * We are opting to simply hide a box's visibility rather than unmounting the component entirely
+ * so that individual states persist.
+ */
+function ShowIfSelected(props: {
+  tab: NotatorNavbarTabName;
+  component: React.ReactNode;
+}) {
+  const { viewportNavbarTools } = useNotatorTools();
+
+  useEffect(() => {
+    console.log("Parent component mounted");
+    return () => {
+      console.log("Parent component unmounted");
+    };
+  }, []);
+
+  return (
+    <Box
+      sx={
+        viewportNavbarTools.selectedTab === props.tab
+          ? { visibility: "visible" }
+          : { visibility: "hidden", height: 0, width: 0, overflow: "none" }
+      }
+    >
+      {props.component}
     </Box>
   );
 }

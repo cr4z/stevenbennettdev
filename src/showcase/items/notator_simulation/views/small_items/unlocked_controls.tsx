@@ -1,9 +1,9 @@
 import { Box, Checkbox, TextField } from "@mui/material";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { OtherField } from "./other_field";
 
 export default function UnlockedControls() {
-  const [otherFields, setOtherFields] = useState<OtherField[]>([
+  const [otherFields, setOtherFields] = usePersistentOtherFields([
     createBlankOther(),
   ]);
 
@@ -48,11 +48,11 @@ export default function UnlockedControls() {
 
   return (
     <>
-      {otherFields.map((thisOF, i) => (
+      {otherFields.map((of, i) => (
         <UnlockedControl
           key={i}
-          otherField={thisOF}
-          onChange={(of) => handleFieldChange(of, i)}
+          otherField={of}
+          onChange={(_of) => handleFieldChange(_of, i)}
         />
       ))}
     </>
@@ -76,4 +76,22 @@ function UnlockedControl(props: {
       />
     </Box>
   );
+}
+
+function usePersistentOtherFields(
+  initialValue: OtherField[]
+): [otherFields: OtherField[], setOtherFields: (v: OtherField[]) => void] {
+  const ref = useRef<OtherField[]>(initialValue);
+  const [_, forceUpdate] = useState({});
+
+  if (ref.current === undefined) {
+    ref.current = initialValue;
+  }
+
+  const setRef = (v: OtherField[]) => {
+    ref.current = v;
+    forceUpdate({});
+  };
+
+  return [ref.current, setRef];
 }
