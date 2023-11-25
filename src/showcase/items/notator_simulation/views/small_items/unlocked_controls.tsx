@@ -9,9 +9,7 @@ const BLANK_OTHER = {
 };
 
 export default function UnlockedControls() {
-  const {
-    truckerTools: { draftTrucker },
-  } = useNotatorTools();
+  const { warehouseProfile } = useNotatorTools();
 
   const [otherFields, setOtherFields] = useOtherFields();
 
@@ -53,24 +51,19 @@ export default function UnlockedControls() {
 
   function handleDataOperation() {
     const saveable = otherFields.filter((of) => !of.status.unsaveable);
-
-    console.log(saveable);
   }
 
   function validateOtherField(of: OtherField): OtherField {
     let status: OtherFieldStatus = { unsaveable: true, userFeedback: "" };
     const { name } = of;
 
-    console.log("HEYOO");
+    const itemExistsInDefaults = Boolean(
+      warehouseProfile?.defaultItemsLedger.smallItems.find(
+        (defaultName) => defaultName.toLowerCase() === name.toLowerCase()
+      )
+    );
 
-    if (otherFields.find((of) => of.name === name)) {
-      status.userFeedback = "Custom item already exists, this will not save!";
-      return { name, status };
-    }
-
-    if (
-      draftTrucker?.itemLedger.smallItems.find((item) => item.name === name)
-    ) {
+    if (itemExistsInDefaults) {
       status.userFeedback = "Custom item already exists, this will not save!";
       return { name, status };
     }
