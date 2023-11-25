@@ -2,6 +2,7 @@ import { Box, Checkbox, TextField, Tooltip } from "@mui/material";
 import { useState, useEffect } from "react";
 import { OtherField, OtherFieldStatus } from "./other_field";
 import { useNotatorTools } from "../../tools/use_notator_tools";
+import { MESSAGES_OTHER_VALIDATION } from "../../messages/other_validation";
 
 const BLANK_OTHER = {
   name: "",
@@ -13,40 +14,25 @@ export default function UnlockedControls() {
 
   const [otherFields, setOtherFields] = useOtherFields();
 
-  function handleFieldChange(of: OtherField, i: number) {
-    const fieldIsEmpty = of.name.length === 0;
-    const validatedOtherField = validateOtherField(of);
+  function handleOtherFieldChange(of: OtherField, i: number) {
+    setOtherFields((currentFields: OtherField[]): OtherField[] => {
+      let updatedFields = [...currentFields];
+      const fieldIsEmpty = of.name.length === 0;
+      const validatedOtherField = validateOtherField(of);
 
-    let _otherFields = [...otherFields];
-
-    if (fieldIsEmpty) {
-      if (otherFields.length === 1) {
-        updateFieldAtIndex();
+      // Update or remove the field based on its content
+      if (fieldIsEmpty && currentFields.length > 1) {
+        updatedFields = updatedFields.filter((_, _i) => _i !== i);
       } else {
-        removeFieldAtIndex();
+        updatedFields[i] = validatedOtherField;
+        // Add a blank field if necessary
+        if (updatedFields[updatedFields.length - 1].name !== "") {
+          updatedFields.push(BLANK_OTHER);
+        }
       }
-    } else {
-      updateFieldAtIndex();
-      addBlankIfNeeded();
-    }
 
-    setOtherFields(_otherFields);
-
-    // --- Helpers ---
-
-    function updateFieldAtIndex() {
-      _otherFields[i] = validatedOtherField;
-    }
-
-    function removeFieldAtIndex() {
-      _otherFields = _otherFields.filter((_, _i) => _i !== i);
-    }
-
-    function addBlankIfNeeded() {
-      if (_otherFields[_otherFields.length - 1].name !== "") {
-        _otherFields.push(BLANK_OTHER);
-      }
-    }
+      return updatedFields;
+    });
   }
 
   function validateOtherField(of: OtherField): OtherField {
@@ -63,15 +49,17 @@ export default function UnlockedControls() {
       )
     );
     if (itemExistsInDefaults) {
-      status.userFeedback = "Custom item already exists, this will not save!";
+      status.userFeedback = MESSAGES_OTHER_VALIDATION.itemExistsInDefaults;
       return { name, status };
     }
 
     const itemExistsInCustom = Boolean(
-      draftReport?.customItemLedger.smallItems.find((_name) => _name === name)
+      draftReport?.customItemLedger.smallItems.find(
+        (_name) => _name.toLowerCase() === name.toLowerCase()
+      )
     );
     if (itemExistsInCustom) {
-      status.userFeedback = "Custom item already exists, this will not save!";
+      status.userFeedback = MESSAGES_OTHER_VALIDATION.itemExistsInCustom;
       return { name, status };
     }
 
@@ -79,11 +67,9 @@ export default function UnlockedControls() {
     return { name, status };
   }
 
-  function handleDataOperation() {
+  function editDraftWithSavableOtherFields() {
     const savable = otherFields.filter((of) => of.status.savable);
-
     const savableNames = savable.map((s) => s.name);
-
     editDraft({ path: "customItemLedger.smallItems", value: savableNames });
 
     console.log(savableNames);
@@ -100,8 +86,8 @@ export default function UnlockedControls() {
             <UnlockedControl
               key={i}
               otherField={of}
-              onChange={(_of) => handleFieldChange(_of, i)}
-              onBlur={() => handleDataOperation()}
+              onChange={(_of) => handleOtherFieldChange(_of, i)}
+              onBlur={() => editDraftWithSavableOtherFields()}
             />
           </div>
         </Tooltip>
@@ -132,9 +118,12 @@ function UnlockedControl(props: {
   );
 }
 
+/**
+ * Manages the other field state. This will reset for any refetch condition, particularly saving.
+ */
 function useOtherFields(): [
   otherFields: OtherField[],
-  setOtherFields: (v: OtherField[]) => void
+  setOtherFields: React.Dispatch<React.SetStateAction<OtherField[]>>
 ] {
   const { refetchSwitch } = useNotatorTools();
 
