@@ -1,11 +1,11 @@
-import { Box, Checkbox, TextField } from "@mui/material";
-import { useState, useRef, useEffect } from "react";
+import { Box, Checkbox, TextField, Tooltip } from "@mui/material";
+import { useState, useEffect } from "react";
 import { OtherField, OtherFieldStatus } from "./other_field";
 import { useNotatorTools } from "../../tools/use_notator_tools";
 
 const BLANK_OTHER = {
   name: "",
-  status: { unsaveable: true, userFeedback: null },
+  status: { savable: false, userFeedback: "" },
 };
 
 export default function UnlockedControls() {
@@ -50,37 +50,49 @@ export default function UnlockedControls() {
   }
 
   function handleDataOperation() {
-    const saveable = otherFields.filter((of) => !of.status.unsaveable);
+    const savable = otherFields.filter((of) => of.status.savable);
+
+    console.log(savable);
   }
 
   function validateOtherField(of: OtherField): OtherField {
-    let status: OtherFieldStatus = { unsaveable: true, userFeedback: "" };
     const { name } = of;
+    let status: OtherFieldStatus = { savable: false, userFeedback: "" };
+
+    if (of.name === "") {
+      return { name, status };
+    }
 
     const itemExistsInDefaults = Boolean(
       warehouseProfile?.defaultItemsLedger.smallItems.find(
         (defaultName) => defaultName.toLowerCase() === name.toLowerCase()
       )
     );
-
     if (itemExistsInDefaults) {
       status.userFeedback = "Custom item already exists, this will not save!";
       return { name, status };
     }
 
-    status.unsaveable = false;
+    status.savable = true;
     return { name, status };
   }
 
   return (
     <>
       {otherFields.map((of, i) => (
-        <UnlockedControl
-          key={i}
-          otherField={of}
-          onChange={(_of) => handleFieldChange(_of, i)}
-          onBlur={() => handleDataOperation()}
-        />
+        <Tooltip
+          open={of.status.userFeedback !== ""}
+          title={of.status.userFeedback}
+        >
+          <div>
+            <UnlockedControl
+              key={i}
+              otherField={of}
+              onChange={(_of) => handleFieldChange(_of, i)}
+              onBlur={() => handleDataOperation()}
+            />
+          </div>
+        </Tooltip>
       ))}
     </>
   );
@@ -97,6 +109,7 @@ function UnlockedControl(props: {
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <Checkbox />
       <TextField
+        error={status.userFeedback !== ""}
         value={name}
         onChange={(e) => props.onChange({ name: e.target.value, status })}
         size="small"

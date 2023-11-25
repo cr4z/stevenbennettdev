@@ -4,6 +4,6 @@ export type OtherField = {
 };
 
 export type OtherFieldStatus = {
-  unsaveable: boolean;
-  userFeedback: string | null;
+  savable: boolean;
+  userFeedback: string;
 };
