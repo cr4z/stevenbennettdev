@@ -1,15 +1,15 @@
 import { useState } from "react";
 
 type UseSoftRefreshResponse = {
-  softRefreshSwitch: boolean;
-  toggleSoftRefresh: () => void;
+  refetchSwitch: boolean;
+  triggerRefetchSwitch: () => void;
 };
 export function useSoftRefresh(): UseSoftRefreshResponse {
-  const [softRefreshSwitch, setSoftRefreshSwitch] = useState<boolean>(false);
+  const [refetchSwitch, setSoftRefreshSwitch] = useState<boolean>(false);
 
-  function toggleSoftRefresh() {
-    setSoftRefreshSwitch(!softRefreshSwitch);
+  function triggerRefetchSwitch() {
+    setSoftRefreshSwitch(!refetchSwitch);
   }
 
-  return { softRefreshSwitch, toggleSoftRefresh };
+  return { refetchSwitch, triggerRefetchSwitch };
 }

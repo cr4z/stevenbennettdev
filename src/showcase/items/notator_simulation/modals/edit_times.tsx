@@ -21,8 +21,6 @@ export function EditEventTimesModal(props: {
     dayjs(props.defaultValues.endTime)
   );
 
-  console.log(stagedStart);
-
   return (
     <>
       <NotatorSimulationModal

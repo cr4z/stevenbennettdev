@@ -1,15 +1,15 @@
 import { Box, Checkbox, TextField } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
 import { OtherField } from "./other_field";
+import { useNotatorTools } from "../../tools/use_notator_tools";
+
+const BLANK_OTHER = {
+  name: "",
+  status: { unsaveable: true, userFeedback: null },
+};
 
 export default function UnlockedControls() {
-  const [otherFields, setOtherFields] = usePersistentOtherFields([
-    createBlankOther(),
-  ]);
-
-  function createBlankOther(): OtherField {
-    return { name: "", status: { unsaveable: true, userFeedback: null } };
-  }
+  const [otherFields, setOtherFields] = usePersistentOtherFields([BLANK_OTHER]);
 
   function handleFieldChange(of: OtherField, i: number) {
     const fieldIsEmpty = of.name.length === 0;
@@ -41,7 +41,7 @@ export default function UnlockedControls() {
 
     function addBlankIfNeeded() {
       if (_otherFields[_otherFields.length - 1].name !== "") {
-        _otherFields.push(createBlankOther());
+        _otherFields.push(BLANK_OTHER);
       }
     }
   }
@@ -81,6 +81,8 @@ function UnlockedControl(props: {
 function usePersistentOtherFields(
   initialValue: OtherField[]
 ): [otherFields: OtherField[], setOtherFields: (v: OtherField[]) => void] {
+  const { refetchSwitch } = useNotatorTools();
+
   const ref = useRef<OtherField[]>(initialValue);
   const [_, forceUpdate] = useState({});
 
@@ -92,6 +94,10 @@ function usePersistentOtherFields(
     ref.current = v;
     forceUpdate({});
   };
+
+  useEffect(() => {
+    setRef([BLANK_OTHER]);
+  }, [refetchSwitch]);
 
   return [ref.current, setRef];
 }

@@ -1,6 +1,6 @@
 import { ReportContext } from "./context";
 import { useState, useEffect } from "react";
-import { useSoftRefresh } from "./modules/use_refresh";
+import { useSoftRefresh as useRefetch } from "./modules/use_refresh";
 import { EditDraftFunctionType, useDraftReport } from "./modules/use_draft";
 import { SaveReportFunctionType, useSaveReport } from "./modules/use_save";
 import { useFetchReport } from "./modules/use_fetch_report";
@@ -38,8 +38,11 @@ export interface NotatorToolModules {
   truckerSelectorTools: TruckerSelectorTools;
   viewportNavbarTools: ViewportNavbarTools;
   isSaveSpinnerActive: boolean;
-  softRefreshSwitch: boolean;
-  toggleSoftRefresh: () => void;
+  refetchSwitch: boolean;
+  /**
+   * This will cause the notator to refetch its data, rerendering all dependent components.
+   */
+  triggerRefetchSwitch: () => void;
 }
 function useNotatorToolModules(): NotatorToolModules {
   // Local Modules
@@ -51,10 +54,10 @@ function useNotatorToolModules(): NotatorToolModules {
 
   const warehouseProfile = useFetchWarehouseProfile();
 
-  const { softRefreshSwitch, toggleSoftRefresh } = useSoftRefresh();
+  const { refetchSwitch, triggerRefetchSwitch } = useRefetch();
 
   const report = useFetchReport({
-    dependencies: { softRefreshSwitch },
+    dependencies: { refetchSwitch },
     setIsSaveSpinnerActive,
   });
 
@@ -76,7 +79,7 @@ function useNotatorToolModules(): NotatorToolModules {
 
   const saveReport = useSaveReport({
     setIsSaveSpinnerActive,
-    toggleSoftRefresh,
+    triggerRefetchSwitch,
   });
 
   const viewportNavbarTools = useViewportNavbarTools();
@@ -97,7 +100,7 @@ function useNotatorToolModules(): NotatorToolModules {
     truckerSelectorTools,
     viewportNavbarTools,
     truckerTools,
-    softRefreshSwitch,
-    toggleSoftRefresh,
+    refetchSwitch,
+    triggerRefetchSwitch,
   };
 }

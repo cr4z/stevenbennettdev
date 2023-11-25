@@ -3,7 +3,7 @@ import { API_REPORTS } from "../../data/api";
 import { NotatorTruckerReport } from "../../data/types/report";
 
 export function useFetchReport(props: {
-  dependencies: { softRefreshSwitch: boolean };
+  dependencies: { refetchSwitch: boolean };
   setIsSaveSpinnerActive: (v: boolean) => void;
 }): NotatorTruckerReport | null {
   const [report, setReport] = useState<NotatorTruckerReport | null>(null);
@@ -20,7 +20,7 @@ export function useFetchReport(props: {
     }
 
     initializeNotator();
-  }, [props.dependencies.softRefreshSwitch]);
+  }, [props.dependencies.refetchSwitch]);
 
   return report;
 }

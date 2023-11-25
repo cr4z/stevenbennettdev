@@ -42,7 +42,14 @@ export function HeaderWidget() {
         <EditableDescription />
       </Box>
 
-      <Box sx={{ height: "100%", display: "flex", alignItems: "flex-end" }}>
+      <Box
+        sx={{
+          height: "100%",
+          display: "flex",
+          alignItems: "flex-end",
+          padding: ".25rem",
+        }}
+      >
         <Box sx={{ display: "flex", gap: "1rem" }}>
           <Button variant="outlined" onClick={handleSave}>
             Save

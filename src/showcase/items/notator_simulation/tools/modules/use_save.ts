@@ -4,9 +4,9 @@ import { NotatorTruckerReport } from "../../data/types/report";
 
 export function useSaveReport(props: {
   setIsSaveSpinnerActive: (v: boolean) => void;
-  toggleSoftRefresh: () => void;
+  triggerRefetchSwitch: () => void;
 }) {
-  const { setIsSaveSpinnerActive, toggleSoftRefresh } = props;
+  const { setIsSaveSpinnerActive, triggerRefetchSwitch: toggleSoftRefresh } = props;
 
   /**
    * This is only function that should ever be responsible for session saving.

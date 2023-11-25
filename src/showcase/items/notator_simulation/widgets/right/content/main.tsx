@@ -2,7 +2,7 @@ import { Box, Button, ButtonBase, Paper, Typography } from "@mui/material";
 import StatusDot from "../../../components/status_dot";
 import { useNotatorTools } from "../../../tools/use_notator_tools";
 import { NotatorNavbarTabName } from "../../../tools/modules/use_navbar";
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 import FadeIn from "../../../components/fade_in";
 import { StatusTabView } from "../../../views/status";
 import { ScheduleTabView } from "../../../views/schedule";
@@ -23,7 +23,7 @@ export default function MainContent() {
           <FadeIn key={selectedSegmentID} useScale={{ from: 0.98 }}>
             <Box
               sx={{
-                padding: "1rem",
+                padding: ".75rem",
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -53,7 +53,7 @@ export default function MainContent() {
                 sx={{
                   display: "flex",
                   justifyContent: "flex-end",
-                  gap: "1rem",
+                  gap: ".75rem",
                 }}
               >
                 <Button
@@ -167,13 +167,6 @@ function ShowIfSelected(props: {
   component: React.ReactNode;
 }) {
   const { viewportNavbarTools } = useNotatorTools();
-
-  useEffect(() => {
-    console.log("Parent component mounted");
-    return () => {
-      console.log("Parent component unmounted");
-    };
-  }, []);
 
   return (
     <Box
