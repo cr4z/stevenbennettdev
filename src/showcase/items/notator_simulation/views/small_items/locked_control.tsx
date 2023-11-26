@@ -9,13 +9,14 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { CargoItemProps } from "./types/locked_control_props";
+import { CargoItem } from "./types/cargo_item_type";
 
 const SX_TOGGLE_GROUP = {
   unitSize: 1.75,
 };
 
 type UseDeleteProp = {
-  useDelete?: { onDelete: () => void };
+  useDelete?: { onDelete: (nameToDelete: string) => void };
 };
 
 export type LockedControlProps = CargoItemProps & UseDeleteProp;
@@ -122,7 +123,7 @@ export default function LockedControl(props: LockedControlProps) {
           }}
         >
           <ToggleGroup
-            increments={increments}
+            cargoItem={props.cargoItem}
             handleValueChange={handleValueChange}
             useDelete={props.useDelete}
           />
@@ -133,11 +134,13 @@ export default function LockedControl(props: LockedControlProps) {
 }
 
 type ToggleGroupProps = {
-  increments: number;
+  cargoItem: CargoItem;
   handleValueChange: (v: number) => void;
 } & UseDeleteProp;
 
 function ToggleGroup(props: ToggleGroupProps) {
+  const { increments, name } = props.cargoItem;
+
   const size = SX_TOGGLE_GROUP.unitSize + "rem";
 
   const buttonStyle: SxProps = {
@@ -185,7 +188,7 @@ function ToggleGroup(props: ToggleGroupProps) {
   };
 
   const [cachedValue, setCachedValue] = useCachedValue({
-    defaultValue: props.increments,
+    defaultValue: increments,
   });
 
   return (
@@ -222,7 +225,7 @@ function ToggleGroup(props: ToggleGroupProps) {
 
       {props.useDelete && (
         <ButtonBase
-          onClick={() => props.useDelete?.onDelete()}
+          onClick={() => props.useDelete?.onDelete(name)}
           sx={exButtonStyle}
         >
           X

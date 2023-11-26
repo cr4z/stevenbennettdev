@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
-import LockedControls from "./locked_controls";
+import DefaultControls from "./default_controls";
 import UnlockedControls from "./unlocked_controls";
-import { SavedCustomControls } from "./saved_custom_controls";
+import DeletableControls from "./deletable_controls";
 
 const SX_ROW_MAJOR_GRID = {
   display: "grid",
@@ -13,8 +13,8 @@ const SX_ROW_MAJOR_GRID = {
 export default function SmallItemsTabView() {
   return (
     <Box sx={SX_ROW_MAJOR_GRID}>
-      <LockedControls />
-      <SavedCustomControls />
+      <DefaultControls />
+      <DeletableControls />
       <UnlockedControls />
     </Box>
   );
