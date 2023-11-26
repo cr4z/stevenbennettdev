@@ -8,6 +8,7 @@ import { StatusTabView } from "../../../views/status";
 import { ScheduleTabView } from "../../../views/schedule";
 import { NotesTabView } from "../../../views/notes";
 import SmallItemsTabView from "../../../views/small_items/small_items";
+import MediumItemsTabView from "../../../views/medium_items";
 
 export default function MainContent() {
   const {
@@ -153,6 +154,7 @@ function TabViewport() {
       <ShowIfSelected tab="Status" component={<StatusTabView />} />
       <ShowIfSelected tab="Schedule" component={<ScheduleTabView />} />
       <ShowIfSelected tab="Small Items" component={<SmallItemsTabView />} />
+      <ShowIfSelected tab="Medium Items" component={<MediumItemsTabView />} />
       <ShowIfSelected tab="Notes" component={<NotesTabView />} />
     </Box>
   );
