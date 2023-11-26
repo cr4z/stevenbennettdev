@@ -3,10 +3,10 @@ import { CargoItem } from "../types/cargo_item_type";
 import { CargoItemCallbackProps } from "../types/locked_control_props";
 
 export function useGetCargoItemCallbacks() {
-  return (
+  function getCargoItemCallbacks(
     cargoItem: CargoItem,
     providedListIndex: number
-  ): CargoItemCallbackProps => {
+  ): CargoItemCallbackProps {
     const {
       truckerTools: { draftTrucker, editTrucker },
     } = useNotatorTools();
@@ -36,5 +36,7 @@ export function useGetCargoItemCallbacks() {
     };
 
     return { onChange, onRemoveSelfFromLedger, onAddSelfToLedger };
-  };
+  }
+
+  return getCargoItemCallbacks;
 }
