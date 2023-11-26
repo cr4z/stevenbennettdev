@@ -33,14 +33,10 @@ export function CreateTruckerModal(props: {
     },
   });
 
-  useEffect(() => {
-    if (props.open) {
-      setFocus("truckerName");
-    }
-  }, [open, setFocus]);
-
   function onSubmit(data: FormValues) {
-    const newTrucker: NotatorTruckerJournal = getBlankTrucker({name: data.truckerName});
+    const newTrucker: NotatorTruckerJournal = getBlankTrucker({
+      name: data.truckerName,
+    });
     const updatedTruckers = [...draftEvent!.truckerJournals, newTrucker];
     const freshEvent = editDraft({
       path: "truckerJournals",
@@ -57,6 +53,9 @@ export function CreateTruckerModal(props: {
       onClose={props.onClose}
       sx={{ p: "1rem" }}
       minWidth="lg"
+      onFocusReady={() => {
+        setFocus("truckerName");
+      }}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <Typography id="add-description-modal" variant="h6" component="h2">
@@ -77,7 +76,6 @@ export function CreateTruckerModal(props: {
                 ) || "Trucker name already exists",
             },
           })}
-          autoFocus
           id="add-trucker-textbox"
           label="Name of trucker"
           placeholder="Type the trucker's name here"

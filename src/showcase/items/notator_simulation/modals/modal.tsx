@@ -45,7 +45,6 @@ export function NotatorSimulationModal(props: {
       }}
       onTransitionEnd={(e) => {
         if (e.propertyName === "background-color") {
-          console.log("caling");
           if (props.open && props.onFocusReady) {
             // Call the onTransitionEnd callback only when the modal is opened
             props.onFocusReady();
