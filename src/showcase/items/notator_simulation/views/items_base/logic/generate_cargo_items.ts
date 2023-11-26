@@ -4,12 +4,12 @@ export function generateCargoItems(props: {
   namesToGenerate: string[];
   deriveIncrements: CargoItem[];
 }): CargoItem[] {
-  const { namesToGenerate: defaultNames, deriveIncrements: cargoItems } = props;
+  const { namesToGenerate, deriveIncrements } = props;
 
-  const res: CargoItem[] = defaultNames.map((name) => {
+  const res: CargoItem[] = namesToGenerate.map((name) => {
     const ci = { name, increments: 0 };
 
-    const incrementsIfAny = cargoItems.find(
+    const incrementsIfAny = deriveIncrements.find(
       (_ci) => _ci.name === name
     )?.increments;
     if (incrementsIfAny) ci.increments = incrementsIfAny;

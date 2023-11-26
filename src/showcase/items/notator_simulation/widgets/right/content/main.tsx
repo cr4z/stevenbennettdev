@@ -7,8 +7,9 @@ import FadeIn from "../../../components/fade_in";
 import { StatusTabView } from "../../../views/status";
 import { ScheduleTabView } from "../../../views/schedule";
 import { NotesTabView } from "../../../views/notes";
-import SmallItemsTabView from "../../../views/small_items/small_items";
-import MediumItemsTabView from "../../../views/medium_items";
+import MediumItemsTabView from "../../../views/items_medium";
+import SmallItemsTabView from "../../../views/items_small";
+import LargeItemsTabView from "../../../views/items_large";
 
 export default function MainContent() {
   const {
@@ -155,6 +156,7 @@ function TabViewport() {
       <ShowIfSelected tab="Schedule" component={<ScheduleTabView />} />
       <ShowIfSelected tab="Small Items" component={<SmallItemsTabView />} />
       <ShowIfSelected tab="Medium Items" component={<MediumItemsTabView />} />
+      <ShowIfSelected tab="Large Items" component={<LargeItemsTabView />} />
       <ShowIfSelected tab="Notes" component={<NotesTabView />} />
     </Box>
   );

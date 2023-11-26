@@ -1,24 +1,24 @@
-import { useNotatorTools } from "../../tools/use_notator_tools";
 import { generateCargoItems } from "./logic/generate_cargo_items";
 import LockedControl from "./locked_control";
 import { useGetCargoItemCallbacks } from "./logic/use_get_cargo_item_callbacks";
+import {
+  ItemSizeMode,
+  useDefaultNames,
+  useProvidedList,
+} from "./logic/generics";
 
-export default function DefaultControls() {
-  const {
-    warehouseProfile,
-    truckerTools: { draftTrucker },
-  } = useNotatorTools();
+export default function DefaultControls(props: { mode: ItemSizeMode }) {
+  const { mode } = props;
 
-  if (!warehouseProfile || !draftTrucker) return <></>;
+  const defaultNames = useDefaultNames({ mode });
+  const providedList = useProvidedList({ mode });
 
-  const defaultNames: string[] = warehouseProfile.defaultItemsLedger.smallItems;
-  const providedList = draftTrucker.itemLedger.smallItems;
   const cargoItems = generateCargoItems({
     namesToGenerate: defaultNames,
     deriveIncrements: providedList,
   });
 
-  const getCargoItemCallbacks = useGetCargoItemCallbacks();
+  const getCargoItemCallbacks = useGetCargoItemCallbacks({ mode });
 
   return (
     <>

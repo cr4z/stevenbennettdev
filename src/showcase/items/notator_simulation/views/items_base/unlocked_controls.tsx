@@ -5,14 +5,23 @@ import { useNotatorTools } from "../../tools/use_notator_tools";
 import { MESSAGES_OTHER_VALIDATION } from "../../messages/other_validation";
 import { UnlockedControl } from "./unlocked_control";
 import { useCustomsWithDeletions } from "./logic/use_customs_with_deletions";
+import {
+  ItemSizeMode,
+  getCustomItemsPath,
+  useDefaultNames,
+  useDraftCustomItemsLedger,
+} from "./logic/generics";
 
 const BLANK_OTHER = {
   name: "",
   status: { savable: false, userFeedback: "" },
 };
 
-export default function UnlockedControls() {
-  const { warehouseProfile, editDraft, draftReport } = useNotatorTools();
+export default function UnlockedControls(props: { mode: ItemSizeMode }) {
+  const { mode } = props;
+  const defaultNames = useDefaultNames({ mode });
+  const draftCustomItemsLedger = useDraftCustomItemsLedger({ mode });
+  const { editDraft } = useNotatorTools();
 
   const [otherFields, setOtherFields] = useOtherFields();
 
@@ -46,7 +55,7 @@ export default function UnlockedControls() {
     }
 
     const itemExistsInDefaults = Boolean(
-      warehouseProfile?.defaultItemsLedger.smallItems.find(
+      defaultNames.find(
         (defaultName) => defaultName.toLowerCase() === name.toLowerCase()
       )
     );
@@ -56,7 +65,7 @@ export default function UnlockedControls() {
     }
 
     const itemExistsInCustom = Boolean(
-      draftReport?.customItemLedger.smallItems.find(
+      draftCustomItemsLedger.find(
         (_name) => _name.toLowerCase() === name.toLowerCase()
       )
     );
@@ -69,13 +78,13 @@ export default function UnlockedControls() {
     return { name, status };
   }
 
-  const customsWithDeletions = useCustomsWithDeletions();
+  const customsWithDeletions = useCustomsWithDeletions({ mode });
 
   function editDraftWithSavableOtherFields() {
     const savable = otherFields.filter((of) => of.status.savable);
     const savableNames = savable.map((s) => s.name);
     const namesToSave = [...customsWithDeletions, ...savableNames];
-    editDraft({ path: "customItemLedger.smallItems", value: namesToSave });
+    editDraft({ path: getCustomItemsPath({ mode }), value: namesToSave });
   }
 
   return (

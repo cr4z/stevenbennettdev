@@ -1,30 +1,37 @@
 import { useNotatorTools } from "../../tools/use_notator_tools";
+import {
+  ItemSizeMode,
+  getCustomItemsPath,
+  useDraftCustomItemsLedger,
+  useProvidedList,
+} from "./logic/generics";
 import LockedControl from "./locked_control";
 import { generateCargoItems } from "./logic/generate_cargo_items";
 import { useCustomsWithDeletions } from "./logic/use_customs_with_deletions";
 import { useGetCargoItemCallbacks } from "./logic/use_get_cargo_item_callbacks";
 
-export default function DeletableControls() {
-  const {
-    truckerTools: { draftTrucker },
-    draftReport,
-    editDraft,
-  } = useNotatorTools();
+export default function DeletableControls(props: { mode: ItemSizeMode }) {
+  const { mode } = props;
 
-  const customNamesToRender = useCustomsWithDeletions();
-  const providedList = draftTrucker?.itemLedger.smallItems ?? [];
+  const providedList = useProvidedList({ mode });
+  const draftCustomItemsLedger = useDraftCustomItemsLedger({ mode });
+  const customNamesToRender = useCustomsWithDeletions({ mode });
+  const getCargoItemCallbacks = useGetCargoItemCallbacks({ mode });
+
+  const { editDraft } = useNotatorTools();
 
   const cargoItems = generateCargoItems({
     namesToGenerate: customNamesToRender,
     deriveIncrements: providedList,
   });
 
-  const getCargoItemCallbacks = useGetCargoItemCallbacks();
-
   function handleDelete(nameToDelete: string) {
-    const currentNames = [...(draftReport?.customItemLedger.smallItems ?? [])];
+    const currentNames = [...draftCustomItemsLedger];
     const afterDeletion = currentNames.filter((name) => name !== nameToDelete);
-    editDraft({ path: "customItemLedger.smallItems", value: afterDeletion });
+    editDraft({
+      path: getCustomItemsPath({ mode }),
+      value: afterDeletion,
+    });
   }
 
   return (
