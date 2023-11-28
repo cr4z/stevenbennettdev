@@ -9,21 +9,21 @@ import DougZonePodcast from "./items/dougzonepodcast";
 import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
 
 export enum ShowcaseIDs {
-  FloresHomeRepair = "0",
-  StevenBennettDev = "1",
-  CustomFormLibrary = "2",
-  BeautifulSidebar = "3",
-  FinancialDashboard = "4",
-  SequentialFadeIn = "5",
-  ReactUseMemoDemo = "6",
-  EditSessionAlgorithm = "7",
-  CustomHooksInReact = "8",
-  ChangingHeightBasedOnContent = "9",
-  IconographySystem = "10",
-  FilteringAlgorithm = "11",
-  TodoShredder = "12",
-  DougZonePodcast = "13",
-  NotatorSimulation = "14",
+  FloresHomeRepair = "57eb3c17a412",
+  StevenBennettDev = "d8f3c7a8a801",
+  CustomFormLibrary = "87c5230add29",
+  BeautifulSidebar = "b5942b551adb",
+  FinancialDashboard = "5c0097274ef8",
+  SequentialFadeIn = "41cae63f1d6a",
+  ReactUseMemoDemo = "123f3571fd90",
+  EditSessionAlgorithm = "3f6ea0aa3783",
+  CustomHooksInReact = "471cc697b7d6",
+  ChangingHeightBasedOnContent = "e8d8adb52f9f",
+  IconographySystem = "46079ba5cb01",
+  FilteringAlgorithm = "cff25e657a4a",
+  TodoShredder = "e706f518d604",
+  DougZonePodcast = "f702b757d5f7",
+  NotatorSimulation = "6543263c3154",
 }
 
 export type Showcase = {
@@ -40,29 +40,13 @@ export type Showcase = {
 };
 
 export const SHOWCASES: Showcase[] = [
-  // {
-  //   title: "Beautiful Sidebar",
-  //   icon: <ICONS.React />,
-  //   tags: ["React", "Scalable Architecture", "Web Design", "Fortitude"],
-  //   id: ShowcaseIDs.BeautifulSidebar,
-  //   github: "",
-  //   component: <BeautifulSidebar />,
-  // },
-  // {
-  //   title: "Full Stack Calendar Demo Application",
-  //   icon: <ICONS.React />,
-  //   tags: ["React", "Redux", "redux-toolkit", "FullCalendar", "API", "Database"],
-  //   id: "",
-  //   github: "",
-  //   component: <></>,
-  // },
   {
     title: "floreshomerepair.com",
     icon: <ICONS.Nextjs />,
     tags: [
       "Next.js",
       "Web Design",
-      "Online Website",
+      "Live Website",
       "SEO",
       "Mobile-First",
       "SSR",
@@ -74,14 +58,7 @@ export const SHOWCASES: Showcase[] = [
       "This was my first freelance project I had ever done professionally, built with Next.js. I've sinced gotten a little bit better at image optimization, but to this day it remains one of my finest achievements in SEO optimization! When typing 'flores home repair' into Google, floreshomerepair.com should be at the very top. Even variations such as 'Flores House Renovation' should work. It's also visible outside of the United States; as far as France!",
     dateCreated: dayjs(new Date(2022, 3, 24)),
   },
-  // {
-  //   title: "Pure HTML Challenge: Financial Dashboard",
-  //   icon: <ICONS.HTML />,
-  //   tags: ["Web Design", "chart.js", "HTML, JavaScript and CSS"],
-  //   id: ShowcaseIDs.FinancialDashboard,
-  //   github: "",
-  //   component: <></>,
-  // },
+
   {
     title: "Sequential Fade-In Effect Across Multiple Divs",
     icon: <ICONS.React />,
@@ -95,51 +72,12 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "dougzonepodcast.com",
     icon: <ICONS.React />,
-    tags: ["React", "Web Design", "vite", "react-router", "Online Website"],
+    tags: ["React", "Web Design", "vite", "react-router", "Live Website"],
     id: ShowcaseIDs.DougZonePodcast,
     github: "https://github.com/cr4z/dzp-vite",
     component: <DougZonePodcast />,
   },
-  // {
-  //   title: "React useMemo Demo",
-  //   icon: <ICONS.React />,
-  //   tags: ["React Fundamentals"],
-  //   id: ShowcaseIDs.ReactUseMemoDemo,
-  //   github: "",
-  //   component: <></>,
-  // },
-  // {
-  //   title: "Elegant & Safe: Modifying deeply-nested state in React",
-  //   icon: <ICONS.React />,
-  //   tags: ["React", "Custom Algorithm"],
-  //   id: ShowcaseIDs.EditSessionAlgorithm,
-  //   github: "",
-  //   component: <></>,
-  // },
-  // {
-  //   title: "Custom Hooks in React",
-  //   icon: <ICONS.React />,
-  //   tags: ["React Fundamentals"],
-  //   id: ShowcaseIDs.CustomHooksInReact,
-  //   github: "",
-  //   component: <></>,
-  // },
-  // {
-  //   title: "Popover Menu: Seamlessly Changing Height Based on Content",
-  //   icon: <ICONS.React />,
-  //   tags: ["React", "Web Design"],
-  //   id: ShowcaseIDs.ChangingHeightBasedOnContent,
-  //   github: "",
-  //   component: <></>,
-  // },
-  // {
-  //   title: "Design System: Iconography",
-  //   icon: <ICONS.React />,
-  //   tags: ["React", "Scalable Architecture"],
-  //   id: ShowcaseIDs.IconographySystem,
-  //   github: "",
-  //   component: <></>,
-  // },
+
   {
     title: "Common Algorithm: Multiple Filters",
     description:
@@ -154,7 +92,15 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "stevenbennett.dev",
     icon: <ICONS.React />,
-    tags: ["React", "Web Design", "Mobile-First"],
+    tags: [
+      "React",
+      "Web Design",
+      "Mobile-First",
+      "Redux",
+      "Live Website",
+      "Custom Blog",
+      "Firebase",
+    ],
     component: <StevenBennettDev />,
     id: ShowcaseIDs.StevenBennettDev,
     github: "https://github.com/cr4z/stevenbennettdev",
@@ -166,8 +112,7 @@ export const SHOWCASES: Showcase[] = [
       "React",
       "Clean Code",
       "API",
-      "Firestore",
-      "Database",
+      "Firebase",
       "React",
       "SSO Authentication",
       "High-Speed Optimization",
@@ -177,15 +122,23 @@ export const SHOWCASES: Showcase[] = [
     ],
     component: <TodoShredder />,
     id: ShowcaseIDs.TodoShredder,
-    github: "",
+    github: "https://github.com/cr4z/todoshredder",
   },
   {
     title: "Notator Simulation",
     icon: <ICONS.React />,
-    tags: ["React"],
+    tags: [
+      "React",
+      "Redux",
+      "Material UI",
+      "Web Design",
+      "Intricate Code",
+      "Simulated API",
+    ],
     component: <NotatorSimulationContextWrapper />,
     id: ShowcaseIDs.NotatorSimulation,
-    github: "",
+    github:
+      "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",
     useCustomDetails: true,
   },
 ];

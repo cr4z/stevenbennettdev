@@ -18,6 +18,7 @@ import ImgTodoshredder from "../img/forms.png";
 import ImgFHR from "../img/fhr2.png";
 // @ts-ignore
 import TruckerNotator from "../img/trucker_notator.png";
+import { ShowcaseIDs } from "../showcase/items";
 
 type Slide = { src: string; title: string; description: string; href: string };
 
@@ -28,21 +29,21 @@ export default function Slideshow() {
       title: "Complex Form & Dashboard",
       description:
         "View how I creatively manage complex state while maintaining user experience",
-      href: "/portfolio/14",
+      href: "/portfolio/" + ShowcaseIDs.NotatorSimulation,
     },
     {
       src: ImgTodoshredder,
       title: "TodoShredder",
       description:
         "View my live database implementing single sign-on functionality",
-      href: "/portfolio/12",
+      href: "/portfolio/" + ShowcaseIDs.TodoShredder,
     },
     {
       src: ImgFHR,
       title: "Flores Home Repair",
       description:
         "View work I did for a client using Next.js on floreshomerepair.com",
-      href: "/portfolio/0",
+      href: "/portfolio/" + ShowcaseIDs.FloresHomeRepair,
     },
   ];
 
