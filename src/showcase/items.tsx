@@ -1,6 +1,4 @@
-import { Typography } from "@mui/material";
 import { ICONS } from "../design_system/icons";
-import CustomFormLibrary from "./items/custom_form_library";
 import FiltersDemo from "./items/filters_demo/main";
 import FloresHomeRepair from "./items/floreshomerepair";
 import StevenBennettDev from "./items/stevenbennettdev";
@@ -41,31 +39,7 @@ export type Showcase = {
   useCustomDetails?: boolean;
 };
 
-const GITHUB_CustomFormLibrary =
-  "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/custom_form_library.tsx";
-
 export const SHOWCASES: Showcase[] = [
-  {
-    title: "Custom Form Library",
-    description: (
-      <Typography>
-        This is an entirely custom form library that is only one cog of a larger
-        design system I built called Fortitude. I created this system for a team
-        of 4 developers, and it allows for straightforward & simple creation of
-        forms in a way that <strong>scales</strong>. It's intuitive;
-        intentionally designed to be used without having to refer to
-        documentation by leveraging intellisense. Click the GitHub button to see
-        it in action!
-      </Typography>
-    ),
-    descriptionPlainText:
-      "This is an entirely custom form library that is only one cog of a larger design system I built        called Fortitude. I created this system for a team of 4 developers, and it allows for        straightforward & simple creation of forms in a way that <strong>scales</strong>. It's intuitive;        intentionally designed to be used without having to refer to documentation by leveraging        intellisense. Click the GitHub button to see it in action!      </Typography>",
-    icon: <ICONS.React />,
-    tags: ["React", "react-hook-form", "yup", "Fortitude"],
-    id: ShowcaseIDs.CustomFormLibrary,
-    github: GITHUB_CustomFormLibrary,
-    component: <CustomFormLibrary link={GITHUB_CustomFormLibrary} />,
-  },
   // {
   //   title: "Beautiful Sidebar",
   //   icon: <ICONS.React />,
