@@ -37,18 +37,23 @@ function Content() {
         }}
       >
         <Typography variant="h5">Summary</Typography>
-        <Typography variant="body1">
-          The Notator Simulation project was part of X Logs...
-          <Box mt=".5rem" />
-          My simulation showcases advanced React features, including dynamic
-          state management, customized hooks, and intricate component
-          architecture, demonstrating mastery over complex aspects of React
-          development. The Notator Simulation bleeds a creative and innovative
-          essence through its well-architected blend of modular code,
-          user-centric design, and adherence to key software principles such as
-          SOLID, culminating in a scalable, maintainable, and visually cohesive
-          user interface. The delivery of the notator in X Logs was firm, fast,
-          and calculated. Though delivered at rapid speeds, it was not in shoddy
+        <Typography variant="body1" sx={{ strong: { fontSize: "1.2rem" } }}>
+          The Notator Simulation project was part of X Logs...My simulation
+          showcases advanced React features, including dynamic state management,
+          customized hooks, and intricate component architecture, demonstrating
+          mastery over complex aspects of React development.
+          <strong>
+            Of course, I can't showcase the actual code from production X Logs
+            as it is a private software. Therefore, all of this code is a
+            replica--it simply presents the patterns and overall architectural
+            strategy it implemented to completely showcase my process!
+          </strong>
+          The Notator Simulation bleeds a creative and innovative essence
+          through its well-architected blend of modular code, user-centric
+          design, and adherence to key software principles such as SOLID,
+          culminating in a scalable, maintainable, and visually cohesive user
+          interface. The delivery of the notator in X Logs was firm, fast, and
+          calculated. Though delivered at rapid speeds, it was not in shoddy
           quality. To this day, it serves ⅓ of Texas school districts, which is
           a fact I wear proudly!
         </Typography>
@@ -84,7 +89,6 @@ function Content() {
             tabs.
           </ListItemText>
         </List>
-
         <ViewCodeOnGithubButton />
         <Typography variant="h5">Lessons Learned</Typography>
         <Typography variant="body1">
