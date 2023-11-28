@@ -17,11 +17,8 @@ export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
       status: "En Route",
       fullName: "Edward Vedder",
       schedule: getRandomSchedule(),
-      itemLedger: {
-        smallItems: [{ name: "246", increments: 3 }],
-        mediumItems: [],
-        largeItems: [],
-      },
+      itemLedger: getBlankItemLedger(),
+      notes: "",
     },
     {
       id: "a6e31c46",
@@ -29,6 +26,7 @@ export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
       fullName: "Devon Rice",
       schedule: getRandomSchedule(),
       itemLedger: getBlankItemLedger(),
+      notes: "",
     },
     {
       id: "9385d06f",
@@ -36,6 +34,7 @@ export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
       fullName: "Ray LaMontagne",
       schedule: getRandomSchedule(),
       itemLedger: getBlankItemLedger(),
+      notes: "",
     },
     {
       id: "da4679ee",
@@ -43,6 +42,7 @@ export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
       fullName: "Alice Cheynes",
       schedule: getRandomSchedule(),
       itemLedger: getBlankItemLedger(),
+      notes: "",
     },
   ],
 };

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNotatorTools } from "../../tools/use_notator_tools";
 import { NotatorSimulationModal } from "../modal";

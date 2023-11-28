@@ -14,10 +14,7 @@ export const API_REPORTS = {
     const notatorReport = loadReportFromSession();
     return notatorReport;
   },
-  v1ReportsPut: async (
-    stateInUS: string,
-    freshReport: NotatorTruckerReport
-  ) => {
+  v1ReportsPut: async (freshReport: NotatorTruckerReport) => {
     sessionStorage.setItem(REPORT_STORAGE_KEY, JSON.stringify(freshReport));
     return freshReport;
   },
