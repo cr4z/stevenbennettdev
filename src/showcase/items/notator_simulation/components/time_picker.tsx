@@ -6,8 +6,7 @@ import timeUtils from "../utils/time";
 
 const formatTimeValue = (time: Dayjs) => time.format("h:mm A");
 const parseTimeValue = (newValue: string) => dayjs(newValue, "h:mm A");
-const isTimeValueValid = (newValue: string) =>
-  timeUtils.isValidTime(newValue);
+const isTimeValueValid = (newValue: string) => timeUtils.isValidTime(newValue);
 
 interface RequiredProps {
   onChange: (v: Dayjs) => void;
@@ -44,7 +43,7 @@ export const TimeAutocomplete = forwardRef<
       options={timeUtils.options}
       value={formatTimeValue(value)}
       freeSolo
-      onInputChange={(e, v) => handleInputChange(v)}
+      onInputChange={(_e, v) => handleInputChange(v)}
       renderInput={(params) => (
         <TextField
           {...params}
