@@ -1,5 +1,4 @@
 import { API_REPORTS } from "../../data/api";
-import { selectStateInUS, useSelector } from "../../data/redux";
 import { NotatorTruckerReport } from "../../data/types/report";
 
 export function useSaveReport(props: {
@@ -17,10 +16,8 @@ export function useSaveReport(props: {
   async function saveEvent(freshEvent: NotatorTruckerReport) {
     onSetIsSaveSpinnerActive(true);
 
-    const stateInUS = useSelector(selectStateInUS);
-
     try {
-      await API_REPORTS.v1ReportsPut(stateInUS, freshEvent);
+      await API_REPORTS.v1ReportsPut(freshEvent);
       onTriggerRefetchSwitch();
       onSetIsSaveSpinnerActive(false);
     } catch (err) {

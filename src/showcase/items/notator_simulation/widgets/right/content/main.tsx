@@ -2,7 +2,7 @@ import { Box, Button, ButtonBase, Paper, Typography } from "@mui/material";
 import StatusDot from "../../../components/status_dot";
 import { useNotatorTools } from "../../../tools/use_notator_tools";
 import { NotatorNavbarTabName } from "../../../tools/modules/use_navbar";
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 import FadeIn from "../../../components/fade_in";
 import { StatusTabView } from "../../../views/status";
 import { ScheduleTabView } from "../../../views/schedule";

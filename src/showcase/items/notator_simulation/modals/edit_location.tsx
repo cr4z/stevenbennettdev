@@ -50,7 +50,7 @@ export function EditLocationModal(props: {
             <Autocomplete
               options={top100Cities}
               value={stagedLocation}
-              onChange={(e, newValue) => {
+              onChange={(_e, newValue) => {
                 setStagedLocation(newValue || "");
               }}
               renderInput={(params) => (
