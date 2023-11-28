@@ -19,6 +19,7 @@ export interface NotatorTruckerJournal {
   status: TruckerStatus;
   schedule: TruckerSchedule;
   itemLedger: TruckerItemLedger;
+  notes: string;
 }
 
 export interface TruckerItemLedger {

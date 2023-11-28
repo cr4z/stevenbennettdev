@@ -53,5 +53,8 @@ export const notatorTheme = createTheme({
     body2: {
       fontWeight: 200,
     },
+    allVariants: {
+      color: "#000E",
+    },
   },
 });

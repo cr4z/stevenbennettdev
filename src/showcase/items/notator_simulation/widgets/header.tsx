@@ -4,6 +4,8 @@ import { EditableTime } from "../editables/time";
 import { EditableDescription } from "../editables/description";
 import { EditableLocation } from "../editables/location";
 import { useNotatorTools } from "../tools/use_notator_tools";
+import { useState } from "react";
+import ShowReportJSONModal from "../modals/views/show_report_json_modal";
 
 export function HeaderWidget() {
   const { saveReport, draftReport } = useNotatorTools();
@@ -17,51 +19,57 @@ export function HeaderWidget() {
     saveReport(draftReport);
   }
 
-  return (
-    <Paper
-      sx={{
-        width: "100%",
-        padding: ".5rem",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: ".5rem",
-          maxWidth: "30rem",
-        }}
-      >
-        <EditableTitle />
-        <Box sx={{ display: "flex", gap: ".5rem" }}>
-          <EditableTime />
-          <EditableLocation />
-        </Box>
-        <EditableDescription />
-      </Box>
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-      <Box
+  return (
+    <>
+      <ShowReportJSONModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
+
+      <Paper
         sx={{
-          height: "100%",
+          width: "100%",
+          padding: ".5rem",
           display: "flex",
-          alignItems: "flex-end",
-          padding: ".25rem",
+          justifyContent: "space-between",
         }}
       >
-        <Box sx={{ display: "flex", gap: "1rem" }}>
-          <Button variant="outlined" onClick={handleSave}>
-            Save
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => alert("Show JSON result modal")}
-          >
-            Post
-          </Button>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: ".5rem",
+            maxWidth: "30rem",
+          }}
+        >
+          <EditableTitle />
+          <Box sx={{ display: "flex", gap: ".5rem" }}>
+            <EditableTime />
+            <EditableLocation />
+          </Box>
+          <EditableDescription />
         </Box>
-      </Box>
-    </Paper>
+
+        <Box
+          sx={{
+            height: "100%",
+            display: "flex",
+            alignItems: "flex-end",
+            padding: ".25rem",
+          }}
+        >
+          <Box sx={{ display: "flex", gap: "1rem" }}>
+            <Button variant="outlined" onClick={handleSave}>
+              Save
+            </Button>
+            <Button variant="contained" onClick={() => setModalOpen(true)}>
+              Post
+            </Button>
+          </Box>
+        </Box>
+      </Paper>
+    </>
   );
 }

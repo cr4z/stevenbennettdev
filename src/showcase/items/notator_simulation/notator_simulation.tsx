@@ -7,6 +7,12 @@ import { HeaderWidget } from "./widgets/header";
 import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
 import { NotatorSimulationModal } from "./modals/modal";
 import { RightWidget } from "./widgets/right";
+import IntroductionModal from "./modals/introduction";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import {
+  selectCustomDetailsOpen as selectCustomDetailsOpen,
+  setCustomDetailsModelOpen,
+} from "../../../redux/slices/custom_details_modal";
 
 export default function NotatorSimulationContextWrapper() {
   return (
@@ -22,28 +28,13 @@ function NotatorSimulation() {
   const { palette } = useTheme();
   const { draftReport } = useNotatorTools();
 
-  const bph = useBreakpointHelper();
-  const showMobileNotice = !bph.isGreaterThanEqualTo(800);
+  const customDetailsOpen = useAppSelector(selectCustomDetailsOpen);
+  const dispatch = useAppDispatch();
+
+  console.log(customDetailsOpen);
 
   return (
     <>
-      <NotatorSimulationModal
-        open={showMobileNotice}
-        onClose={() => {}}
-        minWidth="md"
-      >
-        <Typography sx={{ color: "#000D" }}>
-          <b>Notice</b>
-        </Typography>
-        <Typography sx={{ color: "#000D" }}>
-          Looks like you're trying to view this on mobile! Unfortunately this
-          screen wasn't built to for mobile users, which was an intentional
-          choice by the executive team who called for this screen's
-          construction, providing instead a different screen entirely for our
-          mobile users. You can still view it, but just understand the
-          experience won't be as optimal.
-        </Typography>
-      </NotatorSimulationModal>
       {draftReport && (
         <Box
           className="notator-selection-colors"
@@ -59,6 +50,12 @@ function NotatorSimulation() {
             minWidth: "72rem",
           }}
         >
+          <MobileModal />
+          <IntroductionModal
+            open={customDetailsOpen}
+            onClose={() => dispatch(setCustomDetailsModelOpen(false))}
+          />
+
           <HeaderWidget />
           <Box
             sx={{
@@ -73,5 +70,30 @@ function NotatorSimulation() {
         </Box>
       )}
     </>
+  );
+}
+
+function MobileModal() {
+  const bph = useBreakpointHelper();
+  const showMobileNotice = !bph.isGreaterThanEqualTo(800);
+
+  return (
+    <NotatorSimulationModal
+      open={showMobileNotice}
+      onClose={() => {}}
+      minWidth="md"
+    >
+      <Typography sx={{ color: "#000D" }}>
+        <b>Notice</b>
+      </Typography>
+      <Typography sx={{ color: "#000D" }}>
+        Looks like you're trying to view this on mobile! Unfortunately this
+        screen wasn't built to for mobile users, which was an intentional choice
+        by the executive team who called for this screen's construction,
+        providing instead a different screen entirely for our mobile users. You
+        can still view it, but just understand the experience won't be as
+        optimal.
+      </Typography>
+    </NotatorSimulationModal>
   );
 }

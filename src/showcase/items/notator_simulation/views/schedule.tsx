@@ -1,24 +1,13 @@
 import { DateTimePicker } from "@mui/x-date-pickers";
-import { TruckerSchedule } from "../data/types/report";
 import { useNotatorTools } from "../tools/use_notator_tools";
 import { Box, TextField } from "@mui/material";
 
 export function ScheduleTabView() {
-  const { truckerTools } = useNotatorTools();
+  const {
+    truckerTools: { draftTrucker, editTrucker },
+  } = useNotatorTools();
 
-  function getTruckerSchedule(): TruckerSchedule | null {
-    const departureDate = truckerTools.draftTrucker?.schedule.departureDate;
-    const returnDate = truckerTools.draftTrucker?.schedule.returnDate;
-
-    if (departureDate && returnDate) {
-      return {
-        departureDate,
-        returnDate,
-      };
-    } else return null;
-  }
-
-  const schedule = getTruckerSchedule();
+  const schedule = draftTrucker?.schedule;
 
   return (
     <>
@@ -31,14 +20,18 @@ export function ScheduleTabView() {
           <DateTimePicker
             label="Departure Time"
             value={schedule.departureDate}
-            onChange={() => {}}
+            onChange={(e) =>
+              editTrucker({ path: "schedule.departureDate", value: e })
+            }
             renderInput={(props) => <TextField {...props} />}
           />
 
           <DateTimePicker
             label="Expected Return Time"
             value={schedule.returnDate}
-            onChange={() => {}}
+            onChange={(e) =>
+              editTrucker({ path: "schedule.returnDate", value: e })
+            }
             renderInput={(props) => <TextField {...props} />}
           />
         </Box>

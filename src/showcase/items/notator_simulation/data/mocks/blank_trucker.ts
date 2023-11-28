@@ -14,6 +14,7 @@ export function getBlankTrucker(props: {
     status: "Off Duty",
     schedule: getRandomSchedule(),
     itemLedger: getBlankItemLedger(),
+    notes: "",
   };
 }
 
