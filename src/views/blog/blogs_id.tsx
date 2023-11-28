@@ -1,9 +1,9 @@
 import {
   Box,
   Container,
-  Divider,
   ThemeProvider,
   Typography,
+  useTheme,
 } from "@mui/material";
 import DOMPurify from "dompurify";
 import { useNavigate, useParams } from "react-router";
@@ -12,11 +12,12 @@ import { BackButton } from "../../components/button_back";
 import { blogTheme } from "../../design_system/themes/blog";
 import { LoadingScreen } from "../../components/loading_screen";
 import { BlogTextDateAndCategory } from "./components/text_date_category";
-import BlogPFPPng from "../../img/blog_pfp.jpg";
+import BlogPFPPng from "../../img/headshot_natural.png";
 import { BlogPost } from "../../api/models/blog";
 import { FooterLayout } from "../../layouts/footer";
 import hljs from "highlight.js";
 import { useEffect } from "react";
+import Asdf from "../../img/tech-background-dark.png";
 
 export default function BlogByID() {
   const { blogID } = useParams();
@@ -36,23 +37,22 @@ export default function BlogByID() {
       {!blog ? (
         <LoadingScreen feedback="Loading blog" />
       ) : (
-        <FooterLayout pb="8rem" pt="3rem">
-          <Container maxWidth="lg">
-            <BlogByIDHeader blog={blog} />
-          </Container>
+        <FooterLayout pb="8rem">
+          <BlogHeader blog={blog} />
 
           <Container
             maxWidth="md"
             sx={{
               pt: "6rem",
               pre: {
-                boxShadow: 3,
+                boxShadow:
+                  "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
+                my: "2rem",
               },
             }}
           >
             {blog && (
               <Box
-                sx={{ overflow: "hidden" }}
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(blog.html),
                 }}
@@ -65,64 +65,104 @@ export default function BlogByID() {
   );
 }
 
-function BlogByIDHeader(props: { blog: BlogPost }) {
+function BlogHeader(props: { blog: BlogPost }) {
   const navigate = useNavigate();
   const { blog } = props;
 
   return (
-    <>
-      <BackButton onClick={() => navigate("/blogs")} />
-      <Box
+    <Box
+      sx={{
+        backgroundImage: `url(${Asdf})`,
+        backgroundSize: "cover",
+        position: "relative",
+        minHeight: "20rem",
+        height: "min-content",
+        py: "4rem",
+        zIndex: 2,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+      }}
+    >
+      <Box sx={{ position: "absolute", left: "1rem", top: "1rem" }}>
+        <BackButton onClick={() => navigate("/blogs")} />
+      </Box>
+
+      <Container
         sx={{
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
+          gap: "1rem",
+          alignItems: "center",
           mb: "1rem",
-          mt: "2rem",
         }}
       >
         <BlogTextDateAndCategory blog={blog} />
-      </Box>
 
-      <Typography
-        variant="h4"
-        sx={{ width: "100%", textAlign: "center", mb: "2rem" }}
-      >
-        {blog.title}
-      </Typography>
-
-      <Box sx={{ width: "100%" }}>
-        <Box
-          sx={{
-            margin: "2.5rem 0 2rem .5rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "1rem",
-          }}
-        >
-          <BlogPFP />
-          <Box>
-            <Typography variant="body1">
-              <b>Steven Bennett</b>
-            </Typography>
-            <Typography variant="body2">Front End Team Lead</Typography>
-          </Box>
-        </Box>
+        <Typography variant="h4" sx={{ width: "100%", textAlign: "center" }}>
+          {blog.title}
+        </Typography>
+      </Container>
+      <Box sx={{ position: "absolute", bottom: "-2rem", zIndex: 99 }}>
+        <NameBadge />
       </Box>
-      <Divider />
-    </>
+    </Box>
   );
 }
 
-function BlogPFP() {
-  const size = "2.7rem";
+function NameBadge() {
+  const { palette } = useTheme();
+
+  const heightRem = 1;
+  const imgSizeOffset = 1.375;
 
   return (
     <Box
-      component="img"
-      draggable={false}
-      src={BlogPFPPng}
-      sx={{ width: size, height: size, border: "2px solid #777" }}
-      borderRadius="100%"
-    />
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: "1rem",
+      }}
+    >
+      <Box
+        sx={{
+          position: "absolute",
+          top: imgSizeOffset - heightRem + "rem",
+          left: "1.5rem",
+          bgcolor: palette.background.default,
+          height: imgSizeOffset + heightRem + "rem",
+          width: "14rem",
+          borderRadius: "1rem 1rem 0 0",
+          border: "2px solid #575757",
+          borderBottom: 0,
+          zIndex: -1,
+        }}
+      />
+
+      <BlogPFP />
+      <Box>
+        <Typography variant="body1">
+          <b>Steven Bennett</b>
+        </Typography>
+        <Typography variant="body2">Front End Team Lead</Typography>
+      </Box>
+    </Box>
   );
+
+  function BlogPFP() {
+    const size = "4.75rem";
+
+    return (
+      <Box
+        component="img"
+        draggable={false}
+        src={BlogPFPPng}
+        sx={{ width: size, height: size, border: "2px solid #575757" }}
+        borderRadius="100%"
+      />
+    );
+  }
 }

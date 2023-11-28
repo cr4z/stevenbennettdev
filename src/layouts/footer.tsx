@@ -6,8 +6,8 @@ export function FooterLayout(props: {
   pb?: string;
   pt?: string;
 }) {
-  const pt = props.pt ?? "3rem";
-  const pb = props.pb ?? "3rem";
+  const pt = props.pt ?? "0rem";
+  const pb = props.pb ?? "0rem";
 
   return (
     <Box>

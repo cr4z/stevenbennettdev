@@ -102,7 +102,9 @@ function Navbar() {
             Home
           </Button>
           <Button
-            variant={location.pathname === "/blogs" ? "selected" : "unselected"}
+            variant={
+              location.pathname.includes("/blogs") ? "selected" : "unselected"
+            }
             onClick={() => navigate("/blogs")}
             sx={navbarButtonSX}
           >
