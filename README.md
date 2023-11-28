@@ -9,9 +9,9 @@ Welcome to the GitHub repository of my digital card, interactive portfolio, and 
 * **Blog**: A canvas for my thoughts, findings, and ongoing discoveries in tech.
 ## 🛠 Tech Stack
 * **Front-end**: React with TypeScript, MaterialUI
-* **Database**: Firebase Firestore
+* **Database & API**: Firebase Firestore
 * **Deployment**: Vercel
-* **Other tools**: Git, GitHub, Vercel
+* **Version Control**: Git & GitHub
 
 ## 📞 Connect
 For more details or queries, feel free to connect with me through [my contact tab](https://www.stevenbennett.dev/)!
