@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Footer } from "../components/base/footer";
+import { Footer } from "../views/footer";
 
 export function FooterLayout(props: {
   children: React.ReactNode;
