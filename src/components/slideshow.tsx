@@ -17,32 +17,32 @@ import ImgTodoshredder from "../img/forms.png";
 // @ts-ignore
 import ImgFHR from "../img/fhr2.png";
 // @ts-ignore
-import ImgFormComponentCollection from "../img/todoshredder_mini.png";
+import TruckerNotator from "../img/trucker_notator.png";
 
 type Slide = { src: string; title: string; description: string; href: string };
 
 export default function Slideshow() {
   const SLIDES: Slide[] = [
     {
-      src: ImgFormComponentCollection,
+      src: TruckerNotator,
+      title: "Complex Form & Dashboard",
+      description:
+        "View how I creatively manage complex state while maintaining user experience",
+      href: "/portfolio/14",
+    },
+    {
+      src: ImgTodoshredder,
       title: "TodoShredder",
       description:
-        "View my live database implementing single sign-on functionality!",
+        "View my live database implementing single sign-on functionality",
       href: "/portfolio/12",
     },
     {
       src: ImgFHR,
       title: "Flores Home Repair",
       description:
-        "View work I did for a client using Next.js on floreshomerepair.com!",
+        "View work I did for a client using Next.js on floreshomerepair.com",
       href: "/portfolio/0",
-    },
-    {
-      src: ImgTodoshredder,
-      title: "Form Component Collection",
-      description:
-        "View a collection of form components I've built for a team!",
-      href: "/portfolio/11",
     },
   ];
 
