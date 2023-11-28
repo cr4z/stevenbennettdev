@@ -84,6 +84,7 @@ function BlogHeader(props: { blog: BlogPost }) {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
+        borderBottom: "2px solid #575757",
       }}
     >
       <Box sx={{ position: "absolute", left: "1rem", top: "1rem" }}>
@@ -130,7 +131,7 @@ function NameBadge() {
       <Box
         sx={{
           position: "absolute",
-          top: imgSizeOffset - heightRem + "rem",
+          top: `calc(${imgSizeOffset - heightRem}rem + 2px)`,
           left: "1.5rem",
           bgcolor: palette.background.default,
           height: imgSizeOffset + heightRem + "rem",
