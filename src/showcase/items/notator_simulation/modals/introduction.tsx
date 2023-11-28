@@ -89,7 +89,7 @@ function Content() {
         <Typography variant="h5">Lessons Learned</Typography>
         <Typography variant="body1">
           To consolidate all of the lessons I learned from the X Logs rebuild to
-          this reimagining of the notator, I’d say…This project was a journey in
+          this reimagining of the notator, I'd say…This project was a journey in
           enhancing React skills, particularly in state management and component
           architecture, and soft skills like project management and innovative
           problem-solving.
@@ -98,14 +98,14 @@ function Content() {
         <Typography variant="body1">
           The Notator Simulation significantly contributed to my growth as a
           developer, enhancing my technical skills and reinforcing my capability
-          to tackle complex, real-world problems. Thanks to reflection I’ve
+          to tackle complex, real-world problems. Thanks to reflection I've
           learned that even under immense pressure I am capable of making
           effective strategic decisions, such as using a weekend to lay the
           architecture for the notator and subsequently passing it off to a
-          junior developer. I’ve also learned how to create diagrams for React
+          junior developer. I've also learned how to create diagrams for React
           features, a system of architectural foresight and subsequent
           communication that I will continue to refine over the coming years!
-          I’ve seen the value in considering practical applications of
+          I've seen the value in considering practical applications of
           theoretical concepts from various other languages and paradigms.
           Looking forward, as well as honing my general React skills, I will
           continue to learn about various software engineering principles to

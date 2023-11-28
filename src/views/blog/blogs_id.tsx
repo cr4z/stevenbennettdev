@@ -15,10 +15,21 @@ import { BlogTextDateAndCategory } from "./components/text_date_category";
 import BlogPFPPng from "../../img/blog_pfp.jpg";
 import { BlogPost } from "../../api/models/blog";
 import { FooterLayout } from "../../layouts/footer";
+import hljs from "highlight.js";
+import { useEffect } from "react";
 
 export default function BlogByID() {
   const { blogID } = useParams();
   const blog = useBlogByID(blogID ?? "");
+
+  useEffect(() => {
+    hljs.highlightAll();
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("pre code").forEach((block) => {
+        hljs.highlightElement(block as HTMLElement);
+      });
+    });
+  }, [blog]);
 
   return (
     <ThemeProvider theme={blogTheme}>
@@ -30,7 +41,15 @@ export default function BlogByID() {
             <BlogByIDHeader blog={blog} />
           </Container>
 
-          <Container maxWidth="md" sx={{ pt: "6rem" }}>
+          <Container
+            maxWidth="md"
+            sx={{
+              pt: "6rem",
+              pre: {
+                boxShadow: 3,
+              },
+            }}
+          >
             {blog && (
               <Box
                 sx={{ overflow: "hidden" }}

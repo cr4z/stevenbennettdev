@@ -13,6 +13,7 @@ import {
   selectCustomDetailsOpen as selectCustomDetailsOpen,
   setCustomDetailsModelOpen,
 } from "../../../redux/slices/custom_details_modal";
+import { useEffect } from "react";
 
 export default function NotatorSimulationContextWrapper() {
   return (
@@ -31,7 +32,9 @@ function NotatorSimulation() {
   const customDetailsOpen = useAppSelector(selectCustomDetailsOpen);
   const dispatch = useAppDispatch();
 
-  console.log(customDetailsOpen);
+  useEffect(() => {
+    dispatch(setCustomDetailsModelOpen(true));
+  }, []);
 
   return (
     <>
