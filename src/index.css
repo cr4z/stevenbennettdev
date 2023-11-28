@@ -27,6 +27,10 @@
   --selection-color-ns: white;
 }
 
+pre {
+  margin: 0;
+}
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

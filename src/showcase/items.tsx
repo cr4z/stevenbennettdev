@@ -38,6 +38,7 @@ export type Showcase = {
   description?: string | JSX.Element;
   descriptionPlainText?: string;
   dateCreated?: Dayjs;
+  useCustomDetails?: boolean;
 };
 
 const GITHUB_CustomFormLibrary =
@@ -211,5 +212,6 @@ export const SHOWCASES: Showcase[] = [
     component: <NotatorSimulationContextWrapper />,
     id: ShowcaseIDs.NotatorSimulation,
     github: "",
+    useCustomDetails: true,
   },
 ];

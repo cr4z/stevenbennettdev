@@ -15,6 +15,8 @@ import { useBreakpointHelper } from "../../design_system/hooks/useBreakpointHelp
 import { BackButton } from "../../components/button_back";
 import { ModalDialog } from "../../components/modal_dialog";
 import { ViewCodeOnGithubButton } from "../../components/github_button";
+import { useAppDispatch } from "../../redux/hooks";
+import { setCustomDetailsModelOpen } from "../../redux/slices/custom_details_modal";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();
@@ -36,6 +38,8 @@ function ShowcaseLayout() {
   useEffect(() => {
     if (isMobile) setSidebarOpen(false);
   }, [isMobile]);
+
+  const dispatch = useAppDispatch();
 
   return (
     Boolean(showcase) && (
@@ -128,7 +132,13 @@ function ShowcaseLayout() {
                   sx={{ display: "flex", gap: "1rem", alignItems: "center" }}
                 >
                   <Button
-                    onClick={() => setProjectDetailsOpen(true)}
+                    onClick={() => {
+                      if (showcase?.useCustomDetails) {
+                        dispatch(setCustomDetailsModelOpen(true));
+                      } else {
+                        setProjectDetailsOpen(true);
+                      }
+                    }}
                     sx={{
                       paddingLeft: ".5rem",
                       paddingRight: "1rem",
