@@ -48,44 +48,14 @@ function CustomFormLibrary(props: { link: string }) {
     handleSubmit,
   } = useXNGFormWithValidation<CustomFormValues>({ validationSchema: validation });
 
-  const [json, setJson] = useState<object | null>(null);
+ 
 
-  function onSubmit(data: CustomFormValues) {
-    setJson(data);
-  }
-
-  function ValidSubmitModal() {
-    return (
-      <ModalDialog open={json !== null} onClose={() => setJson(null)} title="Information is valid!">
-        <Typography>
-          Once the user clicks "Submit", a handler will return a JSON object mapped to the field values
-          they've predefined. In this instance, here is the returned JSON:
-        </Typography>
-
-        <Box sx={{ my: "1rem" }}>
-          <Box sx={{ fontFamily: "monospace" }}>
-            {/* <JSONTree data={json} theme="tomorrow" /> */}
-            <JSONPretty data={json} />
-          </Box>
-        </Box>
-
-        <Typography>
-          This system is type-safe and ready to go! Feel free to take a look at the code-behind to see just
-          how straightforward and readable the markup of this React form system is. I've made sure to keep
-          things as minimal as possible in terms of code requirements!
-        </Typography>
-
-        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: "1rem" }}>
-          <ViewCodeOnGithubButton href={props.link} />
-        </Box>
-      </ModalDialog>
-    );
-  }
+  
 
   return (
     <>
       {/* Modals */}
-      <ValidSubmitModal />
+      {/* <ValidSubmitModal /> */}
 
       {/* DOM Hierarchy */}
       <XNGEnvironmentProvider>
@@ -178,7 +148,7 @@ function CustomFormLibrary(props: { link: string }) {
 
               <Button
                 onClick={() => {
-                  handleSubmit(onSubmit)();
+                  // handleSubmit(onSubmit)();
                 }}
                 variant="cta"
               >

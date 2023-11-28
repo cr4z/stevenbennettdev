@@ -46,8 +46,8 @@ function Button(props: {
         }),
 
         ...(variant === "contained" && {
-          bgcolor: palette.grey[500],
-          ":hover": { bgcolor: palette.grey[400] },
+          bgcolor: palette.grey[800],
+          ":hover": { bgcolor: palette.grey[700] },
         }),
 
         // Add SX overrides

@@ -1,5 +1,8 @@
 import { Box, Container, Typography } from "@mui/material";
-import { SearchControls, SearchResultsView } from "../../components/search_controls";
+import {
+  SearchControls,
+  SearchResultsView,
+} from "../../components/search_controls";
 import { useState } from "react";
 import Slideshow from "../../components/slideshow";
 import { ViewCodeOnGithubButton } from "../../components/github_button";
@@ -8,7 +11,7 @@ function Portfolio() {
   const [queryValue, setQueryValue] = useState<string>("");
 
   return (
-    <Container maxWidth="md" sx={{overflow: "hidden"}}>
+    <Container maxWidth="md" sx={{ overflow: "hidden" }}>
       <Box
         sx={{
           display: "flex",
@@ -31,8 +34,13 @@ function Portfolio() {
 
         <Slideshow />
 
-        <SearchControls queryValue={queryValue} onChange={(e) => setQueryValue(e.target.value)} />
-        <SearchResultsView queryValue={queryValue} />
+        <SearchControls
+          queryValue={queryValue}
+          onChange={(e) => setQueryValue(e.target.value)}
+        />
+        <Box sx={{ minHeight: "28rem", width: "100%" }}>
+          <SearchResultsView queryValue={queryValue} />
+        </Box>
       </Box>
     </Container>
   );

@@ -8,7 +8,9 @@ function Input(props: {
   useIcon?: IconVariaton;
   sx?: SxProps;
   placeholder?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
+  onChange?:
+    | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    | undefined;
   value?: any;
 }) {
   const iconVariation: IconVariaton = props.useIcon ?? "none";
@@ -16,7 +18,13 @@ function Input(props: {
 
   return (
     <Box
-      sx={{ display: "flex", position: "relative", justifyContent: "flex-end", width: "100%", ...props.sx }}
+      sx={{
+        display: "flex",
+        position: "relative",
+        justifyContent: "flex-end",
+        width: "100%",
+        ...props.sx,
+      }}
     >
       <TextField
         value={props.value}
@@ -25,7 +33,7 @@ function Input(props: {
         size="small"
         placeholder={props.placeholder}
         sx={{
-          bgcolor: palette.grey[700],
+          bgcolor: palette.grey[800],
           // fix border radius
           borderRadius: "4px",
           overflow: "hidden",
@@ -47,7 +55,11 @@ function Input(props: {
             pointerEvents: "none",
           }}
         >
-          <IconRenderer color={palette.text.primary} widthHeight="2rem" i={<AiOutlineSearch />} />
+          <IconRenderer
+            color={palette.text.primary}
+            widthHeight="2rem"
+            i={<AiOutlineSearch />}
+          />
         </Box>
       )}
     </Box>
