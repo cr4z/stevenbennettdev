@@ -48,6 +48,11 @@ function Content() {
             replica--it simply presents the patterns and overall architectural
             strategy it implemented to completely showcase my process!
           </strong>
+          <em>
+            {" "}
+            For further protection of private software, I also repurposed the
+            notator to represent trucker reporting software.{" "}
+          </em>{" "}
           The Notator Simulation bleeds a creative and innovative essence
           through its well-architected blend of modular code, user-centric
           design, and adherence to key software principles such as SOLID,
