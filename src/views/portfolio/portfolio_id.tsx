@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
-import Navbar from "../../components/base/navbar";
+import Navbar from "../navbar";
 import { SHOWCASES } from "../../showcase/items";
 import { useLocation, useNavigate } from "react-router";
 import {

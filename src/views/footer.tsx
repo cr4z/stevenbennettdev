@@ -4,9 +4,9 @@ import {
   ContactButtonGitHub,
   ContactButtonLinkedIn,
   ContactButtonPhone,
-} from "../contact_options";
-import SBLogo from "../../svgs/logo.svg";
-import { useBreakpointHelper } from "../../design_system/hooks/useBreakpointHelper";
+} from "../components/contact_options";
+import SBLogo from "../svgs/logo.svg";
+import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 
 const leftRightSX: SxProps = {
   height: "100%",
@@ -51,24 +51,41 @@ function DesktopFooter() {
   return (
     <Box
       sx={{
-        width: "100%",
-        borderTop: "1px solid #555",
         display: "flex",
-        height: "12rem",
-        justifyContent: "center",
-        alignContent: "center",
-        gap: "4rem",
+        flexDirection: "column",
+        alignItems: "center",
+        mb: "1rem",
+        em: { color: "#FFF9", cursor: "default" },
       }}
     >
-      <Box sx={leftRightSX}>
-        <ContactButtonPhone />
-        <ContactButtonEmail />
+      <Box
+        sx={{
+          width: "100%",
+          borderTop: "1px solid #555",
+          display: "flex",
+          height: "12rem",
+          justifyContent: "center",
+          alignContent: "center",
+          gap: "4rem",
+        }}
+      >
+        <Box sx={leftRightSX}>
+          <ContactButtonPhone />
+          <ContactButtonEmail />
+        </Box>
+        <CenterpieceLogo />
+        <Box sx={leftRightSX}>
+          <ContactButtonLinkedIn />
+          <ContactButtonGitHub />
+        </Box>
       </Box>
-      <CenterpieceLogo />
-      <Box sx={leftRightSX}>
-        <ContactButtonLinkedIn />
-        <ContactButtonGitHub />
-      </Box>
+      <em>
+        Asset attribution:{" "}
+        <a href="https://www.freepik.com/author/starline" target="_blank">
+          Starline
+        </a>{" "}
+        for 3D Blue Particles Background
+      </em>
     </Box>
   );
 }
@@ -86,7 +103,11 @@ function CenterpieceLogo() {
       }}
     >
       <Box component="img" src={SBLogo} sx={{ width: "3rem" }} />
-      <Typography className="noselect" variant="h4" sx={{ paddingX: ".5rem", fontFamily: "Roboto" }}>
+      <Typography
+        className="noselect"
+        variant="h4"
+        sx={{ paddingX: ".5rem", fontFamily: "Roboto" }}
+      >
         Steven Bennett
       </Typography>
     </Box>
