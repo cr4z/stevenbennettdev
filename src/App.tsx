@@ -9,6 +9,10 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import BlogFeed from "./views/blog/blogs";
 import BlogByID from "./views/blog/blogs_id";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 firebase.initializeApp({
   apiKey: import.meta.env.VITE_VERCEL_MY_FIREBASE_APIKEY,
@@ -24,53 +28,55 @@ export const firestore = firebase.firestore();
 
 function App() {
   return (
-    <>
-      <CssBaseline />
-      <Routes>
-        <Route path="/portfolio/*" element={<ShowcaseLayout />} />
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Provider store={store}>
+        <CssBaseline />
+        <Routes>
+          <Route path="/portfolio/*" element={<ShowcaseLayout />} />
 
-        <Route
-          path="*"
-          element={
-            <NavLayout>
-              <Page404 />
-            </NavLayout>
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <NavLayout>
-              <Home />
-            </NavLayout>
-          }
-        />
-        <Route
-          path="/portfolio"
-          element={
-            <NavLayout>
-              <Portfolio />
-            </NavLayout>
-          }
-        />
-        <Route
-          path="/blogs"
-          element={
-            <NavLayout>
-              <BlogFeed />
-            </NavLayout>
-          }
-        />
-        <Route
-          path="/blogs/:blogID"
-          element={
-            <NavLayout>
-              <BlogByID />
-            </NavLayout>
-          }
-        />
-      </Routes>
-    </>
+          <Route
+            path="*"
+            element={
+              <NavLayout>
+                <Page404 />
+              </NavLayout>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <NavLayout>
+                <Home />
+              </NavLayout>
+            }
+          />
+          <Route
+            path="/portfolio"
+            element={
+              <NavLayout>
+                <Portfolio />
+              </NavLayout>
+            }
+          />
+          <Route
+            path="/blogs"
+            element={
+              <NavLayout>
+                <BlogFeed />
+              </NavLayout>
+            }
+          />
+          <Route
+            path="/blogs/:blogID"
+            element={
+              <NavLayout>
+                <BlogByID />
+              </NavLayout>
+            }
+          />
+        </Routes>
+      </Provider>
+    </LocalizationProvider>
   );
 }
 

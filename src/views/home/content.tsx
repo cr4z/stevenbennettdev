@@ -2,16 +2,25 @@ import HeadshotPNG from "../../img/headshot_natural.png";
 import { OpenToWorkMessage } from "../../components/msg_open_to_work";
 import Button from "../../design_system/button";
 import { BsFileEarmarkPerson } from "react-icons/bs";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Tooltip, Typography, useTheme } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export function IntroductoryText() {
   return (
-    <Typography sx={{ px: "2rem", pb: "4rem" }}>
-      Hey there! I'm Steven Bennett, a front-end developer and team leader with
-      a passion for delivering high-impact projects on time and above
-      expectations. With expertise in React and its various design philosophies,
-      I've had the privilege of steering critical projects that have not only
-      met business objectives but also created meaningful user experiences.
+    <Typography
+      variant="subtitle1"
+      sx={{ px: "2rem", pb: "5rem", pt: "2rem", textAlign: "center" }}
+    >
+      Hey there! I'm Steven Bennett, a seasoned front-end developer with
+      experience leading teams and building websites that scale and handle
+      high-traffic. I'm well-versed in React, object-oriented programming and
+      countless associated design philosophies. I've been in charge of projects
+      that have drawn large audiences and have exceeded business objectives. As
+      a passionate developer, I take pride in staying updated on new tech
+      developments and building solutions that are reliable and visually
+      appealing. I'm excited to bring my skill set to a team that values
+      innovation and quality. To view my dedication in action, I invite you to
+      view my interactive portfolio <Link to="/portfolio">here</Link>!
     </Typography>
   );
 }
@@ -22,10 +31,10 @@ export function HomeContent() {
       <Typography variant="h6">What I Bring to the Table</Typography>
       <ul>
         <li>
-          <b>Leadership & Collaboration</b>: I’ve successfully lead a team of
-          four developers, mentoring peers, facilitating cross-departmental
-          communication, and aligning team goals with strategic company
-          objectives.
+          <b>Leadership & Collaboration</b>: I have successfully led a team of
+          four developers while proactively mentoring peers, facilitating
+          cross-departmental communication, and aligning team goals with
+          strategic company objectives on a daily basis.
         </li>
         <li>
           <b>Technical Excellence</b>: As the lead developer of a large project,
@@ -58,7 +67,7 @@ export function HomeContent() {
           faced with unexpected challenges or changes in direction.
         </li>
       </ul>
-      <Typography variant="h6">Technologies I Love</Typography>
+      <Typography variant="h6">Technical Proficiencies</Typography>
       <ul>
         <li>React with TypeScript</li>
         <li>Next.js</li>
@@ -66,8 +75,7 @@ export function HomeContent() {
         <li>MaterialUI</li>
         <li>Figma & Graphic Design</li>
         <li>Git</li>
-        <li>GitHub & Azure</li>
-        <li>DevOps</li>
+        <li>GitHub & Azure DevOps</li>
         <li>C# & LINQ</li>
         <li>OpenAI GPT-4</li>
       </ul>
@@ -175,17 +183,21 @@ function TitleAndResume() {
         Building Tomorrow's Web, One Line at a Time
       </Typography>
 
-      <Button
-        useIcon={<BsFileEarmarkPerson />}
-        onClick={() =>
-          window.open(
-            "https://docs.google.com/document/d/1NrQ0TLz_1hpkAS-9DffDTQvYMeb7JyZU6OonJSnjOY0/edit?usp=sharing",
-            "_blank"
-          )
-        }
-      >
-        View Resume
-      </Button>
+      <Tooltip title="View Resume">
+        <div>
+          <Button
+            useIcon={<BsFileEarmarkPerson />}
+            onClick={() =>
+              window.open(
+                "https://docs.google.com/document/d/1NrQ0TLz_1hpkAS-9DffDTQvYMeb7JyZU6OonJSnjOY0/edit?usp=sharing",
+                "_blank"
+              )
+            }
+          >
+            View Resume
+          </Button>
+        </div>
+      </Tooltip>
     </Box>
   );
 }

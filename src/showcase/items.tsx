@@ -8,6 +8,7 @@ import dayjs, { Dayjs } from "dayjs";
 import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
+import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "0",
@@ -24,6 +25,7 @@ export enum ShowcaseIDs {
   FilteringAlgorithm = "11",
   TodoShredder = "12",
   DougZonePodcast = "13",
+  NotatorSimulation = "14",
 }
 
 export type Showcase = {
@@ -36,6 +38,7 @@ export type Showcase = {
   description?: string | JSX.Element;
   descriptionPlainText?: string;
   dateCreated?: Dayjs;
+  useCustomDetails?: boolean;
 };
 
 const GITHUB_CustomFormLibrary =
@@ -82,7 +85,14 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "floreshomerepair.com",
     icon: <ICONS.Nextjs />,
-    tags: ["Next.js", "Web Design", "Online Website", "SEO", "Mobile-First"],
+    tags: [
+      "Next.js",
+      "Web Design",
+      "Online Website",
+      "SEO",
+      "Mobile-First",
+      "SSR",
+    ],
     id: ShowcaseIDs.FloresHomeRepair,
     github: "https://github.com/cr4z/flores-home-repair",
     component: <FloresHomeRepair />,
@@ -194,5 +204,14 @@ export const SHOWCASES: Showcase[] = [
     component: <TodoShredder />,
     id: ShowcaseIDs.TodoShredder,
     github: "",
+  },
+  {
+    title: "Notator Simulation",
+    icon: <ICONS.React />,
+    tags: ["React"],
+    component: <NotatorSimulationContextWrapper />,
+    id: ShowcaseIDs.NotatorSimulation,
+    github: "",
+    useCustomDetails: true,
   },
 ];
