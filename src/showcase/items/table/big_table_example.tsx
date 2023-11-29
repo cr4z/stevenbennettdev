@@ -36,13 +36,13 @@ export default function BigTableExample() {
         features a generic <code>rows</code> prop, type <code>T[]</code>, where <code>T</code> represents
         any object with ReactNode-compatible keys. This setup allows for dynamic rendering of data under
         custom-named columns for each key. Additionally, the component supports a selectable variant,
-        managed by a unique hook, the selectable row state manager. state manager.
+        managed by a unique hook, aptly referred to the selectable row state manager.
       </Typography>
       <Typography>
         Internally, the component exemplifies development principles such as interface segregation to
         effectively yield a more maintanable, extensible and thus reusable component. Its performance is
         optimized by reducing memory usage to a single state, ensuring both speed and efficiency. The
-        component's code is accessible on my GitHub, along with a code snippet for easy reference.
+        component's code is accessible on my GitHub, along with a code snippet for easy reference!
       </Typography>
 
       <Paper>
