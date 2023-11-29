@@ -40,7 +40,7 @@ export default function BigTableExample() {
       </Typography>
       <Typography>
         Internally, the component exemplifies development principles such as interface segregation to
-        effectively yield a more maintanable, extensible and thus reusable component. Its performance is
+        effectively yield a more maintainable, extensible and thus reusable component. Its performance is
         optimized by reducing memory usage to a single state, ensuring both speed and efficiency. The
         component's code is accessible on my GitHub, along with a code snippet for easy reference!
       </Typography>
