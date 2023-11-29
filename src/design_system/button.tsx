@@ -1,6 +1,5 @@
 import { ButtonBase, useTheme, SxProps, Box } from "@mui/material";
 import React from "react";
-import { shadeColor } from "../utils/shadeColor";
 
 function Button(props: {
   variant?: "unselected" | "selected" | "contained" | "cta";
@@ -42,7 +41,7 @@ function Button(props: {
 
         ...(variant === "cta" && {
           bgcolor: palette.primary.main,
-          ":hover": { bgcolor: shadeColor(palette.primary.main, 8) },
+          ":hover": { bgcolor: palette.primary.main + "E0" },
         }),
 
         ...(variant === "contained" && {

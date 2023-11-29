@@ -1,10 +1,4 @@
-import {
-  Box,
-  Container,
-  ThemeProvider,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Container, ThemeProvider, Typography, useTheme } from "@mui/material";
 import DOMPurify from "dompurify";
 import { useNavigate, useParams } from "react-router";
 import useBlogByID from "../../api/hooks/use_blog_by_id";
@@ -17,7 +11,7 @@ import { BlogPost } from "../../api/models/blog";
 import { FooterLayout } from "../../layouts/footer";
 import hljs from "highlight.js";
 import { useEffect } from "react";
-import Asdf from "../../img/tech-background-dark.png";
+import TechBackground from "../../img/tech-background-dark.png";
 
 export default function BlogByID() {
   const { blogID } = useParams();
@@ -25,11 +19,18 @@ export default function BlogByID() {
 
   useEffect(() => {
     hljs.highlightAll();
-    document.addEventListener("DOMContentLoaded", () => {
+
+    const highlightCode = () => {
       document.querySelectorAll("pre code").forEach((block) => {
         hljs.highlightElement(block as HTMLElement);
       });
-    });
+    };
+
+    document.addEventListener("DOMContentLoaded", highlightCode);
+
+    return () => {
+      document.removeEventListener("DOMContentLoaded", highlightCode);
+    };
   }, [blog]);
 
   return (
@@ -45,8 +46,7 @@ export default function BlogByID() {
             sx={{
               pt: "6rem",
               pre: {
-                boxShadow:
-                  "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
+                boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
                 my: "2rem",
               },
             }}
@@ -72,7 +72,7 @@ function BlogHeader(props: { blog: BlogPost }) {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${Asdf})`,
+        backgroundImage: `url(${TechBackground})`,
         backgroundSize: "cover",
         position: "relative",
         minHeight: "20rem",
