@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material";
-import { DEFAULT_THEME_OPTIONS, DARKMODE_TYPOGRAPHY_OPTIONS } from "./default";
+import { DEFAULT_THEME_OPTIONS } from "./default";
 import { USE_TEAL_DARK } from "./_colors";
+import { DARKMODE_TYPOGRAPHY_OPTIONS } from "./typography";
 
 export const darkTheme = createTheme({
   ...DEFAULT_THEME_OPTIONS,

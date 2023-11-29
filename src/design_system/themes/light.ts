@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material";
-import { DEFAULT_THEME_OPTIONS, LIGHTMODE_TYPOGRAPHY_OPTIONS } from "./default";
+import { DEFAULT_THEME_OPTIONS } from "./default";
 import { USE_TEAL_LIGHT } from "./_colors";
+import { LIGHTMODE_TYPOGRAPHY_OPTIONS } from "./typography";
 
 export const lightTheme = createTheme({
   ...DEFAULT_THEME_OPTIONS,
