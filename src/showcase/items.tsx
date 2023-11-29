@@ -61,11 +61,7 @@ export const SHOWCASES: Showcase[] = [
     tags: ["React", "SOLID Principles", "Custom Hooks"],
     id: ShowcaseIDs.TypeSafeTableComponent,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
-    component: (
-      <ThemeProvider theme={lightTheme}>
-        <BigTableExample />
-      </ThemeProvider>
-    ),
+    component: <BigTableExample />,
     description: "",
     dateCreated: dayjs(new Date(2023, 11, 28)),
   },
