@@ -33,16 +33,16 @@ export default function BigTableExample() {
       <Typography variant="h4">Custom Table Component</Typography>
       <Typography>
         This component boilerplates an MUI table, but with an extra layer of code to promote reusability. It
-        accepts a generic prop, <code>rows</code>, of type <code>T[]</code>. <code>T</code> can be any
-        object with ReactNode-compatible keys, and it will render out the data accordingly under columns
-        with a custom name attributed for each defined key. It can also currently be overridden to accept a
-        selectable variant, and its complex state is managed via a custom hook called the selectable row
-        state manager.
+        features a generic <code>rows</code> prop, type <code>T[]</code>, where <code>T</code> represents
+        any object with ReactNode-compatible keys. This setup allows for dynamic rendering of data under
+        custom-named columns for each key. Additionally, the component supports a selectable variant,
+        managed by a unique hook, the selectable row state manager. state manager.
       </Typography>
       <Typography>
-        Internally, it applies many practical theories such as interface segregation that effectively yield
-        a more maintanable, extensible and thus reusable component. The code for this component is available
-        on my GitHub and a snippet is provided below!
+        Internally, the component exemplifies development principles such as interface segregation to
+        effectively yield a more maintanable, extensible and thus reusable component. Its performance is
+        optimized by reducing memory usage to a single state, ensuring both speed and efficiency. The
+        component's code is accessible on my GitHub, along with a code snippet for easy reference.
       </Typography>
 
       <Paper>
