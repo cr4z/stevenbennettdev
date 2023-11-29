@@ -43,6 +43,7 @@ function MobileFooter() {
         <ContactButtonLinkedIn />
         <ContactButtonGitHub />
       </Box>
+      <AssetAttribution />
     </Box>
   );
 }
@@ -79,13 +80,7 @@ function DesktopFooter() {
           <ContactButtonGitHub />
         </Box>
       </Box>
-      <em>
-        Asset attribution:{" "}
-        <a href="https://www.freepik.com/author/starline" target="_blank">
-          Starline
-        </a>{" "}
-        for 3D Blue Particles Background
-      </em>
+      <AssetAttribution />
     </Box>
   );
 }
@@ -103,13 +98,19 @@ function CenterpieceLogo() {
       }}
     >
       <Box component="img" src={SBLogo} sx={{ width: "3rem" }} />
-      <Typography
-        className="noselect"
-        variant="h4"
-        sx={{ paddingX: ".5rem", fontFamily: "Roboto" }}
-      >
+      <Typography className="noselect" variant="h4" sx={{ paddingX: ".5rem", fontFamily: "Roboto" }}>
         Steven Bennett
       </Typography>
     </Box>
   );
 }
+
+const AssetAttribution = () => (
+  <em>
+    Asset attribution:{" "}
+    <a href="https://www.freepik.com/author/starline" target="_blank">
+      Starline
+    </a>{" "}
+    for 3D Blue Particles Background
+  </em>
+);
