@@ -7,6 +7,9 @@ import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
 import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
+import BigTableExample from "./items/table/big_table_example";
+import { ThemeProvider } from "@mui/material";
+import { lightTheme } from "../design_system/themes/light";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
@@ -24,6 +27,7 @@ export enum ShowcaseIDs {
   TodoShredder = "e706f518d604",
   DougZonePodcast = "f702b757d5f7",
   NotatorSimulation = "6543263c3154",
+  TypeSafeTableComponent = "n192kb3i9372",
 }
 
 export type Showcase = {
@@ -43,20 +47,27 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "floreshomerepair.com",
     icon: <ICONS.Nextjs />,
-    tags: [
-      "Next.js",
-      "Web Design",
-      "Live Website",
-      "SEO",
-      "Mobile-First",
-      "SSR",
-    ],
+    tags: ["Next.js", "Web Design", "Live Website", "SEO", "Mobile-First", "SSR"],
     id: ShowcaseIDs.FloresHomeRepair,
     github: "https://github.com/cr4z/flores-home-repair",
     component: <FloresHomeRepair />,
     description:
-      "This was my first freelance project I had ever done professionally, built with Next.js. I've sinced gotten a little bit better at image optimization, but to this day it remains one of my finest achievements in SEO optimization! When typing 'flores home repair' into Google, floreshomerepair.com should be at the very top. Even variations such as 'Flores House Renovation' should work. It's also visible outside of the United States; as far as France!",
+      "This was my first freelance project I had ever done professionally, built with Next.js. I've sinced gotten a little bit better at image optimization, but to this day it remains one of my finest achievements in SEO optimization! When typing 'flores home repair' into Google, floreshomerepair.com should be at the very top. Even variations such as 'Flores House Renovation' should work.",
     dateCreated: dayjs(new Date(2022, 3, 24)),
+  },
+  {
+    title: "Type-Safe Table Component",
+    icon: <ICONS.React />,
+    tags: ["React", "SOLID Principles", "Custom Hooks"],
+    id: ShowcaseIDs.TypeSafeTableComponent,
+    github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
+    component: (
+      <ThemeProvider theme={lightTheme}>
+        <BigTableExample />
+      </ThemeProvider>
+    ),
+    description: "",
+    dateCreated: dayjs(new Date(2023, 11, 28)),
   },
 
   {
@@ -64,8 +75,7 @@ export const SHOWCASES: Showcase[] = [
     icon: <ICONS.React />,
     tags: ["React", "Web Design", "useMemo"],
     id: ShowcaseIDs.SequentialFadeIn,
-    github:
-      "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
+    github: "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
     component: <Showcase_SequentialFadeIn />,
   },
 
@@ -85,22 +95,13 @@ export const SHOWCASES: Showcase[] = [
     icon: <ICONS.React />,
     tags: ["React", "Custom Algorithm"],
     id: ShowcaseIDs.FilteringAlgorithm,
-    github:
-      "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
+    github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
     component: <FiltersDemo />,
   },
   {
     title: "stevenbennett.dev",
     icon: <ICONS.React />,
-    tags: [
-      "React",
-      "Web Design",
-      "Mobile-First",
-      "Redux",
-      "Live Website",
-      "Custom Blog",
-      "Firebase",
-    ],
+    tags: ["React", "Web Design", "Mobile-First", "Redux", "Live Website", "Custom Blog", "Firebase"],
     component: <StevenBennettDev />,
     id: ShowcaseIDs.StevenBennettDev,
     github: "https://github.com/cr4z/stevenbennettdev",
@@ -127,18 +128,10 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Notator Simulation",
     icon: <ICONS.React />,
-    tags: [
-      "React",
-      "Redux",
-      "Material UI",
-      "Web Design",
-      "Intricate Code",
-      "Simulated API",
-    ],
+    tags: ["React", "Redux", "Material UI", "Web Design", "Intricate Code", "Simulated API"],
     component: <NotatorSimulationContextWrapper />,
     id: ShowcaseIDs.NotatorSimulation,
-    github:
-      "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",
+    github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",
     useCustomDetails: true,
   },
 ];

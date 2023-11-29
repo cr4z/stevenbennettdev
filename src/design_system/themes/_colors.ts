@@ -1,17 +1,24 @@
 import { PaletteOptions } from "@mui/material";
 
-export const USE_TEAL_PRIMARY: PaletteOptions = {
+const USE_TEAL: PaletteOptions = {
   primary: {
     light: "#03f8c5",
     main: "#00cc9c",
     dark: "#024d4f",
   },
-  background: {
-    default: "#2F2F2F",
-  },
   secondary: {
     main: "#06A3C6",
   },
+};
+
+export const USE_TEAL_DARK: PaletteOptions = {
+  ...USE_TEAL,
+  background: {
+    default: "#2F2F2F",
+  },
+};
+export const USE_TEAL_LIGHT: PaletteOptions = {
+  ...USE_TEAL,
 };
 
 // const USE_BLUE_PRIMARY: PaletteOptions = {

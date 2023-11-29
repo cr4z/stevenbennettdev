@@ -1,9 +1,9 @@
 import { createTheme } from "@mui/material";
-import { USE_TEAL_PRIMARY } from "./_colors";
+import { USE_TEAL_DARK } from "./_colors";
 
 export const blogTheme = createTheme({
   palette: {
-    ...USE_TEAL_PRIMARY,
+    ...USE_TEAL_DARK,
     mode: "dark",
     grey: {
       400: "#969696",
