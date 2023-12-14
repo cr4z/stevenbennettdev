@@ -1,20 +1,110 @@
-import { Box, Checkbox, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
-import { TableDataProps, TableSelectableProps } from "./types";
+import { Box, Table, TableBody, TableHead, TableRow } from "@mui/material";
+import {
+  TablePaginationProps,
+  TableDataProps,
+  TableRequestParameters,
+  TableSelectableProps,
+  TableSortableProps,
+  TableStylingProps,
+  TableOverrideFunctionalityProps,
+} from "./types";
+import { SelectableColumnHeaderCell } from "./components/selectables";
+import { useEffect } from "react";
+import FooterPaginationControls from "./components/footer_pagination_controls";
+import { GREY_COLOR } from "./constants/grey_color";
+import HeaderCell from "./components/header_cell";
+import Row from "./components/row";
 
-export type BigTableProps<T> = TableDataProps<T> & TableSelectableProps<T>;
+export type XNGBigTableProps<T> = TableDataProps<T> &
+  TableSelectableProps<T> &
+  TableSortableProps<T> &
+  TableOverrideFunctionalityProps<T> &
+  TablePaginationProps &
+  TableStylingProps;
 
-function BigTable<T>(props: BigTableProps<T>) {
+function XNGBigTable<T>(props: XNGBigTableProps<T>) {
+  /**
+   * Determines whether to leverage client-side or server-side sorting based on the current modules being used.
+   */
+  async function clientOrServerSort() {
+    if (!props.useSort) return;
+
+    function getIsViewingAll() {
+      if (!props.usePagination) {
+        return true;
+      } else {
+        return props.usePagination?.isViewingAll;
+      }
+    }
+
+    const isViewingAll = getIsViewingAll();
+    if (!isViewingAll) {
+      // we do not have all the data on the front end, so leverage server-side sorting
+      if (props.onTableRequestParametersChange) {
+        props.onTableRequestParametersChange(getTableParameters());
+        return;
+      }
+    } else {
+      // we already have all of the data, so sort on the front end
+      props.useSort.onClientSideSort();
+    }
+  }
+
+  // Helpers
+
+  function getTableParameters(): TableRequestParameters<T> {
+    const res: TableRequestParameters<T> = {
+      pageIndex: props.usePagination?.pageIndex ?? 0,
+      resultsPerPage: props.usePagination?.resultsPerPage ?? 0,
+      sortBy: props.useSort?.sortBy ?? null,
+    };
+
+    return res;
+  }
+
+  // Lifecycle Effects
+
+  useEffect(() => {
+    if (props.onTableRequestParametersChange) {
+      props.onTableRequestParametersChange(getTableParameters());
+    }
+  }, [props.usePagination?.pageIndex, props.usePagination?.resultsPerPage]);
+
+  useEffect(() => {
+    if (!props.useSort) return;
+    clientOrServerSort();
+  }, [props.useSort?.sortBy, props.useSort?.originalRows]);
+
   return (
-    <Table>
-      <Head {...props} />
-      <Body {...props} />
-    </Table>
+    <Box>
+      <Box
+        sx={{
+          overflowX: "auto",
+          ...(props.styling?.heightRelativeToScreen && {
+            height: `calc(100vh - ${props.styling.heightRelativeToScreen}rem)`,
+          }),
+        }}
+      >
+        <Table
+          sx={{
+            borderRadius: "4px",
+            ".MuiTableCell-root": {
+              p: ".1rem",
+            },
+          }}
+        >
+          <Head {...props} />
+          <Body {...props} />
+        </Table>
+      </Box>
+      {props.usePagination && <FooterPaginationControls {...props} />}
+    </Box>
   );
 }
 
-function Head<T>(props: BigTableProps<T>) {
+function Head<T>(props: XNGBigTableProps<T>) {
   return (
-    <TableHead>
+    <TableHead sx={{ bgcolor: GREY_COLOR, position: "sticky", top: 0, zIndex: 99, whiteSpace: "nowrap" }}>
       <TableRow>
         {props.useSelectableRows && (
           <SelectableColumnHeaderCell
@@ -22,70 +112,26 @@ function Head<T>(props: BigTableProps<T>) {
             onClick={() => {
               props.useSelectableRows!.toggleAll();
             }}
+            numSelected={props.useSelectableRows.rowSelections.filter((rs) => rs.isSelected).length}
           />
         )}
 
         {props.columns.map((col, i) => (
-          <TableCell key={i}>{col.label}</TableCell>
+          <HeaderCell column={col} {...props} key={i} />
         ))}
       </TableRow>
     </TableHead>
   );
 }
 
-function Body<T>(props: BigTableProps<T>) {
+function Body<T>(props: XNGBigTableProps<T>) {
   return (
     <TableBody>
-      {props.rows.map((row, rowIndex) => {
-        const rowToggled =
-          Boolean(props.useSelectableRows?.selectedRows.find((sr) => sr.indexInDataset === rowIndex)) ??
-          false;
-
-        return (
-          <TableRow key={rowIndex}>
-            {props.useSelectableRows && (
-              <SelectableRowFirstCell
-                onToggle={() =>
-                  props.useSelectableRows?.onRowToggle({
-                    indexInDataset: rowIndex,
-                    payload: row,
-                  })
-                }
-                checked={rowToggled}
-              />
-            )}
-
-            {props.columns.map((col, colIndex) => (
-              <TableCell key={colIndex}>{String(row[col.key])}</TableCell>
-            ))}
-          </TableRow>
-        );
-      })}
+      {props.useSort?.sortedRows
+        ? props.useSort.sortedRows.map((kr, i) => <Row key={i} {...props} row={kr.row} rowUID={kr.uid} />)
+        : props.rows?.map((row, i) => <Row key={i} {...props} row={row} rowUID={i} />)}
     </TableBody>
   );
 }
 
-// ------------ Selectable Header & Body ------------
-
-function SelectableColumnHeaderCell(props: { value: boolean; onClick: () => void }) {
-  return (
-    <TableCell>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Checkbox checked={props.value} onClick={props.onClick} />
-        <Typography>All</Typography>
-      </Box>
-    </TableCell>
-  );
-}
-
-function SelectableRowFirstCell(props: { checked: boolean; onToggle: () => void }) {
-  const { checked, onToggle } = props;
-
-  return (
-    <TableCell>
-      <Checkbox checked={checked} onClick={onToggle} />
-    </TableCell>
-  );
-}
-
-export default BigTable;
+export default XNGBigTable;

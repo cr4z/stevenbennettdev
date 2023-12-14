@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Roboto";
-  src: url("./fonts/Roboto_Flex/RobotoFlex-VariableFont_wght.ttf")
-    format("truetype");
+  src: url("./fonts/Roboto_Flex/RobotoFlex-VariableFont_wght.ttf") format("truetype");
 }
 @font-face {
   font-family: "Inter";
@@ -9,8 +8,7 @@
 }
 @font-face {
   font-family: "Roboto-Condensed";
-  src: url("./fonts/Roboto_condensed/RobotoCondensed-Bold.ttf")
-    format("truetype");
+  src: url("./fonts/Roboto_condensed/RobotoCondensed-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "Lato";

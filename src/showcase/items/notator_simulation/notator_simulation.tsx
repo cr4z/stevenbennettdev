@@ -1,7 +1,7 @@
 import { Box, ThemeProvider, Typography, useTheme } from "@mui/material";
 import { useNotatorTools } from "./tools/use_notator_tools";
 import { NotatorToolsProvider } from "./tools/modules";
-import { notatorTheme } from "./theme/theme";
+import { showcaseWhiteTheme } from "../../../design_system/themes/showcase_white_theme";
 import { LeftWidget } from "./widgets/left/left";
 import { HeaderWidget } from "./widgets/header";
 import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
@@ -17,7 +17,7 @@ import { useEffect } from "react";
 
 export default function NotatorSimulationContextWrapper() {
   return (
-    <ThemeProvider theme={notatorTheme}>
+    <ThemeProvider theme={showcaseWhiteTheme}>
       <NotatorToolsProvider>
         <NotatorSimulation />
       </NotatorToolsProvider>

@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material";
 
-export const notatorTheme = createTheme({
+export const showcaseWhiteTheme = createTheme({
   palette: {
     background: {
       default: "#D3DBE2",
