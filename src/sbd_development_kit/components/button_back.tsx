@@ -1,8 +1,7 @@
-import { ButtonBase, Typography } from "@mui/material";
-import Box from "../fortitude/components-dev/BoxExtended";
-import { ICONS, IconRenderer } from "../design_system/icons";
+import { Box, ButtonBase, Typography } from "@mui/material";
+import { ICONS, IconRenderer } from "../../design_system/icons";
 
-export function BackButton(props: { onClick?: () => void }) {
+export function SBDBack(props: { onClick?: () => void }) {
   const paddingLeftAndGap = "5px";
 
   return (

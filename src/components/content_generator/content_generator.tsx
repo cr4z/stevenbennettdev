@@ -16,8 +16,12 @@ export function ContentGenerator(props: { content: ContentGeneratorContent }) {
         </Box>
       )}
 
-      <Typography variant="h5">Features & Functionality</Typography>
-      {content.featuresAndFunctionality && <Typography>{content.featuresAndFunctionality}</Typography>}
+      {content.featuresAndFunctionality && (
+        <>
+          <Typography variant="h5">Features & Functionality</Typography>
+          <Typography>{content.featuresAndFunctionality}</Typography>
+        </>
+      )}
     </Box>
   );
 }

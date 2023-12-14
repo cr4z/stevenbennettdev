@@ -1,26 +1,25 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-interface CustomDetailsModalState {
+interface IntroductoryModalState {
   open: boolean;
 }
 
-export const initialState: CustomDetailsModalState = {
+export const initialState: IntroductoryModalState = {
   open: false,
 };
 
-const customDetailsModalSlice = createSlice({
-  name: "customDetailsModal",
+const introductoryModalSlice = createSlice({
+  name: "introductoryModal",
   initialState,
   reducers: {
-    setCustomDetailsModelOpen: (state, action: PayloadAction<boolean>) => {
+    setIntroductoryModelOpen: (state, action: PayloadAction<boolean>) => {
       state.open = action.payload;
     },
   },
 });
 
-export const { setCustomDetailsModelOpen } = customDetailsModalSlice.actions;
-export const selectIntroductoryModalOpen = (state: RootState) =>
-  state.detailsModalReducer.open;
+export const { setIntroductoryModelOpen } = introductoryModalSlice.actions;
+export const selectIntroductoryModalOpen = (state: RootState) => state.detailsModalReducer.open;
 
-export default customDetailsModalSlice.reducer;
+export default introductoryModalSlice.reducer;

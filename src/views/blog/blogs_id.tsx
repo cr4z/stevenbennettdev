@@ -2,7 +2,7 @@ import { Box, Container, ThemeProvider, Typography, useTheme } from "@mui/materi
 import DOMPurify from "dompurify";
 import { useNavigate, useParams } from "react-router";
 import useBlogByID from "../../api/hooks/use_blog_by_id";
-import { BackButton } from "../../components/button_back";
+import { SBDBack } from "../../sbd_development_kit/components/button_back";
 import { blogTheme } from "../../design_system/themes/blog";
 import { LoadingScreen } from "../../components/loading_screen";
 import { BlogTextDateAndCategory } from "./components/text_date_category";
@@ -88,7 +88,7 @@ function BlogHeader(props: { blog: BlogPost }) {
       }}
     >
       <Box sx={{ position: "absolute", left: "1rem", top: "1rem" }}>
-        <BackButton onClick={() => navigate("/blogs")} />
+        <SBDBack onClick={() => navigate("/blogs")} />
       </Box>
 
       <Container
