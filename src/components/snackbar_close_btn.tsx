@@ -1,16 +1,11 @@
-import { IconButton } from "@mui/material";
 import { SnackbarKey, useSnackbar } from "notistack";
-import { RiCloseFill } from "react-icons/ri";
+import { SBDClose } from "../sbd_development_kit/components/close";
 
 function SnackbarCloseButton(props: { snackbarKey: SnackbarKey }) {
   const { snackbarKey } = props;
   const { closeSnackbar } = useSnackbar();
 
-  return (
-    <IconButton sx={{ color: "#FFFD" }} onClick={() => closeSnackbar(snackbarKey)}>
-      <RiCloseFill />
-    </IconButton>
-  );
+  return <SBDClose onClick={() => closeSnackbar(snackbarKey)} />;
 }
 
 export default SnackbarCloseButton;
