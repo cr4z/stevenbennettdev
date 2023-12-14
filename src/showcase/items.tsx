@@ -36,10 +36,47 @@ export enum ShowcaseIDs {
   RapidAlphabeticSort = "debdcb6a850d",
 }
 
+type Tag =
+  // Frameworks and Libraries
+  | "React"
+  | "Next.js"
+  | "vite"
+  | "react-router"
+  | "Redux"
+  | "Firebase"
+  | "notistack"
+  | "Material UI"
+  | "Figjam Diagram"
+
+  // Website Features and Types
+  | "Engaging User Experience"
+  | "Live Website"
+  | "Blog"
+  | "Responsive Design"
+  | "Server-Side Rendering"
+  | "Custom Hooks"
+  | "Live API"
+  | "Simulated API"
+
+  // Security and Authentication
+  | "SSO Authentication"
+
+  // Performance and Optimization
+  | "High-Speed Optimization"
+  | "SEO"
+
+  // Programming Practices and Principles
+  | "SOLID Principles"
+  | "Advanced Custom Algorithm"
+
+  // Documentation and Compliance
+  | "XML Self-Documentation"
+  | "WCAG AAA Compliance";
+
 export type Showcase = {
   title: string;
   icon: JSX.Element;
-  tags: string[];
+  tags: Tag[];
   component: React.ReactNode;
   id: string;
   github: string;
@@ -54,7 +91,14 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "floreshomerepair.com",
     icon: <ICONS.Nextjs />,
-    tags: ["Next.js", "Web Design", "Live Website", "SEO", "Mobile-First", "SSR"],
+    tags: [
+      "Next.js",
+      "Engaging User Experience",
+      "Live Website",
+      "SEO",
+      "Responsive Design",
+      "Server-Side Rendering",
+    ],
     id: ShowcaseIDs.FloresHomeRepair,
     github: "https://github.com/cr4z/flores-home-repair",
     component: <FloresHomeRepair />,
@@ -65,7 +109,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Advanced Table Custom Component",
     icon: <ICONS.React />,
-    tags: ["React", "SOLID Principles", "Custom Hooks"],
+    tags: ["React", "SOLID Principles", "Custom Hooks", "Engaging User Experience", "notistack"],
     id: ShowcaseIDs.TypeSafeTableComponent,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
     component: <BigTableExample />,
@@ -76,7 +120,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Algorithm: Quick Sort in Place",
     icon: <ICONS.Typescript />,
-    tags: ["Advanced Algorithm"],
+    tags: ["Advanced Custom Algorithm"],
     component: <QuickSortInPlaceExample />,
     id: ShowcaseIDs.QuickSortInPlace,
     github:
@@ -85,7 +129,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Algorithm: Rapid Alphabetic Sort",
     icon: <ICONS.Typescript />,
-    tags: ["Advanced Algorithm", "XML Self-Documentation"],
+    tags: ["Advanced Custom Algorithm", "XML Self-Documentation"],
     component: <RapidAlphabeticSortExample />,
     id: ShowcaseIDs.RapidAlphabeticSort,
     github:
@@ -94,7 +138,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Sequential Fade-In Effect Across Multiple Divs",
     icon: <ICONS.React />,
-    tags: ["React", "Web Design", "useMemo"],
+    tags: ["React", "Engaging User Experience"],
     id: ShowcaseIDs.SequentialFadeIn,
     github: "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
     component: <Showcase_SequentialFadeIn />,
@@ -103,16 +147,16 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "dougzonepodcast.com",
     icon: <ICONS.React />,
-    tags: ["React", "Web Design", "vite", "react-router", "Live Website"],
+    tags: ["React", "Engaging User Experience", "vite", "react-router", "Live Website"],
     id: ShowcaseIDs.DougZonePodcast,
     github: "https://github.com/cr4z/dzp-vite",
     component: <DougZonePodcast />,
   },
 
   {
-    title: "Common Algorithm: Multiple Filters",
+    title: "React Basics: Applying Visual Filters",
     icon: <ICONS.React />,
-    tags: ["React", "Custom Algorithm"],
+    tags: ["React"],
     id: ShowcaseIDs.FilteringAlgorithm,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
     useIntroductoryModal: true,
@@ -149,7 +193,15 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "stevenbennett.dev",
     icon: <ICONS.React />,
-    tags: ["React", "Web Design", "Mobile-First", "Redux", "Live Website", "Custom Blog", "Firebase"],
+    tags: [
+      "React",
+      "Engaging User Experience",
+      "Responsive Design",
+      "Redux",
+      "Live Website",
+      "Blog",
+      "Firebase",
+    ],
     component: <StevenBennettDev />,
     id: ShowcaseIDs.StevenBennettDev,
     github: "https://github.com/cr4z/stevenbennettdev",
@@ -159,24 +211,23 @@ export const SHOWCASES: Showcase[] = [
     icon: <ICONS.React />,
     tags: [
       "React",
-      "Clean Code",
-      "API",
+      "Live API",
       "Firebase",
       "React",
       "SSO Authentication",
       "High-Speed Optimization",
       "Live Website",
       "WCAG AAA Compliance",
-      "Mobile-First",
+      "Responsive Design",
     ],
     component: <TodoShredder />,
     id: ShowcaseIDs.TodoShredder,
     github: "https://github.com/cr4z/todoshredder",
   },
   {
-    title: "Notator Simulation",
+    title: "Complex Form in React Demonstration",
     icon: <ICONS.React />,
-    tags: ["React", "Redux", "Material UI", "Web Design", "Intricate Code", "Simulated API"],
+    tags: ["React", "Redux", "Material UI", "Engaging User Experience", "Simulated API", "Figjam Diagram"],
     component: <NotatorSimulationContextWrapper />,
     id: ShowcaseIDs.NotatorSimulation,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",

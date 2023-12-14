@@ -41,7 +41,7 @@ export const versatileTableComponentContent: ContentGeneratorContent = {
         <ul>
           <li>
             Boasts knowledge of SOLID principles, observable in the interface segregation of the table
-            component
+            component's defined props
           </li>
           <li>
             Advanced algorithmic skills are evident in code, such as in the usage of a quicksort in-place
