@@ -8,10 +8,9 @@ import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
 import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
 import BigTableExample from "./items/table/example/example";
-import {
-  ContentGenerator,
-  versatileTableComponentDescriptionContent,
-} from "../components/content_generator/content_generator";
+import { ContentGenerator } from "../components/content_generator/content_generator";
+import { versatileTableComponentDescriptionContent as versatileTableComponentContent } from "../components/content_generator/content/versatile_table";
+import { notatorSimulationProjectContent } from "../components/content_generator/content/notator_simulation";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
@@ -42,7 +41,7 @@ export type Showcase = {
   description?: string | JSX.Element;
   descriptionPlainText?: string;
   dateCreated?: Dayjs;
-  useCustomDetails?: boolean;
+  useIntroductoryModal?: boolean;
 };
 
 export const SHOWCASES: Showcase[] = [
@@ -64,8 +63,9 @@ export const SHOWCASES: Showcase[] = [
     id: ShowcaseIDs.TypeSafeTableComponent,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
     component: <BigTableExample />,
-    description: <ContentGenerator content={versatileTableComponentDescriptionContent} />,
+    description: <ContentGenerator content={versatileTableComponentContent} />,
     dateCreated: dayjs(new Date(2023, 11, 28)),
+    useIntroductoryModal: true,
   },
 
   {
@@ -130,6 +130,7 @@ export const SHOWCASES: Showcase[] = [
     component: <NotatorSimulationContextWrapper />,
     id: ShowcaseIDs.NotatorSimulation,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",
-    useCustomDetails: true,
+    description: <ContentGenerator content={notatorSimulationProjectContent} />,
+    useIntroductoryModal: true,
   },
 ];

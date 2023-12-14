@@ -20,7 +20,7 @@ const customDetailsModalSlice = createSlice({
 });
 
 export const { setCustomDetailsModelOpen } = customDetailsModalSlice.actions;
-export const selectCustomDetailsOpen = (state: RootState) =>
+export const selectIntroductoryModalOpen = (state: RootState) =>
   state.detailsModalReducer.open;
 
 export default customDetailsModalSlice.reducer;

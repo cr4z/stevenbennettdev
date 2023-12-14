@@ -47,9 +47,9 @@ export function NotatorSimulationModal(props: NotatorSimulationModalProps) {
         alignItems: "center",
         justifyContent: "center",
         zIndex: 100,
-        visibility: props.open ? "visible" : "hidden", // Use visibility to actually hide the element
+        visibility: props.open ? "visible" : "hidden",
         bgcolor: props.open ? "#0004" : "#0000",
-        transition: "background-color .25s ease", // Add transition to opacity and visibility
+        transition: "background-color .25s ease",
       }}
       onTransitionEnd={(e) => {
         if (e.propertyName === "background-color") {

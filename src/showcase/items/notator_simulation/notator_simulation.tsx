@@ -7,10 +7,9 @@ import { HeaderWidget } from "./widgets/header";
 import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
 import { NotatorSimulationModal } from "./modals/modal";
 import { RightWidget } from "./widgets/right";
-import IntroductionModal from "./modals/introduction";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
-  selectCustomDetailsOpen as selectCustomDetailsOpen,
+  selectIntroductoryModalOpen as selectIntroductoryModalOpen,
   setCustomDetailsModelOpen,
 } from "../../../redux/slices/custom_details_modal";
 import { useEffect } from "react";
@@ -29,7 +28,7 @@ function NotatorSimulation() {
   const { palette } = useTheme();
   const { draftReport } = useNotatorTools();
 
-  const customDetailsOpen = useAppSelector(selectCustomDetailsOpen);
+  const customDetailsOpen = useAppSelector(selectIntroductoryModalOpen);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -54,10 +53,6 @@ function NotatorSimulation() {
           }}
         >
           <MobileModal />
-          <IntroductionModal
-            open={customDetailsOpen}
-            onClose={() => dispatch(setCustomDetailsModelOpen(false))}
-          />
 
           <HeaderWidget />
           <Box

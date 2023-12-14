@@ -1,22 +1,19 @@
-/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
-import Navbar from "../navbar";
-import { SHOWCASES } from "../../showcase/items";
+import { Box, ButtonBase, useTheme } from "@mui/material";
+import Navbar from "../../navbar";
+import { SHOWCASES } from "../../../showcase/items";
 import { useLocation, useNavigate } from "react-router";
-import {
-  SearchControls,
-  SearchResultsView,
-} from "../../components/search_controls";
-import Button from "../../design_system/button";
-import { ICONS, IconRenderer } from "../../design_system/icons";
+import { SearchControls, SearchResultsView } from "../../../components/search_controls";
+import Button from "../../../design_system/button";
+import { ICONS, IconRenderer } from "../../../design_system/icons";
 import { useEffect, useState } from "react";
-import { useBreakpointHelper } from "../../design_system/hooks/useBreakpointHelper";
-import { BackButton } from "../../components/button_back";
-import { ModalDialog } from "../../components/modal_dialog";
-import { ViewCodeOnGithubButton } from "../../components/github_button";
-import { useAppDispatch } from "../../redux/hooks";
-import { setCustomDetailsModelOpen } from "../../redux/slices/custom_details_modal";
+import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
+import { BackButton } from "../../../components/button_back";
+import { ViewCodeOnGithubButton } from "../../../components/github_button";
+import { useAppDispatch } from "../../../redux/hooks";
+import { setCustomDetailsModelOpen } from "../../../redux/slices/custom_details_modal";
+import { BasicShowcaseDetailsModal } from "./modals/basic";
+import { ShowcaseViewingProjectTitle } from "./components/viewing_projects";
+import { IntroductoryModal } from "./modals/introductory";
 
 function ShowcaseLayout() {
   const { palette } = useTheme();
@@ -24,9 +21,7 @@ function ShowcaseLayout() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const showcase = SHOWCASES.find(
-    (i) => i.id === location.pathname.split("/")[2]
-  );
+  const showcase = SHOWCASES.find((i) => i.id === location.pathname.split("/")[2]);
   const isSidebarExpanded = isMobile ? "100vw" : "25rem";
 
   // states
@@ -41,63 +36,23 @@ function ShowcaseLayout() {
 
   const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    if (showcase?.useIntroductoryModal) {
+      dispatch(setCustomDetailsModelOpen(true));
+    }
+  }, [showcase]);
+
   return (
     Boolean(showcase) && (
       <>
         {/* Modals */}
-        <ModalDialog
-          onClose={() => setProjectDetailsOpen(false)}
-          open={projectDetailsOpen}
-        >
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-around",
-                mb: "1rem",
-              }}
-            >
-              <ViewingProject title={showcase?.title!} />
-            </Box>
-            {showcase?.description && (
-              <>
-                <Typography display="inline" variant="body1">
-                  {showcase?.description}
-                </Typography>
-              </>
-            )}
-            {showcase?.dateCreated && (
-              <>
-                <Typography display="inline" variant="body2">
-                  Date Created:{" "}
-                </Typography>
-                <Typography display="inline" variant="body1">
-                  {showcase?.dateCreated?.format("MMMM D, YYYY")}
-                </Typography>
-              </>
-            )}
-            <Typography variant="body2">Tagged:</Typography>
-            <Box sx={{ display: "flex", gap: ".4rem", flexWrap: "wrap" }}>
-              {showcase?.tags.map((tag, i) => (
-                <Typography
-                  key={i}
-                  display="inline"
-                  sx={{
-                    padding: ".3rem .5rem",
-                    bgcolor: palette.grey[500],
-                    borderRadius: "6px",
-                  }}
-                >
-                  {tag}
-                </Typography>
-              ))}
-            </Box>
-
-            <Box mt="1rem" sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <ViewCodeOnGithubButton href={showcase?.github!} />
-            </Box>
-          </Box>
-        </ModalDialog>
+        {!showcase?.useIntroductoryModal && (
+          <BasicShowcaseDetailsModal
+            open={projectDetailsOpen}
+            onClose={() => setProjectDetailsOpen(false)}
+            showcase={showcase}
+          />
+        )}
 
         {/* DOM Hierarchy */}
         <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
@@ -126,14 +81,12 @@ function ShowcaseLayout() {
                   padding: "1rem",
                 }}
               >
-                <ViewingProject title={showcase?.title!} />
+                <ShowcaseViewingProjectTitle title={showcase?.title!} />
 
-                <Box
-                  sx={{ display: "flex", gap: "1rem", alignItems: "center" }}
-                >
+                <Box sx={{ display: "flex", gap: "1rem", alignItems: "center" }}>
                   <Button
                     onClick={() => {
-                      if (showcase?.useCustomDetails) {
+                      if (showcase?.useIntroductoryModal) {
                         dispatch(setCustomDetailsModelOpen(true));
                       } else {
                         setProjectDetailsOpen(true);
@@ -146,11 +99,7 @@ function ShowcaseLayout() {
                     }}
                     larger
                   >
-                    <IconRenderer
-                      color={palette.text.primary}
-                      widthHeight="2rem"
-                      i={<ICONS.Info />}
-                    />
+                    <IconRenderer color={palette.text.primary} widthHeight="2rem" i={<ICONS.Info />} />
                     View Project Details
                   </Button>
                   <ViewCodeOnGithubButton href={showcase?.github!} />
@@ -170,11 +119,7 @@ function ShowcaseLayout() {
                 borderRight: `1px solid ${palette.grey[800]}`,
 
                 transition: "all .4s ease",
-                marginLeft: sidebarOpen
-                  ? 0
-                  : isMobile
-                  ? "calc(-100vw + 3.1rem)"
-                  : "-21.9rem",
+                marginLeft: sidebarOpen ? 0 : isMobile ? "calc(-100vw + 3.1rem)" : "-21.9rem",
                 paddingRight: sidebarOpen ? 0 : "3rem",
               }}
             >
@@ -244,34 +189,16 @@ function ShowcaseLayout() {
                 height: "100%",
                 overflowY: "auto",
                 width: "100%",
+                position: "relative",
               }}
             >
+              {showcase?.useIntroductoryModal && <IntroductoryModal showcase={showcase} />}
               {showcase?.component}
             </Box>
           </Box>
         </Box>
       </>
     )
-  );
-}
-
-function ViewingProject(props: { title: string }) {
-  const { palette } = useTheme();
-
-  return (
-    <Box>
-      <Typography
-        className="noselect"
-        display="inline"
-        variant="h5"
-        sx={{ color: palette.grey[400] }}
-      >
-        Viewing Project:{" "}
-      </Typography>
-      <Typography display="inline" variant="h5">
-        {props.title}
-      </Typography>
-    </Box>
   );
 }
 

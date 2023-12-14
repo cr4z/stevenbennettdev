@@ -7,7 +7,7 @@ import { DUMMY_ROWS, ExampleRow, FetchedTableResponse, useFetchTable } from "./g
 import useXNGBigTableSelectableRowStateManager from "../hooks/use_selectable_row_state_manager";
 import { showcaseWhiteTheme } from "../../../../design_system/themes/showcase_white_theme";
 import { SnackbarProvider, useSnackbar } from "notistack";
-import SnackbarCloseButton from "../../../../sbd_development_kit/components/snackbar_close_btn";
+import SnackbarCloseButton from "../../../../components/snackbar_close_btn";
 
 export default function BigTableExampleWrapper() {
   return (
