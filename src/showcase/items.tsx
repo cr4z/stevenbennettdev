@@ -8,7 +8,7 @@ import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
 import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
 import BigTableExample from "./items/table/example/example";
-import { versatileTableComponentContent as advancedTableComponentContent } from "../components/content_generator/content/versatile_table";
+import { advancedTableComponentContent } from "../components/content_generator/content/versatile_table";
 import { notatorSimulationProjectContent } from "../components/content_generator/content/notator_simulation";
 import { ContentGeneratorContent } from "../components/content_generator/types/types";
 import QuickSortInPlaceExample from "./items/quick_sort_in_place";
@@ -39,6 +39,7 @@ export enum ShowcaseIDs {
 type Tag =
   // Frameworks and Libraries
   | "React"
+  | "TypeScript"
   | "Next.js"
   | "vite"
   | "react-router"
@@ -109,7 +110,15 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Advanced Table Custom Component",
     icon: <ICONS.React />,
-    tags: ["React", "SOLID Principles", "Custom Hooks", "Engaging User Experience", "notistack"],
+    tags: [
+      "React",
+      "TypeScript",
+      "SOLID Principles",
+      "Custom Hooks",
+      "Engaging User Experience",
+      "notistack",
+      "Advanced Custom Algorithm",
+    ],
     id: ShowcaseIDs.TypeSafeTableComponent,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
     component: <BigTableExample />,
@@ -120,7 +129,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Algorithm: Quick Sort in Place",
     icon: <ICONS.Typescript />,
-    tags: ["Advanced Custom Algorithm"],
+    tags: ["TypeScript", "Advanced Custom Algorithm"],
     component: <QuickSortInPlaceExample />,
     id: ShowcaseIDs.QuickSortInPlace,
     github:
@@ -129,7 +138,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Algorithm: Rapid Alphabetic Sort",
     icon: <ICONS.Typescript />,
-    tags: ["Advanced Custom Algorithm", "XML Self-Documentation"],
+    tags: ["TypeScript", "Advanced Custom Algorithm", "XML Self-Documentation"],
     component: <RapidAlphabeticSortExample />,
     id: ShowcaseIDs.RapidAlphabeticSort,
     github:
@@ -138,7 +147,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Sequential Fade-In Effect Across Multiple Divs",
     icon: <ICONS.React />,
-    tags: ["React", "Engaging User Experience"],
+    tags: ["React", "TypeScript", "Engaging User Experience"],
     id: ShowcaseIDs.SequentialFadeIn,
     github: "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
     component: <Showcase_SequentialFadeIn />,
@@ -147,7 +156,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "dougzonepodcast.com",
     icon: <ICONS.React />,
-    tags: ["React", "Engaging User Experience", "vite", "react-router", "Live Website"],
+    tags: ["React", "TypeScript", "Engaging User Experience", "vite", "react-router", "Live Website"],
     id: ShowcaseIDs.DougZonePodcast,
     github: "https://github.com/cr4z/dzp-vite",
     component: <DougZonePodcast />,
@@ -156,7 +165,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "React Basics: Applying Visual Filters",
     icon: <ICONS.React />,
-    tags: ["React"],
+    tags: ["React", "TypeScript"],
     id: ShowcaseIDs.FilteringAlgorithm,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
     useIntroductoryModal: true,
@@ -195,6 +204,7 @@ export const SHOWCASES: Showcase[] = [
     icon: <ICONS.React />,
     tags: [
       "React",
+      "TypeScript",
       "Engaging User Experience",
       "Responsive Design",
       "Redux",
@@ -211,6 +221,7 @@ export const SHOWCASES: Showcase[] = [
     icon: <ICONS.React />,
     tags: [
       "React",
+      "TypeScript",
       "Live API",
       "Firebase",
       "React",
@@ -227,7 +238,15 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Complex Form in React Demonstration",
     icon: <ICONS.React />,
-    tags: ["React", "Redux", "Material UI", "Engaging User Experience", "Simulated API", "Figjam Diagram"],
+    tags: [
+      "React",
+      "TypeScript",
+      "Redux",
+      "Material UI",
+      "Engaging User Experience",
+      "Simulated API",
+      "Figjam Diagram",
+    ],
     component: <NotatorSimulationContextWrapper />,
     id: ShowcaseIDs.NotatorSimulation,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",

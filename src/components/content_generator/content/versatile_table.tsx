@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { ContentGeneratorContent } from "../types/types";
 
-export const versatileTableComponentContent: ContentGeneratorContent = {
+export const advancedTableComponentContent: ContentGeneratorContent = {
   introOverview: (
     <Typography variant="body1">
       This is a table component that I had made over the course of one week. It uses advanced React
