@@ -74,7 +74,7 @@ export const SHOWCASES: Showcase[] = [
   },
   {
     title: "Algorithm: Quick Sort in Place",
-    icon: <ICONS.React />,
+    icon: <ICONS.Typescript />,
     tags: ["Advanced Algorithm"],
     component: <QuickSortInPlaceExample />,
     id: ShowcaseIDs.QuickSortInPlace,
@@ -83,7 +83,7 @@ export const SHOWCASES: Showcase[] = [
   },
   {
     title: "Algorithm: Rapid Alphabetic Sort",
-    icon: <ICONS.React />,
+    icon: <ICONS.Typescript />,
     tags: ["Advanced Algorithm", "XML Self-Documentation"],
     component: <RapidAlphabeticSortExample />,
     id: ShowcaseIDs.RapidAlphabeticSort,

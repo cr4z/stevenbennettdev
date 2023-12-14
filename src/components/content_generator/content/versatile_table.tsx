@@ -43,7 +43,11 @@ export const versatileTableComponentContent: ContentGeneratorContent = {
             Boasts knowledge of SOLID principles, observable in the interface segregation of the table
             component
           </li>
-          <li>Boasts advanced algorithmic skills through clever custom sorting logic</li>
+          <li>
+            Advanced algorithmic skills are evident in code, such as in the usage of a quicksort in-place
+            algorithm in its sorting logic. View the code for that{" "}
+            <a href="/portfolio/9aed35c7101b">here!</a>
+          </li>
         </ul>
       ),
     },

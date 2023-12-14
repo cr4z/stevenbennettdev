@@ -4,15 +4,15 @@ import { SBDCodeBlock } from "../../sbd_development_kit/components/code_block";
 export function RapidAlphabeticSortExample() {
   return (
     <Box sx={{ p: "1.5rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Typography variant="h5">TypeScript QuickSort In-Place Algorithm Example</Typography>
+      <Typography variant="h5">Rapid Alphabetic Sort Custom Algorithm</Typography>
       <Typography variant="body1">
-        Seen below is my custom implementation of the common quicksort in-place algorithm. This code is
-        responsible for the sorting functionality seen in my advanced{" "}
-        <a href="/portfolio/n192kb3i9372">table project</a>!
+        Seen below is a fully self-documenting algorithm that reuses my quicksort in-place algorithm in
+        order to sort any array of any type by any key. This code is primarily responsible for the sorting
+        functionality seen in my advanced <a href="/portfolio/n192kb3i9372">table project</a>!
       </Typography>
       <SBDCodeBlock
         code={`
-        import { quickSortInPlace } from "./quick_sort_in_place";
+import { quickSortInPlace } from "./quick_sort_in_place";
 
 /**
  * Sorts an array of items alphabetically based on a specified key.
