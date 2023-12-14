@@ -11,10 +11,10 @@ function QuickSortInPlaceExample() {
         gap: "1rem",
         overflowY: "auto",
         flexGrow: 1,
-        maxHeight: "100%"
+        maxHeight: "100%",
       }}
     >
-      <Typography variant="h5">TypeScript QuickSort In-Place Algorithm Example</Typography>
+      <Typography variant="h5">QuickSort In-Place Custom Algorithm</Typography>
       <Typography variant="body1">
         Seen below is my custom implementation of the common quicksort in-place algorithm. This code is
         responsible for the sorting functionality seen in my advanced{" "}
