@@ -1,9 +1,18 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { ContentGeneratorContent } from "../types/types";
 
 export const versatileTableComponentContent: ContentGeneratorContent = {
-  introOverview:
-    "This is a table component that I had made over the course of one week. It uses advanced React patterning and affords the developer the ability to render static or dynamic data with a plethora of different overloadable functionalities such as pagination, sorting, and selectable rows.",
+  introOverview: (
+    <Typography variant="body1">
+      This is a table component that I had made over the course of one week. It uses advanced React
+      patterning and affords the developer the ability to render static or dynamic data with a plethora of
+      different overloadable functionalities such as pagination, sorting, and selectable rows.
+      <Box sx={{ height: "1rem" }} />
+      In this demonstration, I've attached listeners to the table callbacks for re-fetching data and
+      client-side sorting to the snackbar component provided by the npm library <code>notistack</code> in
+      order to visualize its optimized behaviour in real-time!
+    </Typography>
+  ),
   techUsed: [
     {
       name: "MUI",
