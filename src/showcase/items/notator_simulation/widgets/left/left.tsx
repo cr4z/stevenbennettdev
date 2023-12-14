@@ -8,7 +8,7 @@ import FadeIn from "../../components/fade_in";
 import toggleFromArray from "../../utils/toggle_from_array";
 import ConfirmModal from "../../modals/templates/confirm";
 import { CreateTruckerModal } from "../../modals/views/add_trucker";
-import { ShadowScrollProvider } from "../../components/shadow_scroll";
+import { SBDShadowScrollProvider } from "../../../../../sbd_development_kit/components/shadow_scroll";
 
 export const NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE = "#FFFD";
 
@@ -188,13 +188,13 @@ function ScrollbarLayout(props: {
 }) {
   return (
     <Box sx={{ pb: ".5rem" }}>
-      <ShadowScrollProvider
+      <SBDShadowScrollProvider
         maxHeight="calc(100vh - 30.9rem)"
         gap=".5rem"
         dependencies={[props.dependencies.truckerJournals.length]}
       >
         {props.children}
-      </ShadowScrollProvider>
+      </SBDShadowScrollProvider>
     </Box>
   );
 }

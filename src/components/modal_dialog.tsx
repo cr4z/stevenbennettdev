@@ -1,5 +1,5 @@
 import { Box, Dialog, Typography } from "@mui/material";
-import { BackButton } from "./button_back";
+import { SBDBack } from "../sbd_development_kit/components/button_back";
 
 export function ModalDialog(props: {
   onClose: () => void;
@@ -9,7 +9,7 @@ export function ModalDialog(props: {
 }) {
   return (
     <Dialog fullWidth onClose={props.onClose} open={props.open}>
-      <BackButton onClick={props.onClose} />
+      <SBDBack onClick={props.onClose} />
       {props.title && (
         <Box sx={{ display: "flex", justifyContent: "space-around" }}>
           <Typography variant="h5">{props.title}</Typography>

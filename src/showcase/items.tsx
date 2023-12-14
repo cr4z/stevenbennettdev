@@ -11,6 +11,7 @@ import BigTableExample from "./items/table/example/example";
 import { ContentGenerator } from "../components/content_generator/content_generator";
 import { versatileTableComponentDescriptionContent as versatileTableComponentContent } from "../components/content_generator/content/versatile_table";
 import { notatorSimulationProjectContent } from "../components/content_generator/content/notator_simulation";
+import { ContentGeneratorContent } from "../components/content_generator/types/types";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
@@ -38,6 +39,7 @@ export type Showcase = {
   component: React.ReactNode;
   id: string;
   github: string;
+  contentGeneratorContent?: ContentGeneratorContent;
   description?: string | JSX.Element;
   descriptionPlainText?: string;
   dateCreated?: Dayjs;
@@ -63,7 +65,7 @@ export const SHOWCASES: Showcase[] = [
     id: ShowcaseIDs.TypeSafeTableComponent,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
     component: <BigTableExample />,
-    description: <ContentGenerator content={versatileTableComponentContent} />,
+    contentGeneratorContent: versatileTableComponentContent,
     dateCreated: dayjs(new Date(2023, 11, 28)),
     useIntroductoryModal: true,
   },
@@ -130,7 +132,7 @@ export const SHOWCASES: Showcase[] = [
     component: <NotatorSimulationContextWrapper />,
     id: ShowcaseIDs.NotatorSimulation,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",
-    description: <ContentGenerator content={notatorSimulationProjectContent} />,
+    contentGeneratorContent: notatorSimulationProjectContent,
     useIntroductoryModal: true,
   },
 ];

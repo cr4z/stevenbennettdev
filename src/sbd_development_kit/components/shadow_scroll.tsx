@@ -8,10 +8,11 @@ type ShadowScrollProviderProps = {
   gap?: string;
   maxHeight: string;
   children: React.ReactNode;
+  sx: SxProps;
   dependencies?: any[];
 } & ShadowVariantProp;
 
-export function ShadowScrollProvider(props: ShadowScrollProviderProps) {
+export function SBDShadowScrollProvider(props: ShadowScrollProviderProps) {
   const dependencies = props.dependencies ?? [];
   const shadowVariant = props.variant ?? "basic";
 
@@ -35,6 +36,7 @@ export function ShadowScrollProvider(props: ShadowScrollProviderProps) {
           maxHeight: props.maxHeight,
           overflowY: "auto",
           ...shadowStyle,
+          ...props.sx,
         }}
       >
         {props.children}
@@ -63,9 +65,7 @@ function useScrollShadow(
 
       const topShadow = element.scrollTop > threshold;
 
-      const bottomShadow =
-        element.scrollTop + element.clientHeight <
-        element.scrollHeight - threshold;
+      const bottomShadow = element.scrollTop + element.clientHeight < element.scrollHeight - threshold;
 
       setShadow({ top: topShadow, bottom: bottomShadow });
     };
@@ -132,8 +132,6 @@ function useScrollShadow(
       };
       return res;
     default:
-      throw new Error(
-        "Fallthrough in switch! Has a new shadow variant been introduced?"
-      );
+      throw new Error("Fallthrough in switch! Has a new shadow variant been introduced?");
   }
 }
