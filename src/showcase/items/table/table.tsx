@@ -107,7 +107,15 @@ function XNGBigTable<T>(props: XNGBigTableProps<T>) {
 
 function Head<T>(props: XNGBigTableProps<T>) {
   return (
-    <TableHead sx={{ bgcolor: GREY_COLOR, position: "sticky", top: 0, zIndex: 99, whiteSpace: "nowrap" }}>
+    <TableHead
+      sx={{
+        bgcolor: GREY_COLOR,
+        position: "sticky",
+        top: 0,
+        zIndex: 99,
+        whiteSpace: "nowrap",
+      }}
+    >
       <TableRow>
         {props.useSelectableRows && (
           <SelectableColumnHeaderCell
@@ -129,7 +137,7 @@ function Head<T>(props: XNGBigTableProps<T>) {
 
 function Body<T>(props: XNGBigTableProps<T>) {
   return (
-    <TableBody>
+    <TableBody sx={{ height: "100%", table: { minHeight: "100%" } }}>
       {props.useSort?.sortedRows
         ? props.useSort.sortedRows.map((kr, i) => <Row key={i} {...props} row={kr.row} rowUID={kr.uid} />)
         : props.rows?.map((row, i) => <Row key={i} {...props} row={row} rowUID={i} />)}
