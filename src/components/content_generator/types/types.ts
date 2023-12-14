@@ -4,7 +4,7 @@ export type ContentGeneratorContent = {
   featuresAndFunctionality?: JSX.Element | string;
   problemsAndSolutions?: JSX.Element | string;
   resultsAndImpact?: JSX.Element | string;
-  skillsShown: SkillItem[];
+  skillsShown?: SkillItem[];
 };
 
 export type SkillItem = {
