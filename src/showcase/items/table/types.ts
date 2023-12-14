@@ -9,9 +9,6 @@ export type TableSortableProps<T> = {
   useSort?: TableSortState<T>;
 };
 
-export type TableStylingProps = {
-  styling?: XNGBigTableStyling;
-};
 export type TablePaginationProps = {
   usePagination?: PaginationState;
 };
@@ -55,9 +52,6 @@ export interface PaginationState {
 
 export type XNGBigTableColumn<T> = { key: keyof T; label: string };
 
-export type XNGBigTableStyling = {
-  heightRelativeToScreen?: number;
-};
 
 export type KeyedRow<T> = {
   uid: number;

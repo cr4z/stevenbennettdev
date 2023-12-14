@@ -11,6 +11,7 @@ function QuickSortInPlaceExample() {
         gap: "1rem",
         overflowY: "auto",
         flexGrow: 1,
+        maxHeight: "100%"
       }}
     >
       <Typography variant="h5">TypeScript QuickSort In-Place Algorithm Example</Typography>

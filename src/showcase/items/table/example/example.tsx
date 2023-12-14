@@ -48,7 +48,7 @@ function BigTableExample() {
   });
 
   return (
-    <Box sx={{ bgcolor: "#FFF", display: "flex", gap: "2rem", flexDirection: "column" }}>
+    <Box sx={{ bgcolor: "#FFF", display: "flex", gap: "2rem", flexDirection: "column", height: "100%" }}>
       <XNGBigTable<ExampleRow>
         columns={[
           { key: "campusName", label: "Campus Name" },
@@ -66,7 +66,6 @@ function BigTableExample() {
           console.log("Refetching data! Parameters: ", { trp });
           refetch(trp);
         }}
-        styling={{ heightRelativeToScreen: 14.6 }}
       />
     </Box>
   );

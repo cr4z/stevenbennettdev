@@ -5,7 +5,6 @@ import {
   TableRequestParameters,
   TableSelectableProps,
   TableSortableProps,
-  TableStylingProps,
   TableOverrideFunctionalityProps,
 } from "./types";
 import { SelectableColumnHeaderCell } from "./components/selectables";
@@ -19,8 +18,7 @@ export type XNGBigTableProps<T> = TableDataProps<T> &
   TableSelectableProps<T> &
   TableSortableProps<T> &
   TableOverrideFunctionalityProps<T> &
-  TablePaginationProps &
-  TableStylingProps;
+  TablePaginationProps;
 
 function XNGBigTable<T>(props: XNGBigTableProps<T>) {
   /**
@@ -78,13 +76,16 @@ function XNGBigTable<T>(props: XNGBigTableProps<T>) {
   }, [props.useSort?.sortBy, props.useSort?.originalRows]);
 
   return (
-    <Box>
+    <Box
+      sx={{
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Box
         sx={{
           overflowX: "auto",
-          ...(props.styling?.heightRelativeToScreen && {
-            height: `calc(100vh - ${props.styling.heightRelativeToScreen}rem)`,
-          }),
         }}
       >
         <Table
