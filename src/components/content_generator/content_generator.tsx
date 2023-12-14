@@ -36,7 +36,9 @@ export function ContentGenerator(props: { content: ContentGeneratorContent }) {
           <Box component="ul" sx={{ display: "flex", flexDirection: "column", gap: ".25rem" }}>
             {content.skillsShown.map((s) => (
               <li>
-                <Typography variant="h6">{s.skill}</Typography>
+                <Typography variant="h6" p={0}>
+                  {s.skill}
+                </Typography>
                 <Typography variant="body1">{s.desc}</Typography>
               </li>
             ))}
