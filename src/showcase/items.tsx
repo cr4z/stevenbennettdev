@@ -103,8 +103,18 @@ export const SHOWCASES: Showcase[] = [
     id: ShowcaseIDs.FloresHomeRepair,
     github: "https://github.com/cr4z/flores-home-repair",
     component: <FloresHomeRepair />,
-    description:
-      "This was my first freelance project I had ever done professionally, built with Next.js. I've sinced gotten a little bit better at image optimization, but to this day it remains one of my finest achievements in SEO optimization! When typing 'flores home repair' into Google, floreshomerepair.com should be at the very top. Even variations such as 'Flores House Renovation' should work.",
+    useIntroductoryModal: true,
+    contentGeneratorContent: {
+      introOverview: (
+        <Typography>
+          This was my first freelance project I had ever done professionally, built with Next.js. I've
+          sinced gotten a little bit better at image optimization, but to this day it remains one of my
+          finest achievements in SEO optimization! When typing 'flores home repair' into Google,
+          floreshomerepair.com should be at the very top. Even variations such as 'Flores House Renovation'
+          should work.
+        </Typography>
+      ),
+    },
     dateCreated: dayjs(new Date(2022, 3, 24)),
   },
   {
