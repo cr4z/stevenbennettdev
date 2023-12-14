@@ -15,7 +15,7 @@ export function BasicShowcaseDetailsModal(props: {
 
   return (
     <ShowcaseModalBase closeVariant="back" onClose={props.onClose} open={props.open}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem", width: "100%" }}>
         <Box
           sx={{
             display: "flex",
