@@ -10,7 +10,7 @@ export function ContentGenerator(props: { content: ContentGeneratorContent }) {
       <Typography variant="body1">{content.introOverview}</Typography>
       {content.techUsed && (
         <Box>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="h5" mb="1rem">
             {content.techUsed.length > 1 ? "Technologies Used" : "Technology Used"}
           </Typography>
           {content.techUsed?.map((product) => (
