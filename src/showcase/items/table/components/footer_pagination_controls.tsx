@@ -37,7 +37,7 @@ export default function FooterPaginationControls<T>(props: XNGBigTableProps<T>) 
 
       <Pagination
         page={pageIndex + 1} // 0-index to 1-index conversion
-        onChange={(e, pi) => onCurrentPageIndexChange(pi - 1)} // 1-index to 0-index conversion
+        onChange={(_e, pi) => onCurrentPageIndexChange(pi - 1)} // 1-index to 0-index conversion
         count={totalPages}
         shape="rounded"
       />

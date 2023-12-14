@@ -3,7 +3,7 @@ import { Showcase } from "../../../../showcase/items";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import {
   selectIntroductoryModalOpen,
-  setCustomDetailsModelOpen,
+  setIntroductoryModelOpen,
 } from "../../../../redux/slices/custom_details_modal";
 import { ShowcaseViewingProjectTitle } from "../components/viewing_projects";
 import { ShowcaseDateCreated } from "../components/date_created";
@@ -19,7 +19,7 @@ export function IntroductoryModal(props: { showcase: Showcase }) {
   const dispatch = useAppDispatch();
 
   function handleClose() {
-    dispatch(setCustomDetailsModelOpen(false));
+    dispatch(setIntroductoryModelOpen(false));
   }
 
   return (
