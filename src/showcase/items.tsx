@@ -7,7 +7,8 @@ import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
 import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
-import BigTableExample from "./items/table/big_table_example";
+import BigTableExample from "./items/table/example/example";
+
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
