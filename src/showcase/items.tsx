@@ -8,7 +8,10 @@ import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
 import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
 import BigTableExample from "./items/table/example/example";
-
+import {
+  ContentGenerator,
+  versatileTableComponentDescriptionContent,
+} from "../components/content_generator/content_generator";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
@@ -55,13 +58,13 @@ export const SHOWCASES: Showcase[] = [
     dateCreated: dayjs(new Date(2022, 3, 24)),
   },
   {
-    title: "Type-Safe Table Component",
+    title: "Versatile Table Custom Component",
     icon: <ICONS.React />,
     tags: ["React", "SOLID Principles", "Custom Hooks"],
     id: ShowcaseIDs.TypeSafeTableComponent,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
     component: <BigTableExample />,
-    description: "",
+    description: <ContentGenerator content={versatileTableComponentDescriptionContent} />,
     dateCreated: dayjs(new Date(2023, 11, 28)),
   },
 
