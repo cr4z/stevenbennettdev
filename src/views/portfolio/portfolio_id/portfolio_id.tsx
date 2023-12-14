@@ -183,6 +183,7 @@ function ShowcaseLayout() {
               overflowY: "auto",
               width: "100%",
               position: "relative",
+              overflow: "hidden"
             }}
           >
             {showcase?.useIntroductoryModal && <IntroductoryModal showcase={showcase} />}
@@ -193,6 +194,7 @@ function ShowcaseLayout() {
                 showcase={showcase}
               />
             )}
+
             {showcase?.component}
           </Box>
         </Box>
