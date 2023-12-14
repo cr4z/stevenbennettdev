@@ -4,7 +4,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import { NotatorTruckerJournal } from "../../data/types/report";
 import { useState } from "react";
 import LeftWidgetOptions from "./trucker_tabs";
-import FadeIn from "../../components/fade_in";
+import SBDFadeIn from "../../../../../sbd_development_kit/components/fade_in";
 import toggleFromArray from "../../utils/toggle_from_array";
 import ConfirmModal from "../../modals/templates/confirm";
 import { CreateTruckerModal } from "../../modals/views/add_trucker";
@@ -91,14 +91,14 @@ function DefaultView(props: { truckerJournals: NotatorTruckerJournal[] }) {
         dependencies={{ truckerJournals: props.truckerJournals }}
       >
         {props.truckerJournals.map((s, i) => (
-          <FadeIn key={i}>
+          <SBDFadeIn key={i}>
             <LeftWidgetOptions.TruckerTab
               key={i}
               text={s.fullName}
               onClick={() => truckerSelectorTools.setSelectedTruckerID(s.id)}
               highlighted={s.id === truckerSelectorTools.selectedTruckerID}
             />
-          </FadeIn>
+          </SBDFadeIn>
         ))}
       </ScrollbarLayout>
 
@@ -160,14 +160,14 @@ function RemoveView(props: {
         dependencies={{ truckerJournals: props.truckerJournals }}
       >
         {props.truckerJournals.map((s, i) => (
-          <FadeIn key={i}>
+          <SBDFadeIn key={i}>
             <LeftWidgetOptions.SelectableTruckerTab
               key={i}
               text={s.fullName}
               onToggle={() => handleToggleIndex(s.id)}
               value={selectedIDs.includes(s.id)}
             />
-          </FadeIn>
+          </SBDFadeIn>
         ))}
       </ScrollbarLayout>
 

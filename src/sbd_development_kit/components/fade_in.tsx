@@ -5,7 +5,7 @@ interface FadeInProps {
   children: any;
   useScale?: { from: number };
 }
-function FadeIn(props: FadeInProps) {
+function SBDFadeIn(props: FadeInProps) {
   function getDelay(): number {
     if (props.i) {
       return props.i / 20;
@@ -30,4 +30,4 @@ function FadeIn(props: FadeInProps) {
   );
 }
 
-export default FadeIn;
+export default SBDFadeIn;

@@ -3,7 +3,7 @@ import StatusDot from "../../../components/status_dot";
 import { useNotatorTools } from "../../../tools/use_notator_tools";
 import { NotatorNavbarTabName } from "../../../tools/modules/use_navbar";
 import React, { memo } from "react";
-import FadeIn from "../../../components/fade_in";
+import SBDFadeIn from "../../../../../../sbd_development_kit/components/fade_in";
 import { StatusTabView } from "../../../views/status";
 import { ScheduleTabView } from "../../../views/schedule";
 import { NotesTabView } from "../../../views/notes";
@@ -22,7 +22,7 @@ export default function MainContent() {
     <>
       {draftEvent && selectedSegmentID && (
         <Paper sx={{ flexGrow: 1, overflow: "hidden" }}>
-          <FadeIn key={selectedSegmentID} useScale={{ from: 0.98 }}>
+          <SBDFadeIn key={selectedSegmentID} useScale={{ from: 0.98 }}>
             <Box
               sx={{
                 padding: ".75rem",
@@ -74,7 +74,7 @@ export default function MainContent() {
                 </Button>
               </Box>
             </Box>
-          </FadeIn>
+          </SBDFadeIn>
         </Paper>
       )}
     </>
