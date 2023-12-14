@@ -40,7 +40,9 @@ export function UsedTechProduct(props: { product: ContentGeneratorTechProduct })
         >
           {getIcon()}
         </Box>
-        <Typography variant="h5">{product.name}</Typography>
+        <Typography p={0} variant="h6">
+          {product.name}
+        </Typography>
       </Box>
 
       <Box sx={{ display: "flex", gap: "1rem" }}>
