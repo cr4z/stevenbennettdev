@@ -42,24 +42,33 @@ function NotatorSimulation() {
             height: "100%",
             padding: "16px",
             position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            minWidth: "72rem",
+
+            maxWidth: "100%",
+            overflowX: "auto",
+            overflowY: "hidden",
           }}
         >
-          <MobileModal />
-
-          <HeaderWidget />
           <Box
             sx={{
-              height: "calc(100vh - 24rem)",
+              minWidth: "72rem",
               display: "flex",
+              flexDirection: "column",
               gap: "1rem",
             }}
           >
-            <LeftWidget />
-            <RightWidget />
+            <MobileModal />
+
+            <HeaderWidget />
+            <Box
+              sx={{
+                height: "calc(100vh - 24rem)",
+                display: "flex",
+                gap: "1rem",
+              }}
+            >
+              <LeftWidget />
+              <RightWidget />
+            </Box>
           </Box>
         </Box>
       )}

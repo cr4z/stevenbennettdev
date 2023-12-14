@@ -21,7 +21,7 @@ export function BasicShowcaseDetailsModal(props: {
             display: "flex",
             justifyContent: "space-around",
             mb: "1rem",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           <ShowcaseViewingProjectTitle title={showcase?.title!} />
