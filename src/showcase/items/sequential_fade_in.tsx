@@ -2,8 +2,8 @@ import { Box, Container, Typography, useTheme } from "@mui/material";
 import Input from "../../design_system/input";
 import { useEffect, useMemo, useState } from "react";
 import Button from "../../design_system/button";
-import FadeIn from "../../fortitude/components-dev/FadeIn";
 import { ModalDialog } from "../../components/modal_dialog";
+import SBDFadeIn from "../../sbd_development_kit/components/fade_in";
 
 function Showcase_SequentialFadeIn() {
   // -- States --
@@ -89,19 +89,24 @@ function Card(props: { i: number }) {
   const { palette } = useTheme();
 
   return (
-    <FadeIn i={props.i}>
-      <Box
-        sx={{
-          padding: "1rem",
-          boxShadow: "3",
-          bgcolor: palette.grey[600],
-          width: "12rem",
-          borderRadius: "6px",
-        }}
-      >
-        <Typography>Item</Typography>
-      </Box>
-    </FadeIn>
+    <Box
+      sx={{
+        width: "12rem",
+      }}
+    >
+      <SBDFadeIn i={props.i} useScale={{ from: 0.9 }}>
+        <Box
+          sx={{
+            padding: "1rem",
+            boxShadow: "3",
+            bgcolor: palette.grey[600],
+            borderRadius: "6px",
+          }}
+        >
+          <Typography>Item</Typography>
+        </Box>
+      </SBDFadeIn>
+    </Box>
   );
 }
 

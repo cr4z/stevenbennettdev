@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import { Campus, Grade, numberToGradeOrEmpty } from "./types_and_helpers";
 import Button from "../../../design_system/button";
 
-interface IStudent {
+interface Student {
   name: string;
   grade: Grade;
   campus: Campus;
   specialEducation: boolean;
 }
 
-const databaseStudents: IStudent[] = [
+const databaseStudents: Student[] = [
   {
     name: "Steven Bennett",
     grade: 9,
@@ -44,8 +44,8 @@ function FiltersDemo() {
   }
 
   // state: students
-  const [students, setStudents] = useState<IStudent[]>([]);
-  const [filteredStudents, setFilteredStudents] = useState<IStudent[]>([]);
+  const [students, setStudents] = useState<Student[]>([]);
+  const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
 
   // API SIM
   useEffect(() => {
@@ -55,17 +55,17 @@ function FiltersDemo() {
   // FILTER APPLIER (called on any filter change)
   useEffect(() => {
     // deep clone new instance of all students
-    let studs = [...students] as IStudent[];
+    let studs = [...students] as Student[];
 
     // apply filters
     if (grade !== "") {
-      studs = studs.filter((s: IStudent) => s.grade === grade);
+      studs = studs.filter((s: Student) => s.grade === grade);
     }
     if (campus !== null) {
-      studs = studs.filter((s: IStudent) => s.campus === campus);
+      studs = studs.filter((s: Student) => s.campus === campus);
     }
     if (spedStatus) {
-      studs = studs.filter((s: IStudent) => s.specialEducation);
+      studs = studs.filter((s: Student) => s.specialEducation);
     }
 
     setFilteredStudents(studs);
@@ -110,7 +110,7 @@ function FiltersDemo() {
         Results:
       </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-        {filteredStudents.map((s: IStudent, i) => (
+        {filteredStudents.map((s: Student, i) => (
           <StudentCard key={i} student={s} />
         ))}
       </Box>
@@ -118,7 +118,7 @@ function FiltersDemo() {
   );
 }
 
-function StudentCard(props: { student: IStudent }) {
+function StudentCard(props: { student: Student }) {
   const { student } = props;
   return (
     <Box sx={{ border: "1px solid black" }}>
