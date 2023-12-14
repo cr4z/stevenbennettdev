@@ -8,7 +8,6 @@ import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
 import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
 import BigTableExample from "./items/table/example/example";
-import { ContentGenerator } from "../components/content_generator/content_generator";
 import { versatileTableComponentDescriptionContent as versatileTableComponentContent } from "../components/content_generator/content/versatile_table";
 import { notatorSimulationProjectContent } from "../components/content_generator/content/notator_simulation";
 import { ContentGeneratorContent } from "../components/content_generator/types/types";

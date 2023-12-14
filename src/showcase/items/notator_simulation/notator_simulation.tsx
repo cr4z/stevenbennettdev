@@ -7,11 +7,8 @@ import { HeaderWidget } from "./widgets/header";
 import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
 import { NotatorSimulationModal } from "./modals/modal";
 import { RightWidget } from "./widgets/right";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import {
-  selectIntroductoryModalOpen as selectIntroductoryModalOpen,
-  setCustomDetailsModelOpen,
-} from "../../../redux/slices/custom_details_modal";
+import { useAppDispatch } from "../../../redux/hooks";
+import { setIntroductoryModelOpen } from "../../../redux/slices/custom_details_modal";
 import { useEffect } from "react";
 
 export default function NotatorSimulationContextWrapper() {
@@ -28,11 +25,10 @@ function NotatorSimulation() {
   const { palette } = useTheme();
   const { draftReport } = useNotatorTools();
 
-  const customDetailsOpen = useAppSelector(selectIntroductoryModalOpen);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setCustomDetailsModelOpen(true));
+    dispatch(setIntroductoryModelOpen(true));
   }, []);
 
   return (
@@ -76,21 +72,15 @@ function MobileModal() {
   const showMobileNotice = !bph.isGreaterThanEqualTo(800);
 
   return (
-    <NotatorSimulationModal
-      open={showMobileNotice}
-      onClose={() => {}}
-      minWidth="md"
-    >
+    <NotatorSimulationModal open={showMobileNotice} onClose={() => {}} minWidth="md">
       <Typography sx={{ color: "#000D" }}>
         <b>Notice</b>
       </Typography>
       <Typography sx={{ color: "#000D" }}>
-        Looks like you're trying to view this on mobile! Unfortunately this
-        screen wasn't built to for mobile users, which was an intentional choice
-        by the executive team who called for this screen's construction,
-        providing instead a different screen entirely for our mobile users. You
-        can still view it, but just understand the experience won't be as
-        optimal.
+        Looks like you're trying to view this on mobile! Unfortunately this screen wasn't built to for
+        mobile users, which was an intentional choice by the executive team who called for this screen's
+        construction, providing instead a different screen entirely for our mobile users. You can still view
+        it, but just understand the experience won't be as optimal.
       </Typography>
     </NotatorSimulationModal>
   );

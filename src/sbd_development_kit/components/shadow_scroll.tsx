@@ -8,7 +8,7 @@ type ShadowScrollProviderProps = {
   gap?: string;
   maxHeight: string;
   children: React.ReactNode;
-  sx: SxProps;
+  sx?: SxProps;
   dependencies?: any[];
 } & ShadowVariantProp;
 
