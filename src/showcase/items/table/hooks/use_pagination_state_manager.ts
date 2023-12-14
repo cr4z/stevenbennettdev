@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RESULTS_PER_PAGE_OPTIONS } from "../constants/results_per_page_options";
 import { PaginationState } from "../types";
 
@@ -13,6 +13,10 @@ export default function useXNGBigTablePaginationStateManager(props: {
   const totalPages = Math.ceil(totalCount / resultsPerPage);
 
   const isViewingAll = resultsPerPage > totalCount;
+
+  useEffect(() => {
+    setPageIndex(0);
+  }, [resultsPerPage]);
 
   const paginationState: PaginationState = {
     pageIndex,
