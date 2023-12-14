@@ -1,10 +1,24 @@
-import { quickSortInPlace } from "./quick_sort_in_place";
+import { Box, Typography } from "@mui/material";
+import { SBDCodeBlock } from "../../sbd_development_kit/components/code_block";
+
+export function RapidAlphabeticSortExample() {
+  return (
+    <Box sx={{ p: "1.5rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Typography variant="h5">TypeScript QuickSort In-Place Algorithm Example</Typography>
+      <Typography variant="body1">
+        Seen below is my custom implementation of the common quicksort in-place algorithm. This code is
+        responsible for the sorting functionality seen in my advanced{" "}
+        <a href="/portfolio/n192kb3i9372">table project</a>!
+      </Typography>
+      <SBDCodeBlock
+        code={`
+        import { quickSortInPlace } from "./quick_sort_in_place";
 
 /**
  * Sorts an array of items alphabetically based on a specified key.
- * If `keyStr` is provided, the function sorts the items based on the value of the nested property specified by `keyStr`.
- * If `keyStr` is not provided or is empty, the function sorts based on the items themselves.
- * The sorting can be performed in either ascending or descending order, based on the `order` parameter.
+ * If \`keyStr\` is provided, the function sorts the items based on the value of the nested property specified by \`keyStr\`.
+ * If \`keyStr\` is not provided or is empty, the function sorts based on the items themselves.
+ * The sorting can be performed in either ascending or descending order, based on the \`order\` parameter.
  *
  * @template T The type of elements in the items array.
  *
@@ -54,4 +68,8 @@ export function sortItemsAlphabetically<T>(
   quickSortInPlace(items, 0, items.length - 1, compareFn);
 
   return items;
+}`}
+      />
+    </Box>
+  );
 }

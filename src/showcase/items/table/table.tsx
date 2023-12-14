@@ -9,11 +9,11 @@ import {
   TableOverrideFunctionalityProps,
 } from "./types";
 import { SelectableColumnHeaderCell } from "./components/selectables";
-import { useEffect } from "react";
 import FooterPaginationControls from "./components/footer_pagination_controls";
 import { GREY_COLOR } from "./constants/grey_color";
 import HeaderCell from "./components/header_cell";
 import Row from "./components/row";
+import useEffectSkipMount from "../../../sbd_development_kit/hooks/use_effect_skip_mount";
 
 export type XNGBigTableProps<T> = TableDataProps<T> &
   TableSelectableProps<T> &
@@ -27,6 +27,7 @@ function XNGBigTable<T>(props: XNGBigTableProps<T>) {
    * Determines whether to leverage client-side or server-side sorting based on the current modules being used.
    */
   async function clientOrServerSort() {
+    console.log("CALLED!");
     if (!props.useSort) return;
 
     function getIsViewingAll() {
@@ -64,14 +65,15 @@ function XNGBigTable<T>(props: XNGBigTableProps<T>) {
 
   // Lifecycle Effects
 
-  useEffect(() => {
+  useEffectSkipMount(() => {
     if (props.onTableRequestParametersChange) {
       props.onTableRequestParametersChange(getTableParameters());
     }
   }, [props.usePagination?.pageIndex, props.usePagination?.resultsPerPage]);
 
-  useEffect(() => {
+  useEffectSkipMount(() => {
     if (!props.useSort) return;
+    if (props.useSort?.sortedRows.length === 0) return;
     clientOrServerSort();
   }, [props.useSort?.sortBy, props.useSort?.originalRows]);
 
