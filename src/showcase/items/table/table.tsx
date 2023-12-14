@@ -81,11 +81,13 @@ function XNGBigTable<T>(props: XNGBigTableProps<T>) {
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
+        height: "100%",
       }}
     >
       <Box
         sx={{
           overflowX: "auto",
+          height: "100%",
         }}
       >
         <Table
@@ -94,6 +96,7 @@ function XNGBigTable<T>(props: XNGBigTableProps<T>) {
             ".MuiTableCell-root": {
               p: ".1rem",
             },
+            height: "100%",
           }}
         >
           <Head {...props} />
