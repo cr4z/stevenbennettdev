@@ -1,6 +1,7 @@
+import { Typography } from "@mui/material";
 import { ContentGeneratorContent } from "../types/types";
 
-export const versatileTableComponentDescriptionContent: ContentGeneratorContent = {
+export const versatileTableComponentContent: ContentGeneratorContent = {
   introOverview:
     "This is a table component that I had made over the course of one week. It uses advanced React patterning and affords the developer the ability to render static or dynamic data with a plethora of different overloadable functionalities such as pagination, sorting, and selectable rows.",
   techUsed: [
@@ -39,10 +40,26 @@ export const versatileTableComponentDescriptionContent: ContentGeneratorContent 
     },
   ],
   featuresAndFunctionality: (
-    <ul>
-      <li>pagination</li>
-      <li>sorting</li>
-      <li>selectable</li>
-    </ul>
+    <>
+      <Typography variant="body1">
+        This component provides a base table that can accept either static or dynamic data. It is also
+        capable of optionally accepting any combination of the overloads seen below!
+      </Typography>
+      <ul>
+        <li>Pagination</li>
+        <li>Rapid Alphabetical Sorting (using a custom algorithm!)</li>
+        <li>Selectable Rows</li>
+      </ul>
+    </>
   ),
+  skillsShown: [
+    {
+      skill: "TypeScript Prowess & Future-Proof Development",
+      desc: "Built a rapid sort function. As per my usual style, XML comments are plentiful.",
+    },
+    {
+      skill: "Component Composition",
+      desc: "The component composition boasts a maintanable and readable architecture.",
+    },
+  ],
 };
