@@ -44,7 +44,7 @@ function BigTableExample() {
   const { table, refetch } = useFetchTable();
   const ts = useTableState({
     table,
-    onClientSideSort: () => enqueueSnackbar("Leveraging client-side sorting!"),
+    onClientSideSort: () => enqueueSnackbar("Leveraging client-side QuickSort algorithm!"),
   });
 
   return (

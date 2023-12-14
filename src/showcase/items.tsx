@@ -8,9 +8,11 @@ import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
 import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
 import BigTableExample from "./items/table/example/example";
-import { versatileTableComponentContent } from "../components/content_generator/content/versatile_table";
+import { versatileTableComponentContent as advancedTableComponentContent } from "../components/content_generator/content/versatile_table";
 import { notatorSimulationProjectContent } from "../components/content_generator/content/notator_simulation";
 import { ContentGeneratorContent } from "../components/content_generator/types/types";
+import QuickSortInPlaceExample from "./items/quick_sort_in_place";
+import { RapidAlphabeticSortExample } from "./items/rapid_alphabetic_sort";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
@@ -29,6 +31,8 @@ export enum ShowcaseIDs {
   DougZonePodcast = "f702b757d5f7",
   NotatorSimulation = "6543263c3154",
   TypeSafeTableComponent = "n192kb3i9372",
+  QuickSortInPlace = "9aed35c7101b",
+  RapidAlphabeticSort = "debdcb6a850d",
 }
 
 export type Showcase = {
@@ -58,17 +62,34 @@ export const SHOWCASES: Showcase[] = [
     dateCreated: dayjs(new Date(2022, 3, 24)),
   },
   {
-    title: "Versatile Table Custom Component",
+    title: "Advanced Table Custom Component",
     icon: <ICONS.React />,
     tags: ["React", "SOLID Principles", "Custom Hooks"],
     id: ShowcaseIDs.TypeSafeTableComponent,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
     component: <BigTableExample />,
-    contentGeneratorContent: versatileTableComponentContent,
+    contentGeneratorContent: advancedTableComponentContent,
     dateCreated: dayjs(new Date(2023, 11, 28)),
     useIntroductoryModal: true,
   },
-
+  {
+    title: "Algorithm: Quick Sort in Place",
+    icon: <ICONS.React />,
+    tags: ["Advanced Algorithm"],
+    component: <QuickSortInPlaceExample />,
+    id: ShowcaseIDs.QuickSortInPlace,
+    github:
+      "https://github.com/cr4z/stevenbennettdev/tree/main/src/sbd_development_kit/utils/quick_sort_in_place",
+  },
+  {
+    title: "Algorithm: Rapid Alphabetic Sort",
+    icon: <ICONS.React />,
+    tags: ["Advanced Algorithm", "XML Self-Documentation"],
+    component: <RapidAlphabeticSortExample />,
+    id: ShowcaseIDs.RapidAlphabeticSort,
+    github:
+      "https://github.com/cr4z/stevenbennettdev/tree/main/src/sbd_development_kit/utils/sort_items_alphabetically",
+  },
   {
     title: "Sequential Fade-In Effect Across Multiple Divs",
     icon: <ICONS.React />,

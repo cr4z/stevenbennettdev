@@ -9,8 +9,8 @@ export const versatileTableComponentContent: ContentGeneratorContent = {
       different overloadable functionalities such as pagination, sorting, and selectable rows.
       <Box sx={{ height: "1rem" }} />
       In this demonstration, I've attached listeners to the table callbacks for re-fetching data and
-      client-side sorting to the snackbar component provided by the npm library <code>notistack</code> in
-      order to visualize its optimized behaviour in real-time!
+      client-side sorting to the snackbar component provided by the npm library <code>notistack</code> (one
+      of my personal favorites) in order to visualize its optimized behaviour in real-time!
     </Typography>
   ),
   techUsed: [

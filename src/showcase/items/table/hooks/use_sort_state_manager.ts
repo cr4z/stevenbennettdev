@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { KeyedRow, TableSortState, XNGBigTableSortSetting } from "../types";
 import { sortItemsAlphabetically } from "../../../../sbd_development_kit/utils/sort_items_alphabetically";
+import useEffectSkipMount from "../../../../sbd_development_kit/hooks/use_effect_skip_mount";
 
 export default function useXNGBigTableSortStateManager<T>(props: {
   keyedRows: KeyedRow<T>[];
@@ -14,7 +15,7 @@ export default function useXNGBigTableSortStateManager<T>(props: {
   const [sortedRows, setSortedRows] = useState<KeyedRow<T>[]>(keyedRows);
   const [originalRows, setOriginalRows] = useState<T[]>(props.originalRows);
 
-  useEffect(() => {
+  useEffectSkipMount(() => {
     setOriginalRows(props.originalRows);
     setSortedRows(keyedRows);
   }, [keyedRows]);
