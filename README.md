@@ -9,6 +9,7 @@ Welcome to the GitHub repository of my digital card, interactive portfolio, and 
 * **Blog**: A canvas for my thoughts, findings, and ongoing discoveries in tech.
 ## 🛠 Tech Stack
 * **Front-end**: React with TypeScript, MaterialUI
+* **Complex State Management**: Redux paired with Redux Toolkit
 * **Database & API**: Firebase Firestore
 * **Deployment**: Vercel
 * **Version Control**: Git & GitHub
