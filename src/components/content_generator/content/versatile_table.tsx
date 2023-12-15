@@ -1,18 +1,21 @@
-import { Box, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { ContentGeneratorContent } from "../types/types";
 
 export const advancedTableComponentContent: ContentGeneratorContent = {
   introOverview: (
-    <Typography variant="body1">
-      This is a table component that I had made over the course of one week. It uses advanced React
-      patterning and affords the developer the ability to render static or dynamic data with a plethora of
-      different overloadable functionalities such as pagination, sorting, and selectable rows.
-      <Box sx={{ height: "1rem" }} />
-      In this demonstration, I've attached listeners to the table callbacks for re-fetching data and
-      client-side sorting to the snackbar component provided by the npm library <code>notistack</code> (one
-      of my personal favorites) in order to clarify its behaviour, whether it determines to re-fetching data
-      or leverage client-side sorting for efficiency!
-    </Typography>
+    <Stack direction="column" gap=".5rem">
+      <Typography variant="body1">
+        This is a table component that I had made over the course of one week. It uses advanced React
+        patterning and affords the developer the ability to render static or dynamic data with a plethora of
+        different overloadable functionalities such as pagination, sorting, and selectable rows.
+      </Typography>
+      <Typography variant="body1">
+        In this demonstration, I've attached listeners to the table callbacks for re-fetching data and
+        client-side sorting to the snackbar component provided by the npm library <code>notistack</code>{" "}
+        (one of my personal favorites) in order to clarify its behaviour, whether it determines to
+        re-fetching data or leverage client-side sorting for efficiency!
+      </Typography>
+    </Stack>
   ),
   techUsed: [
     {

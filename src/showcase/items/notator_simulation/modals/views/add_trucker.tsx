@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { useNotatorTools } from "../../tools/use_notator_tools";
-import { NotatorSimulationModal } from "../modal";
+import { useFormTools } from "../../tools/use_form_tools";
+import { ComplexFormModal } from "../modal";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { NotatorTruckerJournal } from "../../data/types/report";
+import { TruckerJournal } from "../../data/types/report";
 import { getBlankTrucker } from "../../data/mocks/blank_trucker";
 
 type FormValues = {
@@ -19,7 +19,7 @@ export function CreateTruckerModal(props: {
     truckerSelectorTools: {
       setSelectedTruckerToLast: setSelectedTruckerToLast,
     },
-  } = useNotatorTools();
+  } = useFormTools();
   const {
     register,
     handleSubmit,
@@ -33,7 +33,7 @@ export function CreateTruckerModal(props: {
   });
 
   function onSubmit(data: FormValues) {
-    const newTrucker: NotatorTruckerJournal = getBlankTrucker({
+    const newTrucker: TruckerJournal = getBlankTrucker({
       name: data.truckerName,
     });
     const updatedTruckers = [...draftEvent!.truckerJournals, newTrucker];
@@ -47,7 +47,7 @@ export function CreateTruckerModal(props: {
   }
 
   return (
-    <NotatorSimulationModal
+    <ComplexFormModal
       open={props.open}
       onClose={props.onClose}
       sx={{ p: "1rem" }}
@@ -98,6 +98,6 @@ export function CreateTruckerModal(props: {
           </Button>
         </Box>
       </form>
-    </NotatorSimulationModal>
+    </ComplexFormModal>
   );
 }

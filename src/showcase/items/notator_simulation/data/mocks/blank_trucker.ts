@@ -1,13 +1,13 @@
 import dayjs from "dayjs";
 import {
-  NotatorTruckerJournal,
+  TruckerJournal,
   TruckerItemLedger,
   TruckerSchedule,
 } from "../types/report";
 
 export function getBlankTrucker(props: {
   name: string;
-}): NotatorTruckerJournal {
+}): TruckerJournal {
   return {
     id: crypto.randomUUID(),
     fullName: props.name,

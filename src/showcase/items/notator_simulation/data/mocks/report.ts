@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
-import { NotatorTruckerReport } from "../types/report";
+import { TruckerReport } from "../types/report";
 import { getBlankItemLedger, getRandomSchedule } from "./blank_trucker";
 
-export const MOCK_NOTATOR_REPORT: NotatorTruckerReport = {
+export const MOCK_NOTATOR_REPORT: TruckerReport = {
   title: "Example Report 1",
   description: "",
   reportingDuration: {

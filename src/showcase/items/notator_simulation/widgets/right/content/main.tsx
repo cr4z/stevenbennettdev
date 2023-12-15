@@ -1,6 +1,6 @@
 import { Box, Button, ButtonBase, Paper, Typography } from "@mui/material";
 import StatusDot from "../../../components/status_dot";
-import { useNotatorTools } from "../../../tools/use_notator_tools";
+import { useFormTools } from "../../../tools/use_form_tools";
 import { NotatorNavbarTabName } from "../../../tools/modules/use_navbar";
 import React, { memo } from "react";
 import SBDFadeIn from "../../../../../../sbd_development_kit/components/fade_in";
@@ -16,7 +16,7 @@ export default function MainContent() {
     draftReport: draftEvent,
     truckerSelectorTools: { selectedTruckerID: selectedSegmentID },
     viewportNavbarTools,
-  } = useNotatorTools();
+  } = useFormTools();
 
   return (
     <>
@@ -85,7 +85,7 @@ function NotatorSegmentNavigationBar() {
   const {
     viewportNavbarTools: { setSelectedTab, selectedTab },
     truckerTools: { draftTrucker },
-  } = useNotatorTools();
+  } = useFormTools();
 
   const tabTitles: NotatorNavbarTabName[] = [
     "Status",
@@ -170,7 +170,7 @@ function ShowIfSelected(props: {
   tab: NotatorNavbarTabName;
   component: React.ReactNode;
 }) {
-  const { viewportNavbarTools } = useNotatorTools();
+  const { viewportNavbarTools } = useFormTools();
 
   return (
     <Box

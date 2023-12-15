@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useNotatorTools } from "../tools/use_notator_tools";
+import { useFormTools } from "../tools/use_form_tools";
 import { EditableLabel } from "../components/editable_label/editable_label";
 
 export function EditableTitle() {
-  const { draftReport: draftEvent, editDraft } = useNotatorTools();
+  const { draftReport: draftEvent, editDraft } = useFormTools();
   const [stagedTitle, setStagedTitle] = useState<string>(draftEvent!.title);
 
   return (

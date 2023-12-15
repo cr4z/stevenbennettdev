@@ -3,12 +3,12 @@ import { EditableTitle } from "../editables/title";
 import { EditableTime } from "../editables/time";
 import { EditableDescription } from "../editables/description";
 import { EditableLocation } from "../editables/location";
-import { useNotatorTools } from "../tools/use_notator_tools";
+import { useFormTools } from "../tools/use_form_tools";
 import { useState } from "react";
 import ShowReportJSONModal from "../modals/views/show_report_json_modal";
 
 export function HeaderWidget() {
-  const { saveReport, draftReport } = useNotatorTools();
+  const { saveReport, draftReport } = useFormTools();
 
   function handleSave() {
     if (!draftReport) {

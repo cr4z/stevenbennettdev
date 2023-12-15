@@ -1,10 +1,10 @@
-import { useNotatorTools } from "../../../tools/use_notator_tools";
+import { useFormTools } from "../../../tools/use_form_tools";
 import { CargoItem } from "../types/cargo_item_type";
 
 export type ItemSizeMode = "small" | "medium" | "large";
 
 export function useDefaultNames(props: { mode: ItemSizeMode }): string[] {
-  const { warehouseProfile } = useNotatorTools();
+  const { warehouseProfile } = useFormTools();
   if (!warehouseProfile) return [];
 
   switch (props.mode) {
@@ -20,7 +20,7 @@ export function useDefaultNames(props: { mode: ItemSizeMode }): string[] {
 export function useProvidedList(props: { mode: ItemSizeMode }): CargoItem[] {
   const {
     truckerTools: { draftTrucker },
-  } = useNotatorTools();
+  } = useFormTools();
 
   if (!draftTrucker) return [];
 
@@ -37,7 +37,7 @@ export function useProvidedList(props: { mode: ItemSizeMode }): CargoItem[] {
 export function useDraftCustomItemsLedger(props: {
   mode: ItemSizeMode;
 }): string[] {
-  const { draftReport } = useNotatorTools();
+  const { draftReport } = useFormTools();
 
   switch (props.mode) {
     case "small":
@@ -50,7 +50,7 @@ export function useDraftCustomItemsLedger(props: {
 }
 
 export function useSavedCustomItemsLedger(props: { mode: ItemSizeMode }) {
-  const { report } = useNotatorTools();
+  const { report } = useFormTools();
 
   switch (props.mode) {
     case "small":

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { NotatorTruckerReport } from "../../data/types/report";
+import { TruckerReport } from "../../data/types/report";
 
 export interface TruckerSelectorTools {
   selectedTruckerID: string | null;
   setSelectedTruckerID: React.Dispatch<React.SetStateAction<string | null>>;
-  resetSelectedTruckerToFirst: (freshEvent: NotatorTruckerReport) => void;
-  setSelectedTruckerToLast: (freshEvent: NotatorTruckerReport) => void;
+  resetSelectedTruckerToFirst: (freshEvent: TruckerReport) => void;
+  setSelectedTruckerToLast: (freshEvent: TruckerReport) => void;
   selectedTruckerIndex: number;
 }
 
@@ -14,8 +14,8 @@ export interface TruckerSelectorTools {
  */
 export default function useSegmentSelectorTools(props: {
   dependencies: {
-    draftReport: NotatorTruckerReport | null;
-    report: NotatorTruckerReport | null;
+    draftReport: TruckerReport | null;
+    report: TruckerReport | null;
   };
 }): TruckerSelectorTools {
   const {
@@ -32,11 +32,11 @@ export default function useSegmentSelectorTools(props: {
     }
   }, [report]);
 
-  function resetSelectedTruckerToFirst(freshEvent: NotatorTruckerReport) {
+  function resetSelectedTruckerToFirst(freshEvent: TruckerReport) {
     setSelectedTruckerID(freshEvent.truckerJournals[0]?.id);
   }
 
-  function setSelectedTruckerToLast(freshEvent: NotatorTruckerReport) {
+  function setSelectedTruckerToLast(freshEvent: TruckerReport) {
     const lastIndex = freshEvent.truckerJournals.length - 1;
 
     setSelectedTruckerID(freshEvent.truckerJournals[lastIndex]?.id);

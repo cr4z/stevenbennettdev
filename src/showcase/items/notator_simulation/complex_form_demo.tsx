@@ -1,29 +1,29 @@
 import { Box, ThemeProvider, Typography, useTheme } from "@mui/material";
-import { useNotatorTools } from "./tools/use_notator_tools";
-import { NotatorToolsProvider } from "./tools/modules";
+import { useFormTools } from "./tools/use_form_tools";
+import { FormToolsProvider } from "./tools/modules";
 import { showcaseWhiteTheme } from "../../../design_system/themes/showcase_white_theme";
 import { LeftWidget } from "./widgets/left/left";
 import { HeaderWidget } from "./widgets/header";
 import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
-import { NotatorSimulationModal } from "./modals/modal";
+import { ComplexFormModal } from "./modals/modal";
 import { RightWidget } from "./widgets/right";
 import { useAppDispatch } from "../../../redux/hooks";
 import { setIntroductoryModelOpen } from "../../../redux/slices/custom_details_modal";
 import { useEffect } from "react";
 
-export default function NotatorSimulationContextWrapper() {
+export default function ComplexFormDemonstrationContextWrapper() {
   return (
     <ThemeProvider theme={showcaseWhiteTheme}>
-      <NotatorToolsProvider>
-        <NotatorSimulation />
-      </NotatorToolsProvider>
+      <FormToolsProvider>
+        <ComplexFormDemonstration />
+      </FormToolsProvider>
     </ThemeProvider>
   );
 }
 
-function NotatorSimulation() {
+function ComplexFormDemonstration() {
   const { palette } = useTheme();
-  const { draftReport } = useNotatorTools();
+  const { draftReport } = useFormTools();
 
   const dispatch = useAppDispatch();
 
@@ -35,7 +35,7 @@ function NotatorSimulation() {
     <>
       {draftReport && (
         <Box
-          className="notator-selection-colors"
+          className="complex-form-selection-colors"
           sx={{
             bgcolor: palette.background.default,
             width: "100%",
@@ -81,7 +81,7 @@ function MobileModal() {
   const showMobileNotice = !bph.isGreaterThanEqualTo(800);
 
   return (
-    <NotatorSimulationModal open={showMobileNotice} onClose={() => {}} minWidth="md">
+    <ComplexFormModal open={showMobileNotice} onClose={() => {}} minWidth="md">
       <Typography sx={{ color: "#000D" }}>
         <b>Notice</b>
       </Typography>
@@ -91,6 +91,6 @@ function MobileModal() {
         construction, providing instead a different screen entirely for our mobile users. You can still view
         it, but just understand the experience won't be as optimal.
       </Typography>
-    </NotatorSimulationModal>
+    </ComplexFormModal>
   );
 }

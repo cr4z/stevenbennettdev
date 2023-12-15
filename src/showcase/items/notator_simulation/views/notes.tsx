@@ -1,10 +1,10 @@
 import { Box, TextField } from "@mui/material";
-import { useNotatorTools } from "../tools/use_notator_tools";
+import { useFormTools } from "../tools/use_form_tools";
 
 export function NotesTabView() {
   const {
     truckerTools: { editTrucker, draftTrucker },
-  } = useNotatorTools();
+  } = useFormTools();
 
   return (
     <>

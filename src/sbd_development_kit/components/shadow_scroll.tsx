@@ -9,6 +9,8 @@ type ShadowScrollProviderProps = {
   maxHeight: string;
   children: React.ReactNode;
   sx?: SxProps;
+  // Requires its own key so that React does not persist existing UI for different usages of this component, causing odd visual behavior
+  key: string;
   dependencies?: any[];
 } & ShadowVariantProp;
 
@@ -19,13 +21,13 @@ export function SBDShadowScrollProvider(props: ShadowScrollProviderProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const shadowStyle = useScrollShadow({
     scrollRef,
-    colorHex: "#0008",
+    colorHex: "#0009",
     dependencies,
     variant: shadowVariant,
   });
 
   return (
-    <Box sx={{ position: "relative", overflow: "hidden" }}>
+    <Box key={props.key} sx={{ position: "relative", overflow: "hidden" }}>
       <Box
         ref={scrollRef}
         className="green-scrollbar"
@@ -88,7 +90,7 @@ function useScrollShadow(
           position: "absolute",
           left: 0,
           right: 0,
-          height: "22px",
+          height: "27px",
           zIndex: 2,
           pointerEvents: "none",
           backgroundRepeat: "no-repeat",

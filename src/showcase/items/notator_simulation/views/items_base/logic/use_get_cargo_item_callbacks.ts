@@ -1,4 +1,4 @@
-import { useNotatorTools } from "../../../tools/use_notator_tools";
+import { useFormTools } from "../../../tools/use_form_tools";
 import {
   ItemSizeMode,
   getProvidedListPath,
@@ -16,7 +16,7 @@ export function useGetCargoItemCallbacks(props: { mode: ItemSizeMode }) {
   ): CargoItemCallbackProps {
     const {
       truckerTools: { editTrucker },
-    } = useNotatorTools();
+    } = useFormTools();
     const providedList = useProvidedList({ mode });
 
     const onChange = (ci: CargoItem) => {

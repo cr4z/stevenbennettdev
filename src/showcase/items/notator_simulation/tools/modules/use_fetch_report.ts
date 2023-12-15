@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { API_REPORTS } from "../../data/api";
-import { NotatorTruckerReport } from "../../data/types/report";
+import { TruckerReport } from "../../data/types/report";
 
 export function useFetchReport(props: {
   dependencies: { refetchSwitch: boolean };
   onSetIsSaveSpinnerActive: (v: boolean) => void;
-}): NotatorTruckerReport | null {
-  const [report, setReport] = useState<NotatorTruckerReport | null>(null);
+}): TruckerReport | null {
+  const [report, setReport] = useState<TruckerReport | null>(null);
 
   useEffect(() => {
     async function fetchAndSetReport() {

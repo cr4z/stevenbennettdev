@@ -67,7 +67,7 @@ export function UsedTechProduct(props: { product: ContentGeneratorTechProduct })
             }}
           />
         </Box>
-        <Typography>{product.content}</Typography>
+        {product.content}
       </Box>
     </Box>
   );

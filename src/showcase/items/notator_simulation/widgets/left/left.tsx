@@ -1,7 +1,7 @@
 import { Box, IconButton, Paper, Tooltip, Typography } from "@mui/material";
-import { useNotatorTools } from "../../tools/use_notator_tools";
+import { useFormTools } from "../../tools/use_form_tools";
 import { BsFillTrash3Fill } from "react-icons/bs";
-import { NotatorTruckerJournal } from "../../data/types/report";
+import { TruckerJournal } from "../../data/types/report";
 import { useState } from "react";
 import LeftWidgetOptions from "./trucker_tabs";
 import SBDFadeIn from "../../../../../sbd_development_kit/components/fade_in";
@@ -13,7 +13,7 @@ import { SBDShadowScrollProvider } from "../../../../../sbd_development_kit/comp
 export const NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE = "#FFFD";
 
 export function LeftWidget() {
-  const { draftReport } = useNotatorTools();
+  const { draftReport } = useFormTools();
 
   const [isRemoveMode, setIsRemoveMode] = useState<boolean>(false);
 
@@ -22,8 +22,7 @@ export function LeftWidget() {
       sx={{
         flexBasis: "20rem",
         minWidth: "20rem",
-        background:
-          "linear-gradient(197deg, rgba(14, 14, 15, 0.75) -1.71%, #0E0E0F 102.94%)",
+        background: "linear-gradient(197deg, rgba(14, 14, 15, 0.75) -1.71%, #0E0E0F 102.94%)",
         padding: ".5rem",
         maxHeight: "100%",
       }}
@@ -75,21 +74,16 @@ export function LeftWidget() {
   );
 }
 
-function DefaultView(props: { truckerJournals: NotatorTruckerJournal[] }) {
-  const { truckerSelectorTools } = useNotatorTools();
+function DefaultView(props: { truckerJournals: TruckerJournal[] }) {
+  const { truckerSelectorTools } = useFormTools();
 
   const [createTruckerOpen, setCreateTruckerOpen] = useState<boolean>(false);
 
   return (
     <>
-      <CreateTruckerModal
-        open={createTruckerOpen}
-        onClose={() => setCreateTruckerOpen(false)}
-      />
+      <CreateTruckerModal open={createTruckerOpen} onClose={() => setCreateTruckerOpen(false)} />
 
-      <ScrollbarLayout
-        dependencies={{ truckerJournals: props.truckerJournals }}
-      >
+      <ScrollbarLayout dependencies={{ truckerJournals: props.truckerJournals }}>
         {props.truckerJournals.map((s, i) => (
           <SBDFadeIn key={i}>
             <LeftWidgetOptions.TruckerTab
@@ -104,23 +98,18 @@ function DefaultView(props: { truckerJournals: NotatorTruckerJournal[] }) {
 
       <Tooltip title="Add Trucker to Report">
         <div>
-          <LeftWidgetOptions.AddTruckerButton
-            onClick={() => setCreateTruckerOpen(true)}
-          />
+          <LeftWidgetOptions.AddTruckerButton onClick={() => setCreateTruckerOpen(true)} />
         </div>
       </Tooltip>
     </>
   );
 }
 
-function RemoveView(props: {
-  truckerJournals: NotatorTruckerJournal[];
-  onBack: () => void;
-}) {
+function RemoveView(props: { truckerJournals: TruckerJournal[]; onBack: () => void }) {
   const {
     editDraft,
     truckerSelectorTools: { resetSelectedTruckerToFirst },
-  } = useNotatorTools();
+  } = useFormTools();
 
   const [selectedIDs, setSelectedIDs] = useState<string[]>([]);
   const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
@@ -131,9 +120,7 @@ function RemoveView(props: {
   }
 
   function handleRemovingTruckers() {
-    const truckerJournalsWithoutSelected = props.truckerJournals.filter(
-      (s) => !selectedIDs.includes(s.id)
-    );
+    const truckerJournalsWithoutSelected = props.truckerJournals.filter((s) => !selectedIDs.includes(s.id));
 
     const freshEvent = editDraft({
       path: "truckerJournals",
@@ -156,9 +143,7 @@ function RemoveView(props: {
         }}
       />
 
-      <ScrollbarLayout
-        dependencies={{ truckerJournals: props.truckerJournals }}
-      >
+      <ScrollbarLayout dependencies={{ truckerJournals: props.truckerJournals }}>
         {props.truckerJournals.map((s, i) => (
           <SBDFadeIn key={i}>
             <LeftWidgetOptions.SelectableTruckerTab
@@ -184,11 +169,12 @@ function RemoveView(props: {
 
 function ScrollbarLayout(props: {
   children: React.ReactNode;
-  dependencies: { truckerJournals: NotatorTruckerJournal[] };
+  dependencies: { truckerJournals: TruckerJournal[] };
 }) {
   return (
     <Box sx={{ pb: ".5rem" }}>
       <SBDShadowScrollProvider
+        key={crypto.randomUUID()}
         maxHeight="calc(100vh - 30.9rem)"
         gap=".5rem"
         dependencies={[props.dependencies.truckerJournals.length]}

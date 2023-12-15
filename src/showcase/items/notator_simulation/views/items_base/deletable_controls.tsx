@@ -1,4 +1,4 @@
-import { useNotatorTools } from "../../tools/use_notator_tools";
+import { useFormTools } from "../../tools/use_form_tools";
 import {
   ItemSizeMode,
   getCustomItemsPath,
@@ -18,7 +18,7 @@ export default function DeletableControls(props: { mode: ItemSizeMode }) {
   const customNamesToRender = useCustomsWithDeletions({ mode });
   const getCargoItemCallbacks = useGetCargoItemCallbacks({ mode });
 
-  const { editDraft } = useNotatorTools();
+  const { editDraft } = useFormTools();
 
   const cargoItems = generateCargoItems({
     namesToGenerate: customNamesToRender,

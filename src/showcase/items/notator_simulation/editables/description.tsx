@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useNotatorTools } from "../tools/use_notator_tools";
+import { useFormTools } from "../tools/use_form_tools";
 import { EditableLabelMultiline } from "../components/editable_label/editable_multiline_label";
 import { EditDesriptionModal } from "../modals/views/edit_description";
 
 export function EditableDescription() {
-  const { draftReport: draftEvent } = useNotatorTools();
+  const { draftReport: draftEvent } = useFormTools();
   const [open, setOpen] = useState<boolean>(false);
 
   return (

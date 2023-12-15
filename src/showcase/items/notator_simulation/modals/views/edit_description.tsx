@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { useNotatorTools } from "../../tools/use_notator_tools";
-import { NotatorSimulationModal } from "../modal";
+import { useFormTools } from "../../tools/use_form_tools";
+import { ComplexFormModal } from "../modal";
 import { Box, Button, TextField, Typography } from "@mui/material";
 
 export function EditDesriptionModal(props: {
   open: boolean;
   onClose: () => void;
 }) {
-  const { editDraft, draftReport: draftEvent } = useNotatorTools();
+  const { editDraft, draftReport: draftEvent } = useFormTools();
   const [cachedDescription, setCachedDescription] = useState<string>("");
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export function EditDesriptionModal(props: {
   }, [props.open]);
 
   return (
-    <NotatorSimulationModal
+    <ComplexFormModal
       open={props.open}
       onClose={() => props.onClose()}
       sx={{ p: "1rem" }}
@@ -67,6 +67,6 @@ export function EditDesriptionModal(props: {
           </Button>
         </Box>
       </form>
-    </NotatorSimulationModal>
+    </ComplexFormModal>
   );
 }

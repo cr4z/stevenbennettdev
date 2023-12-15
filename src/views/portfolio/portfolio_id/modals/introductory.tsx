@@ -30,7 +30,11 @@ export function IntroductoryModal(props: { showcase: Showcase }) {
       </Box>
 
       <Box my="1rem" sx={{ width: "100%" }}>
-        <SBDShadowScrollProvider maxHeight="calc(100vh - 30rem)" sx={{ p: "1rem" }}>
+        <SBDShadowScrollProvider
+          key={crypto.randomUUID()}
+          maxHeight="calc(100vh - 30rem)"
+          sx={{ p: "1rem" }}
+        >
           {showcase?.contentGeneratorContent && (
             <ContentGenerator content={showcase?.contentGeneratorContent} />
           )}

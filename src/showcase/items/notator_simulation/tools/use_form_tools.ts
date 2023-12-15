@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ReportContext } from "./context";
 
-export function useNotatorTools() {
+export function useFormTools() {
   const context = useContext(ReportContext);
 
   if (!context) {

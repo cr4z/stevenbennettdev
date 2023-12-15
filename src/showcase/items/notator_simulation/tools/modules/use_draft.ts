@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { NotatorTruckerReport } from "../../data/types/report";
+import { TruckerReport } from "../../data/types/report";
 
 type UseDraftResponse = {
-  draftReport: NotatorTruckerReport | null;
+  draftReport: TruckerReport | null;
   editDraft: EditDraftFunctionType;
 };
 
 export function useDraftReport(props: {
-  dependencies: { report: NotatorTruckerReport | null };
+  dependencies: { report: TruckerReport | null };
 }): UseDraftResponse {
   const { report } = props.dependencies;
 
-  const [draftReport, setDraftReport] = useState<NotatorTruckerReport | null>(
+  const [draftReport, setDraftReport] = useState<TruckerReport | null>(
     null
   );
 
@@ -37,7 +37,7 @@ export function useDraftReport(props: {
    * @returns The updated session object, providing immediate access to the most
    * recent state andthus bypassing the asynchronous nature of state updates.
    */
-  function editDraft(props: EditDraftFunctionProps): NotatorTruckerReport {
+  function editDraft(props: EditDraftFunctionProps): TruckerReport {
     if (props.cb) {
       setDraftReportChangeCallback(props.cb);
     }
@@ -45,7 +45,7 @@ export function useDraftReport(props: {
     const pathArray = props.path.split(".");
     const deepCopy = JSON.parse(
       JSON.stringify(draftReport)
-    ) as NotatorTruckerReport;
+    ) as TruckerReport;
     let currentObject: any = deepCopy;
 
     for (let i = 0; i < pathArray.length - 1; i++) {
@@ -83,4 +83,4 @@ export type EditDraftFunctionProps = {
 };
 export type EditDraftFunctionType = (
   props: EditDraftFunctionProps
-) => NotatorTruckerReport;
+) => TruckerReport;
