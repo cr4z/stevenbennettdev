@@ -1,9 +1,9 @@
-import { XNGBigTableProps } from "../table";
+import { BigTableProps } from "../table";
 import { TableRow, TableCell } from "@mui/material";
 import { SelectableRowFirstCell } from "./selectables";
 import { useCallback, useMemo } from "react";
 
-export default function Row<T>(props: XNGBigTableProps<T> & { row: T; rowUID: number }) {
+export default function Row<T>(props: BigTableProps<T> & { row: T; rowUID: number }) {
   const { row, rowUID } = props;
   const rowToggled = useMemo(
     () => props.useSelectableRows?.rowSelections.find((sr) => sr.rowUID === rowUID)?.isSelected ?? false,

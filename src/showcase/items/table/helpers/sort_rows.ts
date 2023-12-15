@@ -1,4 +1,4 @@
-import { XNGBigTableSortSetting } from "../types";
+import { BigTableSortSetting } from "../types";
 
 // sortBy: {key: "firstName", order: "ascending"} = sort by first name ascending
 // sortBy: {key: "lastName", order: "descending"} = sort by last name descending
@@ -6,7 +6,7 @@ import { XNGBigTableSortSetting } from "../types";
 
 export default function sortRows<T>(props: {
   rows: T[];
-  sortBy: XNGBigTableSortSetting<T>;
+  sortBy: BigTableSortSetting<T>;
 }): T[] {
   const { rows, sortBy } = props;
 

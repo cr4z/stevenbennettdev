@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
-import { KeyedRow, TableSortState, XNGBigTableSortSetting } from "../types";
+import { KeyedRow, TableSortState, BigTableSortSetting } from "../types";
 import { sortItemsAlphabetically } from "../../../../sbd_development_kit/utils/sort_items_alphabetically";
 
-export default function useXNGBigTableSortStateManager<T>(props: {
+export default function useBigTableSortStateManager<T>(props: {
   keyedRows: KeyedRow<T>[];
   originalRows: T[];
   onClientSideSort?: () => void;
 }): TableSortState<T> {
   const { keyedRows } = props;
 
-  const [sortBy, setSortBy] = useState<XNGBigTableSortSetting<T>>(null);
+  const [sortBy, setSortBy] = useState<BigTableSortSetting<T>>(null);
 
   const [sortedRows, setSortedRows] = useState<KeyedRow<T>[]>(keyedRows);
   const [originalRows, setOriginalRows] = useState<T[]>(props.originalRows);
@@ -29,7 +29,7 @@ export default function useXNGBigTableSortStateManager<T>(props: {
     }
   }, [sortBy]);
 
-  const onSortChange = useCallback((v: XNGBigTableSortSetting<T>) => setSortBy(v), []);
+  const onSortChange = useCallback((v: BigTableSortSetting<T>) => setSortBy(v), []);
 
   return {
     sortedRows,
@@ -43,10 +43,7 @@ export default function useXNGBigTableSortStateManager<T>(props: {
 // sortBy: {key: "firstName", order: "ascending"} = sort by first name ascending
 // sortBy: {key: "lastName", order: "descending"} = sort by last name descending
 // sortBy: null = do not sort (default)
-export function sortRows<T>(props: {
-  rows: KeyedRow<T>[];
-  sortBy: XNGBigTableSortSetting<T>;
-}): KeyedRow<T>[] {
+export function sortRows<T>(props: { rows: KeyedRow<T>[]; sortBy: BigTableSortSetting<T> }): KeyedRow<T>[] {
   const { rows, sortBy } = props;
   if (!sortBy) {
     return rows;
