@@ -13,6 +13,7 @@ import { GREY_COLOR } from "./constants/grey_color";
 import HeaderCell from "./components/header_cell";
 import Row from "./components/row";
 import useEffectSkipMount from "../../../sbd_development_kit/hooks/use_effect_skip_mount";
+import { memo, useEffect, useMemo } from "react";
 
 export type XNGBigTableProps<T> = TableDataProps<T> &
   TableSelectableProps<T> &
@@ -25,7 +26,6 @@ function XNGBigTable<T>(props: XNGBigTableProps<T>) {
    * Determines whether to leverage client-side or server-side sorting based on the current modules being used.
    */
   async function clientOrServerSort() {
-    console.log("CALLED!");
     if (!props.useSort) return;
 
     function getIsViewingAll() {
@@ -142,7 +142,7 @@ function Body<T>(props: XNGBigTableProps<T>) {
   return (
     <TableBody sx={{ height: "100%", table: { minHeight: "100%" } }}>
       {props.useSort?.sortedRows
-        ? props.useSort.sortedRows.map((kr, i) => <Row key={i} {...props} row={kr.row} rowUID={kr.uid} />)
+        ? props.useSort?.sortedRows.map((kr, i) => <Row key={i} {...props} row={kr.row} rowUID={kr.uid} />)
         : props.rows?.map((row, i) => <Row key={i} {...props} row={row} rowUID={i} />)}
     </TableBody>
   );

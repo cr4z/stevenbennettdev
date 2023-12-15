@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { KeyedRow, TableSortState, XNGBigTableSortSetting } from "../types";
 import { sortItemsAlphabetically } from "../../../../sbd_development_kit/utils/sort_items_alphabetically";
-import useEffectSkipMount from "../../../../sbd_development_kit/hooks/use_effect_skip_mount";
 
 export default function useXNGBigTableSortStateManager<T>(props: {
   keyedRows: KeyedRow<T>[];
@@ -15,23 +14,27 @@ export default function useXNGBigTableSortStateManager<T>(props: {
   const [sortedRows, setSortedRows] = useState<KeyedRow<T>[]>(keyedRows);
   const [originalRows, setOriginalRows] = useState<T[]>(props.originalRows);
 
-  useEffectSkipMount(() => {
+  useEffect(() => {
     setOriginalRows(props.originalRows);
     setSortedRows(keyedRows);
   }, [keyedRows]);
 
-  function onClientSideSort() {
-    setSortedRows(sortRows({ rows: keyedRows, sortBy }));
+  const onClientSideSort = useCallback(() => {
+    if (!sortBy) return;
+    const sorted = sortRows({ rows: [...keyedRows], sortBy });
+    setSortedRows(sorted);
 
     if (props.onClientSideSort) {
       props.onClientSideSort();
     }
-  }
+  }, [sortBy]);
+
+  const onSortChange = useCallback((v: XNGBigTableSortSetting<T>) => setSortBy(v), []);
 
   return {
     sortedRows,
     sortBy,
-    onSortChange: (v: XNGBigTableSortSetting<T>) => setSortBy(v),
+    onSortChange,
     onClientSideSort,
     originalRows,
   };

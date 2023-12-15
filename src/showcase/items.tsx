@@ -56,15 +56,13 @@ type Tag =
   | "Responsive Design"
   | "Server-Side Rendering"
   | "Custom Hooks"
-  | "Live API"
   | "Simulated API"
 
   // Security and Authentication
-  | "SSO Authentication"
+  | "Single Sign-On Authentication"
 
   // Performance and Optimization
-  | "High-Speed Optimization"
-  | "SEO"
+  | "SEO Optimization"
 
   // Programming Practices and Principles
   | "SOLID Principles"
@@ -96,7 +94,7 @@ export const SHOWCASES: Showcase[] = [
       "Next.js",
       "Engaging User Experience",
       "Live Website",
-      "SEO",
+      "SEO Optimization",
       "Responsive Design",
       "Server-Side Rendering",
     ],
@@ -232,12 +230,9 @@ export const SHOWCASES: Showcase[] = [
     tags: [
       "React",
       "TypeScript",
-      "Live API",
       "Firebase",
-      "React",
-      "SSO Authentication",
-      "High-Speed Optimization",
       "Live Website",
+      "Single Sign-On Authentication",
       "WCAG AAA Compliance",
       "Responsive Design",
     ],
