@@ -18,7 +18,7 @@ function StevenBennettDev() {
       <Typography variant="body1">
         Want to see the code that powers this website? Click the link below!
       </Typography>
-      <ViewCodeOnGithubButton />
+      <ViewCodeOnGithubButton href="https://github.com/cr4z/stevenbennettdev" />
     </Box>
   );
 }

@@ -1,11 +1,11 @@
 import { Box, Typography, Pagination } from "@mui/material";
-import { XNGBigTableProps } from "../table";
+import { BigTableProps } from "../table";
 import { GREY_COLOR } from "../constants/grey_color";
 import { RESULTS_PER_PAGE_OPTIONS } from "../constants/results_per_page_options";
 import { SBDTypedSelect } from "../../../../sbd_development_kit/components/typed_select";
 import { useBreakpointHelper } from "../../../../design_system/hooks/useBreakpointHelper";
 
-export default function FooterPaginationControls<T>(props: XNGBigTableProps<T>) {
+export default function FooterPaginationControls<T>(props: BigTableProps<T>) {
   const { pageIndex, resultsPerPage, totalCount, totalPages, onPageSizeChange, onCurrentPageIndexChange } =
     props.usePagination!;
 

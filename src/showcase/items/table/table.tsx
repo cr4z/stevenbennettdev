@@ -13,15 +13,14 @@ import { GREY_COLOR } from "./constants/grey_color";
 import HeaderCell from "./components/header_cell";
 import Row from "./components/row";
 import useEffectSkipMount from "../../../sbd_development_kit/hooks/use_effect_skip_mount";
-import { memo, useEffect, useMemo } from "react";
 
-export type XNGBigTableProps<T> = TableDataProps<T> &
+export type BigTableProps<T> = TableDataProps<T> &
   TableSelectableProps<T> &
   TableSortableProps<T> &
   TableOverrideFunctionalityProps<T> &
   TablePaginationProps;
 
-function XNGBigTable<T>(props: XNGBigTableProps<T>) {
+function BigTable<T>(props: BigTableProps<T>) {
   /**
    * Determines whether to leverage client-side or server-side sorting based on the current modules being used.
    */
@@ -108,7 +107,7 @@ function XNGBigTable<T>(props: XNGBigTableProps<T>) {
   );
 }
 
-function Head<T>(props: XNGBigTableProps<T>) {
+function Head<T>(props: BigTableProps<T>) {
   return (
     <TableHead
       sx={{
@@ -138,7 +137,7 @@ function Head<T>(props: XNGBigTableProps<T>) {
   );
 }
 
-function Body<T>(props: XNGBigTableProps<T>) {
+function Body<T>(props: BigTableProps<T>) {
   return (
     <TableBody sx={{ height: "100%", table: { minHeight: "100%" } }}>
       {props.useSort?.sortedRows
@@ -148,4 +147,4 @@ function Body<T>(props: XNGBigTableProps<T>) {
   );
 }
 
-export default XNGBigTable;
+export default BigTable;

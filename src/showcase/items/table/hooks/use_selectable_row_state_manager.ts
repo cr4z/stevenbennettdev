@@ -1,9 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
-import { KeyedRow, XNGBigTableSelectableRowState, XNGBigTableSelectedRow } from "../types";
+import {
+  KeyedRow,
+  XNGBigTableSelectableRowState as BigTableSelectableRowState,
+  XNGBigTableSelectedRow as BigTableSelectedRow,
+} from "../types";
 
-export default function useXNGBigTableSelectableRowStateManager<T>(props: {
+export default function useBigTableSelectableRowStateManager<T>(props: {
   keyedRows: KeyedRow<T>[];
-}): XNGBigTableSelectableRowState<T> {
+}): BigTableSelectableRowState<T> {
   const { keyedRows: keyedRows } = props;
 
   const { rowSelections, setRowSelections, toggleAll } = useRowSelection<T>({ keyedRows });
@@ -28,7 +32,7 @@ export default function useXNGBigTableSelectableRowStateManager<T>(props: {
     [rowSelections]
   );
 
-  const res: XNGBigTableSelectableRowState<T> = {
+  const res: BigTableSelectableRowState<T> = {
     onRowToggle,
     rowSelections,
     toggleAll: onToggleAll,
@@ -41,8 +45,8 @@ export default function useXNGBigTableSelectableRowStateManager<T>(props: {
 function useRowSelection<T>(props: { keyedRows: KeyedRow<T>[] }) {
   const { keyedRows } = props;
 
-  function getDefaultRows(): XNGBigTableSelectedRow<T>[] {
-    const res: XNGBigTableSelectedRow<T>[] = keyedRows.map((kr) => ({
+  function getDefaultRows(): BigTableSelectedRow<T>[] {
+    const res: BigTableSelectedRow<T>[] = keyedRows.map((kr) => ({
       isSelected: false,
       rowUID: kr.uid,
       row: kr.row,
@@ -50,7 +54,7 @@ function useRowSelection<T>(props: { keyedRows: KeyedRow<T>[] }) {
 
     return res;
   }
-  const [rowSelections, setRowSelections] = useState<XNGBigTableSelectedRow<T>[]>([]);
+  const [rowSelections, setRowSelections] = useState<BigTableSelectedRow<T>[]>([]);
 
   useEffect(() => {
     setRowSelections(getDefaultRows());
@@ -58,17 +62,17 @@ function useRowSelection<T>(props: { keyedRows: KeyedRow<T>[] }) {
 
   const toggleAll = {
     on: () => {
-      const newRows: XNGBigTableSelectedRow<T>[] = rowSelections.map((r) => {
+      const newRows: BigTableSelectedRow<T>[] = rowSelections.map((r) => {
         const { row, rowUID } = r;
-        const newRow: XNGBigTableSelectedRow<T> = { isSelected: true, row, rowUID };
+        const newRow: BigTableSelectedRow<T> = { isSelected: true, row, rowUID };
         return newRow;
       });
       setRowSelections(newRows);
     },
     off: () => {
-      const newRows: XNGBigTableSelectedRow<T>[] = rowSelections.map((r) => {
+      const newRows: BigTableSelectedRow<T>[] = rowSelections.map((r) => {
         const { row, rowUID } = r;
-        const newRow: XNGBigTableSelectedRow<T> = { isSelected: false, row, rowUID };
+        const newRow: BigTableSelectedRow<T> = { isSelected: false, row, rowUID };
         return newRow;
       });
       setRowSelections(newRows);

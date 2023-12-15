@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { RESULTS_PER_PAGE_OPTIONS } from "../constants/results_per_page_options";
 import { PaginationState } from "../types";
 
-export default function useXNGBigTablePaginationStateManager(props: {
+export default function useBigTablePaginationStateManager(props: {
   totalCount: number;
 }): PaginationState {
   const { totalCount } = props;

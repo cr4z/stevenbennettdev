@@ -1,18 +1,18 @@
 export type ContentGeneratorContent = {
-  introOverview: JSX.Element | string;
+  introOverview: React.ReactNode | string;
   techUsed?: ContentGeneratorTechProduct[];
-  featuresAndFunctionality?: JSX.Element | string;
-  problemsAndSolutions?: JSX.Element | string;
-  resultsAndImpact?: JSX.Element | string;
+  featuresAndFunctionality?: React.ReactNode | string;
+  problemsAndSolutions?: React.ReactNode | string;
+  resultsAndImpact?: React.ReactNode | string;
   skillsShown?: SkillItem[];
 };
 
 export type SkillItem = {
   skill: string;
-  desc: string;
+  desc: string | React.ReactNode;
 };
 
 export type ContentGeneratorTechProduct = {
   name: "React" | "TypeScript" | "MUI";
-  content: JSX.Element | string;
+  content: React.ReactNode | string;
 };

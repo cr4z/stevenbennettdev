@@ -10,7 +10,8 @@ export const advancedTableComponentContent: ContentGeneratorContent = {
       <Box sx={{ height: "1rem" }} />
       In this demonstration, I've attached listeners to the table callbacks for re-fetching data and
       client-side sorting to the snackbar component provided by the npm library <code>notistack</code> (one
-      of my personal favorites) in order to visualize its optimized behaviour in real-time!
+      of my personal favorites) in order to clarify its behaviour, whether it determines to re-fetching data
+      or leverage client-side sorting for efficiency!
     </Typography>
   ),
   techUsed: [
@@ -67,12 +68,26 @@ export const advancedTableComponentContent: ContentGeneratorContent = {
   ),
   skillsShown: [
     {
-      skill: "TypeScript Prowess & Future-Proof Development",
-      desc: "Built a rapid sort function. As per my usual style, XML comments are plentiful.",
+      skill: "Self-Documenting Code",
+      desc: (
+        <Typography>
+          Complex modules are well documented, as visibly evident{" "}
+          <a href="/portfolio/9aed35c7101b">in this function I commonly use</a>!
+        </Typography>
+      ),
+    },
+    {
+      skill: "Knowledge of Advanced Algorithms",
+      desc: (
+        <Typography>
+          The table's sorting functionality boasts an integrated quicksort in-place algorithm. View the code
+          for that <a href="/portfolio/debdcb6a850d">here</a>!
+        </Typography>
+      ),
     },
     {
       skill: "Component Composition",
-      desc: "The component composition boasts a maintanable and readable architecture.",
+      desc: "The component composition of my table component boasts a maintanable and readable architecture.",
     },
   ],
 };
