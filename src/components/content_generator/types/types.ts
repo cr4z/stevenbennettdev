@@ -13,6 +13,6 @@ export type SkillItem = {
 };
 
 export type ContentGeneratorTechProduct = {
-  name: "React" | "TypeScript" | "MUI";
+  name: "React" | "TypeScript" | "MUI" | "Figjam";
   content: React.ReactNode | string;
 };
