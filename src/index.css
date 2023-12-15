@@ -20,7 +20,7 @@
   --selection-background: #06a3c6;
   --selection-color: white;
 
-  /* Selection colors for notator simulation */
+  /* Selection colors for complex form demo */
   --selection-background-ns: #09a7bc;
   --selection-color-ns: white;
 }
@@ -49,7 +49,7 @@ pre {
   background: var(--selection-background);
 }
 
-.notator-selection-colors *::selection {
+.complex-form-selection-colors *::selection {
   background: var(--selection-background-ns);
   color: var(--selection-color-ns);
 }

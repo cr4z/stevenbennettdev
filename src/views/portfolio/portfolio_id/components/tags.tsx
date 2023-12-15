@@ -6,7 +6,7 @@ export function ShowcaseTags(props: { tags: string[] }) {
 
   return (
     <Box sx={{ width: "100%", display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Typography variant="body2">Tagged:</Typography>
+      <Typography variant="body2">Tags:</Typography>
       <Box sx={{ display: "flex", gap: ".4rem", flexWrap: "wrap" }}>
         {tags.map((tag, i) => (
           <Typography

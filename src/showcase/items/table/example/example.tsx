@@ -1,10 +1,10 @@
 import { Box, ThemeProvider } from "@mui/material";
-import useXNGBigTablePaginationStateManager from "../hooks/use_pagination_state_manager";
-import useXNGBigTableSortStateManager from "../hooks/use_sort_state_manager";
+import useBigTablePaginationStateManager from "../hooks/use_pagination_state_manager";
+import useBigTableSortStateManager from "../hooks/use_sort_state_manager";
 import useBigTableKeyedRows from "../hooks/use_big_table_keyed_rows";
-import XNGBigTable from "../table";
+import BigTable from "../table";
 import { DUMMY_ROWS, ExampleRow, FetchedTableResponse, useFetchTable } from "./gen/gen";
-import useXNGBigTableSelectableRowStateManager from "../hooks/use_selectable_row_state_manager";
+import useBigTableSelectableRowStateManager from "../hooks/use_selectable_row_state_manager";
 import { showcaseWhiteTheme } from "../../../../design_system/themes/showcase_white_theme";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import SnackbarCloseButton from "../../../../components/snackbar_close_btn";
@@ -44,12 +44,12 @@ function BigTableExample() {
   const { table, refetch } = useFetchTable();
   const ts = useTableState({
     table,
-    onClientSideSort: () => enqueueSnackbar("Leveraging client-side sorting!"),
+    onClientSideSort: () => enqueueSnackbar("Leveraging client-side QuickSort algorithm!"),
   });
 
   return (
-    <Box sx={{ bgcolor: "#FFF", display: "flex", gap: "2rem", flexDirection: "column" }}>
-      <XNGBigTable<ExampleRow>
+    <Box sx={{ bgcolor: "#FFF", display: "flex", gap: "2rem", flexDirection: "column", height: "100%" }}>
+      <BigTable<ExampleRow>
         columns={[
           { key: "campusName", label: "Campus Name" },
           { key: "stateID", label: "State ID" },
@@ -66,7 +66,6 @@ function BigTableExample() {
           console.log("Refetching data! Parameters: ", { trp });
           refetch(trp);
         }}
-        styling={{ heightRelativeToScreen: 14.6 }}
       />
     </Box>
   );
@@ -76,15 +75,15 @@ function useTableState(props: { table: FetchedTableResponse | null; onClientSide
   const { table, onClientSideSort } = props;
 
   const keyedRows = useBigTableKeyedRows<ExampleRow>({ defaultRows: table?.fetchedRows ?? [] });
-  const paginationState = useXNGBigTablePaginationStateManager({
+  const paginationState = useBigTablePaginationStateManager({
     totalCount: table?.totalCount ?? 0,
   });
-  const sortState = useXNGBigTableSortStateManager<ExampleRow>({
+  const sortState = useBigTableSortStateManager<ExampleRow>({
     keyedRows,
     originalRows: DUMMY_ROWS,
     onClientSideSort,
   });
-  const selectableState = useXNGBigTableSelectableRowStateManager({ keyedRows });
+  const selectableState = useBigTableSelectableRowStateManager({ keyedRows });
 
   return { paginationState, sortState, selectableState };
 }

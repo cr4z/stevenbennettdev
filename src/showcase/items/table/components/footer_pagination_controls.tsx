@@ -1,20 +1,22 @@
 import { Box, Typography, Pagination } from "@mui/material";
-import { XNGBigTableProps } from "../table";
+import { BigTableProps } from "../table";
 import { GREY_COLOR } from "../constants/grey_color";
 import { RESULTS_PER_PAGE_OPTIONS } from "../constants/results_per_page_options";
 import { SBDTypedSelect } from "../../../../sbd_development_kit/components/typed_select";
+import { useBreakpointHelper } from "../../../../design_system/hooks/useBreakpointHelper";
 
-export default function FooterPaginationControls<T>(props: XNGBigTableProps<T>) {
+export default function FooterPaginationControls<T>(props: BigTableProps<T>) {
   const { pageIndex, resultsPerPage, totalCount, totalPages, onPageSizeChange, onCurrentPageIndexChange } =
     props.usePagination!;
 
+  const isWiderThanMobile = useBreakpointHelper().isGreaterThanEqualTo("sm");
   return (
     <Box
       sx={{
         display: "flex",
         bgcolor: GREY_COLOR,
         width: "100%",
-        height: "3rem",
+        minHeight: "3rem",
         alignItems: "center",
         justifyContent: "space-between",
         px: "1rem",
@@ -29,10 +31,12 @@ export default function FooterPaginationControls<T>(props: XNGBigTableProps<T>) 
           getDisplayValue={(n) => n.toString()}
           onChange={(n) => onPageSizeChange(n)}
         />
-        <Typography className="noselect">{`Showing ${Math.min(
-          resultsPerPage,
-          totalCount
-        )} of ${totalCount} results`}</Typography>
+        {isWiderThanMobile && (
+          <Typography className="noselect">{`Showing ${Math.min(
+            resultsPerPage,
+            totalCount
+          )} of ${totalCount} results`}</Typography>
+        )}
       </Box>
 
       <Pagination

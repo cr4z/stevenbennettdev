@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
-import { KeyedRow, XNGBigTableSelectableRowState, XNGBigTableSelectedRow } from "../types";
+import { useCallback, useEffect, useState } from "react";
+import {
+  KeyedRow,
+  XNGBigTableSelectableRowState as BigTableSelectableRowState,
+  XNGBigTableSelectedRow as BigTableSelectedRow,
+} from "../types";
 
-export default function useXNGBigTableSelectableRowStateManager<T>(props: {
+export default function useBigTableSelectableRowStateManager<T>(props: {
   keyedRows: KeyedRow<T>[];
-}): XNGBigTableSelectableRowState<T> {
+}): BigTableSelectableRowState<T> {
   const { keyedRows: keyedRows } = props;
 
-  const { rowSelection, setRowSelection, toggleAll } = useRowSelection<T>({ keyedRows });
+  const { rowSelections, setRowSelections, toggleAll } = useRowSelection<T>({ keyedRows });
 
-  const isAllToggled = rowSelection.filter((sr) => sr.isSelected).length === keyedRows.length;
+  const isAllToggled = rowSelections.filter((sr) => sr.isSelected).length === keyedRows.length;
 
   function onToggleAll() {
     if (isAllToggled) {
@@ -18,15 +22,19 @@ export default function useXNGBigTableSelectableRowStateManager<T>(props: {
     }
   }
 
-  const res: XNGBigTableSelectableRowState<T> = {
-    onRowToggle: (rowUID: number) => {
-      const newSelectionState = [...rowSelection];
-      const i = keyedRows.indexOf(keyedRows.find((kr) => kr.uid === rowUID)!);
-      const isSelected = newSelectionState[i].isSelected;
-      newSelectionState[i].isSelected = !isSelected;
-      setRowSelection(newSelectionState);
+  const onRowToggle = useCallback(
+    (rowUID: number) => {
+      const newSelectionState = [...rowSelections];
+      const isSelected = newSelectionState[rowUID].isSelected;
+      newSelectionState[rowUID].isSelected = !isSelected;
+      setRowSelections(newSelectionState);
     },
-    rowSelections: rowSelection,
+    [rowSelections]
+  );
+
+  const res: BigTableSelectableRowState<T> = {
+    onRowToggle,
+    rowSelections,
     toggleAll: onToggleAll,
     isAllToggled,
   };
@@ -37,8 +45,8 @@ export default function useXNGBigTableSelectableRowStateManager<T>(props: {
 function useRowSelection<T>(props: { keyedRows: KeyedRow<T>[] }) {
   const { keyedRows } = props;
 
-  function getDefaultRows(): XNGBigTableSelectedRow<T>[] {
-    const res: XNGBigTableSelectedRow<T>[] = keyedRows.map((kr) => ({
+  function getDefaultRows(): BigTableSelectedRow<T>[] {
+    const res: BigTableSelectedRow<T>[] = keyedRows.map((kr) => ({
       isSelected: false,
       rowUID: kr.uid,
       row: kr.row,
@@ -46,30 +54,30 @@ function useRowSelection<T>(props: { keyedRows: KeyedRow<T>[] }) {
 
     return res;
   }
-  const [rowSelection, setRowSelection] = useState<XNGBigTableSelectedRow<T>[]>([]);
+  const [rowSelections, setRowSelections] = useState<BigTableSelectedRow<T>[]>([]);
 
   useEffect(() => {
-    setRowSelection(getDefaultRows());
+    setRowSelections(getDefaultRows());
   }, [keyedRows]);
 
   const toggleAll = {
     on: () => {
-      const newRows: XNGBigTableSelectedRow<T>[] = rowSelection.map((r) => {
+      const newRows: BigTableSelectedRow<T>[] = rowSelections.map((r) => {
         const { row, rowUID } = r;
-        const newRow: XNGBigTableSelectedRow<T> = { isSelected: true, row, rowUID };
+        const newRow: BigTableSelectedRow<T> = { isSelected: true, row, rowUID };
         return newRow;
       });
-      setRowSelection(newRows);
+      setRowSelections(newRows);
     },
     off: () => {
-      const newRows: XNGBigTableSelectedRow<T>[] = rowSelection.map((r) => {
+      const newRows: BigTableSelectedRow<T>[] = rowSelections.map((r) => {
         const { row, rowUID } = r;
-        const newRow: XNGBigTableSelectedRow<T> = { isSelected: false, row, rowUID };
+        const newRow: BigTableSelectedRow<T> = { isSelected: false, row, rowUID };
         return newRow;
       });
-      setRowSelection(newRows);
+      setRowSelections(newRows);
     },
   };
 
-  return { rowSelection, setRowSelection, toggleAll };
+  return { rowSelections, setRowSelections, toggleAll };
 }

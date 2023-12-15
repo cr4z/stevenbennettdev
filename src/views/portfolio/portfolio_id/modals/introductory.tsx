@@ -12,6 +12,7 @@ import { ViewCodeOnGithubButton } from "../../../../components/github_button";
 import { SBDShadowScrollProvider } from "../../../../sbd_development_kit/components/shadow_scroll";
 import ShowcaseModalBase from "./base";
 import { ContentGenerator } from "../../../../components/content_generator/content_generator";
+import Button from "../../../../design_system/button";
 
 export function IntroductoryModal(props: { showcase: Showcase }) {
   const { showcase } = props;
@@ -29,7 +30,11 @@ export function IntroductoryModal(props: { showcase: Showcase }) {
       </Box>
 
       <Box my="1rem" sx={{ width: "100%" }}>
-        <SBDShadowScrollProvider maxHeight="calc(100vh - 30rem)" sx={{ p: "1rem" }}>
+        <SBDShadowScrollProvider
+          key={crypto.randomUUID()}
+          maxHeight="calc(100vh - 30rem)"
+          sx={{ p: "1rem" }}
+        >
           {showcase?.contentGeneratorContent && (
             <ContentGenerator content={showcase?.contentGeneratorContent} />
           )}
@@ -38,8 +43,11 @@ export function IntroductoryModal(props: { showcase: Showcase }) {
         </SBDShadowScrollProvider>
       </Box>
 
-      <Box sx={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
-        <ViewCodeOnGithubButton href={showcase?.github!} />
+      <Box sx={{ display: "flex", justifyContent: "flex-end", width: "100%", gap: ".5rem" }}>
+        <ViewCodeOnGithubButton grey href={showcase?.github!} />
+        <Button larger onClick={handleClose}>
+          Continue to Project
+        </Button>
       </Box>
     </ShowcaseModalBase>
   );

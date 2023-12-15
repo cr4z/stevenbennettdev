@@ -1,7 +1,7 @@
 // PROP INTERFACES
 
 export type TableDataProps<T> = {
-  columns: XNGBigTableColumn<T>[];
+  columns: BigTableColumn<T>[];
   rows?: T[];
   onTableRequestParametersChange?: (v: TableRequestParameters<T>) => void;
 };
@@ -9,9 +9,6 @@ export type TableSortableProps<T> = {
   useSort?: TableSortState<T>;
 };
 
-export type TableStylingProps = {
-  styling?: XNGBigTableStyling;
-};
 export type TablePaginationProps = {
   usePagination?: PaginationState;
 };
@@ -27,9 +24,9 @@ export type TableSelectableProps<T> = {
 
 // STATE MANAGEMENT INTERFACES
 export interface TableSortState<T> {
-  sortBy: XNGBigTableSortSetting<T>;
+  sortBy: BigTableSortSetting<T>;
   sortedRows: KeyedRow<T>[];
-  onSortChange: (v: XNGBigTableSortSetting<T>) => void;
+  onSortChange: (v: BigTableSortSetting<T>) => void;
   onClientSideSort: () => void;
   originalRows: T[];
 }
@@ -53,11 +50,8 @@ export interface PaginationState {
 
 // GRANULAR HELPER TYPES
 
-export type XNGBigTableColumn<T> = { key: keyof T; label: string };
+export type BigTableColumn<T> = { key: keyof T; label: string };
 
-export type XNGBigTableStyling = {
-  heightRelativeToScreen?: number;
-};
 
 export type KeyedRow<T> = {
   uid: number;
@@ -73,7 +67,7 @@ export type XNGBigTableSelectedRow<T> = {
 export type TableRequestParameters<T> = {
   pageIndex: number;
   resultsPerPage: number;
-  sortBy: XNGBigTableSortSetting<T>;
+  sortBy: BigTableSortSetting<T>;
 };
 
 export type ResultsPerPageOption = 50 | 100 | 250;
@@ -84,7 +78,7 @@ export type ResultsPerPageOption = 50 | 100 | 250;
  * * `sortBy: {key: "lastName", order: "descending"}`    = sort by last name descending
  * * `sortBy: null`                                     = do not sort (default)
  */
-export type XNGBigTableSortSetting<T> = {
+export type BigTableSortSetting<T> = {
   key: keyof T;
   order: "ascending" | "descending";
 } | null;
