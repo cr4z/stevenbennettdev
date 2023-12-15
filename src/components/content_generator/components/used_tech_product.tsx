@@ -1,4 +1,4 @@
-import { FaReact } from "react-icons/fa";
+import { FaFigma, FaReact } from "react-icons/fa";
 import { IconRenderer } from "../../../design_system/icons";
 import { ContentGeneratorTechProduct } from "../types/types";
 import { SiMui, SiTypescript } from "react-icons/si";
@@ -15,6 +15,8 @@ export function UsedTechProduct(props: { product: ContentGeneratorTechProduct })
         return <IconRenderer widthHeight={iconSizeRem + "rem"} i={<SiTypescript />} />;
       case "MUI":
         return <IconRenderer widthHeight={iconSizeRem + "rem"} i={<SiMui />} />;
+      case "Figjam":
+        return <IconRenderer widthHeight={iconSizeRem + "rem"} i={<FaFigma />} />;
       default:
         throw new Error("Fallthrough in switch statement! Has a new tech product been introduced?");
     }
@@ -67,7 +69,7 @@ export function UsedTechProduct(props: { product: ContentGeneratorTechProduct })
             }}
           />
         </Box>
-        <Typography>{product.content}</Typography>
+        {product.content}
       </Box>
     </Box>
   );

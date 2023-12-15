@@ -1,7 +1,7 @@
 import { Tooltip } from "@mui/material";
 import { useState, useEffect } from "react";
 import { OtherField, OtherFieldStatus } from "./types/other_field";
-import { useNotatorTools } from "../../tools/use_notator_tools";
+import { useFormTools } from "../../tools/use_form_tools";
 import { MESSAGES_OTHER_VALIDATION } from "../../messages/other_validation";
 import { UnlockedControl } from "./unlocked_control";
 import { useCustomsWithDeletions } from "./logic/use_customs_with_deletions";
@@ -21,7 +21,7 @@ export default function UnlockedControls(props: { mode: ItemSizeMode }) {
   const { mode } = props;
   const defaultNames = useDefaultNames({ mode });
   const draftCustomItemsLedger = useDraftCustomItemsLedger({ mode });
-  const { editDraft } = useNotatorTools();
+  const { editDraft } = useFormTools();
 
   const [otherFields, setOtherFields] = useOtherFields();
 
@@ -115,7 +115,7 @@ function useOtherFields(): [
   otherFields: OtherField[],
   setOtherFields: React.Dispatch<React.SetStateAction<OtherField[]>>
 ] {
-  const { refetchSwitch } = useNotatorTools();
+  const { refetchSwitch } = useFormTools();
 
   const [otherFields, setOtherFields] = useState<OtherField[]>([BLANK_OTHER]);
 

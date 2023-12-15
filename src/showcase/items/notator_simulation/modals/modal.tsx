@@ -13,7 +13,7 @@ export type NotatorSimulationModalProps = NotatorSimulationModalToggleProps & {
   minWidth?: "xl" | "lg" | "md" | "sm";
 };
 
-export function NotatorSimulationModal(props: NotatorSimulationModalProps) {
+export function ComplexFormModal(props: NotatorSimulationModalProps) {
   function getMaxWidth(): string {
     switch (props.minWidth) {
       case "xl":

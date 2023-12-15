@@ -7,14 +7,14 @@ export function ContentGenerator(props: { content: ContentGeneratorContent }) {
 
   return (
     <Box sx={{ width: "100%", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-      <Typography variant="body1">{content.introOverview}</Typography>
+      {content.introOverview}
       {content.techUsed && (
         <Box>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="h5" mb="1rem">
             {content.techUsed.length > 1 ? "Technologies Used" : "Technology Used"}
           </Typography>
-          {content.techUsed?.map((product) => (
-            <UsedTechProduct product={product} />
+          {content.techUsed?.map((product, i) => (
+            <UsedTechProduct product={product} key={i} />
           ))}
         </Box>
       )}
@@ -24,7 +24,7 @@ export function ContentGenerator(props: { content: ContentGeneratorContent }) {
           <Typography variant="h5" gutterBottom>
             Features & Functionality
           </Typography>
-          <Typography>{content.featuresAndFunctionality}</Typography>
+          {content.featuresAndFunctionality}
         </Box>
       )}
 
@@ -34,12 +34,12 @@ export function ContentGenerator(props: { content: ContentGeneratorContent }) {
             Skills Shown
           </Typography>
           <Box component="ul" sx={{ display: "flex", flexDirection: "column", gap: ".25rem" }}>
-            {content.skillsShown.map((s) => (
-              <li>
+            {content.skillsShown.map((s, i) => (
+              <li key={i}>
                 <Typography variant="h6" p={0}>
                   {s.skill}
                 </Typography>
-                <Typography variant="body1">{s.desc}</Typography>
+                {s.desc}
               </li>
             ))}
           </Box>

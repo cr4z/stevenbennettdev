@@ -1,13 +1,11 @@
 import { TableCell, ButtonBase, Typography, Box } from "@mui/material";
 import { FaCaretDown } from "react-icons/fa";
-import { XNGBigTableColumn } from "../types";
-import { XNGBigTableProps } from "../table";
+import { BigTableColumn } from "../types";
+import { BigTableProps } from "../table";
 
 const PX_REM = ".1rem";
 
-export default function HeaderCell<T>(
-  props: XNGBigTableProps<T> & { column: XNGBigTableColumn<T> },
-) {
+export default function HeaderCell<T>(props: BigTableProps<T> & { column: BigTableColumn<T> }) {
   const columnIsSorting = props.useSort?.sortBy?.key === props.column.key;
   const order = props.useSort?.sortBy?.order;
 

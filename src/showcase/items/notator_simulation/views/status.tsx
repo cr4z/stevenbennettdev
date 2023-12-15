@@ -4,13 +4,13 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { useNotatorTools } from "../tools/use_notator_tools";
+import { useFormTools } from "../tools/use_form_tools";
 import { TruckerStatus } from "../data/types/report";
 
 export function StatusTabView() {
   const {
     truckerTools: { editTrucker: editSegment, draftTrucker: draftSegment },
-  } = useNotatorTools();
+  } = useFormTools();
 
   return (
     <>

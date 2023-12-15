@@ -1,10 +1,10 @@
 import { Dayjs } from "dayjs";
 
-export interface NotatorTruckerReport {
+export interface TruckerReport {
   title: string;
   description: string;
   reportingDuration: EventTimes;
-  truckerJournals: NotatorTruckerJournal[];
+  truckerJournals: TruckerJournal[];
   location: string;
   customItemLedger: {
     smallItems: string[];
@@ -13,7 +13,7 @@ export interface NotatorTruckerReport {
   };
 }
 
-export interface NotatorTruckerJournal {
+export interface TruckerJournal {
   id: string;
   fullName: string;
   status: TruckerStatus;

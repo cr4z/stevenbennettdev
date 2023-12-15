@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { useState } from "react";
-import { useNotatorTools } from "../tools/use_notator_tools";
+import { useFormTools } from "../tools/use_form_tools";
 import { EditEventTimesModal } from "../modals/edit_times";
 import { EventTimes } from "../data/types/report";
 import { Chip } from "../components/chip";
@@ -10,7 +10,7 @@ import { FaClock } from "react-icons/fa";
 export function EditableTime() {
   const [open, setOpen] = useState<boolean>(false);
 
-  const { draftReport, editDraft } = useNotatorTools();
+  const { draftReport, editDraft } = useFormTools();
 
   function onApplyTimes(value: EventTimes) {
     editDraft({ path: "eventTimes", value });

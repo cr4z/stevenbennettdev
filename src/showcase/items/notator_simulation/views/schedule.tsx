@@ -1,11 +1,11 @@
 import { DateTimePicker } from "@mui/x-date-pickers";
-import { useNotatorTools } from "../tools/use_notator_tools";
+import { useFormTools } from "../tools/use_form_tools";
 import { Box, TextField } from "@mui/material";
 
 export function ScheduleTabView() {
   const {
     truckerTools: { draftTrucker, editTrucker },
-  } = useNotatorTools();
+  } = useFormTools();
 
   const schedule = draftTrucker?.schedule;
 

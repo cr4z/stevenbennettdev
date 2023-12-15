@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
-import { NotatorSimulationModal } from "../modal";
+import { ComplexFormModal } from "../modal";
 import useActionOnEnterPressed from "../../hooks/use_action_on_enter";
 
 export interface ConfirmModalProps {
@@ -27,7 +27,7 @@ function ConfirmModal(props: ConfirmModalProps) {
   }, [props.onConfirm]);
 
   return (
-    <NotatorSimulationModal
+    <ComplexFormModal
       open={props.open}
       onClose={props.onClose}
       minWidth="md"
@@ -58,7 +58,7 @@ function ConfirmModal(props: ConfirmModalProps) {
           </Button>
         </Box>
       </Box>
-    </NotatorSimulationModal>
+    </ComplexFormModal>
   );
 }
 

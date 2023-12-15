@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import { useNotatorTools } from "../../tools/use_notator_tools";
+import { useFormTools } from "../../tools/use_form_tools";
 import {
-  NotatorSimulationModal,
+  ComplexFormModal,
   NotatorSimulationModalToggleProps,
 } from "../modal";
 import JSONPretty from "react-json-pretty";
@@ -9,10 +9,10 @@ import JSONPretty from "react-json-pretty";
 export default function ShowReportJSONModal(
   props: NotatorSimulationModalToggleProps
 ) {
-  const { report } = useNotatorTools();
+  const { report } = useFormTools();
 
   return (
-    <NotatorSimulationModal
+    <ComplexFormModal
       minWidth="xl"
       open={props.open}
       onClose={props.onClose}
@@ -31,6 +31,6 @@ export default function ShowReportJSONModal(
       <Box sx={{ fontFamily: "monospace", height: "30rem", overflowY: "auto" }}>
         <JSONPretty data={report} />
       </Box>
-    </NotatorSimulationModal>
+    </ComplexFormModal>
   );
 }

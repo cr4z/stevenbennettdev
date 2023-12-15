@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useRef, useState } from "react";
-import { NotatorSimulationModal } from "./modal";
+import { ComplexFormModal } from "./modal";
 
 export function EditLocationModal(props: {
   open: boolean;
@@ -22,7 +22,7 @@ export function EditLocationModal(props: {
 
   return (
     <>
-      <NotatorSimulationModal
+      <ComplexFormModal
         open={props.open}
         onClose={() => props.onClose()}
         onFocusReady={() => {
@@ -71,7 +71,7 @@ export function EditLocationModal(props: {
             </Button>
           </Box>
         </form>
-      </NotatorSimulationModal>
+      </ComplexFormModal>
     </>
   );
 }

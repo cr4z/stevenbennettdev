@@ -3,7 +3,7 @@ import { TimeAutocomplete } from "../components/time_picker";
 import { EventTimes } from "../data/types/report";
 import { useRef, useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
-import { NotatorSimulationModal } from "./modal";
+import { ComplexFormModal } from "./modal";
 
 export function EditEventTimesModal(props: {
   open: boolean;
@@ -23,7 +23,7 @@ export function EditEventTimesModal(props: {
 
   return (
     <>
-      <NotatorSimulationModal
+      <ComplexFormModal
         open={props.open}
         onClose={() => props.onClose()}
         onFocusReady={() => {
@@ -78,7 +78,7 @@ export function EditEventTimesModal(props: {
             </Button>
           </Box>
         </form>
-      </NotatorSimulationModal>
+      </ComplexFormModal>
     </>
   );
 }

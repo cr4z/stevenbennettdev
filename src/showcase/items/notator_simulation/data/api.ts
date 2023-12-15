@@ -1,10 +1,10 @@
-import { NotatorTruckerReport } from "./types/report";
+import { TruckerReport } from "./types/report";
 import { MOCK_NOTATOR_REPORT } from "./mocks/report";
 import { MOCK_WAREHOUSE_PROFILE } from "./mocks/warehouse_profile";
 
 const REPORT_STORAGE_KEY = "notatorReport";
 
-const loadReportFromSession = (): NotatorTruckerReport => {
+const loadReportFromSession = (): TruckerReport => {
   const storedReport = sessionStorage.getItem(REPORT_STORAGE_KEY);
   return storedReport ? JSON.parse(storedReport) : MOCK_NOTATOR_REPORT;
 };
@@ -14,7 +14,7 @@ export const API_REPORTS = {
     const notatorReport = loadReportFromSession();
     return notatorReport;
   },
-  v1ReportsPut: async (freshReport: NotatorTruckerReport) => {
+  v1ReportsPut: async (freshReport: TruckerReport) => {
     sessionStorage.setItem(REPORT_STORAGE_KEY, JSON.stringify(freshReport));
     return freshReport;
   },

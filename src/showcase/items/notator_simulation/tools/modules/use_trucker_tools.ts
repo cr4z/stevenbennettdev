@@ -1,21 +1,21 @@
 import {
-  NotatorTruckerReport,
-  NotatorTruckerJournal,
+  TruckerReport,
+  TruckerJournal,
 } from "../../data/types/report";
 import { EditDraftFunctionProps, EditDraftFunctionType } from "./use_draft";
 
 export interface TruckerTools {
   editTrucker: EditDraftFunctionType;
-  draftTrucker: NotatorTruckerJournal | null;
-  savedTrucker: NotatorTruckerJournal | null;
+  draftTrucker: TruckerJournal | null;
+  savedTrucker: TruckerJournal | null;
 }
 
 export function useTruckerTools(props: {
   dependencies: {
     editDraft: EditDraftFunctionType;
     selectedTruckerIndex: number;
-    draftReport: NotatorTruckerReport | null;
-    report: NotatorTruckerReport | null;
+    draftReport: TruckerReport | null;
+    report: TruckerReport | null;
   };
 }): TruckerTools {
   const { editDraft, selectedTruckerIndex, draftReport, report } =
