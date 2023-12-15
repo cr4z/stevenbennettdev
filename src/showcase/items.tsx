@@ -1,19 +1,18 @@
 import { ICONS } from "../design_system/icons";
-import FiltersDemo from "./items/filters_demo/main";
 import FloresHomeRepair from "./items/floreshomerepair";
 import StevenBennettDev from "./items/stevenbennettdev";
 import dayjs, { Dayjs } from "dayjs";
 import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
-import NotatorSimulationContextWrapper from "./items/notator_simulation/notator_simulation";
+import ComplexFormDemonstrationContextWrapper from "./items/notator_simulation/complex_form_demo";
 import BigTableExample from "./items/table/example/example";
 import { advancedTableComponentContent } from "../components/content_generator/content/versatile_table";
-import { notatorSimulationProjectContent } from "../components/content_generator/content/notator_simulation";
+import { complexFormDemoContent } from "../components/content_generator/content/complex_form_demo";
 import { ContentGeneratorContent } from "../components/content_generator/types/types";
 import QuickSortInPlaceExample from "./items/quick_sort_in_place";
 import { RapidAlphabeticSortExample } from "./items/rapid_alphabetic_sort";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
@@ -169,44 +168,43 @@ export const SHOWCASES: Showcase[] = [
     github: "https://github.com/cr4z/dzp-vite",
     component: <DougZonePodcast />,
   },
-
-  {
-    title: "React Basics: Applying Visual Filters",
-    icon: <ICONS.React />,
-    tags: ["React", "TypeScript"],
-    id: ShowcaseIDs.FilteringAlgorithm,
-    github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
-    useIntroductoryModal: true,
-    contentGeneratorContent: {
-      introOverview: (
-        <Typography gutterBottom>
-          As the first project I developed with the intent to educate, this GitHub repository marks a
-          significant milestone in my journey as a developer. It was crafted to provide a hands-on,
-          introductory exploration of implementing selectable filter UIs in React. The focus of this project
-          is to demonstrate the functional aspects of creating visual UI tools that empower users to apply
-          various filters to a dataset.
-          <Box height=".5rem" />I want to highlight that the primary objective of this project was to serve
-          as an educational tool, emphasizing functionality over aesthetics. As such, the visual design
-          aspects were not the primary focus and may not reflect the high standards I hold for user
-          experience in my current work. However, this project stands as a testament to my ability to
-          simplify complex concepts, making them accessible and understandable, particularly for those new
-          to React or UI development.
-        </Typography>
-      ),
-      techUsed: [
-        {
-          name: "TypeScript",
-          content: "Showcases a basic usage of TypeScript for filtering out a set of data",
-        },
-        {
-          name: "React",
-          content:
-            "Showcases a simple usage of provided hooks such as useState and useEffet to help manage filtering out a set of data",
-        },
-      ],
-    },
-    component: <FiltersDemo />,
-  },
+  // {
+  //   title: "React Basics: Applying Visual Filters",
+  //   icon: <ICONS.React />,
+  //   tags: ["React", "TypeScript"],
+  //   id: ShowcaseIDs.FilteringAlgorithm,
+  //   github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
+  //   useIntroductoryModal: true,
+  //   contentGeneratorContent: {
+  //     introOverview: (
+  //       <Typography gutterBottom>
+  //         As the first project I developed with the intent to educate, this GitHub repository marks a
+  //         significant milestone in my journey as a developer. It was crafted to provide a hands-on,
+  //         introductory exploration of implementing selectable filter UIs in React. The focus of this project
+  //         is to demonstrate the functional aspects of creating visual UI tools that empower users to apply
+  //         various filters to a dataset.
+  //         <Box height=".5rem" />I want to highlight that the primary objective of this project was to serve
+  //         as an educational tool, emphasizing functionality over aesthetics. As such, the visual design
+  //         aspects were not the primary focus and may not reflect the high standards I hold for user
+  //         experience in my current work. However, this project stands as a testament to my ability to
+  //         simplify complex concepts, making them accessible and understandable, particularly for those new
+  //         to React or UI development.
+  //       </Typography>
+  //     ),
+  //     techUsed: [
+  //       {
+  //         name: "TypeScript",
+  //         content: "Showcases a basic usage of TypeScript for filtering out a set of data",
+  //       },
+  //       {
+  //         name: "React",
+  //         content:
+  //           "Showcases a simple usage of provided hooks such as useState and useEffet to help manage filtering out a set of data",
+  //       },
+  //     ],
+  //   },
+  //   component: <FiltersDemo />,
+  // },
   {
     title: "stevenbennett.dev",
     icon: <ICONS.React />,
@@ -252,10 +250,10 @@ export const SHOWCASES: Showcase[] = [
       "Simulated API",
       "Figjam Diagram",
     ],
-    component: <NotatorSimulationContextWrapper />,
+    component: <ComplexFormDemonstrationContextWrapper />,
     id: ShowcaseIDs.NotatorSimulation,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",
-    contentGeneratorContent: notatorSimulationProjectContent,
+    contentGeneratorContent: complexFormDemoContent,
     useIntroductoryModal: true,
   },
 ];
