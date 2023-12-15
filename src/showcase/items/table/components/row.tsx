@@ -1,15 +1,22 @@
 import { XNGBigTableProps } from "../table";
 import { TableRow, TableCell } from "@mui/material";
 import { SelectableRowFirstCell } from "./selectables";
+import { useCallback, useMemo } from "react";
 
 export default function Row<T>(props: XNGBigTableProps<T> & { row: T; rowUID: number }) {
   const { row, rowUID } = props;
-  const rowToggled =
-    props.useSelectableRows?.rowSelections.find((sr) => sr.rowUID === rowUID)?.isSelected ?? false;
-
-  function handleToggleRow() {
+  const rowToggled = useMemo(
+    () => props.useSelectableRows?.rowSelections.find((sr) => sr.rowUID === rowUID)?.isSelected ?? false,
+    [props.useSelectableRows?.rowSelections, props.useSort?.sortedRows]
+  );
+  const handleToggleRow = useCallback(() => {
     props.useSelectableRows?.onRowToggle(rowUID);
-  }
+  }, [props.useSelectableRows]);
+
+  const memoizedColumns = useMemo(() => {
+    return props.columns;
+  }, []);
+  const memoizedSelectableRows = useMemo(() => props.useSelectableRows, []);
 
   return (
     <TableRow
@@ -19,16 +26,16 @@ export default function Row<T>(props: XNGBigTableProps<T> & { row: T; rowUID: nu
           onRowClick(row);
           return;
         }
-        if (props.useSelectableRows) {
+        if (memoizedSelectableRows) {
           handleToggleRow();
         }
       }}
       key={rowUID}
       sx={{
-        ...(props.useSelectableRows && { ":hover": { bgcolor: "#0000000C", cursor: "pointer" } }),
+        ...(memoizedSelectableRows && { ":hover": { bgcolor: "#0000000C", cursor: "pointer" } }),
       }}
     >
-      {props.useSelectableRows && (
+      {memoizedSelectableRows && (
         <SelectableRowFirstCell
           onToggle={(e) => {
             e.stopPropagation();
@@ -38,7 +45,7 @@ export default function Row<T>(props: XNGBigTableProps<T> & { row: T; rowUID: nu
         />
       )}
 
-      {props.columns.map((col, colIndex) => (
+      {memoizedColumns.map((col, colIndex) => (
         <TableCell sx={{ pl: ".5rem!important" }} key={colIndex}>
           {row[col.key] as React.ReactNode}
         </TableCell>
