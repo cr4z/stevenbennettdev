@@ -9,7 +9,7 @@ export const complexFormDemoContent: ContentGeneratorContent = {
         the complexities of a real-world scenario I have encountered as a front-end team lead and architect
         at MSB, in a completely different hypothetical usage. This project is intended to showcase how I
         approached a series of unique challenges I encountered while developing the real-world counterpart
-        to this screen.
+        to this screen, including my unique approach to UI.
       </Typography>
       <Typography>
         To further explain the situation: MSB's primary users are special education teachers, and they
@@ -86,10 +86,11 @@ export const complexFormDemoContent: ContentGeneratorContent = {
       desc: (
         <Stack direction="column" gap=".5rem">
           <Typography>
-            In the real world, we may encounter data models that are streamlined for tasks like querying,
-            but prove unfavorable for use in a front-end application. In this project, I have recreated a
-            specific scenario I previously faced with inflexible back-end models. This showcases my ease in
-            navigating these challenges.
+            In the real world, we may encounter having to use back end data models that are streamlined for
+            tasks like querying, but prove unfavorable for use in a front-end application. In this project,
+            I have recreated a specific scenario I previously faced with inflexible back-end models provided
+            to the front end through Swagger API. The code behind showcases my ease in navigating these
+            challenges.
           </Typography>
         </Stack>
       ),

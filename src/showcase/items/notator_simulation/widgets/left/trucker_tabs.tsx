@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  ButtonBase,
-  Typography,
-  useTheme,
-  Checkbox,
-} from "@mui/material";
+import { Box, Button, ButtonBase, Typography, useTheme, Checkbox } from "@mui/material";
 import { NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE } from "./left";
 import { PiCaretRightBold } from "react-icons/pi";
 import { BsFillTrash3Fill, BsPlusCircle } from "react-icons/bs";
@@ -21,11 +14,7 @@ const TRUCKER_TAB_SX = {
   },
 };
 
-function TruckerTabBase(props: {
-  children: React.ReactNode;
-  onClick?: () => void;
-  highlighted?: boolean;
-}) {
+function TruckerTabBase(props: { children: React.ReactNode; onClick?: () => void; highlighted?: boolean }) {
   return (
     <Box
       sx={{
@@ -59,11 +48,7 @@ function TruckerTabBase(props: {
   );
 }
 
-function TruckerTab(props: {
-  text: string;
-  onClick: () => void;
-  highlighted: boolean;
-}) {
+function TruckerTab(props: { text: string; onClick: () => void; highlighted: boolean }) {
   return (
     <TruckerTabBase onClick={props.onClick} highlighted={props.highlighted}>
       <Box
@@ -78,10 +63,7 @@ function TruckerTab(props: {
           <Box sx={TRUCKER_TAB_SX.truckerStatusDotAndPlusButtonWrapperStyling}>
             <StatusDot />
           </Box>
-          <Typography
-            variant="body2"
-            color={NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE}
-          >
+          <Typography variant="body2" color={NOTATOR_LEFT_WIDGET_COLOR_SOFTWHITE}>
             {props.text}
           </Typography>
         </Box>
@@ -114,11 +96,7 @@ function AddTruckerButton(props: { onClick: () => void }) {
   );
 }
 
-function SelectableTruckerTab(props: {
-  text: string;
-  onToggle: () => void;
-  value: boolean;
-}) {
+function SelectableTruckerTab(props: { text: string; onToggle: () => void; value: boolean }) {
   return (
     <TruckerTabBase onClick={() => props.onToggle()}>
       <Box

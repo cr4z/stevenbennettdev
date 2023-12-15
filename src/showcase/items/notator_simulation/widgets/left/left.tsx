@@ -85,14 +85,12 @@ function DefaultView(props: { truckerJournals: TruckerJournal[] }) {
 
       <ScrollbarLayout dependencies={{ truckerJournals: props.truckerJournals }}>
         {props.truckerJournals.map((s, i) => (
-          <SBDFadeIn key={i}>
-            <LeftWidgetOptions.TruckerTab
-              key={i}
-              text={s.fullName}
-              onClick={() => truckerSelectorTools.setSelectedTruckerID(s.id)}
-              highlighted={s.id === truckerSelectorTools.selectedTruckerID}
-            />
-          </SBDFadeIn>
+          <LeftWidgetOptions.TruckerTab
+            key={i}
+            text={s.fullName}
+            onClick={() => truckerSelectorTools.setSelectedTruckerID(s.id)}
+            highlighted={s.id === truckerSelectorTools.selectedTruckerID}
+          />
         ))}
       </ScrollbarLayout>
 
