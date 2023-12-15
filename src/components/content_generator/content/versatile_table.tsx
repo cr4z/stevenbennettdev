@@ -75,7 +75,7 @@ export const advancedTableComponentContent: ContentGeneratorContent = {
       desc: (
         <Typography>
           Complex modules are well documented, as visibly evident{" "}
-          <a href="/portfolio/9aed35c7101b">in this function I commonly use</a>!
+          <a href="/portfolio/debdcb6a850d">in this function I commonly use</a>!
         </Typography>
       ),
     },

@@ -104,11 +104,11 @@ export const SHOWCASES: Showcase[] = [
     contentGeneratorContent: {
       introOverview: (
         <Typography>
-          This was my first freelance project I had ever done professionally, built with Next.js. I've
-          sinced gotten a little bit better at image optimization, but to this day it remains one of my
-          finest achievements in SEO optimization! When typing 'flores home repair' into Google,
-          floreshomerepair.com should be at the very top. Even variations such as 'Flores House Renovation'
-          should work.
+          This project marked the beginning of my professional freelance journey, crafted using Next.js.
+          Since then, I've honed my skills in image optimization, but this project still stands out as one
+          of my most significant successes in SEO optimization. A testament to this is the online visibility
+          of the website: searching 'flores home repair' on Google typically shows floreshomerepair.com
+          right at the top. It's also effective through variations like 'flores house renovation'.
         </Typography>
       ),
     },
