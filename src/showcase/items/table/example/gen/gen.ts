@@ -1,15 +1,14 @@
-/// ---------------- FOR EXAMPLE USAGE, UNCOMMENT BELOW. Please re-comment when done! ---------------- ///
 import { useEffect, useState } from "react";
 import { TableRequestParameters } from "../../types";
 import { sortItemsAlphabetically } from "../../../../../sbd_development_kit/utils/sort_items_alphabetically";
 
 export type ExampleRow = {
-  campusName: string;
-  stateID: string;
-  address: string;
-  contact: string;
-  contactRole: string;
-  contactEmail: string;
+  employeeId: string;
+  name: string;
+  position: string;
+  email: string;
+  salary: string;
+  department: string;
 };
 
 export type FetchedTableResponse = {
@@ -17,52 +16,32 @@ export type FetchedTableResponse = {
   fetchedRows: ExampleRow[];
 };
 
-/// ---------------- FOR EXAMPLE USAGE, UNCOMMENT BELOW. Please re-comment when done! ---------------- ///
-
 function generateDummyRows(): ExampleRow[] {
   const dummyRows: ExampleRow[] = [];
-  const campusNames = [
-    "Allen Elementary",
-    "Green Valley High",
-    "Riverside Elementary",
-    "Maplewood Academy",
-    "Lakeside Middle School",
-    "Sunnydale School",
-    "Pinecrest Institute",
-    "Harborview School",
-    "Westbrook High",
-    "Springfield Elementary",
-    "Hilltop Academy",
+  const names = ["John Doe", "Jane Smith", "Mike Brown", "Sara Jones", "Chris Wilson"];
+  const positions = [
+    "Software Engineer",
+    "Product Manager",
+    "Data Scientist",
+    "UX Designer",
+    "Marketing Specialist",
   ];
-  const states = ["TX", "CO", "CA", "NY", "FL", "IL", "PA", "OH", "MI", "WA"];
-  const roles = ["Principal", "Vice Principal", "Administrator", "Counselor", "Coordinator"];
+  const departments = ["Technology", "Product", "Data", "Design", "Marketing"];
 
   for (let i = 0; i < 60; i++) {
-    const campus = campusNames[Math.floor(Math.random() * campusNames.length)];
-    const state = states[Math.floor(Math.random() * states.length)];
-    const addressNumber = Math.floor(Math.random() * 900) + 100;
-    const addressStreet = ["Main St", "Park Ave", "Cedar Rd", "Oak St", "2nd Ave"][
-      Math.floor(Math.random() * 5)
-    ];
-    const city = ["Austin", "Denver", "Los Angeles", "New York", "Miami"][Math.floor(Math.random() * 5)];
-    const zipCode = Math.floor(Math.random() * 90000) + 10000;
-    const address = `${addressNumber} ${addressStreet}, ${city}, ${state}, ${zipCode}`;
-
-    const firstName = ["John", "Jane", "Mike", "Sara", "Chris"][Math.floor(Math.random() * 5)];
-    const lastName = ["Smith", "Johnson", "Williams", "Brown", "Jones"][Math.floor(Math.random() * 5)];
-    const contact = `${firstName} ${lastName}`;
-    const role = roles[Math.floor(Math.random() * roles.length)];
-    const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}@${campus
-      .replace(/\s+/g, "")
-      .toLowerCase()}.edu`;
+    const name = names[Math.floor(Math.random() * names.length)];
+    const position = positions[Math.floor(Math.random() * positions.length)];
+    const department = departments[Math.floor(Math.random() * departments.length)];
+    const email = name.toLowerCase().replace(" ", ".") + "@example.com";
+    const salary = (Math.floor(Math.random() * 50000) + 50000).toString(); // Salary range from 50,000 to 100,000
 
     dummyRows.push({
-      campusName: campus,
-      stateID: state,
-      address: address,
-      contact: contact,
-      contactRole: role,
-      contactEmail: email,
+      employeeId: crypto.randomUUID().substring(0, 8),
+      name: name,
+      position: position,
+      email: email,
+      salary: salary,
+      department: department,
     });
   }
 
@@ -79,7 +58,7 @@ export const exampleRowsAPI = {
     const { resultsPerPage, sortBy, pageIndex } = tableRequestParameters;
 
     const sortedRows = sortBy
-      ? sortItemsAlphabetically(DUMMY_ROWS, sortBy.key as string, sortBy.order)
+      ? sortItemsAlphabetically(DUMMY_ROWS, sortBy.key as keyof ExampleRow, sortBy.order)
       : [...DUMMY_ROWS]; // If no sorting is needed, create a copy of DUMMY_ROWS
 
     const sliceStartIndex = resultsPerPage * pageIndex;
