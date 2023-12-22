@@ -11,6 +11,8 @@ import { ContentGeneratorContent } from "../components/content_generator/types/t
 import QuickSortInPlaceExample from "./items/quick_sort_in_place";
 import { RapidAlphabeticSortExample } from "./items/rapid_alphabetic_sort";
 import { Typography } from "@mui/material";
+import BigTableExampleWrapper from "./items/table/example/example";
+import { advancedTableComponentContent } from "../components/content_generator/content/versatile_table";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
@@ -112,25 +114,25 @@ export const SHOWCASES: Showcase[] = [
     },
     dateCreated: dayjs(new Date(2022, 3, 24)),
   },
-  // {
-  //   title: "Advanced Table Custom Component",
-  //   icon: <ICONS.React />,
-  //   tags: [
-  //     "React",
-  //     "TypeScript",
-  //     "SOLID Principles",
-  //     "Custom Hooks",
-  //     "Engaging User Experience",
-  //     "notistack",
-  //     "Advanced Custom Algorithm",
-  //   ],
-  //   id: ShowcaseIDs.TypeSafeTableComponent,
-  //   github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
-  //   component: <BigTableExample />,
-  //   contentGeneratorContent: advancedTableComponentContent,
-  //   dateCreated: dayjs(new Date(2023, 11, 28)),
-  //   useIntroductoryModal: true,
-  // },
+  {
+    title: "Advanced Table Custom Component",
+    icon: <ICONS.React />,
+    tags: [
+      "React",
+      "TypeScript",
+      "SOLID Principles",
+      "Custom Hooks",
+      "Engaging User Experience",
+      "notistack",
+      "Advanced Custom Algorithm",
+    ],
+    id: ShowcaseIDs.TypeSafeTableComponent,
+    github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
+    component: <BigTableExampleWrapper />,
+    contentGeneratorContent: advancedTableComponentContent,
+    dateCreated: dayjs(new Date(2023, 11, 28)),
+    useIntroductoryModal: true,
+  },
   {
     title: "Algorithm: Quick Sort in Place",
     icon: <ICONS.Typescript />,
