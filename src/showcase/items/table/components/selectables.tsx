@@ -11,7 +11,7 @@ export function SelectableColumnHeaderCell(props: {
     <TableCell>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Checkbox size="small" checked={value} onClick={onClick} />
-        <Box sx={{ minWidth: "3rem", display: "flex" }}>
+        <Box sx={{ minWidth: "3.4rem", display: "flex" }}>
           <Typography>All</Typography>
           {numSelected > 0 && (
             <Typography className="noselect" ml=".3rem" sx={{ color: "#0005" }}>

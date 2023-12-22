@@ -1,12 +1,4 @@
-import {
-  Box,
-  ButtonBase,
-  Container,
-  Skeleton,
-  ThemeProvider,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, ButtonBase, Container, Skeleton, ThemeProvider, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router";
 import { blogTheme } from "../../design_system/themes/blog";
 import { BlogPost } from "../../api/models/blog";
@@ -42,9 +34,22 @@ export default function BlogFeed() {
                 <BlogSnippetSkeleton />
               </>
             ) : (
-              blogs.map((blog, i) => {
-                return <BlogSnippet key={i} viewData={blog} />;
-              })
+              <>
+                {blogs.length === 0 ? (
+                  <Container className="noselect">
+                    <Typography
+                      sx={{ textAlign: "center", fontStyle: "italic", fontSize: "1.25rem", color: "#FFF9" }}
+                    >
+                      There was a problem while retrieving blogs. Please try refreshing this page. If the
+                      problem persists, please contact me through my contact tab!
+                    </Typography>
+                  </Container>
+                ) : (
+                  blogs.map((blog, i) => {
+                    return <BlogSnippet key={i} viewData={blog} />;
+                  })
+                )}
+              </>
             )}
           </Box>
         </Container>
@@ -119,20 +124,14 @@ function BlogSnippetSkeleton() {
 
 function IntroductoryText() {
   return (
-    <Typography
-      variant="subtitle1"
-      sx={{ textAlign: "center", my: "4rem", mb: "6rem" }}
-    >
-      As a developer, team leader, and perpetual student of technology, I
-      constantly strive to bridge the gap between innovation and real-world
-      impact. This blog serves as both a canvas for my intellectual curiosity
-      and a showcase for my ongoing discoveries within the rapidly evolving tech
-      landscape. With a keen interest in scalable, user-centric solutions, I
-      delve into the challenges and triumphs that define the industry today.
-      Whether you're a fellow technophile or simply curious, I invite you to
-      join me on this journey of exploration. If we share a commitment to
-      knowledge, creativity, and making a meaningful difference, then you've
-      come to the right place.
+    <Typography variant="subtitle1" sx={{ textAlign: "center", my: "4rem", mb: "6rem" }}>
+      As a developer, team leader, and perpetual student of technology, I constantly strive to bridge the
+      gap between innovation and real-world impact. This blog serves as both a canvas for my intellectual
+      curiosity and a showcase for my ongoing discoveries within the rapidly evolving tech landscape. With a
+      keen interest in scalable, user-centric solutions, I delve into the challenges and triumphs that
+      define the industry today. Whether you're a fellow technophile or simply curious, I invite you to join
+      me on this journey of exploration. If we share a commitment to knowledge, creativity, and making a
+      meaningful difference, then you've come to the right place.
     </Typography>
   );
 }

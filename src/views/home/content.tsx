@@ -1,6 +1,6 @@
 import HeadshotPNG from "../../img/headshot_natural.png";
 import { OpenToWorkMessage } from "../../components/msg_open_to_work";
-import Button from "../../design_system/button";
+import SBDButton from "../../design_system/button";
 import { BsFileEarmarkPerson } from "react-icons/bs";
 import { Box, Tooltip, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -185,7 +185,7 @@ function TitleAndResume() {
 
       <Tooltip title="View Resume">
         <div>
-          <Button
+          <SBDButton
             useIcon={<BsFileEarmarkPerson />}
             onClick={() =>
               window.open(
@@ -195,7 +195,7 @@ function TitleAndResume() {
             }
           >
             View Resume
-          </Button>
+          </SBDButton>
         </div>
       </Tooltip>
     </Box>

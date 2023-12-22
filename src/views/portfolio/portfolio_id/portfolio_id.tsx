@@ -3,7 +3,7 @@ import Navbar from "../../navbar";
 import { SHOWCASES } from "../../../showcase/items";
 import { useLocation, useNavigate } from "react-router";
 import { SearchControls, SearchResultsView } from "../../../components/search_controls";
-import Button from "../../../design_system/button";
+import SBDButton from "../../../design_system/button";
 import { ICONS, IconRenderer } from "../../../design_system/icons";
 import { useEffect, useState } from "react";
 import { useBreakpointHelper } from "../../../design_system/hooks/useBreakpointHelper";
@@ -77,7 +77,7 @@ function ShowcaseLayout() {
               <ShowcaseViewingProjectTitle title={showcase?.title!} />
 
               <Box sx={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-                <Button
+                <SBDButton
                   onClick={() => {
                     if (showcase?.useIntroductoryModal) {
                       dispatch(setIntroductoryModelOpen(!customDetailsModalOpen));
@@ -94,7 +94,7 @@ function ShowcaseLayout() {
                 >
                   <IconRenderer color={palette.text.primary} widthHeight="2rem" i={<ICONS.Info />} />
                   View Project Details
-                </Button>
+                </SBDButton>
                 <ViewCodeOnGithubButton href={showcase?.github!} />
               </Box>
             </Box>

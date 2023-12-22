@@ -6,8 +6,6 @@ import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
 import DougZonePodcast from "./items/dougzonepodcast";
 import ComplexFormDemonstrationContextWrapper from "./items/notator_simulation/complex_form_demo";
-import BigTableExample from "./items/table/example/example";
-import { advancedTableComponentContent } from "../components/content_generator/content/versatile_table";
 import { complexFormDemoContent } from "../components/content_generator/content/complex_form_demo";
 import { ContentGeneratorContent } from "../components/content_generator/types/types";
 import QuickSortInPlaceExample from "./items/quick_sort_in_place";
@@ -114,25 +112,25 @@ export const SHOWCASES: Showcase[] = [
     },
     dateCreated: dayjs(new Date(2022, 3, 24)),
   },
-  {
-    title: "Advanced Table Custom Component",
-    icon: <ICONS.React />,
-    tags: [
-      "React",
-      "TypeScript",
-      "SOLID Principles",
-      "Custom Hooks",
-      "Engaging User Experience",
-      "notistack",
-      "Advanced Custom Algorithm",
-    ],
-    id: ShowcaseIDs.TypeSafeTableComponent,
-    github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
-    component: <BigTableExample />,
-    contentGeneratorContent: advancedTableComponentContent,
-    dateCreated: dayjs(new Date(2023, 11, 28)),
-    useIntroductoryModal: true,
-  },
+  // {
+  //   title: "Advanced Table Custom Component",
+  //   icon: <ICONS.React />,
+  //   tags: [
+  //     "React",
+  //     "TypeScript",
+  //     "SOLID Principles",
+  //     "Custom Hooks",
+  //     "Engaging User Experience",
+  //     "notistack",
+  //     "Advanced Custom Algorithm",
+  //   ],
+  //   id: ShowcaseIDs.TypeSafeTableComponent,
+  //   github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
+  //   component: <BigTableExample />,
+  //   contentGeneratorContent: advancedTableComponentContent,
+  //   dateCreated: dayjs(new Date(2023, 11, 28)),
+  //   useIntroductoryModal: true,
+  // },
   {
     title: "Algorithm: Quick Sort in Place",
     icon: <ICONS.Typescript />,
@@ -168,43 +166,7 @@ export const SHOWCASES: Showcase[] = [
     github: "https://github.com/cr4z/dzp-vite",
     component: <DougZonePodcast />,
   },
-  // {
-  //   title: "React Basics: Applying Visual Filters",
-  //   icon: <ICONS.React />,
-  //   tags: ["React", "TypeScript"],
-  //   id: ShowcaseIDs.FilteringAlgorithm,
-  //   github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/filters_demo",
-  //   useIntroductoryModal: true,
-  //   contentGeneratorContent: {
-  //     introOverview: (
-  //       <Typography gutterBottom>
-  //         As the first project I developed with the intent to educate, this GitHub repository marks a
-  //         significant milestone in my journey as a developer. It was crafted to provide a hands-on,
-  //         introductory exploration of implementing selectable filter UIs in React. The focus of this project
-  //         is to demonstrate the functional aspects of creating visual UI tools that empower users to apply
-  //         various filters to a dataset.
-  //         <Box height=".5rem" />I want to highlight that the primary objective of this project was to serve
-  //         as an educational tool, emphasizing functionality over aesthetics. As such, the visual design
-  //         aspects were not the primary focus and may not reflect the high standards I hold for user
-  //         experience in my current work. However, this project stands as a testament to my ability to
-  //         simplify complex concepts, making them accessible and understandable, particularly for those new
-  //         to React or UI development.
-  //       </Typography>
-  //     ),
-  //     techUsed: [
-  //       {
-  //         name: "TypeScript",
-  //         content: "Showcases a basic usage of TypeScript for filtering out a set of data",
-  //       },
-  //       {
-  //         name: "React",
-  //         content:
-  //           "Showcases a simple usage of provided hooks such as useState and useEffet to help manage filtering out a set of data",
-  //       },
-  //     ],
-  //   },
-  //   component: <FiltersDemo />,
-  // },
+
   {
     title: "stevenbennett.dev",
     icon: <ICONS.React />,
