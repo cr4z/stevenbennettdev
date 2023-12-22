@@ -1,5 +1,8 @@
 import { Alert, Box, Stack, Typography } from "@mui/material";
 import { ContentGeneratorContent } from "../types/types";
+import ReactDiagramPath from "../../../img/react_diagram.png";
+import ImageViewer from "react-simple-image-viewer";
+import { useState } from "react";
 
 export const complexFormDemoContent: ContentGeneratorContent = {
   introOverview: (
@@ -45,11 +48,18 @@ export const complexFormDemoContent: ContentGeneratorContent = {
         <Typography>
           I used an adapted version of UML to create a React system flowchart, successfully allowing to
           preemptively detect irregularities resulting in a refined product architecture before beginning
-          development. <a>View here!</a>
+          development.
         </Typography>
       ),
     },
-    { name: "MUI", content: <Typography>Expanding later...</Typography> },
+    {
+      name: "MUI",
+      content: (
+        <Typography>
+          Used as a versatile foundation for the creation of featured unique & complex input elements
+        </Typography>
+      ),
+    },
     { name: "TypeScript", content: <Typography>Expanding later...</Typography> },
     {
       name: "React",
@@ -70,11 +80,15 @@ export const complexFormDemoContent: ContentGeneratorContent = {
     {
       skill: "System Design and Architectural Skills",
       desc: (
-        <Typography>
-          By using a custom-adapted version of UML to create a React system flowchart, I was able to
-          preemptively detect irregularities resulting in a refined product architecture before beginning
-          development. <a>View here!</a>
-        </Typography>
+        <Stack>
+          <Typography>
+            By using a custom-adapted version of UML to create a React system flowchart, I was able to
+            preemptively detect irregularities resulting in a refined product architecture before beginning
+            development.
+          </Typography>
+
+          <ImageWithViewer />
+        </Stack>
       ),
     },
     {
@@ -93,3 +107,21 @@ export const complexFormDemoContent: ContentGeneratorContent = {
     },
   ],
 };
+
+function ImageWithViewer() {
+  const [imgOpen, setImgOpen] = useState<boolean>(false);
+
+  return (
+    <>
+      <Box sx={{ cursor: "pointer" }} component="img" src={ReactDiagramPath} />;
+      {imgOpen && (
+        <ImageViewer
+          src={[ReactDiagramPath]}
+          currentIndex={0}
+          closeOnClickOutside={true}
+          onClose={() => setImgOpen(false)}
+        />
+      )}
+    </>
+  );
+}
