@@ -30,6 +30,7 @@ export default function FooterPaginationControls<T>(props: BigTableProps<T>) {
           options={RESULTS_PER_PAGE_OPTIONS}
           getDisplayValue={(n) => n.toString()}
           onChange={(n) => onPageSizeChange(n)}
+          variant={{ rounded: true }}
         />
         {isWiderThanMobile && (
           <Typography className="noselect">{`Showing ${Math.min(
@@ -40,10 +41,11 @@ export default function FooterPaginationControls<T>(props: BigTableProps<T>) {
       </Box>
 
       <Pagination
+        variant="outlined"
         page={pageIndex + 1} // 0-index to 1-index conversion
         onChange={(_e, pi) => onCurrentPageIndexChange(pi - 1)} // 1-index to 0-index conversion
         count={totalPages}
-        shape="rounded"
+        shape="circular"
       />
     </Box>
   );

@@ -1,4 +1,4 @@
-import { Box, ThemeProvider, Typography, useTheme } from "@mui/material";
+import { Box, Button, Stack, ThemeProvider, Typography, useTheme } from "@mui/material";
 import { useFormTools } from "./tools/use_form_tools";
 import { FormToolsProvider } from "./tools/modules";
 import { showcaseWhiteTheme } from "../../../design_system/themes/showcase_white_theme";
@@ -9,7 +9,8 @@ import { ComplexFormModal } from "./modals/modal";
 import { RightWidget } from "./widgets/right";
 import { useAppDispatch } from "../../../redux/hooks";
 import { setIntroductoryModelOpen } from "../../../redux/slices/custom_details_modal";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import SBDButton from "../../../design_system/button";
 
 export default function ComplexFormDemonstrationContextWrapper() {
   return (
@@ -78,19 +79,35 @@ function ComplexFormDemonstration() {
 
 function MobileModal() {
   const bph = useBreakpointHelper();
-  const showMobileNotice = !bph.isGreaterThanEqualTo(800);
+  const [show, setShow] = useState<boolean>(!bph.isGreaterThanEqualTo(800));
 
   return (
-    <ComplexFormModal open={showMobileNotice} onClose={() => {}} minWidth="md">
-      <Typography sx={{ color: "#000D" }}>
-        <b>Notice</b>
+    <ComplexFormModal
+      open={show}
+      onClose={() => {
+        setShow(false);
+      }}
+      minWidth="md"
+      sx={{ p: "1rem", display: "flex", flexDirection: "column", gap: ".5rem" }}
+    >
+      <Typography variant="h5" sx={{ color: "#000D" }}>
+        Notice
       </Typography>
       <Typography sx={{ color: "#000D" }}>
-        Looks like you're trying to view this on mobile! Unfortunately this screen wasn't built to for
-        mobile users, which was an intentional choice by the executive team who called for this screen's
-        construction, providing instead a different screen entirely for our mobile users. You can still view
-        it, but just understand the experience won't be as optimal.
+        Hello and welcome! Quick heads-up: this part of my portfolio replicates a project that was designed
+        exclusively for desktop users in mind. While you can certainly access it on mobile, the experience
+        is not as optimal of a demonstration of my UX capabilities. As such, I recommend viewing this
+        project on a desktop. Thank you for stopping by and enjoy exploring my work!
       </Typography>
+      <SBDButton
+        onClick={() => {
+          setShow(false);
+        }}
+        sx={{ mt: "1rem" }}
+        variant="cta"
+      >
+        Got it!
+      </SBDButton>
     </ComplexFormModal>
   );
 }

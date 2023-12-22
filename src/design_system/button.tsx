@@ -1,7 +1,7 @@
 import { ButtonBase, useTheme, SxProps, Box } from "@mui/material";
 import React from "react";
 
-function Button(props: {
+function SBDButton(props: {
   variant?: "unselected" | "selected" | "contained" | "cta";
   onClick?: () => void;
   children?: React.ReactNode;
@@ -85,4 +85,4 @@ function Button(props: {
   );
 }
 
-export default Button;
+export default SBDButton;
