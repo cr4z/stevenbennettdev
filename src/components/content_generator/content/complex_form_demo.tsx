@@ -60,7 +60,15 @@ export const complexFormDemoContent: ContentGeneratorContent = {
         </Typography>
       ),
     },
-    { name: "TypeScript", content: <Typography>Expanding later...</Typography> },
+    {
+      name: "TypeScript",
+      content: (
+        <Typography>
+          Practical application of SOLID principles in a React-TS environment such as interface segregation,
+          observed in <code>locked_control_props.ts</code>
+        </Typography>
+      ),
+    },
     {
       name: "React",
       content: (
