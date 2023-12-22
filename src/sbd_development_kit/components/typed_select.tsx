@@ -1,4 +1,4 @@
-import { MenuItem, MenuProps, Select, SelectProps, useTheme } from "@mui/material";
+import { MenuItem, MenuProps, Select, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const leftAlignedMenuProp: Partial<MenuProps> = {
