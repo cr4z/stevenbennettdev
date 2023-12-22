@@ -16,9 +16,7 @@ function QuickSortInPlaceExample() {
     >
       <Typography variant="h5">QuickSort In-Place Custom Algorithm</Typography>
       <Typography variant="body1">
-        Seen below is my custom implementation of the common quicksort in-place algorithm. This code is
-        responsible for the sorting functionality seen in my advanced{" "}
-        <a href="/portfolio/n192kb3i9372">table project</a>!
+        Seen below is my custom implementation of the common quicksort in-place algorithm.
       </Typography>
       <SBDCodeBlock
         code={`export function quickSortInPlace<T>(
