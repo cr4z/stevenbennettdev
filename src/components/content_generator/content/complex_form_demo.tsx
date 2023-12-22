@@ -14,13 +14,12 @@ export const complexFormDemoContent: ContentGeneratorContent = {
         counterpart to this screen, including my unique approach to UI.
       </Typography>
       <Typography>
-        Hence, this project is an emulation of that complex form that I built, emulating similar challenges
-        and solutions visible in the code. In the real-world counterpart to this project, I made critical
-        strategic decisions that proved pivotal to our product's release. One such decision was to rapidly
-        develop the advanced architecture within two days, and then entrust its further development to a
-        React novice under my guidance. This not only accelerated our development process but also fostered
-        skill growth within the team. The success of this approach was evident in our product's on-time
-        launch and its subsequent performance, which I consider a significant professional achievement.
+        In the real-world counterpart to this project, I made critical strategic decisions that proved
+        pivotal to our product's release. One such decision was to rapidly develop the advanced architecture
+        within two days, and then entrust its further development to a React novice under my guidance. This
+        not only accelerated our development process but also fostered skill growth within the team. The
+        success of this approach was evident in our product's on-time launch and its subsequent performance,
+        which I consider a significant professional achievement.
       </Typography>
       <Typography sx={{ pl: "1rem", borderLeft: "2px solid #FFF2", color: "#FFF8" }}>
         Interestingly, this scenario also presented an opportunity for me to creatively optimize our team's

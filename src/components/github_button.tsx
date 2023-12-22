@@ -1,9 +1,9 @@
-import Button from "../design_system/button";
+import SBDButton from "../design_system/button";
 import { ICONS, IconRenderer } from "../design_system/icons";
 
 export function ViewCodeOnGithubButton(props: { grey?: boolean, href?: string }) {
   return (
-    <Button
+    <SBDButton
       sx={{
         paddingLeft: ".5rem",
         paddingRight: "1rem",
@@ -17,6 +17,6 @@ export function ViewCodeOnGithubButton(props: { grey?: boolean, href?: string })
     >
       <IconRenderer widthHeight="2rem" i={<ICONS.GitHub />} />
       View Code on GitHub
-    </Button>
+    </SBDButton>
   );
 }

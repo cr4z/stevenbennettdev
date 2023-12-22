@@ -26,7 +26,7 @@ export default function ShowcaseModalBase(props: {
         transition: "visibility .25s ease, background-color .25s ease",
       }}
     >
-      <Container sx={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Container maxWidth="md" sx={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Box
           onClick={(e) => e.stopPropagation()}
           p="1rem"
@@ -40,7 +40,8 @@ export default function ShowcaseModalBase(props: {
             transform: open ? "scale(1)" : "scale(.98)",
             opacity: open ? 1 : 0,
             transition: "transform .25s ease, opacity .25s ease",
-            width: "50rem",
+            maxWidth: "100%",
+            minWidth: "14rem",
             pt: "2.5rem",
           }}
         >
