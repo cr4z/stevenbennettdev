@@ -7,8 +7,10 @@ export function RapidAlphabeticSortExample() {
       <Typography variant="h5">Rapid Alphabetic Sort Custom Algorithm</Typography>
       <Typography variant="body1">
         Seen below is a fully self-documenting algorithm that reuses my quicksort in-place algorithm in
-        order to sort any array of any type by any key. This code is primarily responsible for the sorting
-        functionality seen in my advanced <a href="/portfolio/n192kb3i9372">table project</a>!
+        order to sort any array of any type by any key. This algorithm has played a pivotal role in the
+        performance optimization of a sophisticated table component I developed, notably enhancing
+        client-side sorting capabilities. Its integration demonstrates not only technical skill but also my
+        user-centric mindset in software development.
       </Typography>
       <SBDCodeBlock
         code={`

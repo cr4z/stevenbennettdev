@@ -1,8 +1,8 @@
 import { Alert, Box, Stack, Typography } from "@mui/material";
 import { ContentGeneratorContent } from "../types/types";
-import ReactDiagramPath from "../../../img/react_diagram.png";
-import ImageViewer from "react-simple-image-viewer";
 import { useState } from "react";
+import { ImageViewerDialog } from "../../../sbd_development_kit/components/image_viewer_dialog";
+import ReactDiagramPNG from "../../../img/react_diagram.png";
 
 export const complexFormDemoContent: ContentGeneratorContent = {
   introOverview: (
@@ -109,19 +109,17 @@ export const complexFormDemoContent: ContentGeneratorContent = {
 };
 
 function ImageWithViewer() {
-  const [imgOpen, setImgOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <>
-      <Box sx={{ cursor: "pointer" }} component="img" src={ReactDiagramPath} />;
-      {imgOpen && (
-        <ImageViewer
-          src={[ReactDiagramPath]}
-          currentIndex={0}
-          closeOnClickOutside={true}
-          onClose={() => setImgOpen(false)}
-        />
-      )}
+      <ImageViewerDialog
+        src={ReactDiagramPNG}
+        title="React Flow Diagram"
+        open={open}
+        onClose={() => setOpen(false)}
+      />
+      <Box sx={{ cursor: "pointer" }} onClick={() => setOpen(true)} component="img" src={ReactDiagramPNG} />
     </>
   );
 }
