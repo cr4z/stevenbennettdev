@@ -51,12 +51,12 @@ function BigTableExample() {
     <Box sx={{ bgcolor: "#FFF", display: "flex", gap: "2rem", flexDirection: "column", height: "100%" }}>
       <BigTable<ExampleRow>
         columns={[
-          { key: "campusName", label: "Campus Name" },
-          { key: "stateID", label: "State ID" },
-          { key: "address", label: "Address" },
-          { key: "contact", label: "Contact" },
-          { key: "contactRole", label: "Contact Role" },
-          { key: "contactEmail", label: "Contact Email" },
+          { key: "employeeId", label: "Employee ID" },
+          { key: "name", label: "Name" },
+          { key: "position", label: "Position" },
+          { key: "email", label: "Email" },
+          { key: "salary", label: "Salary" },
+          { key: "department", label: "Department" },
         ]}
         useSelectableRows={ts.selectableState}
         usePagination={ts.paginationState}

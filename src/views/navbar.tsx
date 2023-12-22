@@ -7,7 +7,7 @@ import useMenu from "../design_system/hooks/useMenu";
 import ContactMenu from "../components/contact";
 // @ts-ignore
 import { ReactComponent as SBLogo } from "../svgs/logo.svg";
-import Button from "../design_system/button";
+import SBDButton from "../design_system/button";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -94,14 +94,14 @@ function Navbar() {
             gap: ".4rem",
           }}
         >
-          <Button
+          <SBDButton
             variant={location.pathname === "/" ? "selected" : "unselected"}
             onClick={() => navigate("/")}
             sx={navbarButtonSX}
           >
             Home
-          </Button>
-          <Button
+          </SBDButton>
+          <SBDButton
             variant={
               location.pathname.includes("/blogs") ? "selected" : "unselected"
             }
@@ -109,8 +109,8 @@ function Navbar() {
             sx={navbarButtonSX}
           >
             Blog
-          </Button>
-          <Button
+          </SBDButton>
+          <SBDButton
             variant={
               location.pathname.includes("/portfolio")
                 ? "selected"
@@ -120,7 +120,7 @@ function Navbar() {
             sx={navbarButtonSX}
           >
             Portfolio
-          </Button>
+          </SBDButton>
           {/* <Button
             variant="unselected"
             onClick={() =>
@@ -136,9 +136,9 @@ function Navbar() {
             Resume
           </Button> */}
           <div ref={contactBtnRef}>
-            <Button variant="cta" onClick={() => setShowContactMenu(true)}>
+            <SBDButton variant="cta" onClick={() => setShowContactMenu(true)}>
               Contact
-            </Button>
+            </SBDButton>
           </div>
         </Box>
       </Box>

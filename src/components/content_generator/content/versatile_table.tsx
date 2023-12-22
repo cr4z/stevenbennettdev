@@ -1,5 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { ContentGeneratorContent } from "../types/types";
+import { SBDCodeBlock } from "../../../sbd_development_kit/components/code_block";
 
 export const advancedTableComponentContent: ContentGeneratorContent = {
   introOverview: (
@@ -9,6 +10,39 @@ export const advancedTableComponentContent: ContentGeneratorContent = {
         patterning and affords the developer the ability to render static or dynamic data with a plethora of
         different overloadable functionalities such as pagination, sorting, and selectable rows.
       </Typography>
+      <SBDCodeBlock
+        code={`function BigTableExample() {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const { table, refetch } = useFetchTable();
+  const ts = useTableState({
+    table,
+    onClientSideSort: () => enqueueSnackbar("Leveraging client-side QuickSort algorithm!"),
+  });
+
+  return (
+    <BigTable<ExampleRow>
+      columns={[
+        { key: "employeeId", label: "Employee ID" },
+        { key: "name", label: "Name" },
+        { key: "position", label: "Position" },
+        { key: "email", label: "Email" },
+        { key: "salary", label: "Salary" },
+        { key: "department", label: "Department" },
+      ]}
+      useSelectableRows={ts.selectableState}
+      usePagination={ts.paginationState}
+      useSort={ts.sortState}
+      onTableRequestParametersChange={(trp) => {
+        enqueueSnackbar("Re-fetching data! (Check console to view parameters)");
+        console.log("Refetching data! Parameters: ", { trp });
+        refetch(trp);
+      }}
+    />
+   );
+}
+`}
+      />
       <Typography variant="body1">
         In this demonstration, I've attached listeners to the table callbacks for re-fetching data and
         client-side sorting to the snackbar component provided by the npm library <code>notistack</code>{" "}

@@ -1,7 +1,7 @@
 import { Box, Typography, Input, Select, Checkbox, MenuItem } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Campus, Grade, numberToGradeOrEmpty } from "./types_and_helpers";
-import Button from "../../../design_system/button";
+import SBDButton from "../../../design_system/button";
 
 interface Student {
   name: string;
@@ -102,9 +102,9 @@ function FiltersDemo() {
         </Typography>
       </Box>
 
-      <Button sx={{ my: "2rem" }} variant="cta" onClick={() => clearFilters()}>
+      <SBDButton sx={{ my: "2rem" }} variant="cta" onClick={() => clearFilters()}>
         Clear Filters
-      </Button>
+      </SBDButton>
 
       <Typography gutterBottom variant="h4">
         Results:

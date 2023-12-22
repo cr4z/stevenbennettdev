@@ -17,7 +17,10 @@ export function SBDTypedSelect<T>(props: {
   getDisplayValue: (v: T) => string;
   onChange: (v: T) => void;
   defaultOption?: T;
+  variant?: { muiVariant?: "standard" | "outlined" | "filled"; rounded?: boolean };
 }) {
+  const muiVariant = props.variant?.muiVariant ?? "outlined";
+  const rounded = props.variant?.rounded;
   const defaultValueIfAny = props.defaultOption ? props.getDisplayValue(props.defaultOption) : null;
   const [selectedString, setSelectedString] = useState<string>(defaultValueIfAny ?? "");
 
@@ -40,7 +43,11 @@ export function SBDTypedSelect<T>(props: {
       onChange={(e) => setSelectedString(e.target.value)}
       inputProps={{ "aria-label": "Without label" }}
       size="small"
-      sx={{ bgcolor: palette.background.default }}
+      sx={{
+        bgcolor: palette.background.default,
+        ...(rounded && { borderRadius: "99rem" }),
+      }}
+      variant={muiVariant}
       MenuProps={leftAlignedMenuProp}
     >
       {optionsToStrings.map((option, i) => (

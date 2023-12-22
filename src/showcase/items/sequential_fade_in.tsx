@@ -1,7 +1,7 @@
 import { Box, Container, Typography, useTheme } from "@mui/material";
 import Input from "../../design_system/input";
 import { useEffect, useMemo, useState } from "react";
-import Button from "../../design_system/button";
+import SBDButton from "../../design_system/button";
 import { ModalDialog } from "../../components/modal_dialog";
 import SBDFadeIn from "../../sbd_development_kit/components/fade_in";
 
@@ -74,7 +74,7 @@ function Showcase_SequentialFadeIn() {
                 placeholder="Amount of cards..."
                 sx={{ width: "20rem" }}
               />
-              <Button onClick={handleRegenerateClick}>Regenerate!</Button>
+              <SBDButton onClick={handleRegenerateClick}>Regenerate!</SBDButton>
             </Box>
           </form>
         </Box>
