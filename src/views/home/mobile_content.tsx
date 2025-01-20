@@ -28,25 +28,26 @@ function MobileContent(props: HomeContentProps) {
       >
         <NameLogo />
       </Box>
-      <Container>
-        <Stack
-          direction="column"
-          sx={{
-            bgcolor: palette.background.default,
-            alignItems: "center",
-          }}
-        >
-          <Stack alignItems="center" gap={8}>
-            <TitleCard />
-            <Headshot />
-            <Stack gap={1}>
-              <Body />
+      <Box sx={{ width: "100%", bgcolor: palette.background.default }}>
+        <Container>
+          <Stack
+            direction="column"
+            sx={{
+              alignItems: "center",
+            }}
+          >
+            <Stack alignItems="center" gap={8}>
+              <TitleCard />
+              <Headshot />
+              <Stack gap={1}>
+                <Body />
+              </Stack>
             </Stack>
-          </Stack>
 
-          <ScrollToTop onClick={() => onRequestScrollToTop()} useYMargin />
-        </Stack>
-      </Container>
+            <ScrollToTop onClick={() => onRequestScrollToTop()} useYMargin />
+          </Stack>
+        </Container>
+      </Box>
     </Box>
   );
 }

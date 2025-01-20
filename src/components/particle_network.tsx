@@ -1,38 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { styled } from "@mui/system";
 import { Box } from "@mui/material";
-
-const Glow = styled(Box)(({ theme }) => ({
-  zIndex: -1,
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  backgroundImage: "radial-gradient(circle closest-side, rgba(255, 255, 255, 0.025), transparent)",
-}));
-
-const glowStyles = {
-  glow1: {
-    width: "150vw",
-    height: "150vh",
-    marginTop: "-75vh",
-    marginLeft: "-75vw",
-    animation: `glow-1-move 25s linear infinite both`,
-  },
-  glow2: {
-    width: "100vw",
-    height: "100vh",
-    marginTop: "-50vh",
-    marginLeft: "-50vw",
-    animation: `glow-2-move 25s linear 8.33s infinite both`,
-  },
-  glow3: {
-    width: "120vw",
-    height: "120vh",
-    marginTop: "-60vh",
-    marginLeft: "-60vw",
-    animation: `glow-3-move 25s linear 16.67s infinite both`,
-  },
-};
 
 class Particle {
   canvas: HTMLCanvasElement;
@@ -168,7 +136,7 @@ function ParticleNetwork(props: { height: string }) {
           bottom: 0,
           left: 0,
           backgroundImage:
-            "url(https://images.unsplash.com/photo-1450849608880-6f787542c88a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=786a67dca1d8791d181bfd90b16240d9)",
+            "url(https://images.unsplash.com/photo-1450849608880-6f787542c88a?q=80&w=2021&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
           backgroundPosition: "center center",
           backgroundSize: "cover",
           opacity: 0.2,
