@@ -49,15 +49,7 @@ function ShowcaseLayout() {
   return (
     Boolean(showcase) && (
       <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-        <Box
-          sx={{
-            height: "4rem",
-            borderBottom: `1px solid ${palette.grey[800]}`,
-          }}
-        >
-          <Navbar />
-        </Box>
-
+       
         <Box
           sx={{
             borderBottom: `1px solid ${palette.grey[800]}`,
