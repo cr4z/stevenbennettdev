@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, Alert } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { ContentGeneratorContent } from "../types/types";
 import { useState } from "react";
 import { ImageViewerDialog } from "../../../sbd_development_kit/components/image_viewer_dialog";
