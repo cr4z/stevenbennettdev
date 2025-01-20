@@ -2,6 +2,7 @@ import { Typography, Stack } from "@mui/material";
 import SBDButton from "../../../design_system/button";
 import { useAppDispatch } from "../../../redux/hooks";
 import { setContactDialog } from "../../../redux/slices/contact_dialog_slice";
+import { Link } from "react-router-dom";
 
 function Body() {
   const dispatch = useAppDispatch();
@@ -67,6 +68,11 @@ function Body() {
           >
             View Resume
           </SBDButton>
+          <Link to="/portfolio">
+            <SBDButton variant="contained" larger sx={{ px: "2rem" }}>
+              View Portfolio
+            </SBDButton>
+          </Link>
           <SBDButton
             onClick={() => dispatch(setContactDialog(true))}
             variant="cta"
