@@ -6,11 +6,7 @@ export function RapidAlphabeticSortExample() {
     <Box sx={{ p: "1.5rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
       <Typography variant="h5">Rapid Alphabetic Sort Custom Algorithm</Typography>
       <Typography variant="body1">
-        Seen below is a fully self-documenting algorithm that reuses my quicksort in-place algorithm in
-        order to sort any array of any type by any key. This algorithm has played a pivotal role in the
-        performance optimization of a sophisticated table component I developed, notably enhancing
-        client-side sorting capabilities. Its integration demonstrates not only technical skill but also my
-        user-centric mindset in software development.
+        Seen below is type-safe, self-documenting rapid alphabetic sort function I've written.
       </Typography>
       <SBDCodeBlock
         code={`

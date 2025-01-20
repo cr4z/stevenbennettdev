@@ -26,7 +26,7 @@ function Navbar(props: { mobile?: boolean }) {
   const dispatch = useAppDispatch();
 
   const navbarButtonSX = useMemo(
-    () => (props.mobile ? { height: "3rem", width: "100%" } : { width: "12rem" }),
+    () => (props.mobile ? { height: "3rem", width: "100%", px: 0 } : { width: "12rem", px: 0 }),
     [props.mobile]
   );
 

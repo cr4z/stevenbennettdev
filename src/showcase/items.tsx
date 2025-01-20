@@ -104,10 +104,9 @@ export const SHOWCASES: Showcase[] = [
       introOverview: (
         <Typography>
           This project marked the beginning of my professional freelance journey, crafted using Next.js.
-          Since then, I've honed my skills in image optimization, but this project still stands out as one
-          of my most significant successes in SEO optimization. A testament to this is the online visibility
-          of the website: searching 'flores home repair' on Google typically shows floreshomerepair.com
-          right at the top. It's also effective through variations like 'flores house renovation'.
+          This project stands out as one of my most significant successes in SEO optimization. Searching
+          'flores home repair' on Google shows floreshomerepair.com right at the top for users in Texas.
+          It's also effective when using variations like 'flores house renovation'.
         </Typography>
       ),
     },
@@ -151,7 +150,7 @@ export const SHOWCASES: Showcase[] = [
       "https://github.com/cr4z/stevenbennettdev/tree/main/src/sbd_development_kit/utils/sort_items_alphabetically",
   },
   {
-    title: "Sequential Fade-In Effect Across Multiple Divs",
+    title: "Basic Sequential Fade",
     icon: <ICONS.React />,
     tags: ["React", "TypeScript", "Engaging User Experience"],
     id: ShowcaseIDs.SequentialFadeIn,
@@ -192,7 +191,7 @@ export const SHOWCASES: Showcase[] = [
     github: "https://github.com/cr4z/todoshredder",
   },
   {
-    title: "Complex Form in React Demonstration",
+    title: "Advanced Form in React Demonstration",
     icon: <ICONS.React />,
     tags: [
       "React",
