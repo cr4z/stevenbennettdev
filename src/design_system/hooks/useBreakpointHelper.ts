@@ -1,5 +1,8 @@
 import { Breakpoint, useMediaQuery, useTheme } from "@mui/material";
 
+/**
+ * Deprecated. Use MUI directly. Am refactoring prior referenes as I go.
+ */
 export function useBreakpointHelper(): IBreakpointerHelper {
   const thm = useTheme();
   const isMobile = useMediaQuery(thm.breakpoints.between("xs", "sm"));

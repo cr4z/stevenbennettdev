@@ -59,14 +59,6 @@ function App() {
             }
           />
           <Route
-            path="/blogs"
-            element={
-              <NavLayout>
-                <BlogFeed />
-              </NavLayout>
-            }
-          />
-          <Route
             path="/blogs/:blogID"
             element={
               <NavLayout>
