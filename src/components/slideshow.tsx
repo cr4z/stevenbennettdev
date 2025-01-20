@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Navigation,
-  Pagination,
-  EffectCoverflow,
-  Thumbs,
-  A11y,
-} from "swiper/modules";
+import { Navigation, Pagination, EffectCoverflow, Thumbs, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
@@ -26,23 +20,20 @@ export default function Slideshow() {
   const SLIDES: Slide[] = [
     {
       src: TruckerNotator,
-      title: "Complex Form & Dashboard",
-      description:
-        "View how I creatively manage complex state while maintaining user experience",
+      title: "Advanced Form & Dashboard",
+      description: "View how I creatively manage complex state while maintaining user experience",
       href: "/portfolio/" + ShowcaseIDs.NotatorSimulation,
     },
     {
       src: ImgTodoshredder,
       title: "TodoShredder",
-      description:
-        "View my live database implementing single sign-on functionality",
+      description: "View my live database implementing single sign-on functionality",
       href: "/portfolio/" + ShowcaseIDs.TodoShredder,
     },
     {
       src: ImgFHR,
       title: "Flores Home Repair",
-      description:
-        "View work I did for a client using Next.js on floreshomerepair.com",
+      description: "View work I did for a client using Next.js on floreshomerepair.com",
       href: "/portfolio/" + ShowcaseIDs.FloresHomeRepair,
     },
   ];

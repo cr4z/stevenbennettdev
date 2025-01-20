@@ -4,7 +4,6 @@ import StevenBennettDev from "./items/stevenbennettdev";
 import dayjs, { Dayjs } from "dayjs";
 import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
-import DougZonePodcast from "./items/dougzonepodcast";
 import ComplexFormDemonstrationContextWrapper from "./items/notator_simulation/complex_form_demo";
 import { complexFormDemoContent } from "../components/content_generator/content/complex_form_demo";
 import { ContentGeneratorContent } from "../components/content_generator/types/types";
@@ -159,16 +158,6 @@ export const SHOWCASES: Showcase[] = [
     github: "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
     component: <Showcase_SequentialFadeIn />,
   },
-
-  {
-    title: "dougzonepodcast.com",
-    icon: <ICONS.React />,
-    tags: ["React", "TypeScript", "Engaging User Experience", "vite", "react-router", "Live Website"],
-    id: ShowcaseIDs.DougZonePodcast,
-    github: "https://github.com/cr4z/dzp-vite",
-    component: <DougZonePodcast />,
-  },
-
   {
     title: "stevenbennett.dev",
     icon: <ICONS.React />,
