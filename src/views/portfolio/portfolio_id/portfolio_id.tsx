@@ -1,5 +1,4 @@
 import { Box, ButtonBase, useTheme } from "@mui/material";
-import Navbar from "../../navbar";
 import { SHOWCASES } from "../../../showcase/items";
 import { useLocation, useNavigate } from "react-router";
 import { SearchControls, SearchResultsView } from "../../../components/search_controls";
