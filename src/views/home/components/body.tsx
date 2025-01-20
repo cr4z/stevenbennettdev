@@ -44,7 +44,7 @@ function Body() {
           <Typography variant="h6" sx={{ fontWeight: 200 }}>
             “The secret of getting ahead is getting started today.”
           </Typography>
-          <Typography>- Mark Twain</Typography>
+          <Typography color="textSecondary">- Mark Twain</Typography>
         </Stack>
 
         <Stack
