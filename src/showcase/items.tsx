@@ -64,7 +64,7 @@ type Tag =
 
   // Programming Practices and Principles
   | "SOLID Principles"
-  | "Advanced Custom Algorithm"
+  | "Custom Algorithm"
 
   // Documentation and Compliance
   | "JSDoc Self-Documentation"
@@ -122,7 +122,7 @@ export const SHOWCASES: Showcase[] = [
       "Custom Hooks",
       "Engaging User Experience",
       "notistack",
-      "Advanced Custom Algorithm",
+      "Custom Algorithm",
     ],
     id: ShowcaseIDs.TypeSafeTableComponent,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
@@ -134,7 +134,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Algorithm: Quick Sort in Place",
     icon: <ICONS.Typescript />,
-    tags: ["TypeScript", "Advanced Custom Algorithm"],
+    tags: ["TypeScript", "Custom Algorithm"],
     component: <QuickSortInPlaceExample />,
     id: ShowcaseIDs.QuickSortInPlace,
     github:
@@ -143,7 +143,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Algorithm: Rapid Alphabetic Sort",
     icon: <ICONS.Typescript />,
-    tags: ["TypeScript", "Advanced Custom Algorithm", "XML Self-Documentation"],
+    tags: ["TypeScript", "Custom Algorithm", "JSDoc Self-Documentation"],
     component: <RapidAlphabeticSortExample />,
     id: ShowcaseIDs.RapidAlphabeticSort,
     github:
