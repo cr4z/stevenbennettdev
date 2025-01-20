@@ -16,7 +16,7 @@ function MobileContent(props: HomeContentProps) {
         sx={{
           width: "calc(100% + 4px)",
           ml: "-2px",
-          background: `linear-gradient(to top, ${palette.background.default}, ${palette.background.default}44)`,
+          background: `linear-gradient(to top, ${palette.background.default} 60%, ${palette.background.default}88)`,
           height: "10rem",
           borderRadius: "2rem 2rem 0 0",
           border: `1px solid ${palette.grey[700]}`,
