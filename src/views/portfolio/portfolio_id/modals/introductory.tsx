@@ -45,7 +45,7 @@ export function IntroductoryModal(props: { showcase: Showcase }) {
 
       <Box sx={{ display: "flex", justifyContent: "flex-end", width: "100%", gap: ".5rem" }}>
         <ViewCodeOnGithubButton grey href={showcase?.github!} />
-        <SBDButton larger onClick={handleClose}>
+        <SBDButton larger  onClick={handleClose}>
           Continue to Project
         </SBDButton>
       </Box>

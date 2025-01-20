@@ -6,9 +6,8 @@ export const advancedTableComponentContent: ContentGeneratorContent = {
   introOverview: (
     <Stack direction="column" gap=".5rem">
       <Typography variant="body1">
-        This is a table component that I had made over the course of one week. It uses advanced React
-        patterning and affords the developer the ability to render static or dynamic data with a plethora of
-        different overloadable functionalities such as pagination, sorting, and selectable rows.
+        This is a custom table component project I experimented with, built to integrate with the results of
+        API requests. It features pagination, intelligent client/server sorting, and selectable rows.
       </Typography>
       <SBDCodeBlock
         code={`function BigTableExample() {
@@ -106,12 +105,7 @@ export const advancedTableComponentContent: ContentGeneratorContent = {
   skillsShown: [
     {
       skill: "Self-Documenting Code",
-      desc: (
-        <Typography>
-          Complex modules are well documented, as visibly evident{" "}
-          <a href="/portfolio/debdcb6a850d">in this function I commonly use</a>!
-        </Typography>
-      ),
+      desc: <Typography>Complex modules are well documented</Typography>,
     },
     {
       skill: "Knowledge of Advanced Algorithms",

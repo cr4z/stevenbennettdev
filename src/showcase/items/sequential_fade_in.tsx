@@ -74,7 +74,7 @@ function Showcase_SequentialFadeIn() {
                 placeholder="Amount of cards..."
                 sx={{ width: "20rem" }}
               />
-              <SBDButton onClick={handleRegenerateClick}>Regenerate!</SBDButton>
+              <SBDButton onClick={handleRegenerateClick}>Regenerate</SBDButton>
             </Box>
           </form>
         </Box>
