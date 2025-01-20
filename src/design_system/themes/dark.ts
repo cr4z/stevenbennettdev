@@ -1,12 +1,12 @@
 import { createTheme } from "@mui/material";
 import { DEFAULT_THEME_OPTIONS } from "./default";
-import { USE_TEAL_DARK } from "./_colors";
+import { USE_BLUE_PRIMARY } from "./_colors";
 import { DARKMODE_TYPOGRAPHY_OPTIONS } from "./typography";
 
 export const darkTheme = createTheme({
   ...DEFAULT_THEME_OPTIONS,
   palette: {
-    ...USE_TEAL_DARK,
+    ...USE_BLUE_PRIMARY,
     mode: "dark",
     grey: {
       400: "#969696",

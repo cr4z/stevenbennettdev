@@ -1,9 +1,10 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, Container, Stack, useTheme } from "@mui/material";
 import Headshot from "./components/headshot";
 import TitleCard from "./components/title_card";
 import Body from "./components/body";
 import { ScrollToTop } from "./components/scroll_to_top";
 import { HomeContentProps } from "./types/home_content";
+import NameLogo from "./components/name_logo";
 
 function MobileContent(props: HomeContentProps) {
   const { palette } = useTheme();
@@ -21,23 +22,31 @@ function MobileContent(props: HomeContentProps) {
           border: `1px solid ${palette.grey[700]}`,
           borderBottom: "none",
         }}
-      ></Box>
+      />
       <Box
-        sx={{
-          bgcolor: palette.background.default,
-          display: "flex",
-          pt: "2rem",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "4rem",
-          pb: "8rem",
-        }}
+        sx={{ position: "fixed", width: "100%", display: "flex", justifyContent: "center", top: "4rem" }}
       >
-        <TitleCard />
-        <Headshot />
-        <Body />
-        <ScrollToTop onClick={() => onRequestScrollToTop()} />
+        <NameLogo />
       </Box>
+      <Container>
+        <Stack
+          direction="column"
+          sx={{
+            bgcolor: palette.background.default,
+            alignItems: "center",
+          }}
+        >
+          <Stack alignItems="center" gap={8}>
+            <TitleCard />
+            <Headshot />
+            <Stack gap={1}>
+              <Body />
+            </Stack>
+          </Stack>
+
+          <ScrollToTop onClick={() => onRequestScrollToTop()} useYMargin />
+        </Stack>
+      </Container>
     </Box>
   );
 }

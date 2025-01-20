@@ -49,7 +49,7 @@ function SkillCarousel() {
     >
       <AnimationBoundingBox>
         <motion.div
-          key={isShifting ? "shift" : "stay"} // This ensures a rerender with fresh state (AKA: prevents jitters)
+          key={isShifting ? "shift" : "stay"} // This ensures a rerender with fresh state (AKA: prevents jitters) // NOTE: Might just need to subscribe to a different animation callback, will look into if deciding to modify
           style={{ display: "flex" }}
           animate={
             isShifting
@@ -62,15 +62,16 @@ function SkillCarousel() {
               setIsShifting(false);
               setTimeout(() => setIsShifting(true), 1000);
               setCurrentIcons((icons) => [...icons.slice(1), icons[0]]);
-              console.log(currentIcons);
             }
           }}
         >
-          {currentIcons.map((skill) => (
-            <AnimationUnit key={skill.name}>
-              <skill.logo />
-            </AnimationUnit>
-          ))}
+          {currentIcons.map((skill) => {
+            return (
+              <AnimationUnit key={skill.name}>
+                <skill.logo />
+              </AnimationUnit>
+            );
+          })}
           {isShifting && (
             <AnimationUnit>
               <NextLogo />
@@ -107,7 +108,7 @@ const AnimationBoundingBox = styled("div")({
   // border: "1px solid red",
 });
 
-const AnimationUnit = styled("div")({
+const AnimationUnit = styled("div")(() => ({
   overflow: "hidden",
   display: "flex",
   width: `${UNIT_DIMENSION_REMS}rem`,
@@ -122,7 +123,8 @@ const AnimationUnit = styled("div")({
     width: `${SVG_DIMENSION_REMS}rem`,
     height: `${SVG_DIMENSION_REMS}rem`,
   },
+
   // border: "1px solid blue",
-});
+}));
 
 export default SkillCarousel;

@@ -1,9 +1,14 @@
-import { Box, Typography, Button, Container } from "@mui/material";
+import { Typography, Stack } from "@mui/material";
+import SBDButton from "../../../design_system/button";
+import { useAppDispatch } from "../../../redux/hooks";
+import { setContactDialog } from "../../../redux/slices/contact_dialog_slice";
 
 function Body() {
+  const dispatch = useAppDispatch();
+
   return (
-    <Container maxWidth="md" sx={{ textAlign: "center", py: 4 }}>
-      <Typography variant="h4" gutterBottom>
+    <>
+      <Typography variant="h5" gutterBottom>
         Shaping Tomorrow's Web, One Line at a Time.
       </Typography>
 
@@ -28,41 +33,51 @@ function Body() {
 
       <Typography variant="body1" color="textSecondary" paragraph>
         When you work with me, you're not just getting a developer—you're partnering with someone who
-        ensures your project is completed on time, to spec, and with
+        ensures your project is completed on time, to spec, and with{" "}
         <Typography component="span" color="primary" fontWeight="bold">
           lasting impact.
         </Typography>
       </Typography>
 
-      <Typography variant="caption" color="textSecondary" display="block" gutterBottom>
-        “The secret of getting ahead is getting started today.”
-      </Typography>
+      <Stack sx={{ textAlign: "center", gap: "2rem" }}>
+        <Stack direction="column">
+          <Typography variant="h6" sx={{ fontWeight: 200 }}>
+            “The secret of getting ahead is getting started today.”
+          </Typography>
+          <Typography>- Mark Twain</Typography>
+        </Stack>
 
-      <Typography variant="caption" color="textSecondary" fontStyle="italic">
-        - Mark Twain
-      </Typography>
-
-      <Box sx={{ mt: 4, display: "flex", justifyContent: "center", gap: 2 }}>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          href="/resume"
-          sx={{ textTransform: "none" }}
+        <Stack
+          sx={{
+            gap: "1rem",
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "center",
+          }}
         >
-          View Resume
-        </Button>
-        <Button
-          variant="outlined"
-          color="primary"
-          size="large"
-          href="/contact"
-          sx={{ textTransform: "none" }}
-        >
-          Contact Me
-        </Button>
-      </Box>
-    </Container>
+          <SBDButton
+            onClick={() => {
+              window.open(
+                "https://drive.google.com/file/d/1_t9wZgxIf9NuYcrDj9sWlxlKZivku7QU/view?usp=sharing"
+              );
+            }}
+            variant="contained"
+            larger
+            sx={{ px: "2rem" }}
+          >
+            View Resume
+          </SBDButton>
+          <SBDButton
+            onClick={() => dispatch(setContactDialog(true))}
+            variant="cta"
+            larger
+            sx={{ px: "2rem" }}
+          >
+            Contact Me
+          </SBDButton>
+        </Stack>
+      </Stack>
+    </>
   );
 }
 

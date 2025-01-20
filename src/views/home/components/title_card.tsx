@@ -1,11 +1,30 @@
-import { Box } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import SkillCarousel from "./skill_carousel";
 
 function TitleCard() {
   return (
-    <Box sx={{ bgcolor: "#FFF5", height: "9rem", width: "26rem" }}>
+    <Stack sx={{  textAlign: "center", gap: "1rem" }}>
+      <Stack>
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 100,
+          }}
+        >
+          Steven Bennett
+        </Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            fontFamily: "Lato",
+          }}
+        >
+          Multifaceted Web Specialist
+        </Typography>
+      </Stack>
+
       <SkillCarousel />
-    </Box>
+    </Stack>
   );
 }
 

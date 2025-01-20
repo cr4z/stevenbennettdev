@@ -4,6 +4,7 @@ import { useRef } from "react";
 import ParticleNetwork from "../../components/particle_network";
 import MobileContent from "./mobile_content";
 import WebContent from "./web_content";
+import { FooterLayout } from "../../layouts/footer";
 
 function Home() {
   const thm = useTheme();
@@ -22,17 +23,17 @@ function Home() {
     <ParallaxHeaderLayout
       parallaxContainerRef={parallaxContainerRef}
       src={<ParticleNetwork height="50rem" />}
-      offsetFromTop="28rem"
+      upperMargin="28rem"
     >
-      {isMobile ? (
-        <MobileContent onRequestScrollToTop={() => scrollToTop()} />
-      ) : (
-        <WebContent onRequestScrollToTop={() => scrollToTop()} />
-      )}
+      <FooterLayout>
+        {isMobile ? (
+          <MobileContent onRequestScrollToTop={() => scrollToTop()} />
+        ) : (
+          <WebContent onRequestScrollToTop={() => scrollToTop()} />
+        )}
+      </FooterLayout>
     </ParallaxHeaderLayout>
   );
 }
-
-// <FooterLayout></FooterLayout>;
 
 export default Home;
