@@ -15,11 +15,7 @@ function Navbar() {
   const { palette } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
-  const {
-    ref: contactBtnRef,
-    show: showContactMenu,
-    setShow: setShowContactMenu,
-  } = useMenu();
+  const { ref: contactBtnRef, show: showContactMenu, setShow: setShowContactMenu } = useMenu();
 
   function getNavbarGutters(): number {
     if (!isGreaterThanEqualTo(500)) return 1;
@@ -55,10 +51,11 @@ function Navbar() {
           paddingLeft: getNavbarGutters() - 1 + "rem",
           paddingRight: getNavbarGutters() + "rem",
           // Height isn't controlled here, it's controlled by layout
-          height: "100%",
+          height: "4rem",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          borderBottom: "1px solid " + palette.grey[800]
         }}
       >
         <Box
@@ -66,10 +63,7 @@ function Navbar() {
             a: { textDecoration: "none" },
           }}
         >
-          <Link
-            to="/"
-            style={{ display: "flex", alignItems: "center", paddingTop: "5px" }}
-          >
+          <Link to="/" style={{ display: "flex", alignItems: "center", paddingTop: "5px" }}>
             <Box sx={{ cursor: "pointer", padding: ".5rem" }}>
               <SBLogo />
             </Box>
@@ -102,20 +96,14 @@ function Navbar() {
             Home
           </SBDButton>
           <SBDButton
-            variant={
-              location.pathname.includes("/blogs") ? "selected" : "unselected"
-            }
-            onClick={() => navigate("/blogs")}
+            variant="unselected"
+            onClick={() => window.open("https://medium.com/@stevencr7zz", "_blank")}
             sx={navbarButtonSX}
           >
             Blog
           </SBDButton>
           <SBDButton
-            variant={
-              location.pathname.includes("/portfolio")
-                ? "selected"
-                : "unselected"
-            }
+            variant={location.pathname.includes("/portfolio") ? "selected" : "unselected"}
             onClick={() => navigate("/portfolio")}
             sx={navbarButtonSX}
           >

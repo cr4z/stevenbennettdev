@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { SBDCaret } from "../design_system/icons";
+import { SBDCaret } from "../../../design_system/icons";
 
-export function ScrollToTopButton(props: { onClick: () => void }) {
+export function ScrollToTop(props: { onClick: () => void }) {
   const { palette } = useTheme();
 
   const height = "3rem";
@@ -43,7 +43,7 @@ export function ScrollToTopButton(props: { onClick: () => void }) {
             mx: ".5rem",
           }}
         >
-          SCROLL TO TOP
+          Scroll to top
         </Typography>
         <SBDCaret point="up" />
       </Box>

@@ -43,7 +43,6 @@ function MobileFooter() {
         <ContactButtonLinkedIn />
         <ContactButtonGitHub />
       </Box>
-      <AssetAttribution />
     </Box>
   );
 }
@@ -80,7 +79,6 @@ function DesktopFooter() {
           <ContactButtonGitHub />
         </Box>
       </Box>
-      <AssetAttribution />
     </Box>
   );
 }
@@ -104,13 +102,3 @@ function CenterpieceLogo() {
     </Box>
   );
 }
-
-const AssetAttribution = () => (
-  <em>
-    Asset attribution:{" "}
-    <a href="https://www.freepik.com/author/starline" target="_blank">
-      Starline
-    </a>{" "}
-    for 3D Blue Particles Background
-  </em>
-);

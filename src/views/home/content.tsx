@@ -5,6 +5,8 @@ import { BsFileEarmarkPerson } from "react-icons/bs";
 import { Box, Tooltip, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
+/// TODO: DELETE THIS FILE.
+
 export function IntroductoryText() {
   return (
     <Typography
