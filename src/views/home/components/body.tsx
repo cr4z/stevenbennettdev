@@ -34,7 +34,7 @@ function Body() {
       <Typography variant="body1" color="textSecondary" paragraph>
         When you work with me, you're not just getting a developer—you're partnering with someone who
         ensures your project is completed on time, to spec, and with{" "}
-        <Typography component="span" color="primary" fontWeight="bold">
+        <Typography component="span" color="primary">
           lasting impact.
         </Typography>
       </Typography>
@@ -58,7 +58,7 @@ function Body() {
           <SBDButton
             onClick={() => {
               window.open(
-                "https://drive.google.com/file/d/1_t9wZgxIf9NuYcrDj9sWlxlKZivku7QU/view?usp=sharing"
+                "https://drive.google.com/file/d/1QOikc3I2IgepHHd4STjmXFJeSPkMX27u/view?usp=sharing"
               );
             }}
             variant="contained"
