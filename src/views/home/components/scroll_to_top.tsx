@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { SBDCaret } from "../design_system/icons";
+import { IoIosArrowUp } from "react-icons/io";
 
-export function ScrollToTopButton(props: { onClick: () => void }) {
+export function ScrollToTop(props: { onClick: () => void; useYMargin?: boolean }) {
   const { palette } = useTheme();
 
   const height = "3rem";
@@ -10,6 +10,7 @@ export function ScrollToTopButton(props: { onClick: () => void }) {
     <Box
       sx={{
         display: "flex",
+        ...(props.useYMargin && { my: "6rem" }),
       }}
     >
       <Box
@@ -33,19 +34,22 @@ export function ScrollToTopButton(props: { onClick: () => void }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          svg: {
+            color: palette.common.black,
+          },
         }}
       >
-        <SBDCaret point="up" />
+        <IoIosArrowUp />
         <Typography
           sx={{
-            color: palette.mode ? "#515151" : "white",
-            fontWeight: 800,
+            color: palette.getContrastText(palette.common.white),
+            fontWeight: 500,
             mx: ".5rem",
           }}
         >
-          SCROLL TO TOP
+          Scroll to top
         </Typography>
-        <SBDCaret point="up" />
+        <IoIosArrowUp />
       </Box>
 
       <Box

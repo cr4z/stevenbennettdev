@@ -4,16 +4,9 @@ import { FaReact } from "react-icons/fa";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiFigma } from "react-icons/si";
 import { VscAzureDevops } from "react-icons/vsc";
-import {
-  AiOutlineMail,
-  AiOutlineLinkedin,
-  AiOutlinePhone,
-  AiFillTag,
-  AiFillHtml5,
-} from "react-icons/ai";
+import { AiOutlineMail, AiOutlineLinkedin, AiOutlinePhone, AiFillTag, AiFillHtml5 } from "react-icons/ai";
 import { FaCaretRight } from "react-icons/fa";
 import { RiInformationLine } from "react-icons/ri";
-import CaretUp from "../svgs/caret.svg";
 
 export const ICONS = {
   React: FaReact,
@@ -70,30 +63,4 @@ export function IconRenderer(props: IconRendererProps) {
       {props.i}
     </Box>
   );
-}
-
-export function SBDCaret(props: { point: "up" | "right" | "down" | "left" }) {
-  const point = props.point ?? "up";
-  const deg = getDeg();
-
-  return (
-    <Box
-      sx={{ transform: `rotate(${deg})`, width: "1rem" }}
-      component="img"
-      src={CaretUp}
-    />
-  );
-
-  function getDeg() {
-    switch (point) {
-      case "up":
-        return "0deg";
-      case "right":
-        return "90deg";
-      case "down":
-        return "180deg";
-      case "left":
-        return "270deg";
-    }
-  }
 }

@@ -3,38 +3,32 @@ import { Box, Typography, useTheme } from "@mui/material";
 import { useBreakpointHelper } from "../design_system/hooks/useBreakpointHelper";
 import { useLocation, useNavigate } from "react-router";
 import Menu from "../design_system/menu";
-import useMenu from "../design_system/hooks/useMenu";
 import ContactMenu from "../components/contact";
 // @ts-ignore
 import { ReactComponent as SBLogo } from "../svgs/logo.svg";
 import SBDButton from "../design_system/button";
 import { Link } from "react-router-dom";
+import { useMemo, useRef } from "react";
+import { IconRenderer } from "../design_system/icons";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { setContactDialog } from "../redux/slices/contact_dialog_slice";
 
-function Navbar() {
-  const { currentScreenSize, isGreaterThanEqualTo } = useBreakpointHelper();
+/**
+ * TODO: Refactor this
+ */
+function Navbar(props: { mobile?: boolean }) {
+  const { isGreaterThanEqualTo } = useBreakpointHelper(); // Replace with direct use of useMediaQuery
   const { palette } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
-  const {
-    ref: contactBtnRef,
-    show: showContactMenu,
-    setShow: setShowContactMenu,
-  } = useMenu();
+  const contactBtnRef = useRef<HTMLDivElement | null>(null);
+  const showContactMenu = useAppSelector((state) => state.contactDialogReducer.isContactDialogOpen);
+  const dispatch = useAppDispatch();
 
-  function getNavbarGutters(): number {
-    if (!isGreaterThanEqualTo(500)) return 1;
-    switch (currentScreenSize) {
-      case "xl":
-      case "lg":
-      case "md":
-        return 2;
-      case "sm":
-      case "xs":
-        return 1.5;
-    }
-  }
-
-  const navbarButtonSX = { fontWeight: "bold" };
+  const navbarButtonSX = useMemo(
+    () => (props.mobile ? { fontWeight: "bold", width: "100%", height: "3rem" } : { fontWeight: "bold" }),
+    [props.mobile]
+  );
 
   return (
     <>
@@ -42,7 +36,7 @@ function Navbar() {
       <Menu
         refCurrent={contactBtnRef.current}
         show={showContactMenu}
-        onClose={() => setShowContactMenu(false)}
+        onClose={() => dispatch(setContactDialog(false))}
       >
         <ContactMenu />
       </Menu>
@@ -51,48 +45,57 @@ function Navbar() {
       <Box
         sx={{
           bgcolor: palette.background.default,
-          // TODO: Fix this. I'm not sure when/what happened, but there is always left-padding of exactly 1rem now. Viable stopgap is to subtract 1rem before setting padding
-          paddingLeft: getNavbarGutters() - 1 + "rem",
-          paddingRight: getNavbarGutters() + "rem",
+          px: "1rem",
           // Height isn't controlled here, it's controlled by layout
-          height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          ...(props.mobile
+            ? {
+                height: "6rem",
+                borderTop: "1px solid " + palette.grey[800],
+              }
+            : {
+                height: "4rem",
+                borderBottom: "1px solid " + palette.grey[800],
+              }),
         }}
       >
-        <Box
-          sx={{
-            a: { textDecoration: "none" },
-          }}
-        >
-          <Link
-            to="/"
-            style={{ display: "flex", alignItems: "center", paddingTop: "5px" }}
+        {!props.mobile && (
+          <Box
+            sx={{
+              a: { textDecoration: "none" },
+            }}
           >
-            <Box sx={{ cursor: "pointer", padding: ".5rem" }}>
-              <SBLogo />
-            </Box>
+            <Link to="/" style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+              <IconRenderer i={<SBLogo />} widthHeight="2.5rem" />
 
-            {isGreaterThanEqualTo(650) && (
-              <Typography
-                className="noselect"
-                variant="h4"
-                sx={{ paddingX: ".5rem", fontFamily: "Roboto" }}
-              >
-                Steven Bennett
-              </Typography>
-            )}
-          </Link>
-        </Box>
+              {isGreaterThanEqualTo(650) && (
+                <Typography className="noselect" variant="h4" sx={{ fontFamily: "Roboto" }}>
+                  Steven Bennett
+                </Typography>
+              )}
+            </Link>
+          </Box>
+        )}
 
         <Box
-          sx={{
-            display: "flex",
-            minWidth: "265px",
-            justifyContent: "space-between",
-            gap: ".4rem",
-          }}
+          ref={contactBtnRef}
+          sx={
+            props.mobile
+              ? {
+                  display: "flex",
+                  width: "100%",
+                  justifyContent: "space-around",
+                  alignItems: "center",
+                }
+              : {
+                  display: "flex",
+                  minWidth: "265px",
+                  justifyContent: "space-between",
+                  gap: ".4rem",
+                }
+          }
         >
           <SBDButton
             variant={location.pathname === "/" ? "selected" : "unselected"}
@@ -102,20 +105,15 @@ function Navbar() {
             Home
           </SBDButton>
           <SBDButton
-            variant={
-              location.pathname.includes("/blogs") ? "selected" : "unselected"
-            }
-            onClick={() => navigate("/blogs")}
+            variant="unselected"
+            onClick={() => window.open("https://medium.com/@stevencr7zz", "_blank")}
             sx={navbarButtonSX}
           >
             Blog
           </SBDButton>
+          {props.mobile && <IconRenderer i={<SBLogo />} widthHeight="2.5rem" />}
           <SBDButton
-            variant={
-              location.pathname.includes("/portfolio")
-                ? "selected"
-                : "unselected"
-            }
+            variant={location.pathname.includes("/portfolio") ? "selected" : "unselected"}
             onClick={() => navigate("/portfolio")}
             sx={navbarButtonSX}
           >
@@ -135,11 +133,9 @@ function Navbar() {
           >
             Resume
           </Button> */}
-          <div ref={contactBtnRef}>
-            <SBDButton variant="cta" onClick={() => setShowContactMenu(true)}>
-              Contact
-            </SBDButton>
-          </div>
+          <SBDButton variant="cta" sx={navbarButtonSX} onClick={() => dispatch(setContactDialog(true))}>
+            Contact
+          </SBDButton>
         </Box>
       </Box>
     </>
