@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { styled } from "@mui/system";
 import { Box } from "@mui/material";
 
 class Particle {

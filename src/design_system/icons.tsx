@@ -7,7 +7,6 @@ import { VscAzureDevops } from "react-icons/vsc";
 import { AiOutlineMail, AiOutlineLinkedin, AiOutlinePhone, AiFillTag, AiFillHtml5 } from "react-icons/ai";
 import { FaCaretRight } from "react-icons/fa";
 import { RiInformationLine } from "react-icons/ri";
-import { IoIosArrowUp } from "react-icons/io";
 
 export const ICONS = {
   React: FaReact,
@@ -65,4 +64,3 @@ export function IconRenderer(props: IconRendererProps) {
     </Box>
   );
 }
-

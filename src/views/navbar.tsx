@@ -8,11 +8,10 @@ import ContactMenu from "../components/contact";
 import { ReactComponent as SBLogo } from "../svgs/logo.svg";
 import SBDButton from "../design_system/button";
 import { Link } from "react-router-dom";
-import { useCallback, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { IconRenderer } from "../design_system/icons";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setContactDialog } from "../redux/slices/contact_dialog_slice";
-import { set } from "react-hook-form";
 
 /**
  * TODO: Refactor this

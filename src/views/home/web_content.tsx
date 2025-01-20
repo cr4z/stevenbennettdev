@@ -1,4 +1,4 @@
-import { Container, styled, useTheme } from "@mui/material";
+import { Container, styled } from "@mui/material";
 import Headshot from "./components/headshot";
 import TitleCard from "./components/title_card";
 import Body from "./components/body";
