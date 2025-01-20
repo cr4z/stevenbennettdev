@@ -21,8 +21,6 @@ function SBDButton(props: {
         }
       }}
       sx={{
-        minWidth: "71px",
-        paddingX: "1rem",
         height: props.larger ? "45px" : "35px",
         display: "flex",
         justifyContent: "center",

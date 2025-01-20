@@ -30,42 +30,16 @@ function App() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Provider store={store}>
         <CssBaseline />
-        <Routes>
-          <Route path="/portfolio/*" element={<ShowcaseLayout />} />
+        <NavLayout>
+          <Routes>
+            <Route path="/portfolio/*" element={<ShowcaseLayout />} />
 
-          <Route
-            path="*"
-            element={
-              <NavLayout>
-                <Page404 />
-              </NavLayout>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <NavLayout>
-                <Home />
-              </NavLayout>
-            }
-          />
-          <Route
-            path="/portfolio"
-            element={
-              <NavLayout>
-                <Portfolio />
-              </NavLayout>
-            }
-          />
-          <Route
-            path="/blogs/:blogID"
-            element={
-              <NavLayout>
-                <BlogByID />
-              </NavLayout>
-            }
-          />
-        </Routes>
+            <Route path="*" element={<Page404 />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/blogs/:blogID" element={<BlogByID />} />
+          </Routes>
+        </NavLayout>
       </Provider>
     </LocalizationProvider>
   );
