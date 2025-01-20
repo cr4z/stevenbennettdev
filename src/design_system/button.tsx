@@ -29,7 +29,7 @@ function SBDButton(props: {
         alignItems: "center",
         borderRadius: 999,
         fontFamily: "Inter",
-        fontWeight: props.variant === "cta" ? "bold" : "400",
+        fontWeight: "400",
         fontSize: "12px",
         color: "white",
 
