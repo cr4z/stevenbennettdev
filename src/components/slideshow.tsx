@@ -21,7 +21,7 @@ export default function Slideshow() {
     {
       src: TruckerNotator,
       title: "Advanced Form & Dashboard",
-      description: "View how I creatively manage complex state while maintaining user experience",
+      description: "View how I manage complex state in modern UI",
       href: "/portfolio/" + ShowcaseIDs.NotatorSimulation,
     },
     {
