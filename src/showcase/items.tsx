@@ -67,7 +67,7 @@ type Tag =
   | "Advanced Custom Algorithm"
 
   // Documentation and Compliance
-  | "XML Self-Documentation"
+  | "JSDoc Self-Documentation"
   | "WCAG AAA Compliance";
 
 export type Showcase = {
