@@ -1,18 +1,19 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, Theme, useMediaQuery } from "@mui/material";
 import Navbar from "../views/navbar";
 
 function NavLayout(props: { children: React.ReactNode }) {
-  const { palette } = useTheme();
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 
   return (
     <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-      <Box sx={{ height: "4rem", borderBottom: `1px solid ${palette.grey[800]}` }}>
-        <Navbar />
-      </Box>
+      {!isMobile && <Navbar />}
 
       <Box sx={{ height: "100%", overflowY: "auto" }}>{props.children}</Box>
+
+      {isMobile && <Navbar mobile />}
     </Box>
   );
 }
+
 
 export default NavLayout;
