@@ -1,9 +1,9 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import SkillCarousel from "./skill_carousel";
 
 function TitleCard() {
   return (
-    <Stack sx={{  textAlign: "center", gap: "1rem" }}>
+    <Stack sx={{ textAlign: "center", gap: "1rem" }}>
       <Stack>
         <Typography
           variant="h6"
