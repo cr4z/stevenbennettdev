@@ -6,7 +6,7 @@ function ParallaxHeaderLayout(props: {
   children: React.ReactNode;
   src: React.ReactNode;
   parallaxContainerRef: React.RefObject<HTMLDivElement>;
-  offsetFromTop: string;
+  upperMargin: string;
 }) {
   return (
     <ParallaxContainer ref={props.parallaxContainerRef}>
@@ -14,7 +14,7 @@ function ParallaxHeaderLayout(props: {
         <Box sx={{ width: "100%", display: "flex" }}>{props.src}</Box>
       </ParallaxBackground>
       <ParallaxBase>
-        <Box sx={{ position: "absolute", width: "100%", mt: props.offsetFromTop }}>{props.children}</Box>
+        <Box sx={{ position: "absolute", width: "100%", mt: props.upperMargin }}>{props.children}</Box>
       </ParallaxBase>
     </ParallaxContainer>
   );

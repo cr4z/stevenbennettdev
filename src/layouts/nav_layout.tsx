@@ -10,13 +10,10 @@ function NavLayout(props: { children: React.ReactNode }) {
 
       <Box sx={{ height: "100%", overflowY: "auto" }}>{props.children}</Box>
 
-      {isMobile && <MobileNavbar />}
+      {isMobile && <Navbar mobile />}
     </Box>
   );
 }
 
-function MobileNavbar() {
-  return <Box sx={{ width: "100%", height: "4rem", bgcolor: "red" }}></Box>;
-}
 
 export default NavLayout;

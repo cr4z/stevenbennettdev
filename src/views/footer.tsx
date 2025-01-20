@@ -36,7 +36,6 @@ function MobileFooter() {
         gap: "3rem",
       }}
     >
-      <CenterpieceLogo />
       <Box sx={leftRightSX}>
         <ContactButtonPhone />
         <ContactButtonEmail />
