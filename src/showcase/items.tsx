@@ -103,10 +103,9 @@ export const SHOWCASES: Showcase[] = [
     contentGeneratorContent: {
       introOverview: (
         <Typography>
-          This project marked the beginning of my professional freelance journey, crafted using Next.js.
-          This project stands out as one of my most significant successes in SEO optimization. Searching
-          'flores home repair' on Google shows floreshomerepair.com right at the top for users in Texas.
-          It's also effective when using variations like 'flores house renovation'.
+          Crafted using Next.js, this project is one of my best showcases for SEO optimization. Searching
+          for variations of 'flores home repair' in Texas should place floreshomerepair.com at the top of
+          the results.
         </Typography>
       ),
     },
