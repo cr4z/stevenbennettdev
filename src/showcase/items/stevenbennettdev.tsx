@@ -13,7 +13,7 @@ function StevenBennettDev() {
       }}
     >
       <Typography className="noselect" variant="h4">
-        Welcome to the VIP section!
+        Welcome to the VIP section
       </Typography>
       <Typography variant="body1">
         Want to see the code that powers this website? Click the link below!
