@@ -94,10 +94,8 @@ function MobileModal() {
         Notice
       </Typography>
       <Typography sx={{ color: "#000D" }}>
-        Hello and welcome! Quick heads-up: this part of my portfolio replicates a project that was designed
-        exclusively for desktop users in mind. While you can certainly access it on mobile, the experience
-        is not as optimal of a demonstration of my UX capabilities. As such, I recommend viewing this
-        project on a desktop. Thank you for stopping by and enjoy exploring my work!
+        This project was built specifically for desktop. While it's accessible on mobile, please note the user
+        experience won't be as optimal.
       </Typography>
       <SBDButton
         onClick={() => {
