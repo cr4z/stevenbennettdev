@@ -15,7 +15,7 @@ function Body() {
 
       <Typography variant="body1" color="textSecondary" paragraph>
         Hi, I'm Steven. I specialize in building scalable, maintainable web applications designed to meet
-        your business objectives with meticulous attention to accuracy.
+        your business objectives quickly and accurately.
       </Typography>
 
       <Typography variant="body1" color="textSecondary" paragraph>
