@@ -19,7 +19,7 @@ function TitleCard() {
             fontFamily: "Lato",
           }}
         >
-          Multifaceted Web Specialist
+          Advanced React Specialist
         </Typography>
       </Stack>
 
