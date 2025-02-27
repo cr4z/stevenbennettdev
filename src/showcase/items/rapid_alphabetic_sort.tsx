@@ -6,7 +6,7 @@ export function RapidAlphabeticSortExample() {
     <Box sx={{ p: "1.5rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
       <Typography variant="h5">Rapid Alphabetic Sort Custom Algorithm</Typography>
       <Typography variant="body1">
-        Seen below is type-safe, self-documenting rapid alphabetic sort function I've written.
+        Seen below is a rapid alphabetic sort function I've written for a TypeScript project, built with multiple overloads for flexible usage.
       </Typography>
       <SBDCodeBlock
         code={`
