@@ -185,7 +185,10 @@ function ShowcaseLayout() {
               />
             )}
 
-            {showcase?.component}
+<Box sx={{width: "100%", height: "100%", overflowY: "auto"}}>
+{showcase?.component}
+
+</Box>
           </Box>
         </Box>
       </Box>

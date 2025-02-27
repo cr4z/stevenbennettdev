@@ -12,6 +12,7 @@ import { RapidAlphabeticSortExample } from "./items/rapid_alphabetic_sort";
 import { Typography } from "@mui/material";
 import BigTableExampleWrapper from "./items/table/example/example";
 import { advancedTableComponentContent } from "../components/content_generator/content/versatile_table";
+import { SkillCarouselDemo } from "./items/skill_carousel_demo";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
@@ -32,6 +33,7 @@ export enum ShowcaseIDs {
   TypeSafeTableComponent = "n192kb3i9372",
   QuickSortInPlace = "9aed35c7101b",
   RapidAlphabeticSort = "debdcb6a850d",
+  SkillCarouselDemo = "a9c3b7a8a801",
 }
 
 type Tag =
@@ -46,6 +48,7 @@ type Tag =
   | "notistack"
   | "Material UI"
   | "Figjam Diagram"
+  | "Framer Motion"
 
   // Website Features and Types
   | "Engaging User Experience"
@@ -64,7 +67,7 @@ type Tag =
 
   // Programming Practices and Principles
   | "SOLID Principles"
-  | "Custom Algorithm"
+  | "Algorithm"
 
   // Documentation and Compliance
   | "JSDoc Self-Documentation"
@@ -121,7 +124,7 @@ export const SHOWCASES: Showcase[] = [
       "Custom Hooks",
       "Engaging User Experience",
       "notistack",
-      "Custom Algorithm",
+      "Algorithm",
     ],
     id: ShowcaseIDs.TypeSafeTableComponent,
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/table",
@@ -131,9 +134,9 @@ export const SHOWCASES: Showcase[] = [
     useIntroductoryModal: true,
   },
   {
-    title: "Algorithm: Quick Sort in Place",
+    title: "Algorithm: QuickSort (In-Place)",
     icon: <ICONS.Typescript />,
-    tags: ["TypeScript", "Custom Algorithm"],
+    tags: ["TypeScript", "Algorithm"],
     component: <QuickSortInPlaceExample />,
     id: ShowcaseIDs.QuickSortInPlace,
     github:
@@ -142,7 +145,7 @@ export const SHOWCASES: Showcase[] = [
   {
     title: "Algorithm: Rapid Alphabetic Sort",
     icon: <ICONS.Typescript />,
-    tags: ["TypeScript", "Custom Algorithm", "JSDoc Self-Documentation"],
+    tags: ["TypeScript", "Algorithm", "JSDoc Self-Documentation"],
     component: <RapidAlphabeticSortExample />,
     id: ShowcaseIDs.RapidAlphabeticSort,
     github:
@@ -206,5 +209,14 @@ export const SHOWCASES: Showcase[] = [
     github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",
     contentGeneratorContent: complexFormDemoContent,
     useIntroductoryModal: true,
+  },
+  {
+    title: "Skill Carousel",
+    icon: <ICONS.React />,
+    tags: ["React", "TypeScript", "Material UI", "Engaging User Experience", "Framer Motion"],
+    component: <SkillCarouselDemo />,
+    id: ShowcaseIDs.SkillCarouselDemo,
+    github:
+      "https://github.com/cr4z/stevenbennettdev/tree/main/src/views/home/components/skill_carousel.tsx",
   },
 ];
