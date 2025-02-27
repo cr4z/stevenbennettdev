@@ -51,15 +51,17 @@ const EmptySpace = styled("div")({
 
 const AbsoluteWelcomeCard = styled("div")(({ theme }) => ({
   position: "absolute",
-  top: "-12.3rem",
+  top: "-14rem",
   backgroundColor: "#0002",
   borderRadius: "1rem",
   border: `1px solid ${theme.palette.grey[700]}`,
   display: "flex",
   alignItems: "center",
-  padding: "3rem",
+  padding: "2rem 3rem ",
   justifyContent: "center",
   gap: "4rem",
+  minWidth: "53rem",
+  maxWidth: "53rem",
 }));
 
 export default WebContent;
