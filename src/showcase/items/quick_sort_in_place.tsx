@@ -14,9 +14,9 @@ function QuickSortInPlaceExample() {
         maxHeight: "100%",
       }}
     >
-      <Typography variant="h5">QuickSort In-Place Custom Algorithm</Typography>
+      <Typography variant="h5">QuickSort Algorithm (In-Place)</Typography>
       <Typography variant="body1">
-        Seen below is my custom implementation of the common quicksort in-place algorithm.
+        Seen below is my implementation of the QuickSort algorithm for use within a TypeScript project.
       </Typography>
       <SBDCodeBlock
         code={`export function quickSortInPlace<T>(

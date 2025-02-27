@@ -5,6 +5,9 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { VscAzureDevops } from "react-icons/vsc";
 import { IoLogoGithub } from "react-icons/io";
 import { RxFigmaLogo } from "react-icons/rx";
+import { BiLogoGoLang } from "react-icons/bi";
+import { SiDotnet } from "react-icons/si";
+import { FaNodeJs } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Stack, styled, Typography } from "@mui/material";
@@ -17,13 +20,16 @@ const SVG_DIMENSION_REMS = 1.5;
 
 type SkillLogo = { name: string; logo: React.ComponentType<React.SVGProps<SVGSVGElement>> };
 const SKILLS: SkillLogo[] = [
+  { logo: SiDotnet, name: "ASP.NET & C#" },
+  { logo: FaNodeJs, name: "Node.js" },
+  { logo: BiLogoGoLang, name: "Golang" },
+  { logo: RxFigmaLogo, name: "Figma" },
   { logo: IoLogoReact, name: "React" },
+  { logo: TbBrandNextjs, name: "Next.js" },
   { logo: TbBrandTypescript, name: "TypeScript" },
   { logo: TbBrandRedux, name: "Redux" },
-  { logo: TbBrandNextjs, name: "Next.js" },
-  { logo: VscAzureDevops, name: "DevOps" },
   { logo: IoLogoGithub, name: "GitHub" },
-  { logo: RxFigmaLogo, name: "Figma" },
+  { logo: VscAzureDevops, name: "DevOps" },
 ];
 
 class CustomDefinition {
