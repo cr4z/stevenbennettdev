@@ -15,7 +15,7 @@ export const MOCK_NOTATOR_REPORT: TruckerReport = {
     {
       id: "547abffb",
       status: "En Route",
-      fullName: "Edward Vedder",
+      fullName: "Kurt Cobain",
       schedule: getRandomSchedule(),
       itemLedger: getBlankItemLedger(),
       notes: "",
@@ -23,7 +23,7 @@ export const MOCK_NOTATOR_REPORT: TruckerReport = {
     {
       id: "a6e31c46",
       status: "Off Duty",
-      fullName: "Devon Rice",
+      fullName: "Carlos Santana",
       schedule: getRandomSchedule(),
       itemLedger: getBlankItemLedger(),
       notes: "",
@@ -31,7 +31,7 @@ export const MOCK_NOTATOR_REPORT: TruckerReport = {
     {
       id: "9385d06f",
       status: "Heading Back",
-      fullName: "Ray LaMontagne",
+      fullName: "Amy Winehouse",
       schedule: getRandomSchedule(),
       itemLedger: getBlankItemLedger(),
       notes: "",
@@ -39,7 +39,7 @@ export const MOCK_NOTATOR_REPORT: TruckerReport = {
     {
       id: "da4679ee",
       status: "Off Duty",
-      fullName: "Alice Cheynes",
+      fullName: "Keith Richards",
       schedule: getRandomSchedule(),
       itemLedger: getBlankItemLedger(),
       notes: "",
