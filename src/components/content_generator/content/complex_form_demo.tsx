@@ -8,9 +8,8 @@ export const complexFormDemoContent: ContentGeneratorContent = {
   introOverview: (
     <Stack direction="column" gap=".5rem">
       <Typography>
-        This Advanced Form reflects the complexities of real-world, data-intensive CRUD applications. It's
-        inspired by a prior project where I developed the architecture within two days to meet tight
-        requirements.
+        This interactive form reflects the complexities of real-world, data-intensive CRUD applications.
+        It's inspired by a prior project where I've developed something similar.
       </Typography>
     </Stack>
   ),
