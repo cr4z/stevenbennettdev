@@ -1,6 +1,6 @@
 import { Box, Stack, Tooltip, Typography, useTheme } from "@mui/material";
 import SkillCarousel from "./skill_carousel";
-import React, { useRef } from "react";
+import React from "react";
 import { PiCaretDoubleRight } from "react-icons/pi";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
