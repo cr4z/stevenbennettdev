@@ -1,6 +1,6 @@
 import { Box, Stack, Tooltip, Typography, useTheme } from "@mui/material";
 import SkillCarousel from "./skill_carousel";
-import React from "react";
+import React, { useRef } from "react";
 import { PiCaretDoubleRight } from "react-icons/pi";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
@@ -17,17 +17,18 @@ function TitleCard() {
       >
         Steven Bennett
       </Typography>
+
       <Typography
         variant="h4"
         sx={{
           fontFamily: "Lato",
         }}
       >
-        Web Application Specialist
+        Full-Stack Developer
       </Typography>
       <Typography variant="body1" color="textSecondary" mb="">
-        Specializing in React-based frameworks, full-stack development, and seamless CI/CD automation for
-        maximum impact
+        Specializing in React-based developoment, API technologies, and cloud infrastructure. Designing for
+        impact.
       </Typography>
 
       <SkillCarouselWrapper>
