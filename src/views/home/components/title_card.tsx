@@ -27,7 +27,7 @@ function TitleCard() {
         Full-Stack Developer
       </Typography>
       <Typography variant="body1" color="textSecondary" mb="">
-        Specializing in React-based developoment, API technologies, and cloud infrastructure. Designing for
+        Specializing in React-based frameworks, API technologies, and cloud infrastructure. Designing for
         impact.
       </Typography>
 
