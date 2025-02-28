@@ -1,9 +1,11 @@
-import { Container, styled } from "@mui/material";
+import { Box, Container, styled } from "@mui/material";
 import Headshot from "./components/headshot";
 import TitleCard from "./components/title_card";
 import Body from "./components/body";
 import { ScrollToTop } from "./components/scroll_to_top";
 import { HomeContentProps } from "./types/home_content";
+import OpenToWorkBadge from "./components/open_to_work_badge";
+import { SHOW_OPEN_TO_WORK } from "./home";
 
 function WebContent(props: HomeContentProps) {
   const { onRequestScrollToTop } = props;
@@ -19,6 +21,12 @@ function WebContent(props: HomeContentProps) {
           <TitleCard />
         </AbsoluteWelcomeCard>
 
+        {SHOW_OPEN_TO_WORK && (
+          <Box sx={{ position: "absolute", top: "-14.8rem", right: "3rem" }}>
+            <OpenToWorkBadge />
+          </Box>
+        )}
+
         <EmptySpace />
 
         <BodyWrapper>
@@ -30,6 +38,9 @@ function WebContent(props: HomeContentProps) {
     </BackgroundProvider>
   );
 }
+
+// TODO: Gonna add the activity badge that says 'Open for Contract Roles', hovering reveals a tooltip that says 'Let's get in touch', opens contact modal.
+// one for the web content (abs justified), one for mobile (ez centered), lil nice UI component
 
 const BodyWrapper = styled("div")({
   display: "flex",
