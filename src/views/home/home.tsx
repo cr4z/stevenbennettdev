@@ -6,6 +6,8 @@ import MobileContent from "./mobile_content";
 import WebContent from "./web_content";
 import { FooterLayout } from "../../layouts/footer";
 
+export const SHOW_OPEN_TO_WORK = true;
+
 function Home() {
   const thm = useTheme();
   const parallaxContainerRef = useRef<HTMLDivElement>(null);

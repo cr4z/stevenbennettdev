@@ -17,17 +17,18 @@ function TitleCard() {
       >
         Steven Bennett
       </Typography>
+
       <Typography
         variant="h4"
         sx={{
           fontFamily: "Lato",
         }}
       >
-        Web Application Specialist
+        Full-Stack Developer
       </Typography>
       <Typography variant="body1" color="textSecondary" mb="">
-        Specializing in React-based frameworks, full-stack development, and seamless CI/CD automation for
-        maximum impact
+        Specializing in React-based developoment, API technologies, and cloud infrastructure. Designing for
+        impact.
       </Typography>
 
       <SkillCarouselWrapper>
