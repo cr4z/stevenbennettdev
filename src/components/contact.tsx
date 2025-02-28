@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { ContactButtonEmail, ContactButtonGitHub, ContactButtonLinkedIn, ContactButtonPhone } from "./contact_options";
+import { ContactButtonEmail, ContactButtonLinkedIn, ContactButtonPhone } from "./contact_options";
 
 function ContactMenu() {
   return (
@@ -18,10 +18,9 @@ function ContactMenu() {
       <Typography mt={1} mb={2} variant="body1">
         Let's make things happen!
       </Typography>
+      <ContactButtonLinkedIn />
       <ContactButtonPhone />
       <ContactButtonEmail />
-      <ContactButtonLinkedIn />
-      <ContactButtonGitHub />
     </Box>
   );
 }
