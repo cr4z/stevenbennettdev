@@ -11,7 +11,7 @@ import ImgTodoshredder from "../img/forms.png";
 // @ts-ignore
 import ImgFHR from "../img/fhr2.png";
 // @ts-ignore
-import TruckerNotator from "../img/trucker_notator.png";
+import APITable from "../img/table_snapshot.png";
 import { ShowcaseIDs } from "../showcase/items";
 
 type Slide = { src: string; title: string; description: string; href: string };
@@ -19,10 +19,10 @@ type Slide = { src: string; title: string; description: string; href: string };
 export default function Slideshow() {
   const SLIDES: Slide[] = [
     {
-      src: TruckerNotator,
-      title: "Advanced Form & Dashboard",
-      description: "View how I manage complex state in modern UI",
-      href: "/portfolio/" + ShowcaseIDs.NotatorSimulation,
+      src: ImgFHR,
+      title: "Flores Home Repair",
+      description: "View work I did for a client using Next.js on floreshomerepair.com",
+      href: "/portfolio/" + ShowcaseIDs.FloresHomeRepair,
     },
     {
       src: ImgTodoshredder,
@@ -31,10 +31,10 @@ export default function Slideshow() {
       href: "/portfolio/" + ShowcaseIDs.TodoShredder,
     },
     {
-      src: ImgFHR,
-      title: "Flores Home Repair",
-      description: "View work I did for a client using Next.js on floreshomerepair.com",
-      href: "/portfolio/" + ShowcaseIDs.FloresHomeRepair,
+      src: APITable,
+      title: "Advanced Table Custom Component",
+      description: "View how I manage complex state in modern UI",
+      href: "/portfolio/" + ShowcaseIDs.TypeSafeTableComponent,
     },
   ];
 

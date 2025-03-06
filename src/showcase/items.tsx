@@ -4,8 +4,6 @@ import StevenBennettDev from "./items/stevenbennettdev";
 import dayjs, { Dayjs } from "dayjs";
 import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
-import ComplexFormDemonstrationContextWrapper from "./items/notator_simulation/complex_form_demo";
-import { complexFormDemoContent } from "../components/content_generator/content/complex_form_demo";
 import { ContentGeneratorContent } from "../components/content_generator/types/types";
 import QuickSortInPlaceExample from "./items/quick_sort_in_place";
 import { RapidAlphabeticSortExample } from "./items/rapid_alphabetic_sort";
@@ -29,7 +27,6 @@ export enum ShowcaseIDs {
   FilteringAlgorithm = "cff25e657a4a",
   TodoShredder = "e706f518d604",
   DougZonePodcast = "f702b757d5f7",
-  NotatorSimulation = "6543263c3154",
   TypeSafeTableComponent = "n192kb3i9372",
   QuickSortInPlace = "9aed35c7101b",
   RapidAlphabeticSort = "debdcb6a850d",
@@ -191,24 +188,6 @@ export const SHOWCASES: Showcase[] = [
     component: <TodoShredder />,
     id: ShowcaseIDs.TodoShredder,
     github: "https://github.com/cr4z/todoshredder",
-  },
-  {
-    title: "Advanced Form in React Demonstration",
-    icon: <ICONS.React />,
-    tags: [
-      "React",
-      "TypeScript",
-      "Redux",
-      "Material UI",
-      "Engaging User Experience",
-      "Simulated API",
-      "Figjam Diagram",
-    ],
-    component: <ComplexFormDemonstrationContextWrapper />,
-    id: ShowcaseIDs.NotatorSimulation,
-    github: "https://github.com/cr4z/stevenbennettdev/tree/main/src/showcase/items/notator_simulation",
-    contentGeneratorContent: complexFormDemoContent,
-    useIntroductoryModal: true,
   },
   {
     title: "Skill Carousel",
