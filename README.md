@@ -5,7 +5,7 @@
 * **Interactive Portfolio**: A showcase of some custom projects.
 ## 🛠 Tech Stack
 * **Front-end**: React with TypeScript, MaterialUI
-* **Complex State Management**: Redux paired with Redux Toolkit
+* **Global State Management**: Redux Toolkit
 * **Deployment**: Vercel
 * **Version Control**: Git & GitHub
 
