@@ -7,7 +7,6 @@
 * **Front-end**: React with TypeScript, MaterialUI
 * **Global State Management**: Redux Toolkit
 * **Deployment**: Vercel
-* **Version Control**: Git & GitHub
 
 ## 📞 Connect
 For more details or queries, feel free to connect with me through [my contact tab](https://www.stevenbennett.dev/)
