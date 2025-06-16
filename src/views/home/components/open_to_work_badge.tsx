@@ -20,7 +20,7 @@ function OpenToWorkBadge() {
     >
       <Badge />
       <Typography variant="caption" sx={{ fontWeight: 100 }} noWrap>
-        Open for Contract Roles
+        Open to Work
       </Typography>
     </Box>
   );
