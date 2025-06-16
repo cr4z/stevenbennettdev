@@ -39,9 +39,6 @@ function WebContent(props: HomeContentProps) {
   );
 }
 
-// TODO: Gonna add the activity badge that says 'Open for Contract Roles', hovering reveals a tooltip that says 'Let's get in touch', opens contact modal.
-// one for the web content (abs justified), one for mobile (ez centered), lil nice UI component
-
 const BodyWrapper = styled("div")({
   display: "flex",
   flexDirection: "column",
