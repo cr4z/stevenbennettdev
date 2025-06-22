@@ -29,7 +29,7 @@ const SKILLS: SkillLogo[] = [
   { logo: TbBrandTypescript, name: "TypeScript" },
   { logo: TbBrandRedux, name: "Redux" },
   { logo: IoLogoGithub, name: "GitHub" },
-  { logo: VscAzureDevops, name: "DevOps" },
+  { logo: VscAzureDevops, name: "Azure DevOps" },
 ];
 
 class CustomDefinition {
