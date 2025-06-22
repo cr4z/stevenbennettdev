@@ -24,11 +24,10 @@ function TitleCard() {
           fontFamily: "Lato",
         }}
       >
-        Full-Stack Developer
+        Software Engineer
       </Typography>
       <Typography variant="body1" color="textSecondary" mb="">
-        Specializing in React-based frameworks, API technologies, and cloud infrastructure. Designing for
-        impact.
+        End-to-end expertise across systems and workflows. Designing for impact.
       </Typography>
 
       <SkillCarouselWrapper>
