@@ -57,12 +57,12 @@ function Body() {
       </Typography>
 
       <Typography variant="body1" paragraph>
-        I believe there is a lot to learn from Kaizen, one of the underpinning aspects of modern agile
-        practices rooted in Japanese philosophy. As a team member, I work to embody its core tenets:{" "}
+        I believe there is a lot to learn from kaizen, one of the underpinning aspects of modern agile
+        practices rooted in Japanese philosophy. As a team member, I work to embody its core tenets of{" "}
         <Typography component="span" color="primary.light">
-          humility, social cohesion, and continuous improvement
+          continuous improvement and collaborative problem-solving
         </Typography>
-        .
+        , while also practicing apostolic humility in my approach to learning and teamwork.
       </Typography>
 
       <Typography variant="body1" paragraph>
