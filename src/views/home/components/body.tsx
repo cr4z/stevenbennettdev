@@ -62,7 +62,7 @@ function Body() {
         <Typography component="span" color="primary.light">
           continuous improvement and collaborative problem-solving
         </Typography>
-        , while also practicing apostolic humility in my approach to learning and teamwork.
+        , while also practicing epistemic humility in my approach to learning and teamwork.
       </Typography>
 
       <Typography variant="body1" paragraph>
