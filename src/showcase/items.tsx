@@ -1,6 +1,5 @@
 import { ICONS } from "../design_system/icons";
 import FloresHomeRepair from "./items/floreshomerepair";
-import StevenBennettDev from "./items/stevenbennettdev";
 import dayjs, { Dayjs } from "dayjs";
 import Showcase_SequentialFadeIn from "./items/sequential_fade_in";
 import TodoShredder from "./items/todoshredder";
@@ -14,7 +13,6 @@ import { SkillCarouselDemo } from "./items/skill_carousel_demo";
 
 export enum ShowcaseIDs {
   FloresHomeRepair = "57eb3c17a412",
-  StevenBennettDev = "d8f3c7a8a801",
   CustomFormLibrary = "87c5230add29",
   BeautifulSidebar = "b5942b551adb",
   FinancialDashboard = "5c0097274ef8",
@@ -155,23 +153,6 @@ export const SHOWCASES: Showcase[] = [
     id: ShowcaseIDs.SequentialFadeIn,
     github: "https://github.com/cr4z/stevenbennettdev/blob/main/src/showcase/items/sequential_fade_in.tsx",
     component: <Showcase_SequentialFadeIn />,
-  },
-  {
-    title: "stevenbennett.dev",
-    icon: <ICONS.React />,
-    tags: [
-      "React",
-      "TypeScript",
-      "Engaging User Experience",
-      "Responsive Design",
-      "Redux",
-      "Live Website",
-      "Blog",
-      "Firebase",
-    ],
-    component: <StevenBennettDev />,
-    id: ShowcaseIDs.StevenBennettDev,
-    github: "https://github.com/cr4z/stevenbennettdev",
   },
   {
     title: "todoshredder.com",
