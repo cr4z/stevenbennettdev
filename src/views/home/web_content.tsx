@@ -43,7 +43,7 @@ const BodyWrapper = styled("div")({
   display: "flex",
   flexDirection: "column",
   gap: ".25rem",
-  backgroundColor: "#FFF1",
+  backgroundColor: "#0002",
   padding: "2rem",
   borderRadius: "1rem",
 });

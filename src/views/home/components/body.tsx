@@ -1,4 +1,4 @@
-import { Typography, Stack } from "@mui/material";
+import { Typography, Stack, Link as MuiLink } from "@mui/material";
 import SBDButton from "../../../design_system/button";
 import { useAppDispatch } from "../../../redux/hooks";
 import { setContactDialog } from "../../../redux/slices/contact_dialog_slice";
@@ -9,46 +9,73 @@ function Body() {
 
   return (
     <>
-      <Typography variant="h5" gutterBottom>
-        Delivering scalable React solutions for enterprise applications
+      <Typography variant="h6" gutterBottom>
+        Who I Am
       </Typography>
 
-      <Typography variant="body1" color="textSecondary" paragraph>
-        Hi, I'm Steven! I specialize in building scalable, maintainable web applications designed to meet
-        your business objectives quickly and accurately.
+      <Typography variant="body1" paragraph>
+        I am a lifelong programmer and software engineer from Austin, Texas. In the early days of my career,
+        though very young, I led system rebuilds, optimized core functionalities to wire-speed, and
+        coordinated with teams across the stack to deliver customized, accurate results to tens of thousands
+        of users.
       </Typography>
 
-      <Typography variant="body1" color="textSecondary" paragraph>
-        With years of experience in front-end architecture and modern web technologies, I pride myself on
-        quickly delivering results that align with business goals. My approach evolves alongside the
-        industry, ensuring every solution leverages the latest tools and best practices. I've worked on
-        tight deadlines, led advanced project rebuilds, and collaborated across teams to ensure seamless
-        execution.
+      <Typography variant="body1" paragraph>
+        My experience spans component library development, authentication system integration, legacy
+        application modernization, and continues to expand with each project.
       </Typography>
 
-      <Typography variant="body1" color="textSecondary" paragraph>
-        Whether building reusable component libraries, integrating authentication systems, or optimizing
-        legacy applications for modern performance, I bring a combination of technical expertise and a
-        commitment to streamlined processes. From the first project scope to the final deployment, I am
-        dedicated to{" "}
-        <Typography component="span" color="primary">
-          clear communication, collaborative problem-solving, and high-quality results.{" "}
+      <Typography variant="h6" gutterBottom>
+        My Design Philosophy
+      </Typography>
+
+      <Typography variant="body1" paragraph>
+        Both my engineering approach and UI/UX design style aims to combine minimalism and modularity,
+        prioritizing efficiency, scalability, maintainability, and optimal user experience.
+      </Typography>
+
+      <Typography variant="body1" paragraph>
+        I believe all of these things, though they tend to trade each other off in real development, can be
+        intelligently balanced across teams by establishing and abiding by a minimal set of design
+        principles. For example, once when working with a React team at a fast-moving lean company, I
+        pitched codifying the practice of{" "}
+        <MuiLink
+          href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0"
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="hover"
+          sx={{ color: "white", fontWeight: "bold" }}
+        >
+          presentational and container components
+        </MuiLink>
+        , which after adopting, helped improve team productivity and communication, even in our
+        high-velocity environment with minimal time for sync.
+      </Typography>
+
+      <Typography variant="h6" gutterBottom>
+        My Work Philosophy
+      </Typography>
+
+      <Typography variant="body1" paragraph>
+        I believe there is a lot to learn from Kaizen, one of the underpinning aspects of modern agile
+        practices rooted in Japanese philosophy. As a team member, I work to embody its core tenets:{" "}
+        <Typography component="span" color="primary.light">
+          humility, social cohesion, and continuous improvement
         </Typography>
+        .
       </Typography>
 
-      <Typography variant="body1" color="textSecondary" paragraph>
-        When you work with me, you're not just getting a developer. You're partnering with someone who
-        ensures your project is completed quick, to spec, and with lasting impact.
+      <Typography variant="body1" paragraph>
+        With a flexible skillset and drive for challenge, I'm equipped for any complex problem in modern
+        tech.
       </Typography>
 
       <Stack sx={{ textAlign: "center", gap: "2rem" }}>
         <Stack direction="column">
           <Typography variant="h6" sx={{ fontWeight: 200 }}>
-            “The secret of getting ahead is getting started today.”
+            “The best way to predict the future is to invent it.”
           </Typography>
-          <Typography color="textSecondary" sx={{ opacity: 0.5 }}>
-            - Mark Twain
-          </Typography>
+          <Typography color="textSecondary">- Alan Kay</Typography>
         </Stack>
 
         <Stack
