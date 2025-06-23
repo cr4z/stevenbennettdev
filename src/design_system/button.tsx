@@ -40,7 +40,7 @@ function SBDButton(props: {
 
         ...(variant === "cta" && {
           bgcolor: palette.primary.main,
-          ":hover": { bgcolor: palette.primary.main + "E0" },
+          ":hover": { bgcolor: palette.primary.light },
         }),
 
         ...(variant === "contained" && {
