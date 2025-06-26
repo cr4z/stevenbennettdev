@@ -30,8 +30,8 @@ function Body() {
       </Typography>
 
       <Typography variant="body1" paragraph>
-        Both my engineering approach and UI/UX design style aims to combine minimalism and modularity,
-        prioritizing efficiency, scalability, maintainability, and optimal user experience.
+        Both my engineering approach and design style aim to combine minimalism & modularity with an
+        emphasis on performance, scale, maintainability, and optimal user experience.
       </Typography>
 
       <Typography variant="body1" paragraph>
