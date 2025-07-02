@@ -37,8 +37,9 @@ function Body() {
       <Typography variant="body1" paragraph>
         I believe all of these things, though they can trade each other off in real development, can be
         intelligently balanced across teams by establishing and abiding by a minimal set of design
-        principles. For example, once when working with a React team at a fast-moving lean company, I
-        pitched codifying the practice of{" "}
+        principles. For example, on one of my React teams at a fast-moving lean company, we consistently
+        found ourselves having to work solo on features, and building components that wouldn't integrate
+        with each other easily. To solve this, I pitched codifying the practice of{" "}
         <MuiLink
           href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0"
           target="_blank"
@@ -48,8 +49,8 @@ function Body() {
         >
           presentational and container components
         </MuiLink>
-        , which after adopting, helped improve team productivity and communication, even in our
-        high-velocity environment with minimal time for sync.
+        . After adopting this practice, it turbo-charged our coordination and productivity even in a
+        high-velocity environment that left minimal time for sync.
       </Typography>
 
       <Typography variant="h6" gutterBottom>
