@@ -35,7 +35,7 @@ function Body() {
       </Typography>
 
       <Typography variant="body1" paragraph>
-        I believe all of these things, though they tend to trade each other off in real development, can be
+        I believe all of these things, though they can trade each other off in real development, can be
         intelligently balanced across teams by establishing and abiding by a minimal set of design
         principles. For example, once when working with a React team at a fast-moving lean company, I
         pitched codifying the practice of{" "}
