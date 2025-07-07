@@ -14,9 +14,9 @@ function Body() {
       </Typography>
 
       <Typography variant="body1" paragraph>
-        I am a lifelong software engineer from Austin, Texas. In the early days of my career, though very
-        young, I led system rebuilds, optimized core functionalities to wire-speed, and coordinated with
-        teams across the stack to deliver customized, accurate results to tens of thousands of users.
+        I am a lifelong software engineer from Austin, Texas. In the early days of my career I led system
+        rebuilds, optimized core functionalities to wire-speed, and coordinated with teams across the stack
+        to deliver customized, accurate results to tens of thousands of users.
       </Typography>
 
       <Typography variant="body1" paragraph>
